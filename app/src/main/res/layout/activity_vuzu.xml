@@ -89,8 +89,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn2"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -134,8 +134,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn3"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
 
                         </LinearLayout>
@@ -168,8 +168,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn4"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -201,8 +201,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn5"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -234,8 +234,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn6"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -267,8 +267,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn7"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -300,8 +300,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn8"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -333,8 +333,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn9"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -366,8 +366,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn10"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -399,8 +399,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn11"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -432,8 +432,8 @@
 
                             <ImageView
                                 android:id="@+id/img_btn12"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 

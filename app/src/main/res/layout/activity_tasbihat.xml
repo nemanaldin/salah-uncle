@@ -86,8 +86,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas1"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -119,8 +119,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas2"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -152,8 +152,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas3"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -185,8 +185,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas4"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -218,8 +218,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas5"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -251,8 +251,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas6"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -284,8 +284,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas7"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -317,8 +317,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas8"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -350,8 +350,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas9"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -383,8 +383,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas10"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -416,8 +416,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas11"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -449,8 +449,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas12"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -482,8 +482,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas13"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -515,8 +515,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas14"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -548,8 +548,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas15"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -581,8 +581,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas16"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -614,8 +614,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas17"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -647,8 +647,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas18"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -680,8 +680,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas19"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -713,8 +713,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas20"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -746,8 +746,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas21"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 
@@ -789,8 +789,8 @@
 
                             <ImageView
                                 android:id="@+id/imgtas22"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
                                 app:srcCompat="@drawable/play_button"/>
                         </LinearLayout>
 

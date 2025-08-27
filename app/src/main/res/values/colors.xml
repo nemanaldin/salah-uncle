@@ -7,4 +7,17 @@
     <color name="slide_2">#26c6da</color>
     <color name="style">#141919</color>
     <color name="default_circle_indicator_fill_color">#008000</color>
+
+
+
+    <color name="primary">#0E7490</color>        <!-- teal تیره -->
+    <color name="onPrimary">#FFFFFF</color>
+    <color name="secondary">#2A4158</color>      <!-- آبی خاکستری -->
+    <color name="surface">#F3F6F9</color>        <!-- پس‌زمینه کارت‌ها -->
+    <color name="onSurface">#263238</color>      <!-- متن تیره -->
+    <color name="outline">#E5E9EF</color>
+
+
+
+
 </resources>
