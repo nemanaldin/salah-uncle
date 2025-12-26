@@ -75,11 +75,7 @@
 
     </LinearLayout>
 
-    <Spinner
-        android:id="@+id/spinner_calculation_method"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+
 
     <TextView
         android:id="@+id/text_fajr"
@@ -160,6 +156,11 @@
         android:layout_marginTop="8dp"
         android:checked="true"
         android:text="پخش صدای اذان (فقط نوتیفیکیشن)" />
+    <Spinner
+        android:id="@+id/spinner_calculation_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
 
     <Button
         android:id="@+id/btn_play_adhan"
@@ -167,5 +168,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="پخش دستی اذان" />
+
+    <Button
+        android:id="@+id/btn_get_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="گرفتن مکان" />
 
 </LinearLayout>

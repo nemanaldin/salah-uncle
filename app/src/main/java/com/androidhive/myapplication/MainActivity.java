@@ -228,32 +228,47 @@ public class MainActivity extends AppCompatActivity
     DateComponents date = DateComponents.from(new Date());
     Coordinates coordinates = new Coordinates(latitude, longitude);
 
-    // Create CalculationParameters using the desired CalculationMethod
     CalculationParameters params = CalculationMethod.KARACHI.getParameters();
-
-    // Pass the CalculationParameters object to the PrayerTimes constructor
     PrayerTimes prayerTimes = new PrayerTimes(coordinates, date, params);
 
     Prayer nextPrayer = prayerTimes.nextPrayer();
-    Date nextPrayerTime = prayerTimes.timeForPrayer(nextPrayer);
+    Date nextPrayerTime;
+    String nextPrayerName;
 
     if (nextPrayer != Prayer.NONE) {
-      long remainingMillis = nextPrayerTime.getTime() - new Date().getTime();
-      long hours = TimeUnit.MILLISECONDS.toHours(remainingMillis);
-      long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingMillis) % 60;
-      long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingMillis) % 60;
-
-      String nextPrayerName = mapPrayerName(nextPrayer);
-      String timeString = String.format(Locale.US, "%02d:%02d:%02d", hours, minutes, seconds);
-
-      textNextPrayer.setText("نماز بعدی: " + nextPrayerName);
-      textTimeRemaining.setText(timeString);
-
+      nextPrayerTime = prayerTimes.timeForPrayer(nextPrayer);
+      nextPrayerName = mapPrayerName(nextPrayer);
     } else {
-      textNextPrayer.setText("اوقات شرعی به پایان رسیده است.");
-      textTimeRemaining.setText("---");
+      // بعد از عشاء: فجرِ فردا را به عنوان نماز بعدی نشان بده
+      java.util.Calendar cal = java.util.Calendar.getInstance();
+      cal.setTime(new Date());
+      cal.add(java.util.Calendar.DATE, 1);
+      DateComponents tomorrow = DateComponents.from(cal.getTime());
+      PrayerTimes tomorrowTimes = new PrayerTimes(coordinates, tomorrow, params);
+
+      nextPrayer = Prayer.FAJR;
+      nextPrayerTime = tomorrowTimes.fajr;
+      nextPrayerName = "فجر";
     }
-  }
+
+    long remainingMillis = nextPrayerTime.getTime() - System.currentTimeMillis();
+    if (remainingMillis < 0) remainingMillis = 0;
+
+    long hours = TimeUnit.MILLISECONDS.toHours(remainingMillis);
+    long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingMillis) % 60;
+    long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingMillis) % 60;
+
+    String timeString = String.format(Locale.US, "%02d:%02d:%02d", hours, minutes, seconds);
+
+    textNextPrayer.setText("نماز بعدی: " + nextPrayerName);
+    textTimeRemaining.setText(timeString);
+
+    // ذخیره برای نوتیفیکیشن/سرویس
+    SharedPreferences.Editor editor = getSharedPreferences("PrayerAppPrefs", MODE_PRIVATE).edit();
+    editor.putLong("next_prayer_time_millis", nextPrayerTime.getTime());
+    editor.putString("next_prayer_name_fa", nextPrayerName);
+    editor.apply();
+}
 
   private String mapPrayerName(Prayer prayer) {
     switch (prayer) {
