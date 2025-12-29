@@ -1,5 +1,7 @@
 package com.androidhive.myapplication;
 
+import android.Manifest;
+import android.app.AlarmManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.batoulapps.adhan.CalculationMethod;
+import com.batoulapps.adhan.CalculationParameters;
 import com.batoulapps.adhan.Coordinates;
 import com.batoulapps.adhan.Prayer;
 import com.batoulapps.adhan.PrayerTimes;
@@ -33,13 +37,11 @@ import com.batoulapps.adhan.data.DateComponents;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -48,8 +50,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
 public class PrayerTimesActivity extends AppCompatActivity {
+
+    private Handler countdownHandler = new Handler(Looper.getMainLooper());
+    private Runnable countdownRunnable;
+
 
     private TextView textFajr, textSunrise, textDHUHR, textAsr, textMaghrib, textIsha;
     private TextView textNextPrayerTime, textRemainingTime;
@@ -80,11 +85,12 @@ public class PrayerTimesActivity extends AppCompatActivity {
     public static final String KEY_LAST_SOURCE = "last_source";
     public static final String KEY_LAST_UPDATED = "last_updated";
 
-
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 if (isGranted) {
                     Toast.makeText(this, "مجوز نوتیفیکیشن داده شد.", Toast.LENGTH_SHORT).show();
+                    // حالا که مجوز داده شد، فرآیند فعال‌سازی اذان خودکار را ادامه بده
+                    enableAutoAdhanFlow();
                 } else {
                     Toast.makeText(this, "بدون مجوز، نوتیفیکیشن‌ها نمایش داده نمی‌شوند.", Toast.LENGTH_LONG).show();
                     switchAutoAdhan.setChecked(false);
@@ -96,15 +102,29 @@ public class PrayerTimesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prayer_times);
 
+        // Android 12+ exact alarm permission (برای setExact*)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+            if (!am.canScheduleExactAlarms()) {
+                Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                startActivity(intent);
+            }
+        }
+
         initializeUIComponents();
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationDataMap = new HashMap<>();
+
         loadLocationDataFromJson();
         setupSpinners();
-
+        setupListeners();
         loadAndApplySavedPreferences();
 
-        setupListeners();
+        // اگر قبلاً auto روشن بوده، نوتیف و آلارم را یکبار آپدیت کن
+        if (AppPrefs.isAutoAdhanEnabled(this)) {
+            PrayerScheduler.computeAndScheduleNext(this);
+            PrayerNotification.showOrUpdate(this, false);
+        }
     }
 
     private void initializeUIComponents() {
@@ -114,20 +134,24 @@ public class PrayerTimesActivity extends AppCompatActivity {
         textAsr = findViewById(R.id.text_asr);
         textMaghrib = findViewById(R.id.text_maghrib);
         textIsha = findViewById(R.id.text_isha);
+
         textNextPrayerTime = findViewById(R.id.text_next_prayer_time);
         textRemainingTime = findViewById(R.id.text_remaining_time);
         textCurrentLocation = findViewById(R.id.text_current_location);
+
         spinnerCalculationMethod = findViewById(R.id.spinner_calculation_method);
+
         btnPlayAdhan = findViewById(R.id.btn_play_adhan);
         switchAutoAdhan = findViewById(R.id.switch_auto_adhan);
         switchPlayAdhanSound = findViewById(R.id.switch_play_adhan_sound);
+
         radioGroupLocation = findViewById(R.id.radio_group_location);
         layoutManualLocation = findViewById(R.id.layout_manual_location);
         spinnerCountry = findViewById(R.id.spinner_country);
         spinnerProvince = findViewById(R.id.spinner_province);
         spinnerCity = findViewById(R.id.spinner_city);
         btnSetManualLocation = findViewById(R.id.btn_set_manual_location);
-        btnGetLocation= findViewById(R.id.btn_get_location);
+        btnGetLocation = findViewById(R.id.btn_get_location);
     }
 
     private void setupListeners() {
@@ -138,7 +162,6 @@ public class PrayerTimesActivity extends AppCompatActivity {
                 saveLocationMode("gps");
             } else {
                 layoutManualLocation.setVisibility(View.VISIBLE);
-                // کاربر حالت دستی را انتخاب کرده؛ ذخیره کن تا بعد از بستن اپ هم همین بماند
                 saveLocationMode("manual");
                 textCurrentLocation.setText("مکان فعلی: دستی");
             }
@@ -146,35 +169,23 @@ public class PrayerTimesActivity extends AppCompatActivity {
 
         btnSetManualLocation.setOnClickListener(v -> {
             if (selectedManualLocation != null) {
-                String selectedCountry = (String) spinnerCountry.getSelectedItem();
-                String selectedProvince = (String) spinnerProvince.getSelectedItem();
-                String selectedCity = (String) spinnerCity.getSelectedItem();
-
-                // اطمینان از اینکه آیتم های انتخاب شده معتبر هستند
-                if (selectedCountry == null || selectedProvince == null || selectedCity == null) {
-                    Toast.makeText(this, "لطفاً مکان را به طور کامل انتخاب کنید.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
+                saveManualLocationSelection();
                 calculateAndDisplayPrayerTimes(selectedManualLocation.latitude, selectedManualLocation.longitude);
-                textCurrentLocation.setText(String.format("مکان فعلی: %s، %s، %s", selectedCountry, selectedProvince, selectedCity));
-                saveManualLocation(selectedCountry, selectedProvince, selectedCity);
 
-                if (switchAutoAdhan.isChecked()) {
-                    startAdhanService();
+                // برای سیستم زمان‌بندی هم ذخیره کن
+                AppPrefs.saveLocation(this, selectedManualLocation.latitude, selectedManualLocation.longitude);
+
+                if (AppPrefs.isAutoAdhanEnabled(this)) {
+                    PrayerScheduler.computeAndScheduleNext(this);
+                    PrayerNotification.showOrUpdate(this, true);
                 }
+
             } else {
-                Toast.makeText(this, "لطفاً یک شهر را انتخاب کنید.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "لطفاً شهر را انتخاب کنید.", Toast.LENGTH_LONG).show();
             }
         });
 
-        btnGetLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updatePrayerTimesWithGPS();
-
-            }
-        });
+        btnGetLocation.setOnClickListener(v -> updatePrayerTimesWithGPS());
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.calculation_methods, android.R.layout.simple_spinner_item);
@@ -193,6 +204,7 @@ public class PrayerTimesActivity extends AppCompatActivity {
                     }
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
@@ -200,82 +212,141 @@ public class PrayerTimesActivity extends AppCompatActivity {
         btnPlayAdhan.setOnClickListener(v -> playOrPauseAdhan());
 
         switchAutoAdhan.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            AppPrefs.setAutoAdhanEnabled(this, isChecked);
             if (isChecked) {
+                // اگر لازم باشد مجوز نوتیفیکیشن می‌گیریم، سپس schedule انجام می‌شود
                 checkAndRequestNotificationPermission();
             } else {
-                stopService(new Intent(this, AdhanService.class));
+                disableAutoAdhanFlow();
             }
         });
     }
 
+    private void checkAndRequestNotificationPermission() {
+        // برای Android 13+ نیاز به اجازه نوتیفیکیشن داریم
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this, Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS);
+                return;
+            }
+        }
+        enableAutoAdhanFlow();
+    }
+
+    /**
+     * فعال‌سازی اذان خودکار:
+     * - ذخیره‌ی لوکیشن (GPS یا دستی) داخل AppPrefs
+     * - محاسبه و ست کردن آلارم نماز بعدی با AlarmManager
+     * - نمایش/آپدیت نوتیفیکیشن نماز بعدی
+     */
+    private void enableAutoAdhanFlow() {
+        // لوکیشن را داخل AppPrefs ذخیره کن (تا Scheduler روی همان کار کند)
+        if (radioGroupLocation.getCheckedRadioButtonId() == R.id.radio_gps) {
+            // در حالت GPS اگر هنوز موقعیت نگرفتیم، درخواست بزن
+            if (!saveLastKnownLocationToAppPrefsIfAny()) {
+                Toast.makeText(this, "در حال دریافت مکان از GPS…", Toast.LENGTH_SHORT).show();
+                updatePrayerTimesWithGPS(); // این خودش بعداً AppPrefs را آپدیت می‌کند
+                return;
+            }
+        } else {
+            if (selectedManualLocation == null) {
+                Toast.makeText(this, "لطفاً یک شهر را به صورت دستی انتخاب کنید.", Toast.LENGTH_LONG).show();
+                switchAutoAdhan.setChecked(false);
+                return;
+            }
+            AppPrefs.saveLocation(this, selectedManualLocation.latitude, selectedManualLocation.longitude);
+        }
+
+        PrayerScheduler.computeAndScheduleNext(this);
+        PrayerNotification.showOrUpdate(this, true);
+    }
+
+    private void disableAutoAdhanFlow() {
+        // اگر اذان در حال پخش است، قطعش کن
+        Intent stop = new Intent(this, AdhanControlReceiver.class);
+        stop.setAction(AdhanControlReceiver.ACTION_STOP);
+        sendBroadcast(stop);
+
+        PrayerScheduler.cancelAlarm(this);
+        PrayerNotification.hide(this);
+    }
+
+    /**
+     * تلاش می‌کند آخرین لوکیشن ذخیره‌شده را به AppPrefs منتقل کند.
+     * اگر مقدار معتبر نبود، false برمی‌گرداند.
+     */
+    private boolean saveLastKnownLocationToAppPrefsIfAny() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        double lat = prefs.getFloat(KEY_LAST_LAT, 0f);
+        double lon = prefs.getFloat(KEY_LAST_LON, 0f);
+        if (lat == 0f && lon == 0f) return false;
+        AppPrefs.saveLocation(this, lat, lon);
+        return true;
+    }
 
     private void loadAndApplySavedPreferences() {
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String locationMode = prefs.getString(KEY_LOCATION_MODE, "gps");
 
-        // اگر آخرین مختصات ذخیره شده داریم، قبل از هرچیز نمایش اولیه بده (برای اینکه بعد از ری‌استارت صفحه خالی نباشد)
-        if (prefs.contains(KEY_LAST_LAT) && prefs.contains(KEY_LAST_LON)) {
-            double lat = prefs.getFloat(KEY_LAST_LAT, 0f);
-            double lon = prefs.getFloat(KEY_LAST_LON, 0f);
-            if (lat != 0f || lon != 0f) {
-                calculateAndDisplayPrayerTimes(lat, lon);
-                String src = prefs.getString(KEY_LAST_SOURCE, "saved");
-                textCurrentLocation.setText(String.format("مکان فعلی: آخرین مکان ذخیره‌شده (%s)", src));
-            }
+        // اگر آخرین مختصات ذخیره شده داریم، قبل از هر چیز نمایش بده
+        double lat = prefs.getFloat(KEY_LAST_LAT, 0f);
+        double lon = prefs.getFloat(KEY_LAST_LON, 0f);
+        if (lat != 0f || lon != 0f) {
+            AppPrefs.saveLocation(this, lat, lon);
+            calculateAndDisplayPrayerTimes(lat, lon);
         }
 
+        // Auto Adhan
+        boolean autoEnabled = AppPrefs.isAutoAdhanEnabled(this);
+        switchAutoAdhan.setChecked(autoEnabled);
+
+        // حالت لوکیشن
         if ("manual".equals(locationMode)) {
-            String country = prefs.getString(KEY_COUNTRY, null);
-            String province = prefs.getString(KEY_PROVINCE, null);
-            String city = prefs.getString(KEY_CITY, null);
-
             radioGroupLocation.check(R.id.radio_manual);
+            layoutManualLocation.setVisibility(View.VISIBLE);
 
-            if (country != null && province != null && city != null) {
-                restoreManualSelection(country, province, city);
-            } else if (prefs.contains(KEY_MANUAL_LAT) && prefs.contains(KEY_MANUAL_LON)) {
-                // اگر رشته‌ها نبودند ولی مختصات دستی داریم
-                double lat = prefs.getFloat(KEY_MANUAL_LAT, 0f);
-                double lon = prefs.getFloat(KEY_MANUAL_LON, 0f);
-                calculateAndDisplayPrayerTimes(lat, lon);
-                textCurrentLocation.setText("مکان فعلی: دستی (ذخیره‌شده)");
-            } else {
-                // اطلاعات دستی ناقص است؛ برو GPS
-                radioGroupLocation.check(R.id.radio_gps);
-                updatePrayerTimesWithGPS();
+            String savedCountry = prefs.getString(KEY_COUNTRY, null);
+            String savedProvince = prefs.getString(KEY_PROVINCE, null);
+            String savedCity = prefs.getString(KEY_CITY, null);
+
+            if (savedCountry != null && savedProvince != null && savedCity != null) {
+                selectSpinnerByValue(spinnerCountry, savedCountry);
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    selectSpinnerByValue(spinnerProvince, savedProvince);
+                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                        selectSpinnerByValue(spinnerCity, savedCity);
+
+                        double mlat = prefs.getFloat(KEY_MANUAL_LAT, 0f);
+                        double mlon = prefs.getFloat(KEY_MANUAL_LON, 0f);
+                        if (mlat != 0f || mlon != 0f) {
+                            selectedManualLocation = new LocationData(mlat, mlon);
+                            AppPrefs.saveLocation(this, mlat, mlon);
+                            calculateAndDisplayPrayerTimes(mlat, mlon);
+                        }
+                    }, 250);
+                }, 250);
             }
         } else {
-            // GPS: تلاش برای آپدیت؛ اگر null شد خودش fallback می‌کند
             radioGroupLocation.check(R.id.radio_gps);
+            layoutManualLocation.setVisibility(View.GONE);
             updatePrayerTimesWithGPS();
         }
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> isInitialSpinnerSetup = false, 500);
+        // Spinner setup flag off
+        isInitialSpinnerSetup = false;
     }
 
-
-    private void saveManualLocation(String country, String province, String city) {
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putString(KEY_LOCATION_MODE, "manual");
-        editor.putString(KEY_COUNTRY, country);
-        editor.putString(KEY_PROVINCE, province);
-        editor.putString(KEY_CITY, city);
-
-        // مختصات دستی را هم ذخیره کن تا سرویس/ری‌استارت بدون JSON هم کار کند
-        if (selectedManualLocation != null) {
-            editor.putFloat(KEY_MANUAL_LAT, (float) selectedManualLocation.latitude);
-            editor.putFloat(KEY_MANUAL_LON, (float) selectedManualLocation.longitude);
-
-            // آخرین مختصات موفق را هم برای fallback ذخیره کن
-            editor.putFloat(KEY_LAST_LAT, (float) selectedManualLocation.latitude);
-            editor.putFloat(KEY_LAST_LON, (float) selectedManualLocation.longitude);
-            editor.putString(KEY_LAST_SOURCE, "manual");
-            editor.putLong(KEY_LAST_UPDATED, System.currentTimeMillis());
+    private void selectSpinnerByValue(Spinner spinner, String value) {
+        if (spinner.getAdapter() == null) return;
+        for (int i = 0; i < spinner.getAdapter().getCount(); i++) {
+            if (value.equals(spinner.getAdapter().getItem(i))) {
+                spinner.setSelection(i);
+                return;
+            }
         }
-
-        editor.apply();
     }
-
 
     private void saveLocationMode(String mode) {
         SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
@@ -283,73 +354,305 @@ public class PrayerTimesActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    /**
-     * متد جدید و قابل اعتماد برای بازیابی حالت دستی
-     */
-    private void restoreManualSelection(String country, String province, String city) {
-        // 1. اسپینرها را به صورت ظاهری تنظیم کن
-        ArrayAdapter<String> countryAdapter = (ArrayAdapter<String>) spinnerCountry.getAdapter();
-        if (countryAdapter != null) {
-            int countryPosition = countryAdapter.getPosition(country);
-            if (countryPosition >= 0) spinnerCountry.setSelection(countryPosition);
+    private void saveManualLocationSelection() {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString(KEY_COUNTRY, String.valueOf(spinnerCountry.getSelectedItem()));
+        editor.putString(KEY_PROVINCE, String.valueOf(spinnerProvince.getSelectedItem()));
+        editor.putString(KEY_CITY, String.valueOf(spinnerCity.getSelectedItem()));
+        if (selectedManualLocation != null) {
+            editor.putFloat(KEY_MANUAL_LAT, (float) selectedManualLocation.latitude);
+            editor.putFloat(KEY_MANUAL_LON, (float) selectedManualLocation.longitude);
+        }
+        editor.apply();
+    }
+
+    private void updatePrayerTimesWithGPS() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "لطفاً دسترسی موقعیت را فعال کنید.", Toast.LENGTH_LONG).show();
+            return;
         }
 
-        updateProvinceSpinner(country);
-        ArrayAdapter<String> provinceAdapter = (ArrayAdapter<String>) spinnerProvince.getAdapter();
-        if (provinceAdapter != null) {
-            int provincePosition = provinceAdapter.getPosition(province);
-            if (provincePosition >= 0) spinnerProvince.setSelection(provincePosition);
-        }
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(location -> {
+                    if (location != null) {
+                        double lat = location.getLatitude();
+                        double lon = location.getLongitude();
 
-        updateCitySpinner(country, province);
-        ArrayAdapter<String> cityAdapter = (ArrayAdapter<String>) spinnerCity.getAdapter();
-        if (cityAdapter != null) {
-            int cityPosition = cityAdapter.getPosition(city);
-            if (cityPosition >= 0) spinnerCity.setSelection(cityPosition);
-        }
+                        saveLastLocation(lat, lon, "gps");
+                        AppPrefs.saveLocation(this, lat, lon);
 
-        // 2. اطلاعات موقعیت را مستقیما بخوان و اوقات شرعی را محاسبه کن
-        LocationData savedLocation = locationDataMap.get(country).get(province).get(city);
-        if (savedLocation != null) {
-            this.selectedManualLocation = savedLocation; // متغیر اصلی را هم ست می‌کنیم
-            calculateAndDisplayPrayerTimes(savedLocation.latitude, savedLocation.longitude);
-            textCurrentLocation.setText(String.format("مکان فعلی: %s، %s، %s", country, province, city));
-        } else {
-            // اگر به هر دلیلی مکان پیدا نشد، به حالت GPS برگرد
-            Toast.makeText(this, "مکان ذخیره شده یافت نشد، از GPS استفاده می‌شود.", Toast.LENGTH_SHORT).show();
-            radioGroupLocation.check(R.id.radio_gps);
-            updatePrayerTimesWithGPS();
+                        calculateAndDisplayPrayerTimes(lat, lon);
+
+                        if (AppPrefs.isAutoAdhanEnabled(this)) {
+                            PrayerScheduler.computeAndScheduleNext(this);
+                            PrayerNotification.showOrUpdate(this, true);
+                        }
+                    } else {
+                        Toast.makeText(this, "مکان یافت نشد. دوباره تلاش کنید.", Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(e -> Toast.makeText(this, "خطا در دریافت مکان.", Toast.LENGTH_LONG).show());
+    }
+
+    private void saveLastLocation(double lat, double lon, String source) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putFloat(KEY_LAST_LAT, (float) lat);
+        editor.putFloat(KEY_LAST_LON, (float) lon);
+        editor.putString(KEY_LAST_SOURCE, source);
+        editor.putLong(KEY_LAST_UPDATED, System.currentTimeMillis());
+        editor.apply();
+    }
+
+    private CalculationParameters getCalculationParamsFromSpinner() {
+        int position = spinnerCalculationMethod.getSelectedItemPosition();
+        CalculationMethod method;
+
+        switch (position) {
+            case 1:
+                method = CalculationMethod.MUSLIM_WORLD_LEAGUE;
+                break;
+            case 2:
+                method = CalculationMethod.EGYPTIAN;
+                break;
+            case 3:
+                method = CalculationMethod.KARACHI;
+                break;
+            case 4:
+                method = CalculationMethod.UMM_AL_QURA;
+                break;
+            case 5:
+                method = CalculationMethod.DUBAI;
+                break;
+            case 6:
+                method = CalculationMethod.MOON_SIGHTING_COMMITTEE;
+                break;
+            default:
+                method = CalculationMethod.KARACHI;
+                break;
+        }
+        return method.getParameters();
+    }
+
+    private void calculateAndDisplayPrayerTimes(double latitude, double longitude) {
+        Coordinates coordinates = new Coordinates(latitude, longitude);
+        DateComponents date = DateComponents.from(new Date());
+        CalculationParameters params = getCalculationParamsFromSpinner();
+        currentPrayerTimes = new PrayerTimes(coordinates, date, params);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+
+        textFajr.setText("صبح: " + sdf.format(currentPrayerTimes.fajr));
+        textSunrise.setText("طلوع: " + sdf.format(currentPrayerTimes.sunrise));
+        textDHUHR.setText("ظهر: " + sdf.format(currentPrayerTimes.dhuhr));
+        textAsr.setText("عصر: " + sdf.format(currentPrayerTimes.asr));
+        textMaghrib.setText("مغرب: " + sdf.format(currentPrayerTimes.maghrib));
+        textIsha.setText("عشاء: " + sdf.format(currentPrayerTimes.isha));
+
+        updateNextPrayerAndCountdown();
+        updateLocationText(latitude, longitude);
+
+        // هر بار محاسبه شد، اگر auto روشن است، schedule را تازه کن
+        if (AppPrefs.isAutoAdhanEnabled(this)) {
+            AppPrefs.saveLocation(this, latitude, longitude);
+            PrayerScheduler.computeAndScheduleNext(this);
+            PrayerNotification.showOrUpdate(this, true);
         }
     }
 
+    private void updateLocationText(double lat, double lon) {
+        textCurrentLocation.setText(String.format(Locale.getDefault(),
+                "مکان فعلی: %.5f , %.5f", lat, lon));
+    }
 
-    private void checkAndRequestNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS);
-                return;
+    private void updateNextPrayerAndCountdown() {
+        if (currentPrayerTimes == null) return;
+
+        long now = System.currentTimeMillis();
+
+        Date nextTime = null;
+        String nextName = "";
+
+        Date fajr = currentPrayerTimes.fajr;
+        Date dhuhr = currentPrayerTimes.dhuhr;
+        Date asr = currentPrayerTimes.asr;
+        Date maghrib = currentPrayerTimes.maghrib;
+        Date isha = currentPrayerTimes.isha;
+
+        if (fajr != null && fajr.getTime() > now) {
+            nextTime = fajr;
+            nextName = "صبح";
+        } else if (dhuhr != null && dhuhr.getTime() > now) {
+            nextTime = dhuhr;
+            nextName = "ظهر";
+        } else if (asr != null && asr.getTime() > now) {
+            nextTime = asr;
+            nextName = "عصر";
+        } else if (maghrib != null && maghrib.getTime() > now) {
+            nextTime = maghrib;
+            nextName = "مغرب";
+        } else if (isha != null && isha.getTime() > now) {
+            nextTime = isha;
+            nextName = "عشاء";
+        } else {
+            // فردا صبح
+            if (fajr != null) {
+                nextTime = new Date(fajr.getTime() + 24 * 60 * 60 * 1000);
+                nextName = "صبح";
             }
         }
-        startAdhanService();
+
+        if (nextTime == null) return;
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        textNextPrayerTime.setText("نماز بعدی: " + nextName + " - " + sdf.format(nextTime));
+
+        if (countdownRunnable != null) {
+            countdownHandler.removeCallbacks(countdownRunnable);
+        }
+
+        final Date finalNextTime = nextTime;
+        countdownRunnable = new Runnable() {
+            @Override
+            public void run() {
+                long diff = finalNextTime.getTime() - System.currentTimeMillis();
+                if (diff < 0) diff = 0;
+
+                long h = diff / (1000 * 60 * 60);
+                long m = (diff / (1000 * 60)) % 60;
+                long s = (diff / 1000) % 60;
+
+                textRemainingTime.setText(
+                        String.format(Locale.getDefault(),
+                                "زمان باقی‌مانده: %02d:%02d:%02d", h, m, s)
+                );
+
+                if (diff > 0) {
+                    countdownHandler.postDelayed(this, 1000);
+                }
+            }
+        };
+
+        countdownHandler.post(countdownRunnable);
     }
 
-    private void startAdhanService() {
-        Intent serviceIntent = new Intent(this, AdhanService.class);
-        serviceIntent.putExtra("shouldPlayAdhanSound", switchPlayAdhanSound.isChecked());
-        stopService(serviceIntent);
 
-        if (radioGroupLocation.getCheckedRadioButtonId() == R.id.radio_gps) {
-            startService(serviceIntent);
-        } else {
-            if (selectedManualLocation != null) {
-                serviceIntent.putExtra("latitude", selectedManualLocation.latitude);
-                serviceIntent.putExtra("longitude", selectedManualLocation.longitude);
-                startService(serviceIntent);
+    private String getPrayerNameFa(Prayer prayer) {
+        switch (prayer) {
+            case FAJR: return "صبح";
+            case SUNRISE: return "طلوع";
+            case DHUHR: return "ظهر";
+            case ASR: return "عصر";
+            case MAGHRIB: return "مغرب";
+            case ISHA: return "عشاء";
+            default: return "نامشخص";
+        }
+    }
+
+    private void playOrPauseAdhan() {
+        try {
+            if (mediaPlayer == null) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.dhan_sound);
+                mediaPlayer.setOnCompletionListener(mp -> {
+                    mp.release();
+                    mediaPlayer = null;
+                });
+                mediaPlayer.start();
             } else {
-                Toast.makeText(this, "لطفاً یک شهر را به صورت دستی انتخاب کنید.", Toast.LENGTH_LONG).show();
-                switchAutoAdhan.setChecked(false);
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
             }
+        } catch (Exception e) {
+            Toast.makeText(this, "خطا در پخش اذان", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void setupSpinners() {
+        List<String> countries = new java.util.ArrayList<>(locationDataMap.keySet());
+        java.util.Collections.sort(countries);
+        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
+        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCountry.setAdapter(countryAdapter);
+
+        spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String country = String.valueOf(spinnerCountry.getSelectedItem());
+                loadProvinces(country);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinnerProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String country = String.valueOf(spinnerCountry.getSelectedItem());
+                String province = String.valueOf(spinnerProvince.getSelectedItem());
+                loadCities(country, province);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String country = String.valueOf(spinnerCountry.getSelectedItem());
+                String province = String.valueOf(spinnerProvince.getSelectedItem());
+                String city = String.valueOf(spinnerCity.getSelectedItem());
+                selectedManualLocation = getLocationData(country, province, city);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    private void loadProvinces(String country) {
+        Map<String, Map<String, LocationData>> provinces = locationDataMap.get(country);
+        if (provinces == null) provinces = new HashMap<>();
+        List<String> provinceList = new java.util.ArrayList<>(provinces.keySet());
+        java.util.Collections.sort(provinceList);
+
+        ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinceList);
+        provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerProvince.setAdapter(provinceAdapter);
+
+        if (!provinceList.isEmpty()) {
+            spinnerProvince.setSelection(0);
+        }
+    }
+
+    private void loadCities(String country, String province) {
+        Map<String, Map<String, LocationData>> provinces = locationDataMap.get(country);
+        if (provinces == null) return;
+
+        Map<String, LocationData> cities = provinces.get(province);
+        if (cities == null) cities = new HashMap<>();
+        List<String> cityList = new java.util.ArrayList<>(cities.keySet());
+        java.util.Collections.sort(cityList);
+
+        ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cityList);
+        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCity.setAdapter(cityAdapter);
+
+        if (!cityList.isEmpty()) {
+            spinnerCity.setSelection(0);
+        }
+    }
+
+    private LocationData getLocationData(String country, String province, String city) {
+        Map<String, Map<String, LocationData>> provinces = locationDataMap.get(country);
+        if (provinces == null) return null;
+        Map<String, LocationData> cities = provinces.get(province);
+        if (cities == null) return null;
+        return cities.get(city);
     }
 
     private void loadLocationDataFromJson() {
@@ -364,6 +667,7 @@ public class PrayerTimesActivity extends AppCompatActivity {
 
             JSONObject jsonObject = new JSONObject(jsonString);
             Iterator<String> countryKeys = jsonObject.keys();
+
             while (countryKeys.hasNext()) {
                 String countryName = countryKeys.next();
                 JSONObject countryObject = jsonObject.getJSONObject(countryName);
@@ -379,277 +683,48 @@ public class PrayerTimesActivity extends AppCompatActivity {
                     while (cityKeys.hasNext()) {
                         String cityName = cityKeys.next();
                         JSONObject cityObject = provinceObject.getJSONObject(cityName);
-                        double latitude = cityObject.getDouble("latitude");
-                        double longitude = cityObject.getDouble("longitude");
-                        citiesMap.put(cityName, new LocationData(latitude, longitude));
+
+                        // ✅ پشتیبانی از هر دو ساختار
+                        double lat = cityObject.has("lat")
+                                ? cityObject.getDouble("lat")
+                                : cityObject.getDouble("latitude");
+
+                        double lon = cityObject.has("lon")
+                                ? cityObject.getDouble("lon")
+                                : cityObject.getDouble("longitude");
+
+                        citiesMap.put(cityName, new LocationData(lat, lon));
                     }
+
                     provincesMap.put(provinceName, citiesMap);
                 }
+
                 locationDataMap.put(countryName, provincesMap);
             }
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "خطا در پردازش فایل مکان‌ها.", Toast.LENGTH_LONG).show();
-        }
-    }
 
-    private void setupSpinners() {
-        List<String> countries = new ArrayList<>(locationDataMap.keySet());
-        ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, countries);
-        countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCountry.setAdapter(countryAdapter);
-
-        spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (isInitialSpinnerSetup) return;
-                updateProvinceSpinner((String) parent.getItemAtPosition(position));
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
-        spinnerProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (isInitialSpinnerSetup) return;
-                updateCitySpinner((String) spinnerCountry.getSelectedItem(), (String) parent.getItemAtPosition(position));
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
-        spinnerCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedCountry = (String) spinnerCountry.getSelectedItem();
-                String selectedProvince = (String) spinnerProvince.getSelectedItem();
-                String selectedCity = (String) parent.getItemAtPosition(position);
-
-                if (selectedCountry != null && selectedProvince != null && selectedCity != null &&
-                        locationDataMap.containsKey(selectedCountry) &&
-                        locationDataMap.get(selectedCountry).containsKey(selectedProvince)) {
-                    selectedManualLocation = locationDataMap.get(selectedCountry).get(selectedProvince).get(selectedCity);
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-    }
-
-    private void updateProvinceSpinner(String country) {
-        if (country != null && locationDataMap.containsKey(country)) {
-            List<String> provinces = new ArrayList<>(locationDataMap.get(country).keySet());
-            ArrayAdapter<String> provinceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, provinces);
-            provinceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerProvince.setAdapter(provinceAdapter);
-        }
-    }
-
-    private void updateCitySpinner(String country, String province) {
-        if (country != null && province != null &&
-                locationDataMap.containsKey(country) &&
-                locationDataMap.get(country).containsKey(province)) {
-            List<String> cities = new ArrayList<>(locationDataMap.get(country).get(province).keySet());
-            ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cities);
-            cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerCity.setAdapter(cityAdapter);
-        }
-    }
-
-    private void updatePrayerTimesWithGPS() {
-        try {
-            fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
-                if (location != null) {
-                    double lat = location.getLatitude();
-                    double lon = location.getLongitude();
-
-                    // ذخیره‌ی آخرین مختصات موفق (برای اینکه بعد از ری‌استارت / null بودن GPS هم اوقات نمایش داده شود)
-                    SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-                    editor.putFloat(KEY_LAST_LAT, (float) lat);
-                    editor.putFloat(KEY_LAST_LON, (float) lon);
-                    editor.putString(KEY_LAST_SOURCE, "gps");
-                    editor.putLong(KEY_LAST_UPDATED, System.currentTimeMillis());
-                    editor.apply();
-
-                    calculateAndDisplayPrayerTimes(lat, lon);
-                    textCurrentLocation.setText(String.format("مکان فعلی: GPS (%.4f, %.4f)", lat, lon));
-                } else {
-                    // fallback: آخرین مختصات ذخیره شده
-                    SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                    if (prefs.contains(KEY_LAST_LAT) && prefs.contains(KEY_LAST_LON)) {
-                        double lat = prefs.getFloat(KEY_LAST_LAT, 0f);
-                        double lon = prefs.getFloat(KEY_LAST_LON, 0f);
-
-                        calculateAndDisplayPrayerTimes(lat, lon);
-
-                        String src = prefs.getString(KEY_LAST_SOURCE, "saved");
-                        textCurrentLocation.setText(String.format("مکان فعلی: آخرین مکان ذخیره‌شده (%s)", src));
-                        Toast.makeText(this, "GPS فعلاً در دسترس نیست؛ از آخرین مکان ذخیره‌شده استفاده شد.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this, "مکان فعلی در دسترس نیست. لطفا GPS را روشن کنید.", Toast.LENGTH_LONG).show();
-                        textCurrentLocation.setText("مکان فعلی: GPS (ناموفق)");
-                    }
-                }
-            });
-        } catch (SecurityException e) {
-            Toast.makeText(this, "لطفاً مجوز دسترسی به مکان را به برنامه بدهید.", Toast.LENGTH_LONG).show();
-            textCurrentLocation.setText("مکان فعلی: GPS (مجوز لازم)");
-        }
-    }
-
-
-    private void calculateAndDisplayPrayerTimes(double latitude, double longitude) {
-        DateComponents date = DateComponents.from(new Date());
-        Coordinates coordinates = new Coordinates(latitude, longitude);
-        CalculationMethod selectedMethod = getSelectedCalculationMethod();
-        com.batoulapps.adhan.CalculationParameters params = selectedMethod.getParameters();
-        PrayerTimes prayerTimes = new PrayerTimes(coordinates, date, params);
-
-        currentPrayerTimes = prayerTimes;
-
-        textFajr.setText("فجر: " + formatTime(prayerTimes.fajr));
-        textSunrise.setText("طلوع: " + formatTime(prayerTimes.sunrise));
-        textDHUHR.setText("ظهر: " + formatTime(prayerTimes.dhuhr));
-        textAsr.setText("عصر: " + formatTime(prayerTimes.asr));
-        textMaghrib.setText("مغرب: " + formatTime(prayerTimes.maghrib));
-        textIsha.setText("عشا: " + formatTime(prayerTimes.isha));
-
-        updateNextPrayerInfo(prayerTimes, coordinates, params);
-    }
-
-        private void updateNextPrayerInfo(PrayerTimes prayerTimes, Coordinates coordinates, com.batoulapps.adhan.CalculationParameters params) {
-        Prayer nextPrayer = prayerTimes.nextPrayer();
-
-        Date nextPrayerTime;
-        String nextPrayerNameFa;
-
-        if (nextPrayer != Prayer.NONE) {
-            nextPrayerTime = prayerTimes.timeForPrayer(nextPrayer);
-            nextPrayerNameFa = mapPrayerName(nextPrayer);
-        } else {
-            // بعد از عشاء: نماز بعدی را فجرِ فردا نشان بده
-            java.util.Calendar cal = java.util.Calendar.getInstance();
-            cal.setTime(new Date());
-            cal.add(java.util.Calendar.DATE, 1);
-            DateComponents tomorrow = DateComponents.from(cal.getTime());
-            PrayerTimes tomorrowTimes = new PrayerTimes(coordinates, tomorrow, params);
-
-            nextPrayer = Prayer.FAJR;
-            nextPrayerTime = tomorrowTimes.fajr;
-            nextPrayerNameFa = "فجر";
-        }
-
-        long remainingMillis = nextPrayerTime.getTime() - System.currentTimeMillis();
-        if (remainingMillis < 0) remainingMillis = 0;
-
-        long hours = TimeUnit.MILLISECONDS.toHours(remainingMillis);
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingMillis) % 60;
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(remainingMillis) % 60;
-
-        textNextPrayerTime.setText("نماز بعدی: " + nextPrayerNameFa);
-        String timeRemainingString = String.format(Locale.US, "زمان باقی‌مانده: %02d:%02d:%02d", hours, minutes, seconds);
-        textRemainingTime.setText(timeRemainingString);
-
-        // برای صفحه اصلی و سرویس، «نماز بعدی» را ذخیره کن
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putLong("next_prayer_time_millis", nextPrayerTime.getTime());
-        editor.putString("next_prayer_name_fa", nextPrayerNameFa);
-        editor.apply();
-    }
-
-    private CalculationMethod getSelectedCalculationMethod() {
-        String selectedMethodName = (String) spinnerCalculationMethod.getSelectedItem();
-        if (selectedMethodName == null) return CalculationMethod.KARACHI;
-        switch (selectedMethodName) {
-            case "Dubai": return CalculationMethod.DUBAI;
-            case "Muslim World League": return CalculationMethod.MUSLIM_WORLD_LEAGUE;
-            case "Egyptian General Authority of Survey": return CalculationMethod.EGYPTIAN;
-            case "University of Islamic Sciences, Karachi": return CalculationMethod.KARACHI;
-            case "Islamic Society of North America": return CalculationMethod.NORTH_AMERICA;
-            case "Umm Al-Qura University, Makkah": return CalculationMethod.UMM_AL_QURA;
-            default: return CalculationMethod.KARACHI;
-        }
-    }
-
-    private String formatTime(Date date) {
-        if (date == null) return "--:--";
-        return new java.text.SimpleDateFormat("HH:mm", Locale.US).format(date);
-    }
-
-    private String mapPrayerName(Prayer prayer) {
-        switch (prayer) {
-            case FAJR: return "فجر";
-            case SUNRISE: return "طلوع آفتاب";
-            case DHUHR: return "ظهر";
-            case ASR: return "عصر";
-            case MAGHRIB: return "مغرب";
-            case ISHA: return "عشا";
-            default: return "نامعلوم";
-        }
-    }
-
-    private void playOrPauseAdhan() {
-        if (mediaPlayer == null) {
-            playAdhan();
-        } else if (mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            btnPlayAdhan.setText("پخش دستی اذان");
-        } else {
-            mediaPlayer.start();
-            btnPlayAdhan.setText("مکث");
-        }
-    }
-
-    private void playAdhan() {
-        try {
-            if (mediaPlayer != null) {
-                mediaPlayer.release();
-            }
-            mediaPlayer = MediaPlayer.create(this, R.raw.dhan_sound);
-            if (mediaPlayer != null) {
-                mediaPlayer.start();
-                Toast.makeText(this, "اذان در حال پخش است.", Toast.LENGTH_SHORT).show();
-                btnPlayAdhan.setText("مکث");
-
-                mediaPlayer.setOnCompletionListener(mp -> {
-                    btnPlayAdhan.setText("پخش دستی اذان");
-                    if (mediaPlayer != null) {
-                        mediaPlayer.release();
-                        mediaPlayer = null;
-                    }
-                });
-            } else {
-                Toast.makeText(this, "خطا در بارگذاری فایل صوتی.", Toast.LENGTH_LONG).show();
-            }
         } catch (Exception e) {
-            Toast.makeText(this, "خطا در پخش اذان.", Toast.LENGTH_LONG).show();
-            btnPlayAdhan.setText("پخش دستی اذان");
+            Toast.makeText(this, "خطا در خواندن locations.json", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // منطق اضافی از اینجا حذف شد تا با onCreate تداخل نکند
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-    }
 
     private static class LocationData {
-        public double latitude;
-        public double longitude;
+        double latitude;
+        double longitude;
 
-        public LocationData(double latitude, double longitude) {
-            this.latitude = latitude;
-            this.longitude = longitude;
+        LocationData(double lat, double lon) {
+            this.latitude = lat;
+            this.longitude = lon;
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (countdownRunnable != null) {
+            countdownHandler.removeCallbacks(countdownRunnable);
+        }
+    }
+
 }
