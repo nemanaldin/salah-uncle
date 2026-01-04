@@ -14,334 +14,443 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#2E5370"
+        android:background="#ffffff"
         android:orientation="vertical"
         android:scaleX="1">
 
         <!-- LinearLayout جدید برای نمایش اوقات شرعی -->
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/prayer_times_card"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="45"
-            android:elevation="0dp"
-            android:orientation="vertical"
-            android:background="#f0f0f0"
-            android:gravity="center"
-            android:padding="16dp"
-            >
-            <TextView
-                android:id="@+id/text_next_prayer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="نماز بعدی: "
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+            android:layout_weight="35"
 
-            <TextView
-                android:id="@+id/text_time_remaining"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="00:00:00"
-                android:textSize="48sp"
-                android:textStyle="bold"
-                android:textColor="#009688"
-                android:layout_marginTop="8dp" />
+            app:cardElevation="6dp"
+            app:strokeWidth="0dp">
 
-            <TextView
-                android:id="@+id/text_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="در حال دریافت موقعیت..."
-                android:textSize="14sp"
-                android:textColor="#666666"
-                android:layout_marginTop="8dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <!-- بک‌گراند تصویر (اختیاری) -->
+                <ImageView
+                    android:id="@+id/hero_bg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mosque"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            <!-- یه عکس مسجد/آسمان -->
 
-        </LinearLayout>
+                <!-- Scrim برای خوانایی متن -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#80000000"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
-        <LinearLayout
+                <!-- محتوای کارت -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/hero_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/text_next_prayer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/vazirmatn_bold"
+                        android:text="نماز بعدی: عصر"
+                        android:textColor="#FFFFFF"
+                        android:textSize="30sp" />
+
+                    <!-- ساعت خیلی درشت مثل نمونه -->
+                    <TextView
+                        android:id="@+id/text_prayer_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="@font/vazirmatn_bold"
+                        android:text="04:38"
+                        android:textColor="#FFFFFF"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:id="@+id/text_time_remaining"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/vazirmatn_bold"
+                        android:text="05:49:51"
+                        android:textColor="#B2FF59"
+                        android:textSize="@dimen/hero_countdown" />
+
+                    <TextView
+                        android:id="@+id/text_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/vazirmatn_regular"
+                        android:text="موقعیت فعلی: 32.94, 66.42"
+                        android:textColor="#E0E0E0"
+                        android:textSize="@dimen/hero_sub" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- MENU (جایگزین LinearLayout افقی قبلی) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/menu_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="65"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="55"
-            android:orientation="horizontal">
+            android:layout_marginBottom="15dp">
 
-            <LinearLayout
+            <!-- دو گایدلاین برای 3 ستون مساوی -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/g1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3333" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/g2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6666" />
+
+
+            <!-- ===================== ROW 1 ===================== -->
+
+            <!-- 1) نماز -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_namaz"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/g1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="1:1">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a22" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_namaz"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:elevation="0dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="نماز"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_namaz"
+                app:layout_constraintStart_toStartOf="@id/btn_namaz"
+                app:layout_constraintEnd_toEndOf="@id/btn_namaz" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_namaz"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
+            <!-- 2) وضو -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_vuzu"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="@id/g1"
+                app:layout_constraintEnd_toStartOf="@id/g2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="1:1">
 
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a22"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
+                <ImageView
+                    android:id="@+id/imageView9"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="نماز"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a11" />
+            </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_vuzu"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
-
-                    <ImageView
-                        android:id="@+id/imageView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a11"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="@string/vuzu_title"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_adhan_times"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
-
-                    <ImageView
-                        android:id="@+id/adhan_times"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/adhan_times"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="@string/adhan_times"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_vuzu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:elevation="0dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="@string/vuzu_title"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_vuzu"
+                app:layout_constraintStart_toStartOf="@id/btn_vuzu"
+                app:layout_constraintEnd_toEndOf="@id/btn_vuzu" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_ghosl"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
+            <!-- 3) اوقات شرعی -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_adhan_times"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="@id/g2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="1:1">
 
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a44"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
+                <ImageView
+                    android:id="@+id/adhan_times"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="@string/ghosl_title"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/adhan_times" />
+            </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_tayammom"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a66"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="@string/tayammom_title"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_compass"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
-
-                    <ImageView
-                        android:id="@+id/imageView_compass"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/dial2"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="@string/compass_title"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_adhan"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:elevation="0dp"
+                android:layout_marginTop="0dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:text="@string/adhan_times"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_adhan_times"
+                app:layout_constraintStart_toStartOf="@id/btn_adhan_times"
+                app:layout_constraintEnd_toEndOf="@id/btn_adhan_times" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_tasbihat"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
 
-                    <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a55"/>
+            <!-- ===================== ROW 2 ===================== -->
 
-                </androidx.cardview.widget.CardView>
+            <!-- 4) غسل -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_ghosl"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/g1"
+                app:layout_constraintTop_toBottomOf="@id/tv_namaz"
+                android:layout_marginTop="14dp"
+                app:layout_constraintDimensionRatio="1:1">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/imageView8"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="9dp"
-                    android:text="@string/tasbihat_title"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/btn_sejdeyesahv"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:elevation="0dp"
-                    app:cardBackgroundColor="#00000000"
-                    app:cardElevation="0dp">
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a44" />
+            </com.google.android.material.card.MaterialCardView>
 
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:elevation="6dp"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/a33"/>
+            <TextView
+                android:id="@+id/tv_ghosl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="@string/ghosl_title"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_ghosl"
+                app:layout_constraintStart_toStartOf="@id/btn_ghosl"
+                app:layout_constraintEnd_toEndOf="@id/btn_ghosl" />
 
-                </androidx.cardview.widget.CardView>
+            <!-- 5) تیمم -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_tayammom"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="@id/g1"
+                app:layout_constraintEnd_toStartOf="@id/g2"
+                app:layout_constraintTop_toBottomOf="@id/tv_vuzu"
+                android:layout_marginTop="14dp"
+                app:layout_constraintDimensionRatio="1:1">
 
-                <TextView
+                <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="سجده سهو"
-                    android:textColor="#000000"
-                    android:textSize="16sp"/>
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a66" />
+            </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_tayammom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="@string/tayammom_title"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_tayammom"
+                app:layout_constraintStart_toStartOf="@id/btn_tayammom"
+                app:layout_constraintEnd_toEndOf="@id/btn_tayammom" />
 
-        </LinearLayout>
+            <!-- 6) قبله‌نما -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_compass"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="@id/g2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_adhan"
+                android:layout_marginTop="14dp"
+                app:layout_constraintDimensionRatio="1:1">
+
+                <ImageView
+                    android:id="@+id/imageView_compass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/dial2" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_compass"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="@string/compass_title"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_compass"
+                app:layout_constraintStart_toStartOf="@id/btn_compass"
+                app:layout_constraintEnd_toEndOf="@id/btn_compass" />
+
+
+            <!-- ===================== ROW 3 ===================== -->
+            <!-- (اینجا 2 آیتم داریم، ستون سوم خالی می‌مونه) -->
+
+            <!-- 7) تسبیحات -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_tasbihat"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/g1"
+                app:layout_constraintTop_toBottomOf="@id/tv_ghosl"
+                android:layout_marginTop="14dp"
+                app:layout_constraintDimensionRatio="1:1">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a55" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_tasbihat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="@string/tasbihat_title"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_tasbihat"
+                app:layout_constraintStart_toStartOf="@id/btn_tasbihat"
+                app:layout_constraintEnd_toEndOf="@id/btn_tasbihat" />
+
+            <!-- 8) سجده سهو -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btn_sejdeyesahv"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="6dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00000000"
+                app:layout_constraintStart_toStartOf="@id/g1"
+                app:layout_constraintEnd_toStartOf="@id/g2"
+                app:layout_constraintTop_toBottomOf="@id/tv_tayammom"
+                android:layout_marginTop="14dp"
+                app:layout_constraintDimensionRatio="1:1">
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/a33" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_sejde"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="سجده سهو"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vazirmatn_bold"
+                app:layout_constraintTop_toBottomOf="@id/btn_sejdeyesahv"
+                app:layout_constraintStart_toStartOf="@id/btn_sejdeyesahv"
+                app:layout_constraintEnd_toEndOf="@id/btn_sejdeyesahv" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </LinearLayout>
 </RelativeLayout>

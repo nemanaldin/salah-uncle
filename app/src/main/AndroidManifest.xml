@@ -61,7 +61,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:configChanges="orientation|keyboardHidden" />
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/Theme.MyApplication"/>
 
         <activity android:name=".source_activities.AboutActivity" />
 

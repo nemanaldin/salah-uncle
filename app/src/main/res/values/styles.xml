@@ -36,4 +36,27 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- res/values/themes.xml یا styles.xml -->
+    <style name="Theme.YourApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/vazirmatn_regular</item>
+        <item name="fontFamily">@font/vazirmatn_regular</item>
+
+        <!-- برای اینکه TextViewهای بولد هم درست دربیان -->
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.YourApp.Headline</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.YourApp.Body</item>
+    </style>
+
+    <style name="TextAppearance.YourApp.Headline" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/vazirmatn_bold</item>
+    </style>
+
+    <style name="TextAppearance.YourApp.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/vazirmatn_regular</item>
+    </style>
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- customize here -->
+    </style>
+
+
+
 </resources>

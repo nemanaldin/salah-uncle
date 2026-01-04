@@ -12,4 +12,15 @@
     <dimen name="space">16dp</dimen>
     <dimen name="radius">18dp</dimen>
     <dimen name="icon_size">28dp</dimen>
+
+    <dimen name="hero_corner">18dp</dimen>
+    <dimen name="hero_padding">18dp</dimen>
+
+    <dimen name="hero_title">18sp</dimen>
+    <dimen name="hero_time">56sp</dimen>
+    <dimen name="hero_countdown">16sp</dimen>
+    <dimen name="hero_sub">13sp</dimen>
+
+    <dimen name="grid_icon">72dp</dimen>
+    <dimen name="grid_label">12sp</dimen>
 </resources>
