@@ -9,16 +9,25 @@ public class PrayerAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        // اگر اذان خودکار خاموش است، هیچ کاری نکن
-        if (!AppPrefs.isAutoAdhanEnabled(context)) return;
+        // اگر نه پخش خودکار و نه نوتیفیکیشن فعال است، هیچ کاری نکن
+        boolean auto = AppPrefs.isAutoAdhanEnabled(context);
+        boolean notif = AppPrefs.isPrayerNotificationsEnabled(context);
+        if (!auto && !notif) return;
 
-        // پخش اذان + فول‌اسکرین (از طریق نوتیفیکیشن Foreground)
-        Intent s = new Intent(context, PrayerSoundService.class);
-        s.setAction(PrayerSoundService.ACTION_PLAY);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(s);
-        } else {
-            context.startService(s);
+        // اگر فقط نوتیفیکیشن فعال است، همینجا نوتیف را نشان بده (بدون صدا)
+        if (notif) {
+            PrayerNotification.showOrUpdate(context, true);
+        }
+
+        // پخش اذان (فقط وقتی حالت «پخش خودکار اذان» روشن است)
+        if (auto) {
+            Intent s = new Intent(context, PrayerSoundService.class);
+            s.setAction(PrayerSoundService.ACTION_PLAY);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                context.startForegroundService(s);
+            } else {
+                context.startService(s);
+            }
         }
 
         // نماز بعدی را محاسبه کن و آلارم بعدی را ست کن

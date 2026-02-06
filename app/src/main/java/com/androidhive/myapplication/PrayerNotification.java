@@ -25,26 +25,39 @@ public class PrayerNotification {
         String name = AppPrefs.getNextPrayerName(context);
         if (t <= 0 || name == null || name.isEmpty()) return;
 
-        ensureChannel(context);
+        ensureChannelSilent(context);
 
-        String hhmm = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date(t));
-        long diff = Math.max(0, t - System.currentTimeMillis());
-        String countdown = formatHMS(diff);
+        Intent openIntent = new Intent(context, MainActivity.class);
+        openIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        Intent close = new Intent(context, NotificationActionReceiver.class);
-        close.setAction(NotificationActionReceiver.ACTION_CLOSE);
-        PendingIntent piClose = PendingIntent.getBroadcast(
-                context, 10, close,
+        PendingIntent openPi = PendingIntent.getActivity(
+                context, 10, openIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
         );
 
+        Intent closeIntent = new Intent(context, NotificationActionReceiver.class);
+        closeIntent.setAction(NotificationActionReceiver.ACTION_CLOSE);
+
+        PendingIntent closePi = PendingIntent.getBroadcast(
+                context, 11, closeIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
+        String hhmm = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date(t));
+        long diff = t - System.currentTimeMillis();
+        if (diff < 0) diff = 0;
+
         NotificationCompat.Builder b = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-                .setContentTitle("نماز بعدی: " + name + " — " + hhmm)
-                .setContentText("مانده تا اذان: " + countdown)
-                .setAutoCancel(true)
-                .setOngoing(false)
-                .addAction(0, "بستن", piClose);
+                .setSmallIcon(R.drawable.untitled) // اگر نداری، بگو تا با icon موجودت ست کنم
+                .setContentTitle("نماز بعدی: " + name + " - " + hhmm)
+                .setContentText("زمان باقی‌مانده: " + formatHMS(diff))
+                .setContentIntent(openPi)
+                .setAutoCancel(false)
+                .setOngoing(true)
+                .setOnlyAlertOnce(true)       // ✅ آپدیت‌ها دیگر صدا نمی‌دهند
+                .setSilent(true)              // ✅ سایلنت
+                .addAction(0, "بستن", closePi)
+                .setPriority(NotificationCompat.PRIORITY_LOW);
 
         NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(NOTIF_ID, b.build());
@@ -56,11 +69,20 @@ public class PrayerNotification {
         nm.cancel(NOTIF_ID);
     }
 
-    private static void ensureChannel(Context c) {
+    public static void cancel(Context context) {
+        NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.cancel(NOTIF_ID);
+    }
+
+    private static void ensureChannelSilent(Context c) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel ch = new NotificationChannel(
-                    CHANNEL_ID, "Next Prayer", NotificationManager.IMPORTANCE_DEFAULT
+                    CHANNEL_ID, "Next Prayer", NotificationManager.IMPORTANCE_LOW
             );
+            ch.setSound(null, null);
+            ch.enableVibration(false);
+            ch.enableLights(false);
+
             NotificationManager nm = c.getSystemService(NotificationManager.class);
             nm.createNotificationChannel(ch);
         }

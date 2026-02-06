@@ -111,19 +111,27 @@ public class MainActivity extends AppCompatActivity
     // Location from single source
     double lat = AppPrefs.getLat(this);
     double lon = AppPrefs.getLon(this);
+    String mode = AppPrefs.getLocationMode(this);
 
-    if (lat == 0 && lon == 0) {
-      textLocation.setText("موقعیت فعلی: نامشخص");
+    if (lat == 0 && lon == 0 || "none".equals(mode)) {
+      textLocation.setText("در انتظار انتخاب مکان");
+    } else if ("manual".equals(mode)) {
+      String city = AppPrefs.getManualCityName(this);
+      if (city == null || city.trim().isEmpty()) city = "مکان دستی";
+      textLocation.setText("موقعیت فعلی: " + city);
     } else {
       textLocation.setText(String.format(Locale.US, "موقعیت فعلی: %.2f,%.2f", lat, lon));
     }
+
 
     // Next prayer from single source
     String nextName = AppPrefs.getNextPrayerName(this);
     long nextMillis = AppPrefs.getNextPrayerTime(this); // ✅ این متد داخل AppPrefs هست
 
     if (nextMillis <= 0 || nextName == null || nextName.trim().isEmpty()) {
-      textNextPrayer.setText("نماز بعدی: ---");
+
+      String hhmm = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date(nextMillis));
+      textNextPrayer.setText("نماز بعدی: " + nextName + " — " + hhmm);
       textTimeRemaining.setText("--:--:--");
       stopCountdown();
       return;

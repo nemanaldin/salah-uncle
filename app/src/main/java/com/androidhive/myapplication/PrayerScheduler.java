@@ -8,8 +8,14 @@ import android.content.Intent;
 public class PrayerScheduler {
 
     public static void computeAndScheduleNext(Context context) {
-        // فقط وقتی اذان خودکار روشن است آلارم را ست کن
-        if (!AppPrefs.isAutoAdhanEnabled(context)) return;
+        // وقتی یکی از این‌ها روشن باشد آلارم را ست کن: «پخش خودکار اذان» یا «فقط نوتیفیکیشن»
+        boolean auto = AppPrefs.isAutoAdhanEnabled(context);
+        boolean notif = AppPrefs.isPrayerNotificationsEnabled(context);
+        if (!auto && !notif) {
+            // هیچ حالتی فعال نیست؛ آلارم قبلی را هم کنسل کنیم
+            cancelAlarm(context);
+            return;
+        }
 
         double lat = AppPrefs.getLat(context);
         double lon = AppPrefs.getLon(context);

@@ -75,16 +75,7 @@
                         android:textColor="#FFFFFF"
                         android:textSize="30sp" />
 
-                    <!-- ساعت خیلی درشت مثل نمونه -->
-                    <TextView
-                        android:id="@+id/text_prayer_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="@font/vazirmatn_bold"
-                        android:text="04:38"
-                        android:textColor="#FFFFFF"
-                        android:textSize="28sp" />
+
 
                     <TextView
                         android:id="@+id/text_time_remaining"
@@ -156,7 +147,7 @@
                     android:id="@+id/imageView7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a22" />
             </com.google.android.material.card.MaterialCardView>
@@ -193,7 +184,7 @@
                     android:id="@+id/imageView9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a11" />
             </com.google.android.material.card.MaterialCardView>
@@ -230,7 +221,7 @@
                     android:id="@+id/adhan_times"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/adhan_times" />
             </com.google.android.material.card.MaterialCardView>
@@ -271,7 +262,7 @@
                     android:id="@+id/imageView8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
 
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a44" />
@@ -310,7 +301,7 @@
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a66" />
             </com.google.android.material.card.MaterialCardView>
@@ -348,7 +339,7 @@
                     android:id="@+id/imageView_compass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/dial2" />
             </com.google.android.material.card.MaterialCardView>
@@ -390,7 +381,7 @@
                     android:id="@+id/imageView3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a55" />
             </com.google.android.material.card.MaterialCardView>
@@ -428,7 +419,7 @@
                     android:id="@+id/imageView6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
+                    android:padding="9dp"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/a33" />
             </com.google.android.material.card.MaterialCardView>

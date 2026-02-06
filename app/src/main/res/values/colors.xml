@@ -17,6 +17,10 @@
     <color name="onSurface">#263238</color>      <!-- متن تیره -->
     <color name="outline">#E5E9EF</color>
 
+    <color name="radio_tint">#00897B</color>
+    <color name="outline1">#90A4AE</color>
+
+
 
 
 
