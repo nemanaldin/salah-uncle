@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity
     if (id == R.id.nav_comment) {
       // نظر دادن (باز کردن صفحه گوگل پلی)
       Intent intent = new Intent(Intent.ACTION_VIEW);
-      intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName()));
+      intent.setData(Uri.parse("bazaar://details?id=" + "com.androidhive.myapplication"));
       startActivity(intent);
 
     } else if (id == R.id.nav_sources) {
@@ -256,9 +256,9 @@ public class MainActivity extends AppCompatActivity
       shareIntent.setType("text/plain");
       shareIntent.putExtra(Intent.EXTRA_SUBJECT, "برنامه اوقات شرعی");
       shareIntent.putExtra(Intent.EXTRA_TEXT,
-              "برنامه اوقات شرعی دقیق\n" +
+              "برنامه نماز فقه حنفی\n" +
                       "دانلود:\n" +
-                      "https://play.google.com/store/apps/details?id=" + getPackageName()
+                      "https://cafebazaar.ir/app/com.androidhive.myapplication" + getPackageName()
       );
       startActivity(Intent.createChooser(shareIntent, "اشتراک‌گذاری با"));
 
