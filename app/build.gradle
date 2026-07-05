@@ -19,7 +19,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -39,8 +39,6 @@ dependencies {
     // ConstraintLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // Design / Material Components
-    implementation 'com.google.android.material:material:1.10.0'
 
     // CardView
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -72,7 +70,6 @@ dependencies {
     // Play-services-gcm has been deprecated and is now part of Firebase Cloud Messaging (FCM).
     // The base services are still needed for other Google features.
     implementation 'com.google.android.gms:play-services-base:18.2.0'
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 
     implementation 'com.batoulapps.adhan:adhan:1.2.1'
