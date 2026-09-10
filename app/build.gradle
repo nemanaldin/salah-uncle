@@ -1,12 +1,17 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_21
-        targetCompatibility JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
-    namespace "com.androidhive.myapplication"
+    kotlinOptions {
+        jvmTarget = '21'
+    }
+
+    namespace = "com.androidhive.myapplication"
     compileSdkVersion 36
     defaultConfig {
         applicationId "com.androidhive.myapplication"
@@ -30,11 +35,34 @@ android {
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
 
+// Offline-safe: align transitive AndroidX deps to the exact versions present
+// in the local Gradle cache (network is unavailable). These are the only
+// resolution tweaks needed to build fully offline.
+configurations.all {
+    resolutionStrategy {
+        force 'androidx.core:core:1.13.0'
+        force 'androidx.core:core-ktx:1.13.0'
+        force 'androidx.savedstate:savedstate-android:1.3.2'
+        force 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3'
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // AppCompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
+
+    // Kotlin coroutines (1.9.0 is cached)
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
+
+    // Lifecycle (ViewModel + LiveData) — align to fully-cached 2.9.4
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.9.4'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.9.4'
+
+    // Fragment (base) — cached
+    implementation 'androidx.fragment:fragment:1.3.6'
 
     // ConstraintLayout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
