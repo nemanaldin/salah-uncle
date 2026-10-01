@@ -2,8 +2,9 @@ package com.androidhive.myapplication
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.androidhive.myapplication.data.PreferencesDataSource
 
-object AppPrefs {
+object AppPrefs : PreferencesDataSource {
 
     private const val PREFS = "app_prefs"
 
@@ -21,18 +22,20 @@ object AppPrefs {
 
     private const val KEY_PRAYER_NOTIF_ENABLED = "prayer_notif_enabled" // نوتیفیکیشن وقت اذان
 
+    private const val KEY_CALCULATION_METHOD = "calculation_method"
+
     private fun p(c: Context): SharedPreferences =
         c.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
     // ---- LOCATION ----
-    fun saveLocation(c: Context, lat: Double, lon: Double) {
+    override fun saveLocation(c: Context, lat: Double, lon: Double) {
         p(c).edit()
             .putLong(KEY_LAST_LAT, java.lang.Double.doubleToRawLongBits(lat))
             .putLong(KEY_LAST_LON, java.lang.Double.doubleToRawLongBits(lon))
             .apply()
     }
 
-    fun getLat(c: Context): Double {
+    override fun getLat(c: Context): Double {
         val prefs = p(c)
         return try {
             val v = prefs.getLong(KEY_LAST_LAT, 0L)
@@ -45,7 +48,7 @@ object AppPrefs {
         }
     }
 
-    fun getLon(c: Context): Double {
+    override fun getLon(c: Context): Double {
         val prefs = p(c)
         return try {
             val v = prefs.getLong(KEY_LAST_LON, 0L)
@@ -58,66 +61,74 @@ object AppPrefs {
         }
     }
 
-    fun clearAll(c: Context) {
+    override fun clearAll(c: Context) {
         p(c).edit().clear().apply()
     }
 
     // ---- NEXT PRAYER ----
-    fun saveNextPrayer(c: Context, nameFa: String, timeMillis: Long) {
+    override fun saveNextPrayer(c: Context, nameFa: String, timeMillis: Long) {
         p(c).edit()
             .putString(KEY_NEXT_PRAYER_NAME, nameFa)
             .putLong(KEY_NEXT_PRAYER_TIME, timeMillis)
             .apply()
     }
 
-    fun getNextPrayerName(c: Context): String =
+    override fun getNextPrayerName(c: Context): String =
         p(c).getString(KEY_NEXT_PRAYER_NAME, "") ?: ""
 
-    fun getNextPrayerTime(c: Context): Long =
+    override fun getNextPrayerTime(c: Context): Long =
         p(c).getLong(KEY_NEXT_PRAYER_TIME, 0L)
 
     fun getNextPrayerTimeMillis(c: Context): Long = getNextPrayerTime(c)
 
     // ---- NOTIFICATION STATE ----
-    fun setNotifHidden(c: Context, hidden: Boolean) {
+    override fun setNotifHidden(c: Context, hidden: Boolean) {
         p(c).edit().putBoolean(KEY_NOTIF_HIDDEN, hidden).apply()
     }
 
-    fun isNotifHidden(c: Context): Boolean =
+    override fun isNotifHidden(c: Context): Boolean =
         p(c).getBoolean(KEY_NOTIF_HIDDEN, false)
 
-    fun resetNotifHiddenOnNewPrayer(c: Context) {
+    override fun resetNotifHiddenOnNewPrayer(c: Context) {
         setNotifHidden(c, false)
     }
 
     // ---- AUTO ADHAN ----
-    fun setAutoAdhanEnabled(c: Context, enabled: Boolean) {
+    override fun setAutoAdhanEnabled(c: Context, enabled: Boolean) {
         p(c).edit().putBoolean(KEY_AUTO_ADHAN, enabled).apply()
     }
 
-    fun isAutoAdhanEnabled(c: Context): Boolean =
+    override fun isAutoAdhanEnabled(c: Context): Boolean =
         p(c).getBoolean(KEY_AUTO_ADHAN, false)
 
     // ---- LOCATION MODE / LABEL ----
-    fun setLocationMode(c: Context, mode: String) {
+    override fun setLocationMode(c: Context, mode: String) {
         p(c).edit().putString(KEY_LOCATION_MODE, mode).apply()
     }
 
-    fun getLocationMode(c: Context): String =
+    override fun getLocationMode(c: Context): String =
         p(c).getString(KEY_LOCATION_MODE, "none") ?: "none"
 
-    fun setManualCityName(c: Context, city: String?) {
+    override fun setManualCityName(c: Context, city: String?) {
         p(c).edit().putString(KEY_LOCATION_CITY, city ?: "").apply()
     }
 
-    fun getManualCityName(c: Context): String =
+    override fun getManualCityName(c: Context): String =
         p(c).getString(KEY_LOCATION_CITY, "") ?: ""
 
     // ---- PRAYER NOTIFICATIONS ----
-    fun setPrayerNotificationsEnabled(c: Context, enabled: Boolean) {
+    override fun setPrayerNotificationsEnabled(c: Context, enabled: Boolean) {
         p(c).edit().putBoolean(KEY_PRAYER_NOTIF_ENABLED, enabled).apply()
     }
 
-    fun isPrayerNotificationsEnabled(c: Context): Boolean =
+    override fun isPrayerNotificationsEnabled(c: Context): Boolean =
         p(c).getBoolean(KEY_PRAYER_NOTIF_ENABLED, true)
+
+    // ---- CALCULATION METHOD ----
+    override fun setCalculationMethod(c: Context, method: String) {
+        p(c).edit().putString(KEY_CALCULATION_METHOD, method).apply()
+    }
+
+    override fun getCalculationMethod(c: Context): String =
+        p(c).getString(KEY_CALCULATION_METHOD, "KARACHI") ?: "KARACHI"
 }

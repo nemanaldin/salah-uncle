@@ -5,12 +5,13 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import com.androidhive.myapplication.data.AlarmScheduler
 
-object PrayerScheduler {
+object PrayerScheduler : AlarmScheduler {
 
     private const val ALARM_REQUEST_CODE = 100
 
-    fun computeAndScheduleNext(context: Context) {
+    override fun computeAndScheduleNext(context: Context) {
         // وقتی یکی از این‌ها روشن باشد آلارم را ست کن: «پخش خودکار اذان» یا «فقط نوتیفیکیشن»
         val auto = AppPrefs.isAutoAdhanEnabled(context)
         val notif = AppPrefs.isPrayerNotificationsEnabled(context)
@@ -62,7 +63,7 @@ object PrayerScheduler {
         }
     }
 
-    fun cancelAlarm(context: Context) {
+    override fun cancelAlarm(context: Context) {
         val am = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         val intent = Intent(context, PrayerAlarmReceiver::class.java)

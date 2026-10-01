@@ -7,16 +7,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import com.androidhive.myapplication.data.PrayerNotificationManager
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-object PrayerNotification {
+object PrayerNotification : PrayerNotificationManager {
 
     private const val CHANNEL_ID = "next_prayer"
     private const val NOTIF_ID = 2001
 
-    fun showOrUpdate(context: Context, forceShow: Boolean) {
+    override fun showOrUpdate(context: Context, forceShow: Boolean) {
         if (AppPrefs.isNotifHidden(context) && !forceShow) return
 
         val t = AppPrefs.getNextPrayerTime(context)
@@ -61,13 +62,13 @@ object PrayerNotification {
         nm.notify(NOTIF_ID, b.build())
     }
 
-    fun hide(context: Context) {
+    override fun hide(context: Context) {
         AppPrefs.setNotifHidden(context, true)
         val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         nm.cancel(NOTIF_ID)
     }
 
-    fun cancel(context: Context) {
+    override fun cancel(context: Context) {
         val nm = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         nm.cancel(NOTIF_ID)
     }

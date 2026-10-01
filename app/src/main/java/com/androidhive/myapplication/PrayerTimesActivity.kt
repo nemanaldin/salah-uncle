@@ -24,6 +24,15 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.androidhive.myapplication.data.PrayerTimeRepository
+import com.androidhive.myapplication.data.PreferencesDataSource
+import com.androidhive.myapplication.data.ContextBoundPreferencesDataSource
+import com.androidhive.myapplication.data.NotificationSettingsStore
+import com.androidhive.myapplication.data.AppPrefsNotificationSettingsStore
 import com.batoulapps.adhan.CalculationMethod
 import com.batoulapps.adhan.CalculationParameters
 import com.batoulapps.adhan.Coordinates
@@ -31,12 +40,11 @@ import com.batoulapps.adhan.PrayerTimes
 import com.batoulapps.adhan.data.DateComponents
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
-import java.text.SimpleDateFormat
 import java.util.Collections
-import java.util.Date
 import java.util.HashMap
 import java.util.Locale
 
@@ -66,14 +74,13 @@ class PrayerTimesActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationDataMap = HashMap<String, HashMap<String, HashMap<String, LocationData>>>()
     private var selectedManualLocation: LocationData? = null
-    private var prayerTimes: PrayerTimes? = null
     private var mediaPlayer: MediaPlayer? = null
-
-    private val countdownHandler = Handler(Looper.getMainLooper())
-    private var countdownRunnable: Runnable? = null
 
     // SharedPreferences برای انتخاب دستی کشور/استان/شهر
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
+    // ViewModel
+    private lateinit var viewModel: PrayerTimesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -100,10 +107,45 @@ class PrayerTimesActivity : AppCompatActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        // Initialize ViewModel
+        val prayerTimeRepository = PrayerTimesCalculator
+        val preferences = ContextBoundPreferencesDataSource(this, AppPrefs)
+        val notificationSettings = AppPrefsNotificationSettingsStore(applicationContext)
+        val factory = PrayerTimesViewModelFactory(prayerTimeRepository, preferences, notificationSettings)
+        viewModel = ViewModelProvider(this, factory)[PrayerTimesViewModel::class.java]
+
+        // Observe ViewModel state for prayer times
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    // Update prayer time displays from ViewModel
+                    if (state.fajrTime != "--:--") textFajr.text = "صبح: ${state.fajrTime}"
+                    if (state.sunriseTime != "--:--") textSunrise.text = "طلوع: ${state.sunriseTime}"
+                    if (state.dhuhrTime != "--:--") textDHUHR.text = "ظهر: ${state.dhuhrTime}"
+                    if (state.asrTime != "--:--") textAsr.text = "عصر: ${state.asrTime}"
+                    if (state.maghribTime != "--:--") textMaghrib.text = "مغرب: ${state.maghribTime}"
+                    if (state.ishaTime != "--:--") textIsha.text = "عشاء: ${state.ishaTime}"
+
+                    // Update location label from ViewModel
+                    textCurrentLocation.text = state.currentLocationLabel
+
+                    // Update next prayer and countdown from ViewModel
+                    if (state.nextPrayerName.isNotEmpty()) {
+                        textNextPrayerTime.text = "نماز بعدی: ${state.nextPrayerName} - ${state.nextPrayerTime}"
+                    }
+                    textRemainingTime.text = "زمان باقی‌مانده: ${state.remainingTime}"
+
+                    // Update notification switches from ViewModel state
+                    switchAutoAdhan.isChecked = state.isAutoAdhanEnabled
+                    switchPlayAdhanSound.isChecked = state.isPrayerNotificationsEnabled
+                }
+            }
+        }
+
         loadLocationDataFromJson()
         setupSpinners()
         setupListeners()
-        loadAndApplySavedPreferences()
+        loadAndApplyPreferencesToViewModel()
 
         // هماهنگ‌سازی UI دکمه‌ها با حالت انتخاب‌شده (GPS/دستی)
         updateLocationModeUI(radioGroupLocation.checkedRadioButtonId == R.id.radio_manual)
@@ -139,10 +181,6 @@ class PrayerTimesActivity : AppCompatActivity() {
 
         switchAutoAdhan = findViewById(R.id.switch_auto_adhan)
         switchPlayAdhanSound = findViewById(R.id.switch_play_adhan_sound)
-
-        // مقدار اولیه سوئیچ‌ها
-        switchAutoAdhan.isChecked = AppPrefs.isAutoAdhanEnabled(this)
-        switchPlayAdhanSound.isChecked = AppPrefs.isPrayerNotificationsEnabled(this)
     }
 
     /**
@@ -163,14 +201,7 @@ class PrayerTimesActivity : AppCompatActivity() {
 
         // ✅ سوئیچ 1: پخش خودکار صدا
         switchAutoAdhan.setOnCheckedChangeListener { _, isChecked ->
-            AppPrefs.setAutoAdhanEnabled(this, isChecked)
-
-            // اگر صدا روشن شد ولی نوتیف خاموش بود، نوتیف رو روشن کن (منطقی)
-            if (isChecked && !AppPrefs.isPrayerNotificationsEnabled(this)) {
-                AppPrefs.setPrayerNotificationsEnabled(this, true)
-                switchPlayAdhanSound.isChecked = true
-            }
-
+            viewModel.setAutoAdhanEnabled(isChecked)
             checkAndRequestNotificationPermission()
             PrayerScheduler.computeAndScheduleNext(this)
             PrayerNotification.showOrUpdate(this, false)
@@ -178,14 +209,7 @@ class PrayerTimesActivity : AppCompatActivity() {
 
         // ✅ سوئیچ 2: فقط نوتیفیکیشن وقت اذان (بدون صدا)
         switchPlayAdhanSound.setOnCheckedChangeListener { _, isChecked ->
-            AppPrefs.setPrayerNotificationsEnabled(this, isChecked)
-
-            // اگر نوتیف خاموش شد، صدا هم خاموش بشه
-            if (!isChecked && AppPrefs.isAutoAdhanEnabled(this)) {
-                AppPrefs.setAutoAdhanEnabled(this, false)
-                switchAutoAdhan.isChecked = false
-            }
-
+            viewModel.setPrayerNotificationsEnabled(isChecked)
             checkAndRequestNotificationPermission()
             PrayerScheduler.computeAndScheduleNext(this)
             PrayerNotification.showOrUpdate(this, false)
@@ -201,12 +225,16 @@ class PrayerTimesActivity : AppCompatActivity() {
                 AppPrefs.setLocationMode(this, "gps")
                 AppPrefs.setManualCityName(this, "")
 
+                viewModel.setLocationMode(false)
+
                 updatePrayerTimesWithGPS()
             } else if (checkedId == R.id.radio_manual) {
                 updateLocationModeUI(true)
                 saveLocationMode("manual")
 
                 AppPrefs.setLocationMode(this, "manual")
+
+                viewModel.setLocationMode(true)
 
                 textCurrentLocation.text = "در انتظار انتخاب مکان دستی"
             }
@@ -233,7 +261,7 @@ class PrayerTimesActivity : AppCompatActivity() {
             AppPrefs.setLocationMode(this, "manual")
             AppPrefs.setManualCityName(this, cityName)
 
-            calculateAndDisplayPrayerTimes(lat, lon)
+            viewModel.onManualLocationSelected(lat, lon, cityName)
 
             // ✅ همیشه next prayer ذخیره و برنامه‌ریزی شود
             PrayerScheduler.computeAndScheduleNext(this)
@@ -247,11 +275,21 @@ class PrayerTimesActivity : AppCompatActivity() {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
-                val lat = AppPrefs.getLat(this@PrayerTimesActivity)
-                val lon = AppPrefs.getLon(this@PrayerTimesActivity)
+                // Persist user's selection
+                val methodString = when (position) {
+                    1 -> "MUSLIM_WORLD_LEAGUE"
+                    2 -> "EGYPTIAN"
+                    3 -> "KARACHI"
+                    4 -> "UMM_AL_QURA"
+                    5 -> "DUBAI"
+                    6 -> "MOON_SIGHTING_COMMITTEE"
+                    else -> "KARACHI"
+                }
+                AppPrefs.setCalculationMethod(this@PrayerTimesActivity, methodString)
 
-                if (lat != 0.0 || lon != 0.0) {
-                    calculateAndDisplayPrayerTimes(lat, lon)
+                // Notify ViewModel
+                if (viewModel.hasValidLocation()) {
+                    viewModel.onCalculationMethodChanged(position)
                     PrayerScheduler.computeAndScheduleNext(this@PrayerTimesActivity)
                     PrayerNotification.showOrUpdate(this@PrayerTimesActivity, false)
                 }
@@ -294,7 +332,7 @@ class PrayerTimesActivity : AppCompatActivity() {
                 AppPrefs.setLocationMode(this, "gps")
                 AppPrefs.setManualCityName(this, "")
 
-                calculateAndDisplayPrayerTimes(lat, lon)
+                viewModel.onLocationReceived(lat, lon)
 
                 PrayerScheduler.computeAndScheduleNext(this)
                 PrayerNotification.showOrUpdate(this, false)
@@ -305,98 +343,7 @@ class PrayerTimesActivity : AppCompatActivity() {
     }
 
     private fun calculateAndDisplayPrayerTimes(latitude: Double, longitude: Double) {
-        val coordinates = Coordinates(latitude, longitude)
-        val date = DateComponents.from(Date())
-        val params = getCalculationParamsFromSpinner()
-
-        prayerTimes = PrayerTimes(coordinates, date, params)
-
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-
-        prayerTimes?.let { pt ->
-            textFajr.text = "صبح: " + sdf.format(pt.fajr)
-            textSunrise.text = "طلوع: " + sdf.format(pt.sunrise)
-            textDHUHR.text = "ظهر: " + sdf.format(pt.dhuhr)
-            textAsr.text = "عصر: " + sdf.format(pt.asr)
-            textMaghrib.text = "مغرب: " + sdf.format(pt.maghrib)
-            textIsha.text = "عشاء: " + sdf.format(pt.isha)
-        }
-
-        updateNextPrayerAndCountdown()
-
-        // label
-        val mode = AppPrefs.getLocationMode(this)
-        when (mode) {
-            "manual" -> {
-                var city = AppPrefs.getManualCityName(this)
-                if (city.isNullOrBlank()) city = "مکان دستی"
-                textCurrentLocation.text = "موقعیت فعلی: $city"
-            }
-            "gps" -> textCurrentLocation.text =
-                String.format(Locale.US, "موقعیت فعلی: %.5f, %.5f", latitude, longitude)
-            else -> {
-                textCurrentLocation.text = "در انتظار انتخاب مکان"
-                updateLocationModeUI(false)
-            }
-        }
-    }
-
-    private fun updateNextPrayerAndCountdown() {
-        val pt = prayerTimes ?: return
-
-        val now = System.currentTimeMillis()
-        var nextTime: Date? = null
-        var nextName = ""
-
-        when {
-            pt.fajr != null && pt.fajr.time > now -> { nextTime = pt.fajr; nextName = "صبح" }
-            pt.dhuhr != null && pt.dhuhr.time > now -> { nextTime = pt.dhuhr; nextName = "ظهر" }
-            pt.asr != null && pt.asr.time > now -> { nextTime = pt.asr; nextName = "عصر" }
-            pt.maghrib != null && pt.maghrib.time > now -> { nextTime = pt.maghrib; nextName = "مغرب" }
-            pt.isha != null && pt.isha.time > now -> { nextTime = pt.isha; nextName = "عشاء" }
-            pt.fajr != null -> {
-                nextTime = Date(pt.fajr.time + 24L * 60L * 60L * 1000L)
-                nextName = "صبح"
-            }
-        }
-
-        if (nextTime == null) return
-
-        countdownRunnable?.let { countdownHandler.removeCallbacks(it) }
-
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        textNextPrayerTime.text = "نماز بعدی: $nextName - " + sdf.format(nextTime)
-
-        countdownRunnable = Runnable {
-            var diff = nextTime!!.time - System.currentTimeMillis()
-            if (diff < 0) diff = 0
-
-            val total = diff / 1000
-            val h = total / 3600
-            val m = (total % 3600) / 60
-            val s = total % 60
-
-            textRemainingTime.text = String.format(
-                Locale.getDefault(), "زمان باقی‌مانده: %02d:%02d:%02d", h, m, s
-            )
-
-            if (diff > 0) countdownHandler.postDelayed(countdownRunnable!!, 1000)
-        }
-        countdownHandler.post(countdownRunnable!!)
-    }
-
-    private fun getCalculationParamsFromSpinner(): CalculationParameters {
-        val position = spinnerCalculationMethod.selectedItemPosition
-        val method: CalculationMethod = when (position) {
-            1 -> CalculationMethod.MUSLIM_WORLD_LEAGUE
-            2 -> CalculationMethod.EGYPTIAN
-            3 -> CalculationMethod.KARACHI
-            4 -> CalculationMethod.UMM_AL_QURA
-            5 -> CalculationMethod.DUBAI
-            6 -> CalculationMethod.MOON_SIGHTING_COMMITTEE
-            else -> CalculationMethod.KARACHI
-        }
-        return method.getParameters()
+        viewModel.onManualLocationSelected(latitude, longitude, spinnerCity.selectedItem.toString())
     }
 
     // ========== JSON LOCATIONS ==========
@@ -552,14 +499,29 @@ class PrayerTimesActivity : AppCompatActivity() {
             .apply()
     }
 
-    private fun loadAndApplySavedPreferences() {
+    private fun loadAndApplyPreferencesToViewModel() {
+        // Use ViewModel's loadPreferences which reads from AppPrefs via PreferencesDataSource
+        val isAutoAdhan = AppPrefs.isAutoAdhanEnabled(this)
+        val isPrayerNotif = AppPrefs.isPrayerNotificationsEnabled(this)
+        val locationMode = AppPrefs.getLocationMode(this)
+        val manualCityName = AppPrefs.getManualCityName(this)
+        val calculationMethod = AppPrefs.getCalculationMethod(this)
+        val latitude = AppPrefs.getLat(this)
+        val longitude = AppPrefs.getLon(this)
+
+        viewModel.loadPreferences(
+            isAutoAdhan = isAutoAdhan,
+            isPrayerNotif = isPrayerNotif,
+            locationMode = locationMode,
+            manualCityName = manualCityName,
+            calculationMethod = calculationMethod,
+            latitude = latitude,
+            longitude = longitude
+        )
+
+        // Restore spinner selections for manual mode (UI-specific, stays in Activity)
         val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-        val locationMode = prefs.getString(KEY_LOCATION_MODE, "none")
-
         if ("manual" == locationMode) {
-            radioGroupLocation.check(R.id.radio_manual)
-            updateLocationModeUI(true)
-
             val savedCountry = prefs.getString(KEY_COUNTRY, null)
             val savedProvince = prefs.getString(KEY_PROVINCE, null)
             val savedCity = prefs.getString(KEY_CITY, null)
@@ -570,22 +532,13 @@ class PrayerTimesActivity : AppCompatActivity() {
                     selectSpinnerByValue(spinnerProvince, savedProvince)
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
                         selectSpinnerByValue(spinnerCity, savedCity)
-                        // بعد از restore، اگر لوکیشن هم داریم، محاسبه کن
-                        val lat = AppPrefs.getLat(this)
-                        val lon = AppPrefs.getLon(this)
-                        if (lat != 0.0 || lon != 0.0) {
-                            calculateAndDisplayPrayerTimes(lat, lon)
+                        // After spinner restoration, trigger the single prayer calculation for manual location
+                        if (latitude != 0.0 || longitude != 0.0) {
+                            viewModel.onManualLocationSelected(latitude, longitude, savedCity)
                         }
                     }, 300)
                 }, 300)
             }
-        } else if ("gps" == locationMode) {
-            radioGroupLocation.check(R.id.radio_gps)
-            updateLocationModeUI(false)
-            updatePrayerTimesWithGPS()
-        } else {
-            textCurrentLocation.text = "در انتظار انتخاب مکان"
-            updateLocationModeUI(false)
         }
     }
 
@@ -626,7 +579,6 @@ class PrayerTimesActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        countdownRunnable?.let { countdownHandler.removeCallbacks(it) }
 
         // اگر اذان دستی در حال پخش بود، قطعش کن
         if (mediaPlayer != null) {
