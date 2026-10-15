@@ -24,6 +24,9 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -82,7 +85,14 @@ class PrayerTimesActivity : AppCompatActivity() {
     // ViewModel
     private lateinit var viewModel: PrayerTimesViewModel
 
+    // Flags to prevent listener execution during programmatic UI updates
+    private var _isRestoringUI = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Enable edge-to-edge for API 30+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prayer_times)
 
@@ -138,6 +148,34 @@ class PrayerTimesActivity : AppCompatActivity() {
                     // Update notification switches from ViewModel state
                     switchAutoAdhan.isChecked = state.isAutoAdhanEnabled
                     switchPlayAdhanSound.isChecked = state.isPrayerNotificationsEnabled
+
+                    // ✅ Bug 1 Fix: Sync RadioGroup with isManualMode
+                    if (!_isRestoringUI) {
+                        val shouldBeManual = state.isManualMode
+                        val currentCheckedId = radioGroupLocation.checkedRadioButtonId
+                        val expectedId = if (shouldBeManual) R.id.radio_manual else R.id.radio_gps
+                        if (currentCheckedId != expectedId) {
+                            _isRestoringUI = true
+                            radioGroupLocation.check(expectedId)
+                            updateLocationModeUI(shouldBeManual)
+                            _isRestoringUI = false
+                        }
+                    }
+
+                    // ✅ Bug 2 Fix: Sync Spinner with calculationMethodPosition
+                    if (!_isRestoringUI) {
+                        val adapter = spinnerCalculationMethod.adapter as ArrayAdapter<*>?
+                        if (adapter != null) {
+                            val expectedPos = state.calculationMethodPosition
+                            if (expectedPos >= 0 && expectedPos < adapter.count) {
+                                if (spinnerCalculationMethod.selectedItemPosition != expectedPos) {
+                                    _isRestoringUI = true
+                                    spinnerCalculationMethod.setSelection(expectedPos)
+                                    _isRestoringUI = false
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -212,11 +250,17 @@ class PrayerTimesActivity : AppCompatActivity() {
             viewModel.setPrayerNotificationsEnabled(isChecked)
             checkAndRequestNotificationPermission()
             PrayerScheduler.computeAndScheduleNext(this)
-            PrayerNotification.showOrUpdate(this, false)
+            if (isChecked) {
+                PrayerNotification.showOrUpdate(this, false)
+            } else {
+                PrayerNotification.cancel(this)
+            }
         }
 
         // ✅ انتخاب GPS/Manual
         radioGroupLocation.setOnCheckedChangeListener { _, checkedId ->
+            if (_isRestoringUI) return@setOnCheckedChangeListener
+
             if (checkedId == R.id.radio_gps) {
                 updateLocationModeUI(false)
                 saveLocationMode("gps")
@@ -224,6 +268,11 @@ class PrayerTimesActivity : AppCompatActivity() {
                 // label برای main
                 AppPrefs.setLocationMode(this, "gps")
                 AppPrefs.setManualCityName(this, "")
+
+                // Manual → GPS: cancel old alarm, clear stale manual coords
+                AppPrefs.clearLocation(this)
+                PrayerScheduler.cancelAlarm(this)
+                PrayerNotification.cancel(this)
 
                 viewModel.setLocationMode(false)
 
@@ -233,6 +282,11 @@ class PrayerTimesActivity : AppCompatActivity() {
                 saveLocationMode("manual")
 
                 AppPrefs.setLocationMode(this, "manual")
+
+                // GPS → Manual: cancel old alarm, clear stale GPS coords
+                AppPrefs.clearLocation(this)
+                PrayerScheduler.cancelAlarm(this)
+                PrayerNotification.cancel(this)
 
                 viewModel.setLocationMode(true)
 
@@ -275,6 +329,8 @@ class PrayerTimesActivity : AppCompatActivity() {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
+                if (_isRestoringUI) return@onItemSelected
+
                 // Persist user's selection
                 val methodString = when (position) {
                     1 -> "MUSLIM_WORLD_LEAGUE"
@@ -519,6 +575,14 @@ class PrayerTimesActivity : AppCompatActivity() {
             longitude = longitude
         )
 
+        // ✅ برای حالت دستی: محاسبه یک‌باره اوقات شرعی با مختصات و روش محاسبه ذخیره‌شده
+        // انجام می‌شود تا پس از ورود مجدد، اوقات شرعی نمایش داده شوند.
+        // این محاسبه زودتر از بازیابی Spinnerها انجام می‌شود تا listenerهای
+        // برنامه‌ای Spinnerها محاسبه تکراری ایجاد نکنند.
+        if ("manual" == locationMode && (latitude != 0.0 || longitude != 0.0)) {
+            viewModel.onManualLocationSelected(latitude, longitude, manualCityName)
+        }
+
         // Restore spinner selections for manual mode (UI-specific, stays in Activity)
         val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
         if ("manual" == locationMode) {
@@ -527,15 +591,16 @@ class PrayerTimesActivity : AppCompatActivity() {
             val savedCity = prefs.getString(KEY_CITY, null)
 
             if (savedCountry != null && savedProvince != null && savedCity != null) {
+                _isRestoringUI = true
                 selectSpinnerByValue(spinnerCountry, savedCountry)
                 Handler(Looper.getMainLooper()).postDelayed(Runnable {
                     selectSpinnerByValue(spinnerProvince, savedProvince)
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
                         selectSpinnerByValue(spinnerCity, savedCity)
-                        // After spinner restoration, trigger the single prayer calculation for manual location
-                        if (latitude != 0.0 || longitude != 0.0) {
-                            viewModel.onManualLocationSelected(latitude, longitude, savedCity)
-                        }
+                        // Do NOT trigger prayer calculation here on restore.
+                        // Prayer times already calculated above via loadPreferences + onManualLocationSelected.
+                        // If user explicitly changes location via button, calculation will be triggered there.
+                        _isRestoringUI = false
                     }, 300)
                 }, 300)
             }
@@ -543,7 +608,8 @@ class PrayerTimesActivity : AppCompatActivity() {
     }
 
     private fun selectSpinnerByValue(spinner: Spinner, value: String) {
-        val adapter = spinner.adapter as ArrayAdapter<*>
+        val adapter = spinner.adapter as ArrayAdapter<*>?
+        if (adapter == null) return
         for (i in 0 until adapter.count) {
             if (value == adapter.getItem(i)) {
                 spinner.setSelection(i)

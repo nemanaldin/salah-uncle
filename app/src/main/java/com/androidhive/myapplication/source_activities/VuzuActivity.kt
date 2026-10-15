@@ -101,17 +101,17 @@ class VuzuActivity : AppCompatActivity() {
 
         fab = findViewById(R.id.fab)
 
-        img_btn2.setOnClickListener { mp1.start() }
-        img_btn3.setOnClickListener { mp2.start() }
-        img_btn4.setOnClickListener { mp3.start() }
-        img_btn5.setOnClickListener { mp4.start() }
-        img_btn6.setOnClickListener { mp5.start() }
-        img_btn7.setOnClickListener { mp6.start() }
-        img_btn8.setOnClickListener { mp7.start() }
-        img_btn9.setOnClickListener { mp8.start() }
-        img_btn10.setOnClickListener { mp9.start() }
-        img_btn11.setOnClickListener { mp10.start() }
-        img_btn12.setOnClickListener { mp11.start() }
+        img_btn2.setOnClickListener { stopAndStart(mp1) }
+        img_btn3.setOnClickListener { stopAndStart(mp2) }
+        img_btn4.setOnClickListener { stopAndStart(mp3) }
+        img_btn5.setOnClickListener { stopAndStart(mp4) }
+        img_btn6.setOnClickListener { stopAndStart(mp5) }
+        img_btn7.setOnClickListener { stopAndStart(mp6) }
+        img_btn8.setOnClickListener { stopAndStart(mp7) }
+        img_btn9.setOnClickListener { stopAndStart(mp8) }
+        img_btn10.setOnClickListener { stopAndStart(mp9) }
+        img_btn11.setOnClickListener { stopAndStart(mp10) }
+        img_btn12.setOnClickListener { stopAndStart(mp11) }
 
         fab.setOnClickListener {
             val shareIntent = Intent(Intent.ACTION_SEND)
@@ -134,6 +134,32 @@ class VuzuActivity : AppCompatActivity() {
                 vuzu_text3.text.toString())
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "")
             startActivity(Intent.createChooser(shareIntent, "اشتراک ..."))
+        }
+    }
+
+    private fun stopAndStart(targetMp: MediaPlayer) {
+        listOf(mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, mp9, mp10, mp11).forEach { mp ->
+            if (mp !== targetMp && mp.isPlaying) {
+                mp.stop()
+                try {
+                    mp.prepare()
+                } catch (e: Exception) {
+                    // Ignore prepare errors
+                }
+            }
+        }
+        targetMp.start()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        listOf(mp1, mp2, mp3, mp4, mp5, mp6, mp7, mp8, mp9, mp10, mp11).forEach { mp ->
+            try {
+                if (mp.isPlaying) mp.stop()
+                mp.release()
+            } catch (e: Exception) {
+                // Ignore cleanup errors
+            }
         }
     }
 }

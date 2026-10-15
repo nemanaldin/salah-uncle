@@ -7,13 +7,15 @@ import com.batoulapps.adhan.CalculationParameters
 import com.batoulapps.adhan.Coordinates
 import com.batoulapps.adhan.PrayerTimes
 import com.batoulapps.adhan.data.DateComponents
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 object PrayerTimesCalculator : PrayerTimeRepository {
 
-    override fun computeNext(lat: Double, lon: Double): NextPrayer? {
+    override fun computeNext(lat: Double, lon: Double, calcParams: CalculationParameters): NextPrayer? {
         val coords = Coordinates(lat, lon)
-        val params: CalculationParameters = CalculationMethod.KARACHI.parameters
+        val params = calcParams
 
         val now = Calendar.getInstance()
 
@@ -52,14 +54,16 @@ object PrayerTimesCalculator : PrayerTimeRepository {
         return NextPrayer("صبح", tomorrowTimes.fajr.time)
     }
 
-    override fun getPrayerTimes(lat: Double, lon: Double, calcParams: CalculationParameters): PrayerTimes {
-        val coords = Coordinates(lat, lon)
-        val now = Calendar.getInstance()
-        val today = DateComponents(
-            now.get(Calendar.YEAR),
-            now.get(Calendar.MONTH) + 1,
-            now.get(Calendar.DAY_OF_MONTH)
-        )
-        return PrayerTimes(coords, today, calcParams)
+    override suspend fun getPrayerTimes(lat: Double, lon: Double, calcParams: CalculationParameters): PrayerTimes {
+        return withContext(Dispatchers.Default) {
+            val coords = Coordinates(lat, lon)
+            val now = Calendar.getInstance()
+            val today = DateComponents(
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH) + 1,
+                now.get(Calendar.DAY_OF_MONTH)
+            )
+            PrayerTimes(coords, today, calcParams)
+        }
     }
 }

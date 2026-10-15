@@ -16,6 +16,9 @@ class ContextBoundPreferencesDataSource(
     override fun getLon(context: Context): Double =
         delegate.getLon(this.context)
 
+    override fun clearLocation(context: Context) =
+        delegate.clearLocation(this.context)
+
     override fun clearAll(context: Context) =
         delegate.clearAll(this.context)
 

@@ -8,6 +8,8 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.WindowManager
 import android.widget.Button
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 
 class AdhanAlertActivity : Activity() {
 
@@ -30,6 +32,20 @@ class AdhanAlertActivity : Activity() {
 
         val btnStop = findViewById<Button>(R.id.btnStopAdhan)
         btnStop.setOnClickListener { stopAdhanAndFinish() }
+
+        // Modern back handling for API 33+ (Android 13+)
+        // Uses OnBackInvokedDispatcher (official API 33+ for back handling)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                object : OnBackInvokedCallback {
+                    override fun onBackInvoked() {
+                        stopAdhanAndFinish()
+                    }
+                }
+            )
+        }
+        // For API < 33, onKeyDown handling is kept below
     }
 
     private fun stopAdhanAndFinish() {
@@ -40,10 +56,13 @@ class AdhanAlertActivity : Activity() {
         finish()
     }
 
+    // Legacy back handling for API < 33 (Android 12 and below)
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            stopAdhanAndFinish()
-            return true
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                stopAdhanAndFinish()
+                return true
+            }
         }
         return super.onKeyDown(keyCode, event)
     }

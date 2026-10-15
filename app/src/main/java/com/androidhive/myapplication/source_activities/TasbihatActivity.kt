@@ -222,4 +222,20 @@ class TasbihatActivity : AppCompatActivity() {
             startActivity(Intent.createChooser(shareIntent, "اشتراک ..."))
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        listOf(
+            mptas1, mptas2, mptas3, mptas4, mptas5, mptas6, mptas7, mptas8, mptas9, mptas10,
+            mptas11, mptas12, mptas13, mptas14, mptas15, mptas16, mptas17, mptas18, mptas19, mptas20,
+            mptas21, mptas22
+        ).forEach { mp ->
+            try {
+                if (mp.isPlaying) mp.stop()
+                mp.release()
+            } catch (e: Exception) {
+                // Ignore cleanup errors
+            }
+        }
+    }
 }

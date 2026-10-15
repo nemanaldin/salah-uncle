@@ -113,6 +113,18 @@ class MeyetActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        listOf(mpmeyyet, mpmeyyet1, mpmeyyet2, mpmeyyet3, mpmeyyet4).forEach { mp ->
+            try {
+                if (mp.isPlaying) mp.stop()
+                mp.release()
+            } catch (e: Exception) {
+                // Ignore cleanup errors
+            }
+        }
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, PrayerActivity::class.java))

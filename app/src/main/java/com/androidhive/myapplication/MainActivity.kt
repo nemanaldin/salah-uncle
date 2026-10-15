@@ -3,8 +3,6 @@ package com.androidhive.myapplication
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,15 +15,16 @@ import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 
 import com.androidhive.myapplication.compass.CompassActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
-import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -44,14 +43,16 @@ class MainActivity : AppCompatActivity(),
     private lateinit var textTimeRemaining: TextView
     private lateinit var textLocation: TextView
 
-    private val countdownHandler = Handler(Looper.getMainLooper())
-    private var countdownRunnable: Runnable? = null
+    private lateinit var viewModel: MainViewModel
 
     private var mBackPressed: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this, MainViewModelFactory(AppPrefs)).get(MainViewModel::class.java)
 
         // Toolbar + Drawer
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -93,7 +94,30 @@ class MainActivity : AppCompatActivity(),
         textTimeRemaining = findViewById(R.id.text_time_remaining)
         textLocation = findViewById(R.id.text_location)
 
+        // Observe ViewModel state with repeatOnLifecycle
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { state ->
+                    textNextPrayer.text = "نماز بعدی: ${state.nextPrayerName} - ${state.nextPrayerTime}"
+                    textTimeRemaining.text = state.remainingTime
+                    textLocation.text = state.currentLocationLabel
+                }
+            }
+        }
+
         handleOnBackPressed()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.setOnCountdownFinished {
+            viewModel.loadFromPrefs(this@MainActivity)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.clearOnCountdownFinished()
     }
 
     override fun onResume() {
@@ -103,76 +127,13 @@ class MainActivity : AppCompatActivity(),
         // (PrayerScheduler خودش چک می‌کنه auto روشن هست یا نه)
         PrayerScheduler.computeAndScheduleNext(this)
 
-        renderFromPrefsAndStartCountdown()
+        viewModel.loadFromPrefs(this)
     }
 
     override fun onPause() {
         super.onPause()
-        stopCountdown()
-    }
-
-    private fun renderFromPrefsAndStartCountdown() {
-        // Location from single source
-        val lat = AppPrefs.getLat(this)
-        val lon = AppPrefs.getLon(this)
-        val mode = AppPrefs.getLocationMode(this)
-
-        if ((lat == 0.0 && lon == 0.0) || "none" == mode) {
-            textLocation.text = "در انتظار انتخاب مکان"
-        } else if ("manual" == mode) {
-            var city = AppPrefs.getManualCityName(this)
-            if (city.isNullOrBlank()) city = "مکان دستی"
-            textLocation.text = "موقعیت فعلی: $city"
-        } else {
-            textLocation.text = String.format(Locale.US, "موقعیت فعلی: %.2f,%.2f", lat, lon)
-        }
-
-        // Next prayer from single source
-        val nextName = AppPrefs.getNextPrayerName(this)
-        val nextMillis = AppPrefs.getNextPrayerTime(this)
-
-        if (nextMillis <= 0 || nextName.isBlank()) {
-            textNextPrayer.text = "نماز بعدی: —"
-            textTimeRemaining.text = "--:--:--"
-            stopCountdown()
-            return
-        }
-
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
-        textNextPrayer.text = "نماز بعدی: $nextName - " + sdf.format(Date(nextMillis))
-
-        startCountdown(nextMillis)
-    }
-
-    private fun startCountdown(targetMillis: Long) {
-        stopCountdown()
-
-        countdownRunnable = object : Runnable {
-            override fun run() {
-                var diff = targetMillis - System.currentTimeMillis()
-                if (diff < 0) diff = 0
-
-                val h = TimeUnit.MILLISECONDS.toHours(diff)
-                val m = TimeUnit.MILLISECONDS.toMinutes(diff) % 60
-                val s = TimeUnit.MILLISECONDS.toSeconds(diff) % 60
-
-                textTimeRemaining.text = String.format(Locale.getDefault(), "%02d:%02d:%02d", h, m, s)
-
-                if (diff > 0) {
-                    countdownHandler.postDelayed(this, 1000)
-                } else {
-                    // رسید → دوباره از prefs بخون (ممکنه Scheduler نماز بعدی رو ست کرده باشه)
-                    countdownHandler.postDelayed({ renderFromPrefsAndStartCountdown() }, 500)
-                }
-            }
-        }
-
-        countdownHandler.post(countdownRunnable!!)
-    }
-
-    private fun stopCountdown() {
-        countdownRunnable?.let { countdownHandler.removeCallbacks(it) }
-        countdownRunnable = null
+        // Countdown is automatically cancelled in ViewModel.onCleared()
+        // or when Activity is destroyed. No manual stop needed here.
     }
 
     private fun handleOnBackPressed() {

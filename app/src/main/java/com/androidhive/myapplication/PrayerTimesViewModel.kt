@@ -8,8 +8,10 @@ import com.androidhive.myapplication.data.NotificationSettingsStore
 import com.batoulapps.adhan.CalculationMethod
 import com.batoulapps.adhan.CalculationParameters
 import com.batoulapps.adhan.PrayerTimes
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.text.SimpleDateFormat
@@ -30,6 +32,7 @@ class PrayerTimesViewModel(
     private var _longitude: Double = 0.0
     private var _isManualMode = false
     private var _countdownJob: kotlinx.coroutines.Job? = null
+    private var _calculationId = 0
 
     init {
         loadInitialState()
@@ -214,31 +217,40 @@ class PrayerTimesViewModel(
     }
 
     private fun calculateAndDisplayPrayerTimes(latitude: Double, longitude: Double) {
+        val requestId = ++_calculationId
         _state.value = _state.value.copy(isLoading = true, errorMessage = null)
 
-        val prayerTimes = prayerTimeRepository.getPrayerTimes(latitude, longitude, _calculationParams)
+        viewModelScope.launch(Dispatchers.Default) {
+            val prayerTimes = prayerTimeRepository.getPrayerTimes(latitude, longitude, _calculationParams)
 
-        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+            // Discard if superseded by a newer request
+            if (requestId != _calculationId) return@launch
 
-        _state.value = _state.value.copy(
-            fajrTime = sdf.format(prayerTimes.fajr),
-            sunriseTime = sdf.format(prayerTimes.sunrise),
-            dhuhrTime = sdf.format(prayerTimes.dhuhr),
-            asrTime = sdf.format(prayerTimes.asr),
-            maghribTime = sdf.format(prayerTimes.maghrib),
-            ishaTime = sdf.format(prayerTimes.isha),
-            isLoading = false
-        )
+            // Switch back to Main thread for UI updates
+            withContext(Dispatchers.Main) {
+                val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-        updateNextPrayerAndCountdown(prayerTimes)
+                _state.value = _state.value.copy(
+                    fajrTime = sdf.format(prayerTimes.fajr),
+                    sunriseTime = sdf.format(prayerTimes.sunrise),
+                    dhuhrTime = sdf.format(prayerTimes.dhuhr),
+                    asrTime = sdf.format(prayerTimes.asr),
+                    maghribTime = sdf.format(prayerTimes.maghrib),
+                    ishaTime = sdf.format(prayerTimes.isha),
+                    isLoading = false
+                )
 
-        val locationLabel = if (_isManualMode) {
-            val city = _state.value.selectedCity ?: "مکان دستی"
-            "موقعیت فعلی: $city"
-        } else {
-            String.format(Locale.US, "موقعیت فعلی: %.5f, %.5f", latitude, longitude)
+                updateNextPrayerAndCountdown(prayerTimes)
+
+                val locationLabel = if (_isManualMode) {
+                    val city = _state.value.selectedCity ?: "مکان دستی"
+                    "موقعیت فعلی: $city"
+                } else {
+                    String.format(Locale.US, "موقعیت فعلی: %.5f, %.5f", latitude, longitude)
+                }
+                _state.value = _state.value.copy(currentLocationLabel = locationLabel)
+            }
         }
-        _state.value = _state.value.copy(currentLocationLabel = locationLabel)
     }
 
     private fun updateNextPrayerAndCountdown(prayerTimes: PrayerTimes) {

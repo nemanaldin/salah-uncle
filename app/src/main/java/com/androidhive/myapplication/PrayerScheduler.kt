@@ -6,12 +6,23 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import com.androidhive.myapplication.data.AlarmScheduler
+import com.batoulapps.adhan.CalculationMethod
+import com.batoulapps.adhan.CalculationParameters
 
 object PrayerScheduler : AlarmScheduler {
 
     private const val ALARM_REQUEST_CODE = 100
 
+    override fun computeAndScheduleNext(context: Context, calcParams: CalculationParameters) {
+        computeAndScheduleNextInternal(context, calcParams)
+    }
+
     override fun computeAndScheduleNext(context: Context) {
+        val calcParams = getCalculationParameters(context)
+        computeAndScheduleNextInternal(context, calcParams)
+    }
+
+    private fun computeAndScheduleNextInternal(context: Context, calcParams: CalculationParameters) {
         // وقتی یکی از این‌ها روشن باشد آلارم را ست کن: «پخش خودکار اذان» یا «فقط نوتیفیکیشن»
         val auto = AppPrefs.isAutoAdhanEnabled(context)
         val notif = AppPrefs.isPrayerNotificationsEnabled(context)
@@ -25,7 +36,7 @@ object PrayerScheduler : AlarmScheduler {
         val lon = AppPrefs.getLon(context)
         if (lat == 0.0 && lon == 0.0) return
 
-        val np = PrayerTimesCalculator.computeNext(lat, lon) ?: return
+        val np = PrayerTimesCalculator.computeNext(lat, lon, calcParams) ?: return
         if (np.timeMillis <= 0) return
 
         AppPrefs.saveNextPrayer(context, np.nameFa, np.timeMillis)
@@ -35,8 +46,24 @@ object PrayerScheduler : AlarmScheduler {
 
         scheduleAlarm(context, np.timeMillis)
 
-        // نوتیفیکیشن نماز بعدی
-        PrayerNotification.showOrUpdate(context, true)
+        // نوتیفیکیشن نماز بعدی — فقط اگر اعلان نماز فعال باشد
+        if (notif) {
+            PrayerNotification.showOrUpdate(context, true)
+        }
+    }
+
+    private fun getCalculationParameters(context: Context): CalculationParameters {
+        val methodString = AppPrefs.getCalculationMethod(context)
+        val method: CalculationMethod = when (methodString) {
+            "MUSLIM_WORLD_LEAGUE" -> CalculationMethod.MUSLIM_WORLD_LEAGUE
+            "EGYPTIAN" -> CalculationMethod.EGYPTIAN
+            "KARACHI" -> CalculationMethod.KARACHI
+            "UMM_AL_QURA" -> CalculationMethod.UMM_AL_QURA
+            "DUBAI" -> CalculationMethod.DUBAI
+            "MOON_SIGHTING_COMMITTEE" -> CalculationMethod.MOON_SIGHTING_COMMITTEE
+            else -> CalculationMethod.KARACHI
+        }
+        return method.parameters
     }
 
     private fun scheduleAlarm(context: Context, triggerAtMillis: Long) {

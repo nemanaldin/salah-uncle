@@ -13,6 +13,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
@@ -23,7 +24,11 @@ import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.androidhive.myapplication.R
+import com.androidhive.myapplication.compass.Compass
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
@@ -45,6 +50,10 @@ class CompassActivity : AppCompatActivity() {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Enable edge-to-edge for API 30+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_compass)
 
@@ -65,6 +74,23 @@ class CompassActivity : AppCompatActivity() {
         setupCompass()
 
         Toast.makeText(this, "برای دریافت مختصات، روی آیکون GPS بالا سمت راست ضربه بزنید.", Toast.LENGTH_LONG).show()
+
+        // Handle window insets for edge-to-edge
+        ViewCompat.setOnApplyWindowInsetsListener(text_atas) { v, insets ->
+            val topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+            val params = v.layoutParams as? ViewGroup.MarginLayoutParams
+            params?.topMargin = topInset + 40
+            v.layoutParams = params!!
+            insets
+        }
+
+        ViewCompat.setOnApplyWindowInsetsListener(text_bawah) { v, insets ->
+            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            val params = v.layoutParams as? ViewGroup.MarginLayoutParams
+            params?.bottomMargin = bottomInset + 40
+            v.layoutParams = params!!
+            insets
+        }
     }
 
     override fun onStart() {

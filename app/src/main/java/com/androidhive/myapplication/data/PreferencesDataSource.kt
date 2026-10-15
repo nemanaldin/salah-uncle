@@ -8,6 +8,7 @@ interface PreferencesDataSource {
     fun getLat(context: Context): Double
     fun getLon(context: Context): Double
     fun clearAll(context: Context)
+    fun clearLocation(context: Context)
 
     // Next Prayer
     fun saveNextPrayer(context: Context, nameFa: String, timeMillis: Long)

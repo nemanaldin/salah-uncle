@@ -28,7 +28,8 @@
         android:icon="@drawable/untitled"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:enableOnBackInvokedCallback="true">
 
         <activity android:name=".source_activities.VuzuActivity" />
         <activity android:name=".source_activities.GhoslActivity" />

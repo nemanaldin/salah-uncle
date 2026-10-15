@@ -61,6 +61,13 @@ object AppPrefs : PreferencesDataSource {
         }
     }
 
+    override fun clearLocation(c: Context) {
+        p(c).edit()
+            .putLong(KEY_LAST_LAT, 0L)
+            .putLong(KEY_LAST_LON, 0L)
+            .apply()
+    }
+
     override fun clearAll(c: Context) {
         p(c).edit().clear().apply()
     }
