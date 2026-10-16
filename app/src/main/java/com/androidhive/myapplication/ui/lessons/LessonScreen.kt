@@ -39,21 +39,21 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
     onComplete: (String, String) -> Unit, onBack: () -> Unit, onError: (Int) -> Unit) {
     val variant = lesson.variant(settings.school, settings.language)
     if (variant == null) { PageColumn { InfoCard(stringResource(R.string.ui_school_unavailable)) }; return }
-    var index by rememberSaveable(lesson.id) { mutableIntStateOf(
+    var index by rememberSaveable(lesson.id, settings.school) { mutableIntStateOf(
         if (settings.lastLessonId == lesson.id) variant.steps.indexOfFirst { it.id == settings.lastStepId }.coerceAtLeast(0) else 0) }
-    var finished by rememberSaveable(lesson.id) { mutableStateOf(false) }
+    var finished by rememberSaveable(lesson.id, settings.school) { mutableStateOf(false) }
     val step = variant.steps[index.coerceIn(variant.steps.indices)]
     val context = LocalContext.current
     val lifecycle = LocalLifecycleOwner.current
     val currentError by rememberUpdatedState(onError)
-    val audio = remember(lesson.id) { LessonAudioController(context) { currentError(R.string.ui_error_audio) } }
+    val audio = remember(lesson.id, variant.language) { LessonAudioController(context) { currentError(R.string.ui_error_audio) } }
     val playback by audio.state.collectAsStateWithLifecycle()
     DisposableEffect(audio, lifecycle) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_STOP) audio.stop() }
         lifecycle.lifecycle.addObserver(observer)
         onDispose { lifecycle.lifecycle.removeObserver(observer); audio.release() }
     }
-    LaunchedEffect(step.id) { audio.stop(); onRead(lesson.id, step.id) }
+    LaunchedEffect(step.id, variant.language) { audio.stop(); onRead(lesson.id, step.id) }
     val externalError = { onError(R.string.ui_error_external_app) }
     val shareLabel = stringResource(R.string.ui_share_lesson)
 
@@ -78,7 +78,8 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                 }
             }
             LinearProgressIndicator(progress = { (index + 1f) / variant.steps.size }, modifier = Modifier.fillMaxWidth())
-            if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_persian_content))
+            if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
+                AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
             if (step.illustrations.isNotEmpty()) AppCard {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
@@ -112,7 +113,10 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                 Text(stringResource(if (index == variant.steps.lastIndex) R.string.ui_finish_lesson else R.string.ui_next_step))
             }
             if (index > 0) OutlinedButton({ index-- }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_previous_step)) }
-            TextButton({ openUrl(context, lesson.source, externalError) }) { Text(stringResource(R.string.ui_lesson_source)) }
+            if (variant.sources.isEmpty()) TextButton({ openUrl(context, lesson.source, externalError) }) { Text(stringResource(R.string.ui_lesson_source)) }
+            else variant.sources.forEach { source ->
+                TextButton({ openUrl(context, source.url, externalError) }) { Text(source.title) }
+            }
         }
     }
 }

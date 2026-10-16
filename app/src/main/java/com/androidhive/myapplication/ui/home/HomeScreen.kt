@@ -54,7 +54,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             }
         }
         SectionTitle(stringResource(R.string.ui_continue_learning))
-        AppCard(onClick = { if (last != null) onLesson(last.id) else onLesson("prayer-basics") }) {
+        AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(last?.id ?: settings.school.guideId) }) {
             Text(last?.title(settings.language) ?: stringResource(R.string.ui_start_learning), style = MaterialTheme.typography.titleLarge)
             if (last != null) {
                 val steps = last.variant(settings.school, settings.language)?.steps.orEmpty()

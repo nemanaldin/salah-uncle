@@ -16,13 +16,12 @@
     <string name="ui_welcome_body">قدم‌به‌قدم یاد بگیر، اوقات نماز را ببین و با آرامش تمرین کن.</string>
     <string name="ui_choose_language">زبان برنامه</string>
     <string name="ui_choose_school">مذهب آموزش</string>
-    <string name="ui_school_note">آموزش فعلی بر پایهٔ محتوای حنفی نسخهٔ پیشین است. محتوای مذاهب دیگر بعد از بازبینی اضافه می‌شود.</string>
+    <string name="ui_school_note">حنفی، شافعی، مالکی یا حنبلی را انتخاب کن. هر راهنما منابع مستقل خود را دارد.</string>
     <string name="ui_start">شروع کنیم</string>
     <string name="ui_school_hanafi">حنفی</string>
     <string name="ui_school_shafii">شافعی</string>
     <string name="ui_school_maliki">مالکی</string>
     <string name="ui_school_hanbali">حنبلی</string>
-    <string name="ui_school_jafari">جعفری</string>
     <string name="ui_coming_soon">به‌زودی</string>
     <string name="ui_persian">فارسی</string>
     <string name="ui_english">انگلیسی</string>
@@ -68,7 +67,7 @@
     <string name="ui_empty_lessons">درسی با این جست‌وجو پیدا نشد.</string>
     <string name="ui_empty_bookmarks">هنوز درسی نشان نکرده‌ای.</string>
     <string name="ui_persian_content">متن این درس فارسی است؛ زبان رابط برنامه جداگانه قابل انتخاب است.</string>
-    <string name="ui_lesson_source">منابع محتوای نسخهٔ پیشین</string>
+    <string name="ui_lesson_source">منابع درس</string>
     <string name="ui_previous_step">مرحلهٔ قبل</string>
     <string name="ui_next_step">تکمیل و ادامه</string>
     <string name="ui_finish_lesson">تکمیل درس</string>
@@ -119,7 +118,7 @@
     <string name="ui_asr_convention">شیوهٔ محاسبهٔ عصر</string>
     <string name="ui_asr_hanafi">حنفی؛ سایهٔ دوبرابر</string>
     <string name="ui_asr_standard">سایهٔ یک‌برابر</string>
-    <string name="ui_calculation_note">مذهب آموزش با روش منطقه‌ای محاسبهٔ اوقات متفاوت است. زمان محاسبه‌شده را با مرجع معتبر محل خود تطبیق بده.</string>
+    <string name="ui_calculation_note">انتخاب مذهب، محاسبهٔ عصر را تنظیم می‌کند. روش فجر و عشا منطقه‌ای است؛ اوقات را با تقویم معتبر محلی مقایسه کن.</string>
     <string name="ui_exact_alarm">دسترسی به آلارم دقیق</string>
     <string name="ui_exact_enabled">زمان‌بندی دقیق فعال است.</string>
     <string name="ui_exact_missing">زمان‌بندی ممکن است با تأخیر انجام شود. برای اذان دقیق، دسترسی آلارم دقیق را فعال کن.</string>
@@ -142,8 +141,8 @@
     <string name="ui_notification_time">ساعت %1$s · %2$s</string>
     <string name="ui_hide_notification">پنهان‌کردن</string>
     <string name="ui_about">درباره و منابع</string>
-    <string name="ui_about_body">آموزش آفلاین نماز با حفظ محتوای نسخهٔ پیشین برنامه. محتوای آموزشی فعلی فارسی و حنفی است.</string>
-    <string name="ui_source_label">منبع محتوای نسخهٔ پیشین</string>
+    <string name="ui_about_body">آموزش آفلاین نماز چهار مذهب به ده زبان، همراه با حفظ درس‌های قدیمی حنفی فارسی و منابع مستقل هر راهنمای جدید.</string>
+    <string name="ui_source_label">منابع درس‌ها</string>
     <string name="ui_contact">تماس با سازنده</string>
     <string name="ui_rate">صفحهٔ برنامه در بازار</string>
     <string name="ui_share_app">معرفی برنامه</string>
@@ -157,10 +156,12 @@
     <string name="ui_error_external_app">برنامه‌ای برای بازکردن این مورد پیدا نشد.</string>
     <string name="ui_saved">ذخیره شد</string>
     <string name="ui_permission_explanation">برای اعلان نماز اجازهٔ نمایش اعلان لازم است.</string>
-    <string name="ui_school_unavailable">آموزش این مذهب هنوز اضافه نشده است.</string>
+    <string name="ui_school_unavailable">این درس برای مذهب انتخاب‌شده موجود نیست.</string>
     <string name="ui_notification_preview">این پخش فقط برای آزمایش است و تنظیم اذان خودکار را تغییر نمی‌دهد.</string>
     <string name="ui_completed_badge">تکمیل‌شده</string>
     <string name="ui_choose">انتخاب</string>
     <string name="ui_clear_search">پاک‌کردن جست‌وجو</string>
     <string name="ui_resume_step">ادامه از مرحلهٔ %1$d</string>
+    <string name="ui_content_language">زبان این درس %1$s است. زبان رابط مستقل تنظیم می‌شود.</string>
+    <string name="ui_calc_singapore">سنگاپور؛ فجر ۲۰°، عشا ۱۸°</string>
 </resources>

@@ -10,8 +10,8 @@ android {
         applicationId 'com.androidhive.myapplication'
         minSdk 21
         targetSdk 36
-        versionCode 10
-        versionName '2.3.0'
+        versionCode 11
+        versionName '2.4.0'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
@@ -31,7 +31,7 @@ android {
         }
     }
     packaging { resources.excludes += ['/META-INF/{AL2.0,LGPL2.1}'] }
-    // Both interface languages remain available offline when users install an app bundle.
+    // Every supported language remains available offline when users install an app bundle.
     bundle { language { enableSplit = false } }
 }
 

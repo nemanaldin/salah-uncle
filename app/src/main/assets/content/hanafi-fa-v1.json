@@ -67,7 +67,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "شیوهٔ نماز خواندن",
+        "en": "How to pray",
+        "ar": "كيفية الصلاة",
+        "tr": "Namaz nasıl kılınır",
+        "ur": "نماز کا طریقہ",
+        "id": "Cara salat",
+        "bn": "নামাজের পদ্ধতি",
+        "ms": "Cara solat",
+        "ps": "د لمانځه طریقه",
+        "fr": "Comment prier"
+      }
     },
     {
       "id": "wudu",
@@ -166,7 +178,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "وضو",
+        "en": "Wudu",
+        "ar": "الوضوء",
+        "tr": "Abdest",
+        "ur": "وضو",
+        "id": "Wudu",
+        "bn": "ওজু",
+        "ms": "Wuduk",
+        "ps": "اودس",
+        "fr": "Ablutions"
+      }
     },
     {
       "id": "ghusl",
@@ -187,7 +211,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "غسل",
+        "en": "Ghusl",
+        "ar": "الغسل",
+        "tr": "Gusül",
+        "ur": "غسل",
+        "id": "Mandi wajib",
+        "bn": "গোসল",
+        "ms": "Mandi wajib",
+        "ps": "غسل",
+        "fr": "Bain rituel"
+      }
     },
     {
       "id": "tayammum",
@@ -214,7 +250,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "تیمم",
+        "en": "Tayammum",
+        "ar": "التيمم",
+        "tr": "Teyemmüm",
+        "ur": "تیمم",
+        "id": "Tayamum",
+        "bn": "তায়াম্মুম",
+        "ms": "Tayamum",
+        "ps": "تیمم",
+        "fr": "Ablutions sèches"
+      }
     },
     {
       "id": "dhikr",
@@ -373,7 +421,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "اذکار و تسبیحات",
+        "en": "Dhikr and supplications",
+        "ar": "الأذكار والأدعية",
+        "tr": "Zikir ve dualar",
+        "ur": "اذکار اور دعائیں",
+        "id": "Zikir dan doa",
+        "bn": "জিকির ও দোয়া",
+        "ms": "Zikir dan doa",
+        "ps": "ذکرونه او دعاوې",
+        "fr": "Invocations et évocations"
+      }
     },
     {
       "id": "funeral",
@@ -454,7 +514,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز میت",
+        "en": "Funeral prayer",
+        "ar": "صلاة الجنازة",
+        "tr": "Cenaze namazı",
+        "ur": "نمازِ جنازہ",
+        "id": "Salat jenazah",
+        "bn": "জানাজার নামাজ",
+        "ms": "Solat jenazah",
+        "ps": "د جنازې لمونځ",
+        "fr": "Prière funéraire"
+      }
     },
     {
       "id": "sajdah-sahw",
@@ -475,7 +547,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "سجدهٔ سهو",
+        "en": "Sujud al-sahw",
+        "ar": "سجود السهو",
+        "tr": "Sehiv secdesi",
+        "ur": "سجدۂ سہو",
+        "id": "Sujud sahwi",
+        "bn": "সাহু সিজদা",
+        "ms": "Sujud sahwi",
+        "ps": "د سهوې سجده",
+        "fr": "Prosternations de l’oubli"
+      }
     },
     {
       "id": "daily-prayers",
@@ -496,7 +580,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نمازهای یومیه",
+        "en": "Daily prayers",
+        "ar": "الصلوات اليومية",
+        "tr": "Günlük namazlar",
+        "ur": "روزانہ نمازیں",
+        "id": "Salat harian",
+        "bn": "দৈনিক নামাজ",
+        "ms": "Solat harian",
+        "ps": "ورځني لمونځونه",
+        "fr": "Prières quotidiennes"
+      }
     },
     {
       "id": "friday",
@@ -517,7 +613,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز جمعه",
+        "en": "Friday prayer",
+        "ar": "صلاة الجمعة",
+        "tr": "Cuma namazı",
+        "ur": "نمازِ جمعہ",
+        "id": "Salat Jumat",
+        "bn": "জুমার নামাজ",
+        "ms": "Solat Jumaat",
+        "ps": "د جمعې لمونځ",
+        "fr": "Prière du vendredi"
+      }
     },
     {
       "id": "congregation",
@@ -538,7 +646,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز جماعت",
+        "en": "Congregational prayer",
+        "ar": "صلاة الجماعة",
+        "tr": "Cemaatle namaz",
+        "ur": "نمازِ جماعت",
+        "id": "Salat berjamaah",
+        "bn": "জামাতে নামাজ",
+        "ms": "Solat berjemaah",
+        "ps": "د جماعت لمونځ",
+        "fr": "Prière collective"
+      }
     },
     {
       "id": "missed-prayers",
@@ -559,7 +679,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز قضا",
+        "en": "Making up missed prayers",
+        "ar": "قضاء الصلوات",
+        "tr": "Kaza namazı",
+        "ur": "قضا نمازیں",
+        "id": "Mengganti salat terlewat",
+        "bn": "কাজা নামাজ",
+        "ms": "Mengqada solat",
+        "ps": "قضایي لمونځونه",
+        "fr": "Rattraper les prières"
+      }
     },
     {
       "id": "eid",
@@ -580,7 +712,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز عید",
+        "en": "Eid prayer",
+        "ar": "صلاة العيد",
+        "tr": "Bayram namazı",
+        "ur": "نمازِ عید",
+        "id": "Salat Id",
+        "bn": "ঈদের নামাজ",
+        "ms": "Solat hari raya",
+        "ps": "د اختر لمونځ",
+        "fr": "Prière de l’Aïd"
+      }
     },
     {
       "id": "travel",
@@ -601,7 +745,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز مسافر",
+        "en": "Prayer while travelling",
+        "ar": "صلاة المسافر",
+        "tr": "Yolculukta namaz",
+        "ur": "مسافر کی نماز",
+        "id": "Salat saat bepergian",
+        "bn": "সফরে নামাজ",
+        "ms": "Solat musafir",
+        "ps": "د مسافر لمونځ",
+        "fr": "Prière en voyage"
+      }
     },
     {
       "id": "signs",
@@ -622,7 +778,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز آیات",
+        "en": "Prayer of signs",
+        "ar": "صلاة الآيات",
+        "tr": "Âyetler namazı",
+        "ur": "نمازِ آیات",
+        "id": "Salat tanda kebesaran Allah",
+        "bn": "আয়াতের নামাজ",
+        "ms": "Solat tanda kebesaran Allah",
+        "ps": "د آیتونو لمونځ",
+        "fr": "Prière des signes"
+      }
     },
     {
       "id": "night-prayer",
@@ -643,7 +811,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز تهجد",
+        "en": "Tahajjud",
+        "ar": "صلاة التهجد",
+        "tr": "Teheccüd",
+        "ur": "نمازِ تہجد",
+        "id": "Tahajud",
+        "bn": "তাহাজ্জুদ",
+        "ms": "Tahajud",
+        "ps": "د تهجد لمونځ",
+        "fr": "Prière de nuit"
+      }
     },
     {
       "id": "qadr",
@@ -664,7 +844,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز قدر",
+        "en": "Laylat al-Qadr",
+        "ar": "ليلة القدر",
+        "tr": "Kadir gecesi",
+        "ur": "لیلۃ القدر",
+        "id": "Lailatulqadar",
+        "bn": "লাইলাতুল কদর",
+        "ms": "Lailatulqadar",
+        "ps": "د قدر شپه",
+        "fr": "Nuit du Destin"
+      }
     },
     {
       "id": "ishraq",
@@ -685,7 +877,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز اشراق",
+        "en": "Ishraq",
+        "ar": "صلاة الإشراق",
+        "tr": "İşrak namazı",
+        "ur": "نمازِ اشراق",
+        "id": "Salat Isyraq",
+        "bn": "ইশরাকের নামাজ",
+        "ms": "Solat Isyraq",
+        "ps": "د اشراق لمونځ",
+        "fr": "Prière d’Ishraq"
+      }
     },
     {
       "id": "awwabin",
@@ -706,7 +910,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز اوابین",
+        "en": "Awwabin",
+        "ar": "صلاة الأوابين",
+        "tr": "Evvâbîn namazı",
+        "ur": "نمازِ اوابین",
+        "id": "Salat Awwabin",
+        "bn": "আওয়াবিনের নামাজ",
+        "ms": "Solat Awwabin",
+        "ps": "د اوابین لمونځ",
+        "fr": "Prière des Awwabin"
+      }
     },
     {
       "id": "tasbih-prayer",
@@ -727,7 +943,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز تسبیح",
+        "en": "Tasbih prayer",
+        "ar": "صلاة التسبيح",
+        "tr": "Tesbih namazı",
+        "ur": "نمازِ تسبیح",
+        "id": "Salat Tasbih",
+        "bn": "তাসবিহের নামাজ",
+        "ms": "Solat Tasbih",
+        "ps": "د تسبیح لمونځ",
+        "fr": "Prière du Tasbih"
+      }
     },
     {
       "id": "tarawih",
@@ -748,7 +976,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "نماز تراویح",
+        "en": "Tarawih",
+        "ar": "صلاة التراويح",
+        "tr": "Teravih",
+        "ur": "نمازِ تراویح",
+        "id": "Tarawih",
+        "bn": "তারাবিহ",
+        "ms": "Tarawih",
+        "ps": "د تراویحو لمونځ",
+        "fr": "Tarawih"
+      }
     },
     {
       "id": "greeting-mosque",
@@ -769,7 +1009,19 @@
             }
           ]
         }
-      ]
+      ],
+      "titles": {
+        "fa": "تحیت مسجد",
+        "en": "Greeting the mosque",
+        "ar": "تحية المسجد",
+        "tr": "Tahiyyetü’l-mescid",
+        "ur": "تحیۃ المسجد",
+        "id": "Tahiyatulmasjid",
+        "bn": "তাহিয়্যাতুল মসজিদ",
+        "ms": "Tahiyatulmasjid",
+        "ps": "تحیة المسجد",
+        "fr": "Salutation de la mosquée"
+      }
     }
   ]
 }

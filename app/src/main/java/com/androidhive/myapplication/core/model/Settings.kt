@@ -4,13 +4,19 @@ import com.batoulapps.adhan.CalculationMethod
 import com.batoulapps.adhan.Madhab
 import java.time.ZoneId
 
-enum class AppLanguage(val tag: String) { PERSIAN("fa"), ENGLISH("en") }
+enum class AppLanguage(val tag: String, val nativeName: String, val isRtl: Boolean = false) {
+    PERSIAN("fa", "فارسی", true), ENGLISH("en", "English"), ARABIC("ar", "العربية", true),
+    TURKISH("tr", "Türkçe"), URDU("ur", "اردو", true), INDONESIAN("id", "Bahasa Indonesia"),
+    BENGALI("bn", "বাংলা"), MALAY("ms", "Bahasa Melayu"), PASHTO("ps", "پښتو", true), FRENCH("fr", "Français")
+}
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 enum class AlertMode { OFF, NOTIFICATION, ADHAN }
 enum class AsrConvention(val madhab: Madhab) { HANAFI(Madhab.HANAFI), STANDARD(Madhab.SHAFI) }
 
-enum class School(val contentAvailable: Boolean) {
-    HANAFI(true), SHAFII(false), MALIKI(false), HANBALI(false), JAFARI(false)
+enum class School(val contentAvailable: Boolean = true) {
+    HANAFI, SHAFII, MALIKI, HANBALI;
+    val defaultAsr get() = if (this == HANAFI) AsrConvention.HANAFI else AsrConvention.STANDARD
+    val guideId get() = "prayer-${name.lowercase(java.util.Locale.ROOT)}"
 }
 
 /** Stable IDs are persisted; presentation order never determines a calculation method. */
@@ -21,7 +27,8 @@ enum class CalculationPreset(val method: CalculationMethod) {
     UMM_AL_QURA(CalculationMethod.UMM_AL_QURA),
     DUBAI(CalculationMethod.DUBAI),
     MOON_SIGHTING_COMMITTEE(CalculationMethod.MOON_SIGHTING_COMMITTEE),
-    NORTH_AMERICA(CalculationMethod.NORTH_AMERICA);
+    NORTH_AMERICA(CalculationMethod.NORTH_AMERICA),
+    SINGAPORE(CalculationMethod.SINGAPORE);
 
     fun parameters(asr: AsrConvention) = method.parameters.apply { madhab = asr.madhab }
 }
@@ -58,7 +65,7 @@ data class AppSettings(
     val reduceMotion: Boolean = false,
     val location: SavedLocation? = null,
     val calculationPreset: CalculationPreset = CalculationPreset.KARACHI,
-    val asrConvention: AsrConvention = AsrConvention.HANAFI,
+    val asrConvention: AsrConvention = school.defaultAsr,
     val alertMode: AlertMode = AlertMode.OFF,
     val prayerAlerts: Map<PrayerId, AlertMode> = emptyMap(),
     val bookmarks: Set<String> = emptySet(),
@@ -67,6 +74,10 @@ data class AppSettings(
     val lastStepId: String? = null,
     val hiddenNotificationUntil: Long = 0L,
 ) {
+    fun withSchool(value: School): AppSettings = copy(
+        school = value, asrConvention = value.defaultAsr,
+        hiddenNotificationUntil = 0L,
+    )
     fun alertFor(prayer: PrayerId): AlertMode = when {
         !prayer.canAlert || alertMode == AlertMode.OFF -> AlertMode.OFF
         else -> prayerAlerts[prayer] ?: alertMode

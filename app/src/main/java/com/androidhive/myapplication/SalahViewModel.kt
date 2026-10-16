@@ -94,7 +94,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
     }
     fun completeOnboarding(language: AppLanguage, school: School) {
         if (!school.contentAvailable) { message(R.string.ui_school_unavailable); return }
-        update { it.copy(language = language, school = school, onboardingComplete = true) }
+        update { it.withSchool(school).copy(language = language, onboardingComplete = true) }
     }
     fun selectCity(id: String) {
         val city = content.value.cities.firstOrNull { it.id == id } ?: return

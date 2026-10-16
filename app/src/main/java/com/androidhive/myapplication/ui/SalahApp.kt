@@ -21,6 +21,8 @@ import com.androidhive.myapplication.*
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AlertMode
+import com.androidhive.myapplication.core.model.School
+import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.platform.openExternal
 import com.androidhive.myapplication.platform.openUrl
 import com.androidhive.myapplication.platform.shareText
@@ -61,6 +63,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         Scaffold(snackbarHost = { SnackbarHost(snackbar) }) { padding ->
             Box(Modifier.padding(padding)) {
                 OnboardingScreen(settings, { language -> model.update { it.copy(language = language) } },
+                    { school -> model.update { it.withSchool(school) } },
                     { model.completeOnboarding(settings.language, settings.school) })
             }
         }
@@ -123,14 +126,14 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
                     composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }) }
                     composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent) }
-                    composable("tools") { ToolsScreen(navigate) }
+                    composable("tools") { ToolsScreen(settings.school, navigate) }
                     composable("settings") { SettingsScreen(state, model::update, { mode ->
                         model.update { it.copy(alertMode = mode) }
                         if (mode != AlertMode.OFF) actions.notifications()
                     }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message) }
                     composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }) }
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
-                    composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/prayer-basics") }, model::message) }
+                    composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message) }
                     composable("lesson/{id}") { entry ->
                         val lesson = state.content.lessons.firstOrNull { it.id == entry.arguments?.getString("id") }
                         if (lesson != null) LessonScreen(lesson, settings, model::recordReading, model::completeStep,
@@ -143,7 +146,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                             }
                         }
                     }
-                    composable("about") { AboutScreen(model::message) }
+                    composable("about") { AboutScreen(state.content.lessons, settings.school, model::message) }
                 }
             }
         }
@@ -151,16 +154,18 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
 }
 
 @Composable
-private fun ToolsScreen(navigate: (String) -> Unit) {
+private fun ToolsScreen(school: School, navigate: (String) -> Unit) {
     PageColumn {
-        listOf("times" to R.string.ui_prayer_times, "qibla" to R.string.ui_qibla, "lesson/dhikr" to R.string.ui_remembrance, "training" to R.string.ui_training).forEach { (route, label) ->
+        val guide = if (school == School.HANAFI) "lesson/dhikr" to R.string.ui_remembrance
+            else "lesson/${school.guideId}" to R.string.ui_open_prayer_guide
+        listOf("times" to R.string.ui_prayer_times, "qibla" to R.string.ui_qibla, guide, "training" to R.string.ui_training).forEach { (route, label) ->
             AppCard(modifier = Modifier.testTag("tool_${route.replace('/', '_')}"), onClick = { navigate(route) }) { SectionTitle(stringResource(label)) }
         }
     }
 }
 
 @Composable
-private fun AboutScreen(onError: (Int) -> Unit) {
+private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) -> Unit) {
     val context = LocalContext.current
     val error = { onError(R.string.ui_error_external_app) }
     val shareLabel = stringResource(R.string.ui_share_app)
@@ -170,7 +175,10 @@ private fun AboutScreen(onError: (Int) -> Unit) {
             SupportingText(stringResource(R.string.ui_about_body))
             SupportingText(stringResource(R.string.ui_version, BuildConfig.VERSION_NAME))
         }
-        OutlinedButton({ openUrl(context, "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41", error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_source_label)) }
+        val sources = lessons.mapNotNull { it.variant(school) }.flatMap { it.sources }.distinctBy { it.url }
+        sources.forEach { source ->
+            OutlinedButton({ openUrl(context, source.url, error) }, Modifier.fillMaxWidth()) { Text(source.title) }
+        }
         OutlinedButton({ openExternal(context, android.content.Intent(android.content.Intent.ACTION_SENDTO, android.net.Uri.parse("mailto:moeinarazi53@gmail.com")), error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_contact)) }
         OutlinedButton({ openUrl(context, "https://cafebazaar.ir/app/${context.packageName}", error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_rate)) }
         OutlinedButton({ shareText(context, "https://cafebazaar.ir/app/${context.packageName}", shareLabel, error) }, Modifier.fillMaxWidth()) { Text(shareLabel) }

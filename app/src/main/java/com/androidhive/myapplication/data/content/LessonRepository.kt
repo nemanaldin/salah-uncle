@@ -10,12 +10,13 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 data class LessonStep(val id: String, val body: String, val audio: String?, val illustrations: List<String>)
-data class LessonVariant(val school: School, val language: String, val steps: List<LessonStep>)
+data class LessonSource(val title: String, val url: String)
+data class LessonVariant(val school: School, val language: String, val steps: List<LessonStep>, val sources: List<LessonSource> = emptyList())
 data class Lesson(
     val id: String, val titleFa: String, val titleEn: String, val category: String,
-    val source: String, val variants: List<LessonVariant>,
+    val source: String, val variants: List<LessonVariant>, val titles: Map<String, String> = emptyMap(),
 ) {
-    fun title(language: AppLanguage) = if (language == AppLanguage.PERSIAN) titleFa else titleEn
+    fun title(language: AppLanguage) = titles[language.tag] ?: if (language == AppLanguage.PERSIAN) titleFa else titleEn
     // Content language is explicit; a different school's content is never used as a fallback.
     fun variant(school: School, language: AppLanguage? = null): LessonVariant? =
         variants.firstOrNull { it.school == school && it.language == language?.tag }
@@ -32,7 +33,12 @@ class LessonRepository(context: Context) {
 
     suspend fun load(): List<Lesson> = withContext(Dispatchers.IO) {
         mutex.withLock {
-            cached ?: parse(assets.open("content/hanafi-fa-v1.json").bufferedReader().use { it.readText() }).also { cached = it }
+            cached ?: assets.list("content").orEmpty().filter { it.endsWith(".json") }.sorted().flatMap { file ->
+                parse(assets.open("content/$file").bufferedReader().use { it.readText() })
+            }.also { lessons ->
+                require(lessons.map { it.id }.distinct().size == lessons.size)
+                cached = lessons
+            }
         }
     }
 
@@ -67,8 +73,14 @@ class LessonRepository(context: Context) {
                             val images = step.getJSONArray("illustrations")
                             LessonStep(step.getString("id"), step.getString("body"), step.optString("audio").takeIf { it.isNotBlank() },
                                 (0 until images.length()).map(images::getString))
-                        }.also { parsed -> require(parsed.isNotEmpty() && parsed.map { it.id }.distinct().size == parsed.size) })
-                })
+                        }.also { parsed -> require(parsed.isNotEmpty() && parsed.map { it.id }.distinct().size == parsed.size) },
+                        variant.optJSONArray("sources")?.let { sources ->
+                            (0 until sources.length()).map { sourceIndex ->
+                                val source = sources.getJSONObject(sourceIndex)
+                                LessonSource(source.getString("title"), source.getString("url"))
+                            }
+                        }.orEmpty())
+                }, item.optJSONObject("titles")?.let { titles -> titles.keys().asSequence().associateWith { titles.getString(it) } }.orEmpty())
         }
         require(lessons.map { it.id }.distinct().size == lessons.size)
         return lessons

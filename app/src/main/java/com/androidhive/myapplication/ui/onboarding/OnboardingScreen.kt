@@ -14,7 +14,7 @@ import com.androidhive.myapplication.ui.components.*
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, onFinish: () -> Unit) {
+fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, onSchool: (School) -> Unit, onFinish: () -> Unit) {
     PageColumn {
         Spacer(Modifier.height(20.dp))
         Text(stringResource(R.string.ui_welcome), style = MaterialTheme.typography.headlineLarge)
@@ -24,7 +24,7 @@ fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, o
             FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 AppLanguage.entries.forEach { language ->
                     FilterChip(selected = language == settings.language, onClick = { onLanguage(language) },
-                        label = { Text(if (language == AppLanguage.PERSIAN) "فارسی" else "English") },
+                        label = { Text(language.nativeName) },
                         modifier = Modifier.testTag("language_${language.tag}"))
                 }
             }
@@ -33,8 +33,8 @@ fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, o
             SectionTitle(stringResource(R.string.ui_choose_school))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 School.entries.forEach { school ->
-                    FilterChip(school == settings.school, onClick = {}, enabled = school.contentAvailable,
-                        label = { Text(stringResource(school.labelRes())) })
+                    FilterChip(school == settings.school, onClick = { onSchool(school) }, enabled = school.contentAvailable,
+                        label = { Text(stringResource(school.labelRes())) }, modifier = Modifier.testTag("school_${school.name}"))
                 }
             }
             SupportingText(stringResource(R.string.ui_school_note))

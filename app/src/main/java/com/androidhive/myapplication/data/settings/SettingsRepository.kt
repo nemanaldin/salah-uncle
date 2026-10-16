@@ -68,6 +68,7 @@ class SettingsRepository(context: Context) {
 
     companion object {
         private fun decode(p: Preferences): AppSettings {
+            val school = enumOrDefault(p[Keys.school], School.HANAFI)
             val location = if (p[Keys.lat] == null || p[Keys.lon] == null) null else runCatching {
                 SavedLocation(p[Keys.lat]!!, p[Keys.lon]!!, p[Keys.label].orEmpty(), p[Keys.zone] ?: ZoneId.systemDefault().id,
                     enumOrDefault(p[Keys.mode], LocationMode.MANUAL), p[Keys.cityId])
@@ -78,14 +79,14 @@ class SettingsRepository(context: Context) {
             }.toMap()
             return AppSettings(
                 language = enumOrDefault(p[Keys.language], AppLanguage.PERSIAN),
-                school = enumOrDefault(p[Keys.school], School.HANAFI),
+                school = school,
                 onboardingComplete = p[Keys.onboarded] ?: false,
                 theme = enumOrDefault(p[Keys.theme], ThemeMode.SYSTEM),
                 textScale = (p[Keys.scale] ?: 1f).coerceIn(.85f, 1.5f),
                 reduceMotion = p[Keys.reduceMotion] ?: false,
                 location = location,
                 calculationPreset = enumOrDefault(p[Keys.preset], CalculationPreset.KARACHI),
-                asrConvention = enumOrDefault(p[Keys.asr], AsrConvention.HANAFI),
+                asrConvention = enumOrDefault(p[Keys.asr], school.defaultAsr),
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
                 prayerAlerts = overrides, bookmarks = p[Keys.bookmarks].orEmpty(), completedSteps = p[Keys.completed].orEmpty(),
                 lastLessonId = p[Keys.lastLesson], lastStepId = p[Keys.lastStep], hiddenNotificationUntil = p[Keys.hidden] ?: 0L,

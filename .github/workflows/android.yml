@@ -32,7 +32,9 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
       - name: Build and verify
-        run: ./gradlew --no-daemon --console=plain --max-workers=3 :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleRelease :app:assembleDebugAndroidTest
+        run: |
+          python3 scripts/verify_content.py
+          ./gradlew --no-daemon --console=plain --max-workers=3 :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleRelease :app:assembleDebugAndroidTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -72,7 +74,7 @@ jobs:
           arch: x86_64
           target: default
           disable-animations: true
-          script: ./gradlew --no-daemon --console=plain --max-workers=3 :app:connectedDebugAndroidTest
+          script: bash .github/scripts/run-device-tests.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -81,3 +83,4 @@ jobs:
           path: |
             app/build/reports/androidTests/
             app/build/outputs/androidTest-results/
+            app/build/qa-screenshots/

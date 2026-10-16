@@ -30,7 +30,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         state.content.lessons.filter { lesson ->
             lesson.variant(settings.school) != null &&
                 (category == "all" || category == lesson.category || category == "saved" && lesson.id in settings.bookmarks) &&
-                (query.isBlank() || lesson.titleFa.contains(query, true) || lesson.titleEn.contains(query, true))
+                (query.isBlank() || lesson.title(settings.language).contains(query, true) || lesson.titleFa.contains(query, true) || lesson.titleEn.contains(query, true))
         }
     }
     LazyColumn(Modifier.fillMaxSize().testTag("lesson_list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -53,11 +53,11 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         items(filtered, key = { it.id }) { lesson ->
             val steps = lesson.variant(settings.school, settings.language)?.steps.orEmpty()
             val completed = steps.count { "${lesson.id}:${it.id}" in settings.completedSteps }
-            AppCard(onClick = { onLesson(lesson.id) }) {
+            AppCard(modifier = Modifier.testTag("lesson_${lesson.id}"), onClick = { onLesson(lesson.id) }) {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Text(lesson.title(settings.language), Modifier.weight(1f).padding(top = 8.dp), style = MaterialTheme.typography.titleLarge)
                     val saved = lesson.id in settings.bookmarks
-                    IconButton({ onBookmark(lesson.id) }) {
+                    IconButton({ onBookmark(lesson.id) }, Modifier.testTag("bookmark_${lesson.id}")) {
                         Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),
                             tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
                     }

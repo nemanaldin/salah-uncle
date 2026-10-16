@@ -2,6 +2,9 @@ package com.androidhive.myapplication
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.test.filters.SdkSuppress
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.androidhive.myapplication.core.model.*
 import kotlinx.coroutines.runBlocking
@@ -9,6 +12,7 @@ import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.io.File
 
 @RunWith(AndroidJUnit4::class)
 class SalahFlowTest {
@@ -30,6 +34,57 @@ class SalahFlowTest {
         assertEquals(AlertMode.OFF, runBlocking { repository.snapshot() }.alertMode)
     }
 
+    @Test fun onboardingOffersExactlyTheFourRequestedSchoolsAndSetsAsr() {
+        runBlocking { repository.update { AppSettings() } }
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("onboarding_start").fetchSemanticsNodes().isNotEmpty() }
+        School.entries.forEach { school ->
+            compose.onNodeWithTag("school_${school.name}").performScrollTo().performClick()
+            compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.school == school }
+            assertEquals(school.defaultAsr, runBlocking { repository.snapshot() }.asrConvention)
+        }
+        compose.onNodeWithTag("school_JAFARI").assertDoesNotExist()
+        compose.onNodeWithTag("onboarding_start").performScrollTo().performClick()
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("nav_home").fetchSemanticsNodes().isNotEmpty() }
+        assertEquals(School.HANBALI, runBlocking { repository.snapshot() }.school)
+    }
+
+    @Test fun choosingMalikiOpensMalikiGuideAndPreservesHanafiProgress() {
+        ready()
+        runBlocking { repository.update { it.copy(completedSteps = setOf("wudu:vuzu1"), bookmarks = setOf("wudu")) } }
+        compose.onNodeWithTag("nav_settings").performClick()
+        compose.onNodeWithTag("setting_school").performScrollTo().performClick()
+        compose.onNodeWithText(compose.activity.getString(R.string.ui_school_maliki)).performClick()
+        compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.school == School.MALIKI }
+        compose.onNodeWithTag("nav_home").performClick()
+        compose.onNodeWithTag("home_continue").performScrollTo().performClick()
+        compose.onNodeWithTag("lesson_reader").assertExists()
+        compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.lastLessonId == "prayer-maliki" }
+        val settings = runBlocking { repository.snapshot() }
+        assertEquals(AsrConvention.STANDARD, settings.asrConvention)
+        assertTrue("wudu:vuzu1" in settings.completedSteps)
+        assertTrue("wudu" in settings.bookmarks)
+    }
+
+    @SdkSuppress(minSdkVersion = 26)
+    @Test fun allTenLanguagesRenderHomeAndPreserveTheirLayoutDirection() {
+        ready()
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val screenshots = File(context.getExternalFilesDir(null) ?: context.cacheDir, "qa-screenshots").apply { mkdirs() }
+        AppLanguage.entries.forEach { language ->
+            runBlocking { repository.update { it.copy(language = language) } }
+            val localized = com.androidhive.myapplication.core.localizedContext(context, language)
+            val label = localized.getString(R.string.ui_start_learning)
+            compose.waitUntil(30_000) { compose.onAllNodesWithText(label).fetchSemanticsNodes().isNotEmpty() }
+            compose.runOnIdle {
+                assertEquals(if (language.isRtl) android.view.View.LAYOUT_DIRECTION_RTL else android.view.View.LAYOUT_DIRECTION_LTR,
+                    compose.activity.resources.configuration.layoutDirection)
+            }
+            File(screenshots, "home-${language.tag}.png").outputStream().use { stream ->
+                assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
+            }
+        }
+    }
+
     @Test fun dubaiSelectionPersistsDubaiRatherThanTheSpinnerPosition() {
         ready()
         compose.onNodeWithTag("nav_settings").performClick()
@@ -43,8 +98,9 @@ class SalahFlowTest {
         ready()
         compose.onNodeWithTag("nav_lessons").performClick()
         compose.onNodeWithTag("lesson_search").performTextInput("وضو")
-        compose.onNodeWithContentDescription(compose.activity.getString(R.string.ui_bookmark_add)).performClick()
-        compose.onNode(hasText("وضو") and !hasSetTextAction()).performClick()
+        compose.onNodeWithTag("lesson_list").performScrollToNode(hasTestTag("lesson_wudu"))
+        compose.onNodeWithTag("bookmark_wudu").performClick()
+        compose.onNodeWithTag("lesson_wudu").performClick()
         compose.onNodeWithTag("lesson_next").performScrollTo().performClick()
         compose.waitUntil(10_000) {
             val s = runBlocking { repository.snapshot() }

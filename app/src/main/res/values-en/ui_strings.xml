@@ -16,13 +16,12 @@
     <string name="ui_welcome_body">Learn step by step, keep track of prayer times and practise at your own pace.</string>
     <string name="ui_choose_language">App language</string>
     <string name="ui_choose_school">Teaching tradition</string>
-    <string name="ui_school_note">The current lessons retain the previous Hanafi content. Other traditions will be added after review.</string>
+    <string name="ui_school_note">Choose Hanafi, Shafii, Maliki or Hanbali. Each guide identifies its own sources.</string>
     <string name="ui_start">Get started</string>
     <string name="ui_school_hanafi">Hanafi</string>
     <string name="ui_school_shafii">Shafii</string>
     <string name="ui_school_maliki">Maliki</string>
     <string name="ui_school_hanbali">Hanbali</string>
-    <string name="ui_school_jafari">Jafari</string>
     <string name="ui_coming_soon">Coming soon</string>
     <string name="ui_persian">Persian</string>
     <string name="ui_english">English</string>
@@ -68,7 +67,7 @@
     <string name="ui_empty_lessons">No lessons match your search.</string>
     <string name="ui_empty_bookmarks">You have not saved any lessons yet.</string>
     <string name="ui_persian_content">This lesson is in Persian. The app interface language can be changed separately.</string>
-    <string name="ui_lesson_source">Sources of the original content</string>
+    <string name="ui_lesson_source">Lesson sources</string>
     <string name="ui_previous_step">Previous step</string>
     <string name="ui_next_step">Complete and continue</string>
     <string name="ui_finish_lesson">Finish lesson</string>
@@ -119,7 +118,7 @@
     <string name="ui_asr_convention">Asr calculation</string>
     <string name="ui_asr_hanafi">Hanafi; double shadow</string>
     <string name="ui_asr_standard">Single shadow</string>
-    <string name="ui_calculation_note">Teaching tradition and regional calculation method are separate settings. Compare calculated times with a trusted local timetable.</string>
+    <string name="ui_calculation_note">Choosing a school sets the Asr convention. Fajr and Isha methods are regional; compare calculated times with a trusted local timetable.</string>
     <string name="ui_exact_alarm">Exact alarm access</string>
     <string name="ui_exact_enabled">Exact scheduling is available.</string>
     <string name="ui_exact_missing">Alerts may be delayed. Enable exact alarm access for precise adhan timing.</string>
@@ -142,8 +141,8 @@
     <string name="ui_notification_time">At %1$s · %2$s</string>
     <string name="ui_hide_notification">Hide</string>
     <string name="ui_about">About and sources</string>
-    <string name="ui_about_body">Offline prayer learning that preserves the original app content. The current lessons are in Persian and follow the Hanafi tradition.</string>
-    <string name="ui_source_label">Original content source</string>
+    <string name="ui_about_body">Offline prayer learning for four schools in ten languages. Previous Persian Hanafi lessons are preserved, and each new guide cites its sources.</string>
+    <string name="ui_source_label">Lesson sources</string>
     <string name="ui_contact">Contact the developer</string>
     <string name="ui_rate">App page on Bazaar</string>
     <string name="ui_share_app">Share the app</string>
@@ -157,10 +156,12 @@
     <string name="ui_error_external_app">No app is available to open this item.</string>
     <string name="ui_saved">Saved</string>
     <string name="ui_permission_explanation">Prayer alerts need notification permission.</string>
-    <string name="ui_school_unavailable">Lessons for this tradition have not been added yet.</string>
+    <string name="ui_school_unavailable">This lesson is not available for the selected school.</string>
     <string name="ui_notification_preview">This preview does not change your scheduled adhan alerts.</string>
     <string name="ui_completed_badge">Completed</string>
     <string name="ui_choose">Choose</string>
     <string name="ui_clear_search">Clear search</string>
     <string name="ui_resume_step">Resume from step %1$d</string>
+    <string name="ui_content_language">This lesson is in %1$s. The interface language is independent.</string>
+    <string name="ui_calc_singapore">Singapore; Fajr 20°, Isha 18°</string>
 </resources>

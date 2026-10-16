@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.sp
 import com.androidhive.myapplication.R
-import com.androidhive.myapplication.core.model.AppLanguage
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.core.model.ThemeMode
 
@@ -56,6 +55,6 @@ fun SalahTheme(settings: AppSettings = AppSettings(), content: @Composable () ->
     val density = LocalDensity.current
     CompositionLocalProvider(
         LocalDensity provides Density(density.density, density.fontScale * settings.textScale),
-        LocalLayoutDirection provides if (settings.language == AppLanguage.PERSIAN) LayoutDirection.Rtl else LayoutDirection.Ltr,
+        LocalLayoutDirection provides if (settings.language.isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
     ) { MaterialTheme(colorScheme = if (dark) Dark else Light, typography = Typography, content = content) }
 }
