@@ -101,7 +101,15 @@ class SalahFlowTest {
         ready()
         compose.onNodeWithTag("nav_lessons").performClick()
         compose.onNodeWithTag("lesson_search").performTextInput("وضو")
-        androidx.test.espresso.Espresso.closeSoftKeyboard()
+        compose.runOnIdle {
+            val window = compose.activity.window
+            androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
+                .hide(androidx.core.view.WindowInsetsCompat.Type.ime())
+        }
+        compose.waitUntil(5_000) {
+            androidx.core.view.ViewCompat.getRootWindowInsets(compose.activity.window.decorView)
+                ?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) == false
+        }
         compose.onNodeWithTag("lesson_list").performScrollToNode(hasTestTag("lesson_wudu"))
         compose.onNodeWithTag("bookmark_wudu").performClick()
         compose.waitUntil(10_000) { "wudu" in runBlocking { repository.snapshot() }.bookmarks }
