@@ -1,219 +1,108 @@
 package com.androidhive.myapplication
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.TextView
-
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.provider.Settings
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.SystemBarStyle
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.cardview.widget.CardView
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Lifecycle
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.runtime.*
+import androidx.core.content.ContextCompat
+import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.androidhive.myapplication.platform.openExternal
+import com.androidhive.myapplication.ui.DeviceActions
+import com.androidhive.myapplication.ui.SalahApp
+import com.androidhive.myapplication.ui.theme.SalahTheme
+import com.androidhive.myapplication.core.model.ThemeMode
 
-import com.androidhive.myapplication.compass.CompassActivity
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-
-import kotlinx.coroutines.launch
-
-class MainActivity : AppCompatActivity(),
-    NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-
-    private lateinit var btn_namaz: CardView
-    private lateinit var btn_vuzu: CardView
-    private lateinit var btn_ghosl: CardView
-    private lateinit var btn_tasbihat: CardView
-    private lateinit var btn_tayammom: CardView
-    private lateinit var btn_sejdeyesahv: CardView
-    private lateinit var btn_compass: CardView
-    private lateinit var btn_adhan_times: CardView
-    private lateinit var prayer_times_card: View
-
-    private lateinit var textNextPrayer: TextView
-    private lateinit var textTimeRemaining: TextView
-    private lateinit var textLocation: TextView
-
-    private lateinit var viewModel: MainViewModel
-
-    private var mBackPressed: Long = 0
+class MainActivity : AppCompatActivity() {
+    private lateinit var model: SalahViewModel
+    private var pendingRoute by mutableStateOf<String?>(null)
+    private val locationPermission = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+        if (permissions.values.any { it }) model.currentLocation() else model.message(R.string.ui_error_location_permission)
+    }
+    private val notificationPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { model.onResume() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        // Initialize ViewModel
-        viewModel = ViewModelProvider(this, MainViewModelFactory(AppPrefs)).get(MainViewModel::class.java)
-
-        // Toolbar + Drawer
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        val toggle = ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
-        )
-        drawer.addDrawerListener(toggle)
-        toggle.syncState()
-
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-
-        // Buttons
-        btn_namaz = findViewById(R.id.btn_namaz)
-        btn_vuzu = findViewById(R.id.btn_vuzu)
-        btn_ghosl = findViewById(R.id.btn_ghosl)
-        btn_tasbihat = findViewById(R.id.btn_tasbihat)
-        btn_tayammom = findViewById(R.id.btn_tayammom)
-        btn_sejdeyesahv = findViewById(R.id.btn_sejdeyesahv)
-        btn_compass = findViewById(R.id.btn_compass)
-        btn_adhan_times = findViewById(R.id.btn_adhan_times)
-        prayer_times_card = findViewById(R.id.prayer_times_card)
-
-        btn_namaz.setOnClickListener(this)
-        btn_vuzu.setOnClickListener(this)
-        btn_ghosl.setOnClickListener(this)
-        btn_tasbihat.setOnClickListener(this)
-        btn_tayammom.setOnClickListener(this)
-        btn_sejdeyesahv.setOnClickListener(this)
-        btn_compass.setOnClickListener(this)
-        btn_adhan_times.setOnClickListener(this)
-        prayer_times_card.setOnClickListener(this)
-
-        // Prayer UI on home
-        textNextPrayer = findViewById(R.id.text_next_prayer)
-        textTimeRemaining = findViewById(R.id.text_time_remaining)
-        textLocation = findViewById(R.id.text_location)
-
-        // Observe ViewModel state with repeatOnLifecycle
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.state.collect { state ->
-                    textNextPrayer.text = "نماز بعدی: ${state.nextPrayerName} - ${state.nextPrayerTime}"
-                    textTimeRemaining.text = state.remainingTime
-                    textLocation.text = state.currentLocationLabel
-                }
+        enableEdgeToEdge()
+        val container = (application as SalahApplication).container
+        model = ViewModelProvider(this, object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                require(modelClass.isAssignableFrom(SalahViewModel::class.java))
+                return SalahViewModel(container) as T
+            }
+        })[SalahViewModel::class.java]
+        pendingRoute = if (savedInstanceState == null) intent.getStringExtra(EXTRA_ROUTE) else savedInstanceState.getString(EXTRA_ROUTE)
+        val actions = DeviceActions(::requestLocation, ::requestNotifications, ::requestExactAlarm, ::requestFullScreen)
+        setContent {
+            val state by model.state.collectAsStateWithLifecycle()
+            val systemDark = isSystemInDarkTheme()
+            val dark = when (state.settings?.theme ?: ThemeMode.SYSTEM) {
+                ThemeMode.SYSTEM -> systemDark; ThemeMode.LIGHT -> false; ThemeMode.DARK -> true
+            }
+            LaunchedEffect(dark) {
+                enableEdgeToEdge(
+                    statusBarStyle = SystemBarStyle.auto(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT) { dark },
+                    navigationBarStyle = SystemBarStyle.auto(0xE6FFFFFF.toInt(), 0x801B1B1B.toInt()) { dark },
+                )
+            }
+            LaunchedEffect(state.settings?.language) {
+                val language = state.settings?.language ?: return@LaunchedEffect
+                if (AppCompatDelegate.getApplicationLocales().toLanguageTags() != language.tag)
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(language.tag))
+            }
+            SalahTheme(state.settings ?: com.androidhive.myapplication.core.model.AppSettings()) {
+                SalahApp(state, model, container, actions, pendingRoute) { pendingRoute = null; intent.removeExtra(EXTRA_ROUTE) }
             }
         }
-
-        handleOnBackPressed()
     }
+    override fun onResume() { super.onResume(); if (::model.isInitialized) model.onResume() }
+    override fun onNewIntent(intent: Intent) { super.onNewIntent(intent); setIntent(intent); pendingRoute = intent.getStringExtra(EXTRA_ROUTE) }
+    override fun onSaveInstanceState(outState: Bundle) { outState.putString(EXTRA_ROUTE, pendingRoute); super.onSaveInstanceState(outState) }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.setOnCountdownFinished {
-            viewModel.loadFromPrefs(this@MainActivity)
+    private fun requestLocation() {
+        val granted = listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+            .any { ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED }
+        if (granted) model.currentLocation()
+        else locationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))
+    }
+    private fun requestNotifications() {
+        if ((application as SalahApplication).container.notifications.allowed()) return
+        if (Build.VERSION.SDK_INT < 33 || ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            notificationSettings(); return
+        }
+        val prefs = getSharedPreferences("permission_prompts", MODE_PRIVATE)
+        if (prefs.getBoolean("notifications", false) && !shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+            notificationSettings()
+        } else {
+            prefs.edit().putBoolean("notifications", true).apply()
+            notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
-
-    override fun onStop() {
-        super.onStop()
-        viewModel.clearOnCountdownFinished()
+    private fun notificationSettings() {
+        val intent = if (Build.VERSION.SDK_INT >= 26) Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+        else Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName"))
+        openExternal(this, intent, ::externalError)
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        // اگر auto روشنه، همزمان schedule هم آپدیت بشه
-        // (PrayerScheduler خودش چک می‌کنه auto روشن هست یا نه)
-        PrayerScheduler.computeAndScheduleNext(this)
-
-        viewModel.loadFromPrefs(this)
+    private fun requestExactAlarm() {
+        if (Build.VERSION.SDK_INT >= 31) openExternal(this, Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:$packageName")), ::externalError)
     }
-
-    override fun onPause() {
-        super.onPause()
-        // Countdown is automatically cancelled in ViewModel.onCleared()
-        // or when Activity is destroyed. No manual stop needed here.
+    private fun requestFullScreen() {
+        if (Build.VERSION.SDK_INT >= 34) openExternal(this, Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT, Uri.parse("package:$packageName")), ::externalError)
     }
-
-    private fun handleOnBackPressed() {
-        val callback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.closeDrawer(GravityCompat.START)
-                    return
-                }
-
-                if (mBackPressed + 2000 > System.currentTimeMillis()) {
-                    finish()
-                } else {
-                    Snackbar.make(
-                        findViewById(android.R.id.content),
-                        "برای خروج دوباره بازگشت را بزنید",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-                }
-                mBackPressed = System.currentTimeMillis()
-            }
-        }
-        onBackPressedDispatcher.addCallback(this, callback)
-    }
-
-    override fun onClick(v: View) {
-        val id = v.id
-
-        when (id) {
-            R.id.btn_namaz -> startActivity(Intent(this, PrayerActivity::class.java))
-            R.id.btn_vuzu -> startActivity(Intent(this, com.androidhive.myapplication.source_activities.VuzuActivity::class.java))
-            R.id.btn_ghosl -> startActivity(Intent(this, com.androidhive.myapplication.source_activities.GhoslActivity::class.java))
-            R.id.btn_tasbihat -> startActivity(Intent(this, com.androidhive.myapplication.source_activities.TasbihatActivity::class.java))
-            R.id.btn_tayammom -> startActivity(Intent(this, com.androidhive.myapplication.source_activities.TayammomActivity::class.java))
-            R.id.btn_sejdeyesahv -> startActivity(Intent(this, com.androidhive.myapplication.source_activities.SejdeyyesahvActivity::class.java))
-            R.id.btn_compass -> startActivity(Intent(this, CompassActivity::class.java))
-            R.id.prayer_times_card, R.id.btn_adhan_times ->
-                startActivity(Intent(this, PrayerTimesActivity::class.java))
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-
-        if (id == R.id.nav_comment) {
-            // نظر دادن (باز کردن صفحه گوگل پلی)
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("bazaar://details?id=" + "com.androidhive.myapplication")
-            startActivity(intent)
-        } else if (id == R.id.nav_sources) {
-            // منابع
-            startActivity(Intent(this, com.androidhive.myapplication.source_activities.SourceActivity::class.java))
-        } else if (id == R.id.nav_share) {
-            // اشتراک گذاری
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "text/plain"
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "برنامه اوقات شرعی")
-            shareIntent.putExtra(
-                Intent.EXTRA_TEXT,
-                "برنامه نماز فقه حنفی\n" +
-                    "دانلود:\n" +
-                    "https://cafebazaar.ir/app/com.androidhive.myapplication" + packageName
-            )
-            startActivity(Intent.createChooser(shareIntent, "اشتراک‌گذاری با"))
-        } else if (id == R.id.nav_about) {
-            startActivity(Intent(this, com.androidhive.myapplication.source_activities.AboutActivity::class.java))
-        }
-
-        val drawer = findViewById<DrawerLayout>(R.id.drawer_layout)
-        drawer.closeDrawer(GravityCompat.START)
-        return true
-    }
+    private fun externalError() { model.message(R.string.ui_error_external_app) }
+    companion object { const val EXTRA_ROUTE = "route" }
 }

@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
-    <style name="Theme.PrayerApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-
-
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorOnPrimary">@color/onPrimary</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/onSurface</item>
-
-        <item name="fontFamily">@font/vazirmatn_medium</item>
-
-
+    <style name="Theme.Salah" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">#F5F7F3</item>
+        <item name="android:fontFamily">@font/vazirmatn_regular</item>
+        <item name="colorAccent">#16685D</item>
     </style>
-
-
-
-
 </resources>

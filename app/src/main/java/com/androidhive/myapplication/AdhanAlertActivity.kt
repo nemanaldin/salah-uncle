@@ -1,88 +1,71 @@
 package com.androidhive.myapplication
 
-import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.MotionEvent
 import android.view.WindowManager
-import android.widget.Button
-import android.window.OnBackInvokedCallback
-import android.window.OnBackInvokedDispatcher
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.SystemBarStyle
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
+import com.androidhive.myapplication.core.labelRes
+import com.androidhive.myapplication.core.model.*
+import com.androidhive.myapplication.platform.alarm.AlarmCoordinator
+import com.androidhive.myapplication.platform.audio.AdhanService
+import com.androidhive.myapplication.ui.theme.SalahTheme
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
-class AdhanAlertActivity : Activity() {
-
-    private var downY: Float = 0f
-
+class AdhanAlertActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
-            setShowWhenLocked(true)
-            setTurnScreenOn(true)
-        } else {
-            window.addFlags(
-                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
-                    or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-                    or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-            )
-        }
-
-        setContentView(R.layout.activity_adhan_alert)
-
-        val btnStop = findViewById<Button>(R.id.btnStopAdhan)
-        btnStop.setOnClickListener { stopAdhanAndFinish() }
-
-        // Modern back handling for API 33+ (Android 13+)
-        // Uses OnBackInvokedDispatcher (official API 33+ for back handling)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT,
-                object : OnBackInvokedCallback {
-                    override fun onBackInvoked() {
-                        stopAdhanAndFinish()
+        enableEdgeToEdge(statusBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT),
+            navigationBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT))
+        if (Build.VERSION.SDK_INT >= 27) { setShowWhenLocked(true); setTurnScreenOn(true) }
+        else @Suppress("DEPRECATION") window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) { override fun handleOnBackPressed() = stopAndFinish() })
+        val language = enumOrDefault(intent.getStringExtra(AdhanService.EXTRA_LANGUAGE), AppLanguage.PERSIAN)
+        val prayer = enumOrDefault(intent.getStringExtra(AlarmCoordinator.EXTRA_ID), PrayerId.FAJR)
+        setContent {
+            SalahTheme(AppSettings(language = language, theme = ThemeMode.DARK)) {
+                val playing by (application as SalahApplication).container.adhanSession.active.collectAsStateWithLifecycle()
+                LaunchedEffect(playing) { if (!playing) finish() }
+                var drag by remember { mutableFloatStateOf(0f) }
+                Surface(Modifier.fillMaxSize().pointerInput(Unit) { detectVerticalDragGestures(onDragStart = { drag = 0f }, onDragCancel = { drag = 0f }, onDragEnd = {
+                    if (drag > 100.dp.toPx()) stopAndFinish(); drag = 0f
+                }, onVerticalDrag = { _, amount -> drag += amount }) }) {
+                    Column(Modifier.safeDrawingPadding().padding(32.dp), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text(stringResource(R.string.ui_adhan_now), style = MaterialTheme.typography.headlineLarge)
+                        Spacer(Modifier.height(22.dp))
+                        Text(stringResource(prayer.labelRes()), style = MaterialTheme.typography.headlineMedium)
+                        Spacer(Modifier.height(32.dp))
+                        Button(::stopAndFinish, Modifier.fillMaxWidth().heightIn(min = 60.dp)) { Text(stringResource(R.string.ui_stop_adhan)) }
                     }
                 }
-            )
-        }
-        // For API < 33, onKeyDown handling is kept below
-    }
-
-    private fun stopAdhanAndFinish() {
-        val stop = Intent(this, AdhanControlReceiver::class.java).apply {
-            action = AdhanControlReceiver.ACTION_STOP
-        }
-        sendBroadcast(stop)
-        finish()
-    }
-
-    // Legacy back handling for API < 33 (Android 12 and below)
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
-                stopAdhanAndFinish()
-                return true
             }
         }
+    }
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) { stopAndFinish(); return true }
         return super.onKeyDown(keyCode, event)
     }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        event?.let {
-            when (it.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    downY = it.y
-                    return true
-                }
-                MotionEvent.ACTION_UP -> {
-                    val upY = it.y
-                    if (downY - upY > 200) {
-                        stopAdhanAndFinish()
-                        return true
-                    }
-                }
-            }
-        }
-        return super.onTouchEvent(event)
+    private fun stopAndFinish() {
+        val service = Intent(this, AdhanService::class.java)
+        stopService(service)
+        finish()
     }
 }
