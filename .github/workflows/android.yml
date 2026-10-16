@@ -74,7 +74,7 @@ jobs:
           arch: x86_64
           target: default
           disable-animations: true
-          script: bash .github/scripts/run-device-tests.sh
+          script: ./gradlew --no-daemon --console=plain --max-workers=3 :app:connectedDebugAndroidTest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -83,4 +83,4 @@ jobs:
           path: |
             app/build/reports/androidTests/
             app/build/outputs/androidTest-results/
-            app/build/qa-screenshots/
+            app/build/outputs/connected_android_test_additional_output/

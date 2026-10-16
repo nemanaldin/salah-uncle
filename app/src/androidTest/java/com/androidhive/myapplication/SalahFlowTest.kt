@@ -69,7 +69,10 @@ class SalahFlowTest {
     @Test fun allTenLanguagesRenderHomeAndPreserveTheirLayoutDirection() {
         ready()
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val screenshots = File(context.getExternalFilesDir(null) ?: context.cacheDir, "qa-screenshots").apply { mkdirs() }
+        // AGP copies this directory before uninstalling the app after the test run.
+        val outputDirectory = InstrumentationRegistry.getArguments().getString("additionalTestOutputDir")
+            ?.let(::File) ?: (context.getExternalFilesDir(null) ?: context.cacheDir)
+        val screenshots = File(outputDirectory, "qa-screenshots").apply { check(mkdirs() || isDirectory) }
         AppLanguage.entries.forEach { language ->
             runBlocking { repository.update { it.copy(language = language) } }
             val localized = com.androidhive.myapplication.core.localizedContext(context, language)
@@ -98,8 +101,11 @@ class SalahFlowTest {
         ready()
         compose.onNodeWithTag("nav_lessons").performClick()
         compose.onNodeWithTag("lesson_search").performTextInput("وضو")
+        androidx.test.espresso.Espresso.closeSoftKeyboard()
         compose.onNodeWithTag("lesson_list").performScrollToNode(hasTestTag("lesson_wudu"))
         compose.onNodeWithTag("bookmark_wudu").performClick()
+        compose.waitUntil(10_000) { "wudu" in runBlocking { repository.snapshot() }.bookmarks }
+        compose.onNodeWithTag("lesson_list").assertExists().performScrollToNode(hasTestTag("lesson_wudu"))
         compose.onNodeWithTag("lesson_wudu").performClick()
         compose.onNodeWithTag("lesson_next").performScrollTo().performClick()
         compose.waitUntil(10_000) {
