@@ -17,7 +17,7 @@ def cases(files):
     return len(found)
 unit=cases((build/'test-results/testDebugUnitTest').glob('TEST-*.xml'))
 ui=cases((android/'outputs/androidTest-results').rglob('TEST-*.xml'))
-assert unit>=38 and ui>=18,(unit,ui)
+assert unit>=40 and ui>=18,(unit,ui)
 lint=collections.Counter(x.get('severity') for x in ET.parse(build/'reports/lint-results-debug.xml').getroot().findall('issue'))
 assert lint['Error']==lint['Fatal']==0
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()

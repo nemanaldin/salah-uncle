@@ -11,6 +11,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.Normalizer
+import java.time.ZoneId
 import java.util.Locale
 import java.util.zip.GZIPInputStream
 
@@ -20,8 +21,16 @@ data class City(val id: String, val country: String, val province: String, val n
     private val searchKey = normalizeCityQuery(listOf(name, province, country).plus(aliases).joinToString(" "))
     fun matches(normalizedQuery: String) = normalizedQuery.isBlank() || normalizedQuery.split(' ').all { it in searchKey }
     fun countryName(language: AppLanguage): String = countryName(countryCode, language)
-    fun location() = SavedLocation(latitude, longitude, name, zoneId, LocationMode.MANUAL, id)
+    fun location() = SavedLocation(latitude, longitude, name, effectiveCityZone(zoneId), LocationMode.MANUAL, id)
 }
+
+private val platformZones: Set<String> by lazy { ZoneId.getAvailableZoneIds() }
+
+/** IANA 2025b: Aysén is permanently UTC-03 from March 2025. Older Android tzdbs
+ * do not know its new ID. This adapter is for the app's current/upcoming prayers,
+ * not historical date conversion; no other unknown zone is guessed. */
+fun effectiveCityZone(source: String, supported: Set<String> = platformZones): String =
+    if (source == "America/Coyhaique" && source !in supported) "-03:00" else source
 
 fun countryName(code: String, language: AppLanguage): String =
     Locale.Builder().setRegion(code).build().getDisplayCountry(Locale.forLanguageTag(language.tag)).ifBlank { code }

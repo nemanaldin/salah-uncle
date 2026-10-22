@@ -1,6 +1,10 @@
 package com.androidhive.myapplication.ui.prayer
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -79,10 +83,11 @@ private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (Str
     }
     AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.ui_location_manual)) },
         text = {
+            val keyboard = LocalSoftwareKeyboardController.current
             Column(Modifier.fillMaxWidth()) {
                 ChoiceRow(stringResource(R.string.ui_country), country?.let { countryName(it, language) } ?: stringResource(R.string.ui_all_countries),
                     { choosingCountry = true; countryQuery = "" }, Modifier.testTag("choose_country"))
-                OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("city_search"), label = { Text(stringResource(R.string.ui_location_search)) }, singleLine = true)
+                OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("city_search"), label = { Text(stringResource(R.string.ui_location_search)) }, singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done), keyboardActions = KeyboardActions(onDone = { keyboard?.hide() }))
                 LazyColumn(Modifier.heightIn(max = 340.dp).testTag("city_results")) {
                     if (results.isEmpty()) item { SupportingText(stringResource(R.string.ui_location_empty)) }
                     items(results, key = { it.id }) { city ->
@@ -95,8 +100,10 @@ private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (Str
             }
         }, confirmButton = { TextButton(onDismiss) { Text(stringResource(R.string.ui_cancel)) } })
     if (choosingCountry) AlertDialog(onDismissRequest = { choosingCountry = false }, title = { Text(stringResource(R.string.ui_country)) },
-        text = { Column {
-            OutlinedTextField(countryQuery, { countryQuery = it }, Modifier.fillMaxWidth().testTag("country_search"), label = { Text(stringResource(R.string.ui_country_search)) }, singleLine = true)
+        text = {
+            val keyboard = LocalSoftwareKeyboardController.current
+            Column {
+            OutlinedTextField(countryQuery, { countryQuery = it }, Modifier.fillMaxWidth().testTag("country_search"), label = { Text(stringResource(R.string.ui_country_search)) }, singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done), keyboardActions = KeyboardActions(onDone = { keyboard?.hide() }))
             LazyColumn(Modifier.heightIn(max = 350.dp)) {
                 item { TextButton({ country = null; choosingCountry = false; query = "" }) { Text(stringResource(R.string.ui_all_countries)) } }
                 items(countries.filter { normalizeCityQuery(countryName(it, language)).contains(normalizeCityQuery(countryQuery)) || it.equals(countryQuery, true) }, key = { it }) { code ->

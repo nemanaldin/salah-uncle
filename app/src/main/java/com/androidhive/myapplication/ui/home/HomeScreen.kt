@@ -75,7 +75,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             add(Shortcut("qibla", stringResource(R.string.ui_qibla), Icons.Default.Place, onQibla))
         }
         BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val columns = if (maxWidth >= 600.dp) 3 else if (maxWidth < 300.dp) 1 else 2
+            val columns = if (maxWidth >= 600.dp) 3 else if (maxWidth < 240.dp) 1 else 2
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 shortcuts.chunked(columns).forEach { row ->
                     Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {

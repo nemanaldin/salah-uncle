@@ -32,3 +32,7 @@ python -m pip download geonamescache==3.0.2 --no-deps -d /tmp/geography
 python scripts/build_city_catalog.py /tmp/geography/geonamescache-3.0.2-py3-none-any.whl
 python scripts/verify_content.py
 ```
+
+## Older Android timezone databases
+
+The first API 34 regression run detected that its tzdb does not recognize `America/Coyhaique`. [IANA 2025b](https://data.iana.org/time-zones/tzdb-2025b/NEWS) introduced this ID for Aysén's permanent UTC−03 from March 2025. The source row retains its IANA ID. For current/upcoming prayer calculations only, selecting it on a device without that ID saves the documented fixed `-03:00` offset; devices that know the ID keep it. This is not a general historical-zone conversion or a guessed country offset. No other unknown ID is silently substituted. Tests compare June and December 2026 against the current IANA zone. Other time-law changes remain dependent on the device timezone database being current.

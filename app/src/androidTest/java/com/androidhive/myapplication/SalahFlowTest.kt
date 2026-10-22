@@ -24,18 +24,6 @@ class SalahFlowTest {
         compose.waitUntil(60_000) { compose.onAllNodesWithTag("nav_home").fetchSemanticsNodes().isNotEmpty() && compose.onAllNodesWithTag("home_ghusl").fetchSemanticsNodes().isNotEmpty() }
     }
 
-    private fun hideKeyboard() {
-        compose.runOnIdle {
-            val window = compose.activity.window
-            androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
-                .hide(androidx.core.view.WindowInsetsCompat.Type.ime())
-        }
-        compose.waitUntil(10_000) {
-            androidx.core.view.ViewCompat.getRootWindowInsets(compose.activity.window.decorView)
-                ?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) == false
-        }
-    }
-
     @Test fun homeOpensTeachingDirectlyWithoutACompletedCourse() {
         ready()
         compose.onNodeWithTag("home_prayer").performScrollTo().performClick()
@@ -64,10 +52,10 @@ class SalahFlowTest {
         compose.onNodeWithTag("choose_city").performScrollTo().performClick()
         compose.onNodeWithTag("choose_country").performClick()
         compose.onNodeWithTag("country_search").performTextInput("Indonesia")
-        hideKeyboard()
+        compose.onNodeWithTag("country_search").performImeAction()
         compose.onNodeWithTag("country_ID").performClick()
         compose.onNodeWithTag("city_search").performTextInput("Jakarta")
-        hideKeyboard()
+        compose.onNodeWithTag("city_search").performImeAction()
         compose.waitUntil(30_000) { compose.onAllNodesWithTag("city_geonames:1642911").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("city_geonames:1642911").performClick()
         compose.waitUntil(15_000) { runBlocking { repository.snapshot() }.location?.zoneId == "Asia/Jakarta" }
@@ -212,6 +200,7 @@ class SalahFlowTest {
         compose.onNodeWithTag("home_set_location").performScrollTo().performClick()
         compose.onNodeWithTag("choose_city").performScrollTo().performClick()
         compose.onNodeWithTag("city_search").performTextInput("تهران")
+        compose.onNodeWithTag("city_search").performImeAction()
         compose.waitUntil(15_000) { compose.onAllNodesWithTag("city_ایران/تهران/تهران").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("city_ایران/تهران/تهران").performScrollTo().performClick()
         compose.waitUntil(15_000) { runBlocking { repository.snapshot() }.location?.zoneId == "Asia/Tehran" }
