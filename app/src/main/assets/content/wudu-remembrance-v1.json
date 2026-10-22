@@ -1,0 +1,986 @@
+{
+  "schemaVersion": 1,
+  "lessons": [
+    {
+      "id": "wudu-remembrance",
+      "titleFa": "ذکر پس از وضو",
+      "titleEn": "After wudu",
+      "titles": {
+        "fa": "ذکر پس از وضو",
+        "en": "After wudu",
+        "ar": "الذكر بعد الوضوء",
+        "tr": "Abdest sonrası zikir",
+        "ur": "وضو کے بعد ذکر",
+        "id": "Zikir setelah wudu",
+        "bn": "ওজুর পরের জিকির",
+        "ms": "Zikir selepas wuduk",
+        "ps": "له اوداسه وروسته ذکر",
+        "fr": "Invocation après les ablutions"
+      },
+      "category": "remembrance",
+      "source": "https://sunnah.com/muslim:234b",
+      "variants": [
+        {
+          "school": "HANAFI",
+          "language": "fa",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "پس از کامل کردن وضو، گفتن این ذکر در صحیح مسلم ۲۳۴ب آمده است:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "en",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "After completing wudu, this remembrance is recorded in Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "ar",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ورد هذا الذكر بعد إتمام الوضوء في صحيح مسلم ٢٣٤ب:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "tr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Abdest tamamlandıktan sonra bu zikir Sahih Müslim 234b’de yer alır:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Bu zikir tek bir mezhebe özgü değildir. Burada her uzvu yıkamak için ayrı bir dua Peygamber’e atfedilmez. Özgün metindeki uzva özel dualar sünnet diye sunulmadan veya diğer mezheplere aktarılmadan önce kaynak ve fıkıh incelemesi gerektirir.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "ur",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "وضو مکمل کرنے کے بعد یہ ذکر صحیح مسلم ۲۳۴ب میں منقول ہے:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "یہ ذکر کسی ایک مذہب کے ساتھ خاص نہیں۔ یہاں ہر عضو دھوتے وقت الگ دعا نبی کی طرف منسوب نہیں کی گئی۔ اصل متن میں ہر عضو کی دعاؤں کو سنت قرار دینے یا دوسرے مذاہب تک پھیلانے سے پہلے مصادر اور فقہی تحقیق ضروری ہے۔",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "id",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir setelah menyelesaikan wudu ini tercantum dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus untuk satu mazhab. Bagian ini tidak menisbatkan doa tersendiri untuk setiap anggota wudu kepada Nabi. Doa per anggota dalam teks lama perlu pemeriksaan sumber dan fikih sebelum disebut sunah atau diterapkan ke mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "bn",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ওজু সম্পূর্ণ করার পর এই জিকির সহিহ মুসলিম ২৩৪খ-তে বর্ণিত:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "ms",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir selepas menyempurnakan wuduk ini diriwayatkan dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "ps",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "د اوداسه تر بشپړولو وروسته دا ذکر په صحیح مسلم ۲۳۴ب کې راغلی دی:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANAFI",
+          "language": "fr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Cette invocation après les ablutions est rapportée dans Sahih Muslim 234b :\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "fa",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "پس از کامل کردن وضو، گفتن این ذکر در صحیح مسلم ۲۳۴ب آمده است:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "en",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "After completing wudu, this remembrance is recorded in Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "ar",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ورد هذا الذكر بعد إتمام الوضوء في صحيح مسلم ٢٣٤ب:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "tr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Abdest tamamlandıktan sonra bu zikir Sahih Müslim 234b’de yer alır:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Bu zikir tek bir mezhebe özgü değildir. Burada her uzvu yıkamak için ayrı bir dua Peygamber’e atfedilmez. Özgün metindeki uzva özel dualar sünnet diye sunulmadan veya diğer mezheplere aktarılmadan önce kaynak ve fıkıh incelemesi gerektirir.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "ur",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "وضو مکمل کرنے کے بعد یہ ذکر صحیح مسلم ۲۳۴ب میں منقول ہے:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "یہ ذکر کسی ایک مذہب کے ساتھ خاص نہیں۔ یہاں ہر عضو دھوتے وقت الگ دعا نبی کی طرف منسوب نہیں کی گئی۔ اصل متن میں ہر عضو کی دعاؤں کو سنت قرار دینے یا دوسرے مذاہب تک پھیلانے سے پہلے مصادر اور فقہی تحقیق ضروری ہے۔",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "id",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir setelah menyelesaikan wudu ini tercantum dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus untuk satu mazhab. Bagian ini tidak menisbatkan doa tersendiri untuk setiap anggota wudu kepada Nabi. Doa per anggota dalam teks lama perlu pemeriksaan sumber dan fikih sebelum disebut sunah atau diterapkan ke mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "bn",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ওজু সম্পূর্ণ করার পর এই জিকির সহিহ মুসলিম ২৩৪খ-তে বর্ণিত:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "ms",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir selepas menyempurnakan wuduk ini diriwayatkan dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "ps",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "د اوداسه تر بشپړولو وروسته دا ذکر په صحیح مسلم ۲۳۴ب کې راغلی دی:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "SHAFII",
+          "language": "fr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Cette invocation après les ablutions est rapportée dans Sahih Muslim 234b :\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "fa",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "پس از کامل کردن وضو، گفتن این ذکر در صحیح مسلم ۲۳۴ب آمده است:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "en",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "After completing wudu, this remembrance is recorded in Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "ar",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ورد هذا الذكر بعد إتمام الوضوء في صحيح مسلم ٢٣٤ب:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "tr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Abdest tamamlandıktan sonra bu zikir Sahih Müslim 234b’de yer alır:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Bu zikir tek bir mezhebe özgü değildir. Burada her uzvu yıkamak için ayrı bir dua Peygamber’e atfedilmez. Özgün metindeki uzva özel dualar sünnet diye sunulmadan veya diğer mezheplere aktarılmadan önce kaynak ve fıkıh incelemesi gerektirir.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "ur",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "وضو مکمل کرنے کے بعد یہ ذکر صحیح مسلم ۲۳۴ب میں منقول ہے:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "یہ ذکر کسی ایک مذہب کے ساتھ خاص نہیں۔ یہاں ہر عضو دھوتے وقت الگ دعا نبی کی طرف منسوب نہیں کی گئی۔ اصل متن میں ہر عضو کی دعاؤں کو سنت قرار دینے یا دوسرے مذاہب تک پھیلانے سے پہلے مصادر اور فقہی تحقیق ضروری ہے۔",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "id",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir setelah menyelesaikan wudu ini tercantum dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus untuk satu mazhab. Bagian ini tidak menisbatkan doa tersendiri untuk setiap anggota wudu kepada Nabi. Doa per anggota dalam teks lama perlu pemeriksaan sumber dan fikih sebelum disebut sunah atau diterapkan ke mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "bn",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ওজু সম্পূর্ণ করার পর এই জিকির সহিহ মুসলিম ২৩৪খ-তে বর্ণিত:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "ms",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir selepas menyempurnakan wuduk ini diriwayatkan dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "ps",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "د اوداسه تر بشپړولو وروسته دا ذکر په صحیح مسلم ۲۳۴ب کې راغلی دی:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "MALIKI",
+          "language": "fr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Cette invocation après les ablutions est rapportée dans Sahih Muslim 234b :\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "fa",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "پس از کامل کردن وضو، گفتن این ذکر در صحیح مسلم ۲۳۴ب آمده است:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "en",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "After completing wudu, this remembrance is recorded in Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "ar",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ورد هذا الذكر بعد إتمام الوضوء في صحيح مسلم ٢٣٤ب:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "tr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Abdest tamamlandıktan sonra bu zikir Sahih Müslim 234b’de yer alır:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Bu zikir tek bir mezhebe özgü değildir. Burada her uzvu yıkamak için ayrı bir dua Peygamber’e atfedilmez. Özgün metindeki uzva özel dualar sünnet diye sunulmadan veya diğer mezheplere aktarılmadan önce kaynak ve fıkıh incelemesi gerektirir.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "ur",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "وضو مکمل کرنے کے بعد یہ ذکر صحیح مسلم ۲۳۴ب میں منقول ہے:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "یہ ذکر کسی ایک مذہب کے ساتھ خاص نہیں۔ یہاں ہر عضو دھوتے وقت الگ دعا نبی کی طرف منسوب نہیں کی گئی۔ اصل متن میں ہر عضو کی دعاؤں کو سنت قرار دینے یا دوسرے مذاہب تک پھیلانے سے پہلے مصادر اور فقہی تحقیق ضروری ہے۔",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "id",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir setelah menyelesaikan wudu ini tercantum dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus untuk satu mazhab. Bagian ini tidak menisbatkan doa tersendiri untuk setiap anggota wudu kepada Nabi. Doa per anggota dalam teks lama perlu pemeriksaan sumber dan fikih sebelum disebut sunah atau diterapkan ke mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "bn",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "ওজু সম্পূর্ণ করার পর এই জিকির সহিহ মুসলিম ২৩৪খ-তে বর্ণিত:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "ms",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Zikir selepas menyempurnakan wuduk ini diriwayatkan dalam Sahih Muslim 234b:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "ps",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "د اوداسه تر بشپړولو وروسته دا ذکر په صحیح مسلم ۲۳۴ب کې راغلی دی:\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        },
+        {
+          "school": "HANBALI",
+          "language": "fr",
+          "sources": [
+            {
+              "title": "Sahih Muslim 234b",
+              "url": "https://sunnah.com/muslim:234b"
+            }
+          ],
+          "steps": [
+            {
+              "id": "after-wudu",
+              "body": "Cette invocation après les ablutions est rapportée dans Sahih Muslim 234b :\n\nأَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+              "audio": null,
+              "illustrations": []
+            },
+            {
+              "id": "shared-source",
+              "body": "Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.",
+              "audio": null,
+              "illustrations": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

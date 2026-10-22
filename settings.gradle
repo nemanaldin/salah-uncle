@@ -10,8 +10,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // Add JitPack here
     }
 }
-rootProject.name = "namaz2.1" // Or your actual project name
+rootProject.name = 'Salah'
 include ':app'

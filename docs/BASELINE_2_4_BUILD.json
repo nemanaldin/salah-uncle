@@ -1,0 +1,11 @@
+{
+  "commit": "f0ffb4a272f67782a35a67cd766c5e3a9b4cdacc",
+  "variant": "release-unsigned",
+  "bytes": 7579045,
+  "sha256": "b89da6705a07e9d0f2a1dc64f52cc188f62f2854c4652c1b78fcc59120ea7509",
+  "geographyAssetBundled": false,
+  "jdk": "21.0.12.1",
+  "gradle": "8.13",
+  "buildLog": "salah-2.4-baseline-build.log",
+  "note": "Built locally before production edits. Use actual APK size and packaged city-entry bytes for the after comparison."
+}
