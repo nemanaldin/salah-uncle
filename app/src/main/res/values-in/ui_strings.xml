@@ -164,4 +164,25 @@
     <string name="ui_resume_step">Lanjutkan dari langkah %1$d</string>
     <string name="ui_content_language">Bahasa pelajaran ini: %1$s. Bahasa antarmuka terpisah.</string>
     <string name="ui_calc_singapore">Singapura; Subuh 20°, Isya 18°</string>
+    <string name="ui_quick_access">Belajar dan akses cepat</string>
+    <string name="ui_teach_prayer">Belajar salat</string>
+    <string name="ui_teach_wudu">Wudu</string>
+    <string name="ui_prayer_types">Jenis salat</string>
+    <string name="ui_wudu_duas">Zikir setelah wudu</string>
+    <string name="ui_translation_unavailable">Terjemahan pelajaran ini belum tersedia</string>
+    <string name="ui_translation_body">Terjemahan yang telah ditinjau belum tersedia dalam bahasa Anda. Kembali ke pelajaran atau pilih untuk membaca teks asli.</string>
+    <string name="ui_read_original">Baca teks asli (%1$s)</string>
+    <string name="ui_country">Negara</string>
+    <string name="ui_all_countries">Semua negara</string>
+    <string name="ui_country_search">Cari negara</string>
+    <string name="ui_city_refine">Ketik nama kota atau pilih negara untuk mempersempit hasil.</string>
+    <string name="ui_geo_credit">Data kota luring: GeoNames, CC BY 4.0</string>
+    <string name="ui_adhan_voice">Suara azan</string>
+    <string name="ui_adhan_default">Rekaman aplikasi saat ini</string>
+    <string name="ui_adhan_import">Tambah berkas audio</string>
+    <string name="ui_adhan_import_body">Pilih rekaman yang boleh Anda gunakan. Berkas disalin ke aplikasi untuk penggunaan luring dan suara terpilih diputar saat azan otomatis.</string>
+    <string name="ui_audio_size">Berkas audio valid, maksimal 20 MB per rekaman. Impor memakai penyimpanan aplikasi tanpa menambah ukuran unduhan APK.</string>
+    <string name="ui_audio_import_error">Audio gagal diimpor. Pastikan berkas valid dan tidak lebih dari 20 MB.</string>
+    <string name="ui_adhan_remove">Hapus rekaman</string>
+    <string name="ui_wudu_review">Zikir ini tidak khusus untuk satu mazhab. Bagian ini tidak menisbatkan doa tersendiri untuk setiap anggota wudu kepada Nabi. Doa per anggota dalam teks lama perlu pemeriksaan sumber dan fikih sebelum disebut sunah atau diterapkan ke mazhab lain.</string>
 </resources>

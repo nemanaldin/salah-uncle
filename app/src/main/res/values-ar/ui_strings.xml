@@ -164,4 +164,25 @@
     <string name="ui_resume_step">تابع من الخطوة %1$d</string>
     <string name="ui_content_language">لغة هذا الدرس: %1$s. لغة الواجهة مستقلة.</string>
     <string name="ui_calc_singapore">سنغافورة؛ الفجر ٢٠°، العشاء ١٨°</string>
+    <string name="ui_quick_access">التعلّم والوصول السريع</string>
+    <string name="ui_teach_prayer">تعليم الصلاة</string>
+    <string name="ui_teach_wudu">تعليم الوضوء</string>
+    <string name="ui_prayer_types">أنواع الصلاة</string>
+    <string name="ui_wudu_duas">الذكر بعد الوضوء</string>
+    <string name="ui_translation_unavailable">ترجمة هذا الدرس غير متوفرة بعد</string>
+    <string name="ui_translation_body">لا تتوفر ترجمة مراجعة لهذا الدرس بلغتك. يمكنك العودة إلى الدروس أو اختيار قراءة النص الأصلي.</string>
+    <string name="ui_read_original">قراءة النص الأصلي (%1$s)</string>
+    <string name="ui_country">البلد</string>
+    <string name="ui_all_countries">جميع البلدان</string>
+    <string name="ui_country_search">البحث عن بلد</string>
+    <string name="ui_city_refine">اكتب اسم المدينة أو اختر البلد لتحديد النتائج.</string>
+    <string name="ui_geo_credit">بيانات المدن دون إنترنت: GeoNames، CC BY 4.0</string>
+    <string name="ui_adhan_voice">صوت الأذان</string>
+    <string name="ui_adhan_default">التسجيل الحالي للتطبيق</string>
+    <string name="ui_adhan_import">إضافة ملف صوتي</string>
+    <string name="ui_adhan_import_body">اختر تسجيلاً لديك إذن باستخدامه. يُنسخ إلى التطبيق للاستخدام دون إنترنت ويُشغّل الصوت المختار عند الأذان التلقائي.</string>
+    <string name="ui_audio_size">ملف صوتي صالح حتى ٢٠ ميغابايت لكل تسجيل. تُستخدم مساحة التطبيق دون زيادة حجم تنزيل APK.</string>
+    <string name="ui_audio_import_error">تعذر استيراد الصوت. تأكد من صلاحية الملف وألا يتجاوز ٢٠ ميغابايت.</string>
+    <string name="ui_adhan_remove">حذف التسجيل</string>
+    <string name="ui_wudu_review">هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.</string>
 </resources>

@@ -20,10 +20,10 @@ import com.androidhive.myapplication.ui.components.*
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit) {
+fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit, initialCategory: String = "all") {
     val settings = state.settings ?: return
     var query by rememberSaveable { mutableStateOf("") }
-    var category by rememberSaveable { mutableStateOf("all") }
+    var category by rememberSaveable(initialCategory) { mutableStateOf(initialCategory) }
     val categories = listOf("all" to R.string.ui_all_lessons, "basics" to R.string.ui_basics,
         "prayers" to R.string.ui_prayers, "remembrance" to R.string.ui_remembrance, "saved" to R.string.ui_bookmarks)
     val filtered = remember(state.content.lessons, settings.school, settings.language, settings.bookmarks, query, category) {
@@ -62,7 +62,8 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
                             tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
                     }
                 }
-                SupportingText(stringResource(R.string.ui_progress, completed, steps.size))
+                if (lesson.variant(settings.school, settings.language) == null) SupportingText(stringResource(R.string.ui_translation_unavailable))
+                else SupportingText(stringResource(R.string.ui_progress, completed, steps.size))
                 if (completed > 0) LinearProgressIndicator(progress = { completed.toFloat() / steps.size }, modifier = Modifier.fillMaxWidth())
             }
         }

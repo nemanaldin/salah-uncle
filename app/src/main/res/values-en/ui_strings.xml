@@ -164,4 +164,25 @@
     <string name="ui_resume_step">Resume from step %1$d</string>
     <string name="ui_content_language">This lesson is in %1$s. The interface language is independent.</string>
     <string name="ui_calc_singapore">Singapore; Fajr 20°, Isha 18°</string>
+    <string name="ui_quick_access">Learn and explore</string>
+    <string name="ui_teach_prayer">How to pray</string>
+    <string name="ui_teach_wudu">Wudu</string>
+    <string name="ui_prayer_types">Types of prayer</string>
+    <string name="ui_wudu_duas">After wudu</string>
+    <string name="ui_translation_unavailable">Translation not yet available</string>
+    <string name="ui_translation_body">A reviewed translation of this lesson is not available in your language. Return to the lessons or explicitly choose to read the original.</string>
+    <string name="ui_read_original">Read original (%1$s)</string>
+    <string name="ui_country">Country</string>
+    <string name="ui_all_countries">All countries</string>
+    <string name="ui_country_search">Search countries</string>
+    <string name="ui_city_refine">Type a city name or choose a country to narrow the results.</string>
+    <string name="ui_geo_credit">Offline city data: GeoNames, CC BY 4.0</string>
+    <string name="ui_adhan_voice">Adhan voice</string>
+    <string name="ui_adhan_default">Existing app recording</string>
+    <string name="ui_adhan_import">Add audio file</string>
+    <string name="ui_adhan_import_body">Choose a recording you have permission to use. It is copied into the app for offline use and the selected voice plays at automatic adhan time.</string>
+    <string name="ui_audio_size">Valid audio files up to 20 MB each. Imports use app storage and do not increase the APK download size.</string>
+    <string name="ui_audio_import_error">Could not import audio. Check that the file is valid and no larger than 20 MB.</string>
+    <string name="ui_adhan_remove">Remove recording</string>
+    <string name="ui_wudu_review">This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.</string>
 </resources>

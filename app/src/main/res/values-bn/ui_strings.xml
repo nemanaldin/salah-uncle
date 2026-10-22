@@ -164,4 +164,25 @@
     <string name="ui_resume_step">ধাপ %1$d থেকে চালিয়ে যান</string>
     <string name="ui_content_language">এই পাঠের ভাষা: %1$s। অ্যাপের ভাষা আলাদা।</string>
     <string name="ui_calc_singapore">সিঙ্গাপুর; ফজর ২০°, এশা ১৮°</string>
+    <string name="ui_quick_access">শেখা ও দ্রুত প্রবেশ</string>
+    <string name="ui_teach_prayer">নামাজ শিক্ষা</string>
+    <string name="ui_teach_wudu">ওজু শিক্ষা</string>
+    <string name="ui_prayer_types">নামাজের প্রকার</string>
+    <string name="ui_wudu_duas">ওজুর পরের জিকির</string>
+    <string name="ui_translation_unavailable">এই পাঠের অনুবাদ এখনো প্রস্তুত নয়</string>
+    <string name="ui_translation_body">আপনার ভাষায় এই পাঠের যাচাইকৃত অনুবাদ নেই। পাঠতালিকায় ফিরুন অথবা মূল লেখা পড়ার সিদ্ধান্ত নিন।</string>
+    <string name="ui_read_original">মূল লেখা পড়ুন (%1$s)</string>
+    <string name="ui_country">দেশ</string>
+    <string name="ui_all_countries">সব দেশ</string>
+    <string name="ui_country_search">দেশ খুঁজুন</string>
+    <string name="ui_city_refine">ফলাফল সীমিত করতে শহরের নাম লিখুন অথবা দেশ বেছে নিন।</string>
+    <string name="ui_geo_credit">অফলাইন শহরের তথ্য: GeoNames, CC BY 4.0</string>
+    <string name="ui_adhan_voice">আজানের কণ্ঠ</string>
+    <string name="ui_adhan_default">অ্যাপের বর্তমান রেকর্ডিং</string>
+    <string name="ui_adhan_import">অডিও ফাইল যোগ করুন</string>
+    <string name="ui_adhan_import_body">ব্যবহারের অনুমতি আছে এমন রেকর্ডিং বেছে নিন। অফলাইনের জন্য এটি অ্যাপে কপি হবে এবং স্বয়ংক্রিয় আজানে নির্বাচিত কণ্ঠ বাজবে।</string>
+    <string name="ui_audio_size">প্রতিটি বৈধ অডিও ফাইল সর্বোচ্চ ২০ মেগাবাইট। আমদানি করা ফাইল অ্যাপের সঞ্চয়স্থান ব্যবহার করে, APK ডাউনলোডের আকার বাড়ায় না।</string>
+    <string name="ui_audio_import_error">অডিও আমদানি হয়নি। ফাইলটি বৈধ এবং সর্বোচ্চ ২০ মেগাবাইট কি না দেখুন।</string>
+    <string name="ui_adhan_remove">রেকর্ডিং সরান</string>
+    <string name="ui_wudu_review">এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।</string>
 </resources>

@@ -56,6 +56,11 @@ data class SavedLocation(
     val zone: ZoneId get() = ZoneId.of(zoneId)
 }
 
+data class AdhanVoice(val id: String, val title: String, val fileName: String, val bytes: Long) {
+    init { require(validFileName(fileName) && id.isNotBlank() && title.isNotBlank() && bytes in 1..20L*1024*1024) }
+    companion object { fun validFileName(name: String) = Regex("[a-zA-Z0-9-]+\\.audio").matches(name) }
+}
+
 data class AppSettings(
     val language: AppLanguage = AppLanguage.PERSIAN,
     val school: School = School.HANAFI,
@@ -68,12 +73,15 @@ data class AppSettings(
     val asrConvention: AsrConvention = school.defaultAsr,
     val alertMode: AlertMode = AlertMode.OFF,
     val prayerAlerts: Map<PrayerId, AlertMode> = emptyMap(),
+    val adhanVoices: List<AdhanVoice> = emptyList(),
+    val selectedVoiceId: String? = null,
     val bookmarks: Set<String> = emptySet(),
     val completedSteps: Set<String> = emptySet(),
     val lastLessonId: String? = null,
     val lastStepId: String? = null,
     val hiddenNotificationUntil: Long = 0L,
 ) {
+    fun selectedVoice(): AdhanVoice? = adhanVoices.firstOrNull { it.id == selectedVoiceId }
     fun withSchool(value: School): AppSettings = copy(
         school = value, asrConvention = value.defaultAsr,
         hiddenNotificationUntil = 0L,

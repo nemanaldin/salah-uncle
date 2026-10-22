@@ -1,0 +1,495 @@
+{
+  "note": "Counts measure text presence, not specialist/native-language editorial approval. Legacy Persian originals are preserved; other languages require an explicit user choice to open them.",
+  "languages": [
+    "fa",
+    "en",
+    "ar",
+    "tr",
+    "ur",
+    "id",
+    "bn",
+    "ms",
+    "ps",
+    "fr"
+  ],
+  "rows": [
+    {
+      "school": "HANAFI",
+      "language": "fa",
+      "availableLessons": 24,
+      "totalLessons": 24,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANAFI",
+      "language": "en",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "ar",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "tr",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "ur",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "id",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "bn",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "ms",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "ps",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "HANAFI",
+      "language": "fr",
+      "availableLessons": 3,
+      "totalLessons": 24,
+      "missingLessonIds": [
+        "prayer-basics",
+        "wudu",
+        "ghusl",
+        "tayammum",
+        "dhikr",
+        "funeral",
+        "sajdah-sahw",
+        "daily-prayers",
+        "friday",
+        "congregation",
+        "missed-prayers",
+        "eid",
+        "travel",
+        "signs",
+        "night-prayer",
+        "qadr",
+        "ishraq",
+        "awwabin",
+        "tasbih-prayer",
+        "tarawih",
+        "greeting-mosque"
+      ]
+    },
+    {
+      "school": "SHAFII",
+      "language": "fa",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "en",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "ar",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "tr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "ur",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "id",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "bn",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "ms",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "ps",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "SHAFII",
+      "language": "fr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "fa",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "en",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "ar",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "tr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "ur",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "id",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "bn",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "ms",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "ps",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "MALIKI",
+      "language": "fr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "fa",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "en",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "ar",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "tr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "ur",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "id",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "bn",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "ms",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "ps",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    },
+    {
+      "school": "HANBALI",
+      "language": "fr",
+      "availableLessons": 3,
+      "totalLessons": 3,
+      "missingLessonIds": []
+    }
+  ]
+}

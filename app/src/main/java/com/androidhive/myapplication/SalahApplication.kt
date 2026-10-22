@@ -28,6 +28,7 @@ class AppContainer(private val application: Application) {
     val deviceLocation = DeviceLocation(application)
     val headings = HeadingRepository(application)
     val adhanSession = AdhanSession()
+    val recordings = com.androidhive.myapplication.platform.audio.AdhanRecordings(application)
     fun capabilities(): DeviceCapabilities {
         val manager = application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         return DeviceCapabilities(alarms.exactAllowed(), notifications.allowed(), Build.VERSION.SDK_INT < 34 || manager.canUseFullScreenIntent())

@@ -19,8 +19,7 @@ data class Lesson(
     fun title(language: AppLanguage) = titles[language.tag] ?: if (language == AppLanguage.PERSIAN) titleFa else titleEn
     // Content language is explicit; a different school's content is never used as a fallback.
     fun variant(school: School, language: AppLanguage? = null): LessonVariant? =
-        variants.firstOrNull { it.school == school && it.language == language?.tag }
-            ?: variants.firstOrNull { it.school == school }
+        variants.firstOrNull { it.school == school && (language == null || it.language == language.tag) }
 }
 data class TrainingVideo(val id: String, val titleFa: String, val titleEn: String, val assetPath: String) {
     fun title(language: AppLanguage) = if (language == AppLanguage.PERSIAN) titleFa else titleEn

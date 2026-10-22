@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- Installed only in the test APK; never included in the application. -->
+        <provider android:name="com.androidhive.myapplication.TestAudioProvider"
+            android:authorities="com.androidhive.myapplication.test.audio" android:exported="true" />
+    </application>
+</manifest>

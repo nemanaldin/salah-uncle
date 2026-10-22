@@ -17,3 +17,6 @@ bin/
 gen/
 out/
 .kotlin/
+
+# Python audit/package script caches
+__pycache__/

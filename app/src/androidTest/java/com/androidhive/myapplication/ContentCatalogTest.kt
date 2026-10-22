@@ -49,6 +49,15 @@ class ContentCatalogTest {
             }
         }
     }
+    @Test fun postWuduRemembranceHasTheSamePrimarySourceForAllFourSchools() = runBlocking {
+        val lesson = LessonRepository(context).load().single { it.id == "wudu-remembrance" }
+        School.entries.forEach { school -> AppLanguage.entries.forEach { language ->
+            val variant = requireNotNull(lesson.variant(school, language))
+            assertEquals(language.tag, variant.language)
+            assertEquals(listOf("after-wudu", "shared-source"), variant.steps.map { it.id })
+            assertEquals("https://sunnah.com/muslim:234b", variant.sources.single().url)
+        } }
+    }
     @Test fun androidLoadsEachLanguageResourcesAndCorrectLayoutDirection() {
         val labels = mapOf("fa" to "زبان برنامه", "en" to "App language", "ar" to "لغة التطبيق", "tr" to "Uygulama dili",
             "ur" to "ایپ کی زبان", "id" to "Bahasa aplikasi", "bn" to "অ্যাপের ভাষা", "ms" to "Bahasa aplikasi",
@@ -62,7 +71,11 @@ class ContentCatalogTest {
     }
     @Test fun everyManualCityHasAnExplicitValidTimezone() = runBlocking {
         val cities = CityRepository(context).load()
-        assertEquals(279, cities.size)
+        assertEquals(34006 + 279, cities.size)
+        assertEquals(244, cities.map { it.countryCode }.distinct().size)
+        assertTrue(cities.any { it.countryCode == "ID" && it.name == "Jakarta" && it.zoneId == "Asia/Jakarta" })
+        assertTrue(cities.any { it.countryCode == "US" && it.zoneId == "America/New_York" })
+        assertTrue(cities.any { it.id == "ایران/تهران/تهران" })
         cities.forEach { assertNotNull(it.location().zone) }
     }
 }

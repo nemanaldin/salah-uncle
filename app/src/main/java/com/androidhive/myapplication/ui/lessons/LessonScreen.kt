@@ -37,8 +37,22 @@ import com.androidhive.myapplication.ui.components.*
 @Composable
 fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
     onComplete: (String, String) -> Unit, onBack: () -> Unit, onError: (Int) -> Unit) {
-    val variant = lesson.variant(settings.school, settings.language)
-    if (variant == null) { PageColumn { InfoCard(stringResource(R.string.ui_school_unavailable)) }; return }
+    var showOriginal by rememberSaveable(lesson.id, settings.school, settings.language) { mutableStateOf(false) }
+    val translated = lesson.variant(settings.school, settings.language)
+    val original = lesson.variant(settings.school)
+    val variant = translated ?: original.takeIf { showOriginal }
+    if (variant == null) {
+        PageColumn(Modifier.testTag("translation_unavailable")) {
+            SectionTitle(stringResource(R.string.ui_translation_unavailable))
+            SupportingText(stringResource(if (original == null) R.string.ui_school_unavailable else R.string.ui_translation_body))
+            if (original != null) OutlinedButton({ showOriginal = true }, Modifier.testTag("read_original")) {
+                Text(stringResource(R.string.ui_read_original,
+                    AppLanguage.entries.firstOrNull { it.tag == original.language }?.nativeName ?: original.language))
+            }
+            TextButton(onBack) { Text(stringResource(R.string.ui_back)) }
+        }
+        return
+    }
     var index by rememberSaveable(lesson.id, settings.school) { mutableIntStateOf(
         if (settings.lastLessonId == lesson.id) variant.steps.indexOfFirst { it.id == settings.lastStepId }.coerceAtLeast(0) else 0) }
     var finished by rememberSaveable(lesson.id, settings.school) { mutableStateOf(false) }
@@ -80,6 +94,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
             LinearProgressIndicator(progress = { (index + 1f) / variant.steps.size }, modifier = Modifier.fillMaxWidth())
             if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
                 AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
+            if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
             if (step.illustrations.isNotEmpty()) AppCard {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->

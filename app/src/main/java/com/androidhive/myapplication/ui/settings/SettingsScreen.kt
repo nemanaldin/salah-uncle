@@ -5,21 +5,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.*
-import com.androidhive.myapplication.platform.audio.LessonAudioController
 import com.androidhive.myapplication.ui.components.*
 import java.text.NumberFormat
 import java.util.Locale
@@ -27,20 +21,10 @@ import java.util.Locale
 @Composable
 fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings) -> Unit,
     onAlertMode: (AlertMode) -> Unit, onNotifications: () -> Unit, onExact: () -> Unit,
-    onFullScreen: () -> Unit, onAbout: () -> Unit, onError: (Int) -> Unit) {
+    onFullScreen: () -> Unit, onAbout: () -> Unit, onError: (Int) -> Unit, onVoices: () -> Unit) {
     val settings = state.settings ?: return
     var dialog by rememberSaveable { mutableStateOf<String?>(null) }
     var scale by remember(settings.textScale) { mutableFloatStateOf(settings.textScale) }
-    val context = LocalContext.current
-    val owner = LocalLifecycleOwner.current
-    val error by rememberUpdatedState(onError)
-    val preview = remember { LessonAudioController(context) { error(R.string.ui_error_audio) } }
-    val previewState by preview.state.collectAsStateWithLifecycle()
-    DisposableEffect(owner, preview) {
-        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_STOP) preview.stop() }
-        owner.lifecycle.addObserver(observer)
-        onDispose { owner.lifecycle.removeObserver(observer); preview.release() }
-    }
     PageColumn(Modifier.testTag("settings_screen")) {
         AppCard {
             SectionTitle(stringResource(R.string.ui_choose_language))
@@ -81,9 +65,8 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
                     TextButton(onFullScreen) { Text(stringResource(R.string.ui_full_screen)) }
                 }
             }
-            OutlinedButton({ if (previewState.playing) preview.stop() else preview.toggle(R.raw.dhan_sound) }, Modifier.fillMaxWidth()) {
-                Text(stringResource(if (previewState.playing) R.string.ui_stop_audio else R.string.ui_test_adhan))
-            }
+            ChoiceRow(stringResource(R.string.ui_adhan_voice), settings.selectedVoice()?.title ?: stringResource(R.string.ui_adhan_default),
+                onVoices, Modifier.testTag("setting_adhan_voice"))
             SupportingText(stringResource(R.string.ui_notification_preview))
         }
         AppCard {

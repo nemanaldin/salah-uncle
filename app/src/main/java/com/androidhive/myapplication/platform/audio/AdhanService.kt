@@ -67,7 +67,9 @@ class AdhanService : Service() {
             player = MediaPlayer().apply {
                 setAudioAttributes(attributes)
                 setWakeMode(this@AdhanService, PowerManager.PARTIAL_WAKE_LOCK)
-                resources.openRawResourceFd(R.raw.dhan_sound).use { fd -> setDataSource(fd.fileDescriptor, fd.startOffset, fd.length) }
+                val selected = (application as SalahApplication).container.recordings.file(intent.getStringExtra(EXTRA_VOICE_FILE))
+                if (selected != null) setDataSource(selected.absolutePath)
+                else resources.openRawResourceFd(R.raw.dhan_sound).use { fd -> setDataSource(fd.fileDescriptor, fd.startOffset, fd.length) }
                 setOnPreparedListener { it.start() }
                 setOnCompletionListener { stopSelf() }
                 setOnErrorListener { _, _, _ -> stopSelf(); true }
@@ -91,6 +93,7 @@ class AdhanService : Service() {
         const val CHANNEL = "adhan_playback"
         const val NOTIFICATION_ID = 3001
         const val EXTRA_LANGUAGE = "language"
+        const val EXTRA_VOICE_FILE = "voice_file"
     }
 }
 

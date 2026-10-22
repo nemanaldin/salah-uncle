@@ -164,4 +164,25 @@
     <string name="ui_resume_step">مرحلہ %1$d سے جاری رکھیں</string>
     <string name="ui_content_language">اس سبق کی زبان: %1$s۔ ایپ کی زبان الگ ہے۔</string>
     <string name="ui_calc_singapore">سنگاپور؛ فجر ۲۰°، عشاء ۱۸°</string>
+    <string name="ui_quick_access">تعلیم اور فوری رسائی</string>
+    <string name="ui_teach_prayer">نماز سیکھیں</string>
+    <string name="ui_teach_wudu">وضو سیکھیں</string>
+    <string name="ui_prayer_types">نماز کی اقسام</string>
+    <string name="ui_wudu_duas">وضو کے بعد ذکر</string>
+    <string name="ui_translation_unavailable">اس سبق کا ترجمہ ابھی دستیاب نہیں</string>
+    <string name="ui_translation_body">اس سبق کا نظرثانی شدہ ترجمہ آپ کی زبان میں دستیاب نہیں۔ اسباق پر واپس جائیں یا اصل متن پڑھنے کا انتخاب کریں۔</string>
+    <string name="ui_read_original">اصل متن پڑھیں (%1$s)</string>
+    <string name="ui_country">ملک</string>
+    <string name="ui_all_countries">تمام ممالک</string>
+    <string name="ui_country_search">ملک تلاش کریں</string>
+    <string name="ui_city_refine">نتائج محدود کرنے کے لیے شہر کا نام لکھیں یا ملک منتخب کریں۔</string>
+    <string name="ui_geo_credit">آف لائن شہروں کا ڈیٹا: GeoNames، CC BY 4.0</string>
+    <string name="ui_adhan_voice">اذان کی آواز</string>
+    <string name="ui_adhan_default">ایپ کی موجودہ ریکارڈنگ</string>
+    <string name="ui_adhan_import">آڈیو فائل شامل کریں</string>
+    <string name="ui_adhan_import_body">وہ ریکارڈنگ منتخب کریں جس کے استعمال کی اجازت آپ کے پاس ہو۔ آف لائن استعمال کے لیے اسے ایپ میں نقل کیا جاتا ہے اور خودکار اذان کے وقت منتخب آواز چلتی ہے۔</string>
+    <string name="ui_audio_size">ہر درست آڈیو فائل زیادہ سے زیادہ ۲۰ میگابائٹ ہو۔ فائلیں ایپ کی اسٹوریج استعمال کرتی ہیں، APK کے ڈاؤن لوڈ کا حجم نہیں بڑھتا۔</string>
+    <string name="ui_audio_import_error">آڈیو درآمد نہیں ہوئی۔ فائل درست اور ۲۰ میگابائٹ سے چھوٹی ہونی چاہیے۔</string>
+    <string name="ui_adhan_remove">ریکارڈنگ حذف کریں</string>
+    <string name="ui_wudu_review">یہ ذکر کسی ایک مذہب کے ساتھ خاص نہیں۔ یہاں ہر عضو دھوتے وقت الگ دعا نبی کی طرف منسوب نہیں کی گئی۔ اصل متن میں ہر عضو کی دعاؤں کو سنت قرار دینے یا دوسرے مذاہب تک پھیلانے سے پہلے مصادر اور فقہی تحقیق ضروری ہے۔</string>
 </resources>

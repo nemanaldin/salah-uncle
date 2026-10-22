@@ -164,4 +164,25 @@
     <string name="ui_resume_step">له %1$d ګامه دوام ورکړئ</string>
     <string name="ui_content_language">د دې درس ژبه: %1$s. د اپ ژبه جلا ده.</string>
     <string name="ui_calc_singapore">سنګاپور؛ سهار ۲۰°، ماخوستن ۱۸°</string>
+    <string name="ui_quick_access">زده کړه او چټک لاسرسی</string>
+    <string name="ui_teach_prayer">د لمانځه زده کړه</string>
+    <string name="ui_teach_wudu">د اوداسه زده کړه</string>
+    <string name="ui_prayer_types">د لمانځه ډولونه</string>
+    <string name="ui_wudu_duas">له اوداسه وروسته ذکر</string>
+    <string name="ui_translation_unavailable">د دې لوست ژباړه لا چمتو نه ده</string>
+    <string name="ui_translation_body">ستاسو په ژبه د دې لوست بیاکتل شوې ژباړه نشته. لوستونو ته ستانه شئ یا د اصلي متن لوستل غوره کړئ.</string>
+    <string name="ui_read_original">اصلي متن ولولئ (%1$s)</string>
+    <string name="ui_country">هېواد</string>
+    <string name="ui_all_countries">ټول هېوادونه</string>
+    <string name="ui_country_search">هېواد ولټوئ</string>
+    <string name="ui_city_refine">د پایلو د محدودولو لپاره د ښار نوم ولیکئ یا هېواد غوره کړئ.</string>
+    <string name="ui_geo_credit">د ښارونو آفلاین معلومات: GeoNames، CC BY 4.0</string>
+    <string name="ui_adhan_voice">د اذان غږ</string>
+    <string name="ui_adhan_default">د اپ اوسنی ثبت شوی غږ</string>
+    <string name="ui_adhan_import">غږیز فایل ورزیات کړئ</string>
+    <string name="ui_adhan_import_body">هغه ثبت شوی غږ وټاکئ چې د کارولو اجازه یې لرئ. فایل د آفلاین کارونې لپاره اپ ته کاپي کېږي او د اتومات اذان پر وخت ټاکل شوی غږ غږېږي.</string>
+    <string name="ui_audio_size">د هر غږ لپاره معتبر غږیز فایل تر ۲۰ مېګابایټه. ورزیاتول د اپ زېرمه کاروي او د APK د ښکته کولو اندازه نه زیاتوي.</string>
+    <string name="ui_audio_import_error">غږیز فایل وارد نه شو. د فایل اعتبار او تر ۲۰ مېګابایټه اندازه وګورئ.</string>
+    <string name="ui_adhan_remove">ثبت شوی غږ لرې کړئ</string>
+    <string name="ui_wudu_review">دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.</string>
 </resources>

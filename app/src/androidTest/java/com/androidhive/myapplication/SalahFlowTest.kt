@@ -21,7 +21,78 @@ class SalahFlowTest {
 
     private fun ready() {
         runBlocking { repository.update { AppSettings(onboardingComplete = true) } }
-        compose.waitUntil(30_000) { compose.onAllNodesWithTag("nav_home").fetchSemanticsNodes().isNotEmpty() }
+        compose.waitUntil(60_000) { compose.onAllNodesWithTag("nav_home").fetchSemanticsNodes().isNotEmpty() && compose.onAllNodesWithTag("home_ghusl").fetchSemanticsNodes().isNotEmpty() }
+    }
+
+    private fun hideKeyboard() {
+        compose.runOnIdle {
+            val window = compose.activity.window
+            androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
+                .hide(androidx.core.view.WindowInsetsCompat.Type.ime())
+        }
+        compose.waitUntil(10_000) {
+            androidx.core.view.ViewCompat.getRootWindowInsets(compose.activity.window.decorView)
+                ?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) == false
+        }
+    }
+
+    @Test fun homeOpensTeachingDirectlyWithoutACompletedCourse() {
+        ready()
+        compose.onNodeWithTag("home_prayer").performScrollTo().performClick()
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("lesson_reader").fetchSemanticsNodes().isNotEmpty() }
+        assertTrue(runBlocking { repository.snapshot() }.completedSteps.isEmpty())
+        compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.lastLessonId == "prayer-hanafi" }
+    }
+
+    @Test fun untranslatedLessonRequiresExplicitChoiceBeforeShowingPersian() {
+        ready()
+        runBlocking { repository.update { it.copy(language = AppLanguage.ENGLISH) } }
+        compose.waitUntil(30_000) { compose.onAllNodesWithText("Learn and explore").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("home_ghusl").performScrollTo().performClick()
+        compose.onNodeWithTag("translation_unavailable").assertExists()
+        compose.onNodeWithTag("lesson_reader").assertDoesNotExist()
+        compose.onNodeWithTag("read_original").performClick()
+        compose.onNodeWithTag("lesson_reader").assertExists()
+        assertEquals(AppLanguage.ENGLISH, runBlocking { repository.snapshot() }.language)
+    }
+
+    @Test fun countryThenCitySelectsTheActualIndonesianTimezone() {
+        ready()
+        runBlocking { repository.update { it.copy(language = AppLanguage.ENGLISH) } }
+        compose.waitUntil(30_000) { compose.onAllNodesWithText("Learn and explore").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("home_set_location").performScrollTo().performClick()
+        compose.onNodeWithTag("choose_city").performScrollTo().performClick()
+        compose.onNodeWithTag("choose_country").performClick()
+        compose.onNodeWithTag("country_search").performTextInput("Indonesia")
+        hideKeyboard()
+        compose.onNodeWithTag("country_ID").performClick()
+        compose.onNodeWithTag("city_search").performTextInput("Jakarta")
+        hideKeyboard()
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("city_geonames:1642911").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("city_geonames:1642911").performClick()
+        compose.waitUntil(15_000) { runBlocking { repository.snapshot() }.location?.zoneId == "Asia/Jakarta" }
+        assertEquals(AlertMode.OFF, runBlocking { repository.snapshot() }.alertMode)
+    }
+
+    @Test fun importedVoicesCanBeSelectedPreviewedAndRemovedWithoutChangingAlarms() {
+        ready()
+        val container = (compose.activity.application as SalahApplication).container
+        val first = runBlocking { container.recordings.import(android.net.Uri.parse("content://com.androidhive.myapplication.test.audio/first")) }
+        val second = runBlocking { container.recordings.import(android.net.Uri.parse("content://com.androidhive.myapplication.test.audio/second")) }
+        runBlocking { repository.update { it.copy(adhanVoices = listOf(first, second), selectedVoiceId = second.id) } }
+        compose.onNodeWithTag("nav_settings").performClick()
+        compose.onNodeWithTag("setting_adhan_voice").performScrollTo().performClick()
+        compose.onNodeWithTag("voice_" + first.id).performScrollTo().performClick()
+        compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.selectedVoiceId == first.id }
+        compose.onNodeWithTag("preview_" + first.id).performScrollTo().performClick()
+        compose.waitUntil(15_000) { compose.onAllNodesWithText(compose.activity.getString(R.string.ui_stop_audio)).fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("remove_" + first.id).performScrollTo().performClick()
+        compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.adhanVoices.size == 1 }
+        assertNull(runBlocking { repository.snapshot() }.selectedVoiceId)
+        assertEquals(AlertMode.OFF, runBlocking { repository.snapshot() }.alertMode)
+        compose.waitUntil(10_000) { container.recordings.file(first.fileName) == null }
+        assertFalse(container.recordings.file(first.fileName)?.exists() == true)
+        container.recordings.delete(second)
     }
 
     @Test fun onboardingDoesNotRequireLocationPermission() {
@@ -56,7 +127,7 @@ class SalahFlowTest {
         compose.onNodeWithText(compose.activity.getString(R.string.ui_school_maliki)).performClick()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.school == School.MALIKI }
         compose.onNodeWithTag("nav_home").performClick()
-        compose.onNodeWithTag("home_continue").performScrollTo().performClick()
+        compose.onNodeWithTag("home_prayer").performScrollTo().performClick()
         compose.onNodeWithTag("lesson_reader").assertExists()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.lastLessonId == "prayer-maliki" }
         val settings = runBlocking { repository.snapshot() }
@@ -76,7 +147,7 @@ class SalahFlowTest {
         AppLanguage.entries.forEach { language ->
             runBlocking { repository.update { it.copy(language = language) } }
             val localized = com.androidhive.myapplication.core.localizedContext(context, language)
-            val label = localized.getString(R.string.ui_start_learning)
+            val label = localized.getString(R.string.ui_quick_access)
             compose.waitUntil(30_000) { compose.onAllNodesWithText(label).fetchSemanticsNodes().isNotEmpty() }
             compose.runOnIdle {
                 assertEquals(if (language.isRtl) android.view.View.LAYOUT_DIRECTION_RTL else android.view.View.LAYOUT_DIRECTION_LTR,
@@ -141,6 +212,7 @@ class SalahFlowTest {
         compose.onNodeWithTag("home_set_location").performScrollTo().performClick()
         compose.onNodeWithTag("choose_city").performScrollTo().performClick()
         compose.onNodeWithTag("city_search").performTextInput("تهران")
+        compose.waitUntil(15_000) { compose.onAllNodesWithTag("city_ایران/تهران/تهران").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("city_ایران/تهران/تهران").performScrollTo().performClick()
         compose.waitUntil(15_000) { runBlocking { repository.snapshot() }.location?.zoneId == "Asia/Tehran" }
         assertEquals(AlertMode.OFF, runBlocking { repository.snapshot() }.alertMode)
@@ -150,7 +222,10 @@ class SalahFlowTest {
     @Test fun englishInterfaceUsesLeftToRightLayout() {
         ready()
         runBlocking { repository.update { it.copy(language = AppLanguage.ENGLISH) } }
-        compose.waitUntil(30_000) { compose.onAllNodesWithText("Take the first step").fetchSemanticsNodes().isNotEmpty() }
+        compose.waitUntil(30_000) { compose.onAllNodesWithText("Learn and explore").fetchSemanticsNodes().isNotEmpty() }
+        compose.activityRule.scenario.recreate()
+        compose.waitUntil(30_000) { compose.onAllNodesWithText("Learn and explore").fetchSemanticsNodes().isNotEmpty() }
+        assertEquals(AppLanguage.ENGLISH, runBlocking { repository.snapshot() }.language)
         compose.runOnIdle { assertEquals(android.view.View.LAYOUT_DIRECTION_LTR, compose.activity.resources.configuration.layoutDirection) }
     }
 }

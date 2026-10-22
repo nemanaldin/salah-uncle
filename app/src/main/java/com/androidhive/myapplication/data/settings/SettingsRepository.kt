@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import java.time.ZoneId
+import org.json.JSONArray
+import org.json.JSONObject
 
 class SettingsRepository(context: Context) {
     private val app = context.applicationContext
@@ -58,6 +60,8 @@ class SettingsRepository(context: Context) {
         val preset = stringPreferencesKey("calculation_preset")
         val asr = stringPreferencesKey("asr_convention")
         val alerts = stringPreferencesKey("alert_mode")
+        val voices = stringPreferencesKey("adhan_voices_v1")
+        val selectedVoice = stringPreferencesKey("adhan_voice_id")
         val overrides = stringSetPreferencesKey("prayer_alerts")
         val bookmarks = stringSetPreferencesKey("bookmarks")
         val completed = stringSetPreferencesKey("completed_steps")
@@ -77,6 +81,13 @@ class SettingsRepository(context: Context) {
                 val pair = entry.split('=', limit = 2)
                 if (pair.size != 2) null else runCatching { PrayerId.valueOf(pair[0]) to AlertMode.valueOf(pair[1]) }.getOrNull()
             }.toMap()
+            val voices = runCatching {
+                val array = JSONArray(p[Keys.voices] ?: "[]")
+                (0 until array.length()).mapNotNull { i -> runCatching {
+                    val item = array.getJSONObject(i)
+                    AdhanVoice(item.getString("id"), item.getString("title"), item.getString("file"), item.getLong("bytes"))
+                }.getOrNull() }.distinctBy { it.id }
+            }.getOrDefault(emptyList())
             return AppSettings(
                 language = enumOrDefault(p[Keys.language], AppLanguage.PERSIAN),
                 school = school,
@@ -88,6 +99,7 @@ class SettingsRepository(context: Context) {
                 calculationPreset = enumOrDefault(p[Keys.preset], CalculationPreset.KARACHI),
                 asrConvention = enumOrDefault(p[Keys.asr], school.defaultAsr),
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
+                adhanVoices = voices, selectedVoiceId = p[Keys.selectedVoice]?.takeIf { id -> voices.any { it.id == id } },
                 prayerAlerts = overrides, bookmarks = p[Keys.bookmarks].orEmpty(), completedSteps = p[Keys.completed].orEmpty(),
                 lastLessonId = p[Keys.lastLesson], lastStepId = p[Keys.lastStep], hiddenNotificationUntil = p[Keys.hidden] ?: 0L,
             )
@@ -107,6 +119,10 @@ class SettingsRepository(context: Context) {
                 p.remove(Keys.lat); p.remove(Keys.lon); p.remove(Keys.label); p.remove(Keys.zone); p.remove(Keys.mode); p.remove(Keys.cityId)
             }
             p[Keys.preset] = s.calculationPreset.name; p[Keys.asr] = s.asrConvention.name; p[Keys.alerts] = s.alertMode.name
+            p[Keys.voices] = JSONArray().apply { s.adhanVoices.forEach { voice -> put(JSONObject().apply {
+                put("id", voice.id); put("title", voice.title); put("file", voice.fileName); put("bytes", voice.bytes)
+            }) } }.toString()
+            s.selectedVoiceId?.let { p[Keys.selectedVoice] = it } ?: p.remove(Keys.selectedVoice)
             p[Keys.overrides] = s.prayerAlerts.map { "${it.key.name}=${it.value.name}" }.toSet()
             p[Keys.bookmarks] = s.bookmarks; p[Keys.completed] = s.completedSteps
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)

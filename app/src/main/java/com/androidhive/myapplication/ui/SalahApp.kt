@@ -94,6 +94,8 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         "training" -> stringResource(R.string.ui_training)
         "about" -> stringResource(R.string.ui_about)
         "lesson/{id}" -> state.content.lessons.firstOrNull { it.id == lessonId }?.title(settings.language).orEmpty()
+        "prayer-types" -> stringResource(R.string.ui_prayer_types)
+        "voices" -> stringResource(R.string.ui_adhan_voice)
         else -> stringResource(destinations.firstOrNull { it.route == route }?.title ?: R.string.ui_app_name)
     }
     LaunchedEffect(pendingRoute) {
@@ -101,9 +103,12 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     }
     val wide = LocalConfiguration.current.screenWidthDp >= 720
     Scaffold(
-        topBar = { TopAppBar(title = { Text(title, style = MaterialTheme.typography.titleLarge) },
+        topBar = { TopAppBar(title = { Text(if (route == "home") stringResource(R.string.ui_app_name) else title, style = MaterialTheme.typography.titleLarge) },
             navigationIcon = { if (!topLevel) IconButton({ navigation.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.ui_back)) } },
-            actions = { if (topLevel) Text(stringResource(settings.school.labelRes()), Modifier.padding(horizontal = 16.dp), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary) }) },
+            actions = { if (topLevel) {
+                Text(stringResource(settings.school.labelRes()), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
+                if (route != "settings") IconButton({ selectMain("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Default.Settings, stringResource(R.string.ui_settings)) }
+            } }) },
         bottomBar = { if (!wide && topLevel) NavigationBar {
             destinations.forEach { destination ->
                 NavigationBarItem(selectedRoute == destination.route, { selectMain(destination.route) },
@@ -124,13 +129,15 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
             Box(Modifier.weight(1f).fillMaxHeight(), contentAlignment = Alignment.TopCenter) {
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().fillMaxHeight(),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
-                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }) }
+                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }) }
                     composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent) }
                     composable("tools") { ToolsScreen(settings.school, navigate) }
+                    composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent, "prayers") }
+                    composable("voices") { com.androidhive.myapplication.ui.settings.AdhanVoicesScreen(state, model::update, model::importAdhanVoice, model::removeAdhanVoice, model::message) }
                     composable("settings") { SettingsScreen(state, model::update, { mode ->
                         model.update { it.copy(alertMode = mode) }
                         if (mode != AlertMode.OFF) actions.notifications()
-                    }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message) }
+                    }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message, { navigate("voices") }) }
                     composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }) }
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
                     composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message) }
@@ -179,6 +186,8 @@ private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) ->
         sources.forEach { source ->
             OutlinedButton({ openUrl(context, source.url, error) }, Modifier.fillMaxWidth()) { Text(source.title) }
         }
+        SupportingText(stringResource(R.string.ui_geo_credit))
+        OutlinedButton({ openUrl(context, "https://www.geonames.org/export/", error) }, Modifier.fillMaxWidth()) { Text("GeoNames · CC BY 4.0") }
         OutlinedButton({ openExternal(context, android.content.Intent(android.content.Intent.ACTION_SENDTO, android.net.Uri.parse("mailto:moeinarazi53@gmail.com")), error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_contact)) }
         OutlinedButton({ openUrl(context, "https://cafebazaar.ir/app/${context.packageName}", error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_rate)) }
         OutlinedButton({ shareText(context, "https://cafebazaar.ir/app/${context.packageName}", shareLabel, error) }, Modifier.fillMaxWidth()) { Text(shareLabel) }

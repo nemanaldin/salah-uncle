@@ -164,4 +164,25 @@
     <string name="ui_resume_step">ادامه از مرحلهٔ %1$d</string>
     <string name="ui_content_language">زبان این درس %1$s است. زبان رابط مستقل تنظیم می‌شود.</string>
     <string name="ui_calc_singapore">سنگاپور؛ فجر ۲۰°، عشا ۱۸°</string>
+    <string name="ui_quick_access">آموزش‌ها و دسترسی سریع</string>
+    <string name="ui_teach_prayer">آموزش نماز</string>
+    <string name="ui_teach_wudu">آموزش وضو</string>
+    <string name="ui_prayer_types">انواع نماز</string>
+    <string name="ui_wudu_duas">ذکر پس از وضو</string>
+    <string name="ui_translation_unavailable">ترجمهٔ این آموزش آماده نیست</string>
+    <string name="ui_translation_body">برای این آموزش هنوز ترجمهٔ بازبینی‌شده‌ای در زبان انتخابی نداریم. می‌توانید به فهرست آموزش‌ها برگردید یا متن اصلی را با انتخاب خودتان بخوانید.</string>
+    <string name="ui_read_original">خواندن متن اصلی (%1$s)</string>
+    <string name="ui_country">کشور</string>
+    <string name="ui_all_countries">همهٔ کشورها</string>
+    <string name="ui_country_search">جست‌وجوی کشور</string>
+    <string name="ui_city_refine">برای نتایج بیشتر نام شهر را بنویسید یا کشور را انتخاب کنید.</string>
+    <string name="ui_geo_credit">دادهٔ آفلاین شهرها: GeoNames، مجوز CC BY 4.0</string>
+    <string name="ui_adhan_voice">صدای اذان</string>
+    <string name="ui_adhan_default">صدای فعلی برنامه</string>
+    <string name="ui_adhan_import">افزودن فایل صوتی</string>
+    <string name="ui_adhan_import_body">صدایی را که اجازهٔ استفاده از آن دارید انتخاب کنید. فایل داخل برنامه کپی می‌شود و صدای انتخاب‌شده هنگام اذان خودکار پخش خواهد شد.</string>
+    <string name="ui_audio_size">فایل صوتی معتبر، حداکثر ۲۰ مگابایت برای هر صدا. افزودن فایل، حجم APK را تغییر نمی‌دهد؛ فضای ذخیره‌سازی برنامه بیشتر می‌شود.</string>
+    <string name="ui_audio_import_error">فایل صوتی وارد نشد؛ معتبر بودن و حجم حداکثر ۲۰ مگابایت را بررسی کنید.</string>
+    <string name="ui_adhan_remove">حذف این صدا</string>
+    <string name="ui_wudu_review">این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.</string>
 </resources>

@@ -2,6 +2,8 @@
 """Validate offline locale coverage, catalog isolation, media, and legacy preservation."""
 from pathlib import Path
 import hashlib
+import gzip
+from zoneinfo import ZoneInfo
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -70,7 +72,30 @@ def verify():
     # Digest of original Persian variants at e43232a, before adding localized titles.
     digest = hashlib.sha256(json.dumps(original, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     assert digest == '06cb69865525803103375873035ddb15dc4c068d27739bd8c2feb532cc7eac81', 'Original Hanafi text or media changed'
-    print(f'PASS: {len(LANGUAGES)} locales, {len(reference)} strings each; {len(lessons)} lessons; 8 guides fully localized; original 21 lessons/73 steps preserved.')
+    remembrance = by_id['wudu-remembrance']
+    assert len(remembrance['variants']) == 40
+    assert {(v['school'], v['language']) for v in remembrance['variants']} == {(school, language) for school in SCHOOLS for language in LANGUAGES}
+    for variant in remembrance['variants']:
+        assert [x['id'] for x in variant['steps']] == ['after-wudu', 'shared-source']
+        assert variant['sources'][0]['url'] == 'https://sunnah.com/muslim:234b'
+    geography = ASSETS / 'geography'
+    metadata = json.loads((geography / 'metadata.json').read_text())
+    compressed = (geography / 'cities-v1.bin').read_bytes()
+    assert hashlib.sha256(compressed).hexdigest() == metadata['catalogSha256']
+    rows = [line.split('\t') for line in gzip.decompress(compressed).decode().splitlines()]
+    assert len(rows) == metadata['cities'] == 34006
+    assert len({r[0] for r in rows}) == len(rows)
+    assert len({r[1] for r in rows}) == metadata['countriesAndTerritories'] == 244
+    for row in rows:
+        assert len(row) == 7 and len(row[1]) == 2 and row[2].strip()
+        assert -90 <= float(row[3]) <= 90 and -180 <= float(row[4]) <= 180
+        ZoneInfo(row[5])
+        assert isinstance(json.loads(row[6]), list)
+    from content_coverage import coverage
+    assert json.loads((ROOT/'docs/TRANSLATION_COVERAGE.json').read_text()) == coverage(), 'Stale coverage report'
+    print(f'PASS: {len(LANGUAGES)} locales, {len(reference)} strings each; {len(lessons)} lessons; 8 localized guides and shared wudu remembrance; original 21 lessons/73 steps preserved.')
+    print(f'PASS: {len(rows)} offline world cities / 244 countries and territories; coordinates, zones and digest checked; legacy city IDs retained.')
+    print('TRANSLATION LIMIT: 21 legacy Hanafi lessons remain Persian-only; no implicit language fallback. See docs/TRANSLATION_COVERAGE.json.')
 
 if __name__ == '__main__':
     verify()

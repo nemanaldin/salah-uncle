@@ -11,7 +11,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-data class LessonAudioState(val resource: Int? = null, val playing: Boolean = false, val repeat: Boolean = false)
+data class LessonAudioState(val resource: Int? = null, val playing: Boolean = false, val repeat: Boolean = false, val source: String? = null)
 
 /** One lazily prepared player per visible lesson; no eager players for every step. */
 class LessonAudioController(context: Context, private val onError: () -> Unit) {
@@ -26,10 +26,12 @@ class LessonAudioController(context: Context, private val onError: () -> Unit) {
             override fun onPlayerError(error: PlaybackException) { stop(); onError() }
         })
     }
-    fun toggle(resource: Int) {
-        if (mutable.value.resource != resource) {
-            player.setMediaItem(MediaItem.fromUri(Uri.parse("android.resource://${app.packageName}/$resource")))
-            mutable.value = mutable.value.copy(resource = resource)
+    fun toggle(resource: Int) = toggleSource(Uri.parse("android.resource://${app.packageName}/$resource"), resource)
+    fun toggle(uri: Uri) = toggleSource(uri, null)
+    private fun toggleSource(uri: Uri, resource: Int?) {
+        if (mutable.value.source != uri.toString()) {
+            player.setMediaItem(MediaItem.fromUri(uri))
+            mutable.value = mutable.value.copy(resource = resource, source = uri.toString())
             player.prepare(); player.play()
         } else if (player.isPlaying) player.pause() else {
             if (player.playbackState == Player.STATE_ENDED) player.seekTo(0)
@@ -40,6 +42,6 @@ class LessonAudioController(context: Context, private val onError: () -> Unit) {
         player.repeatMode = if (value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         mutable.value = mutable.value.copy(repeat = value)
     }
-    fun stop() { player.stop(); mutable.value = mutable.value.copy(resource = null, playing = false) }
+    fun stop() { player.stop(); mutable.value = mutable.value.copy(resource = null, playing = false, source = null) }
     fun release() = player.release()
 }

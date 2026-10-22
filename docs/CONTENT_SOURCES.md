@@ -30,3 +30,12 @@ The app continues using its shared, pinned Adhan 1.2.1 calculation engine for bo
 ## Verification
 
 Run `python3 scripts/verify_content.py` to check all locale resources and placeholders, school isolation, complete translated guide coverage, stable step IDs, media references and the digest of preserved original Hanafi content. Unit tests additionally exercise school switching, Asr schedules, regional-method preservation and the Singapore angles. Android tests exercise actual Android resource loading, RTL/LTR configuration, selected-school navigation and progress.
+
+
+## 2.5 additions and remaining editorial work
+
+The new `wudu-remembrance` item uses the Arabic post-wudu testimony from [Sahih Muslim 234b](https://sunnah.com/muslim:234b), with original short explanatory text. It is explicitly shared across the four schools, not presented as a school-specific ritual. The old per-limb wudu prayers are retained as owner-provided source text and flagged for source/juristic review; they are not propagated into other schools.
+
+[TRANSLATION_COVERAGE.json](TRANSLATION_COVERAGE.json) is the exhaustive text-presence report. No reviewed translations of the 21 longer legacy Hanafi lessons have been supplied for the other nine languages. The UI now requires an explicit choice before opening the Persian original. Availability of the existing introductory translations does not establish native-language or specialist editorial approval.
+
+See [GEOGRAPHY.md](GEOGRAPHY.md) for GeoNames attribution and [ADHAN_RECORDINGS.md](ADHAN_RECORDINGS.md) for source-page research, the unchanged recording's unresolved attribution, and the import workflow. No new bundled adhan recording is licensed or claimed by this change.

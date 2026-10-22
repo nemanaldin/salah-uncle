@@ -92,6 +92,7 @@ class AlarmCoordinator(
             if (mode == AlertMode.ADHAN) {
                 val service = Intent(app, AdhanService::class.java).putExtra(EXTRA_ID, id.name)
                     .putExtra(AdhanService.EXTRA_LANGUAGE, snapshot.language.name)
+                    .putExtra(AdhanService.EXTRA_VOICE_FILE, snapshot.selectedVoice()?.fileName)
                 try {
                     if (Build.VERSION.SDK_INT >= 26) app.startForegroundService(service) else app.startService(service)
                 } catch (error: RuntimeException) {

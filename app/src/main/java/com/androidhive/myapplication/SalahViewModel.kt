@@ -24,6 +24,7 @@ data class SalahUiState(
     val today: DailyPrayers? = null,
     val next: PrayerMoment? = null,
     val locationBusy: Boolean = false,
+    val audioImportBusy: Boolean = false,
     val capabilities: DeviceCapabilities = DeviceCapabilities(),
     val error: Int? = null,
 )
@@ -36,6 +37,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
     private val settingsState = container.settings.settings.catch { settingsError.value = R.string.ui_error_generic }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
     private val content = MutableStateFlow(ContentState())
+    private val importingAudio = MutableStateFlow(false)
     private val locating = MutableStateFlow(false)
     private val capabilities = MutableStateFlow(DeviceCapabilities())
     private var contentJob: Job? = null
@@ -50,8 +52,8 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             container.prayerEngine.day(settings.location, settings.calculationPreset, settings.asrConvention) to container.prayerEngine.next(settings, now)
         } else null
         SalahUiState(settings, loaded, now, result?.getOrNull()?.first, result?.getOrNull()?.second,
-            busy, error = loaded.error ?: if (result?.isFailure == true) R.string.ui_error_calculation else null)
-    }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
+            locationBusy = busy, error = loaded.error ?: if (result?.isFailure == true) R.string.ui_error_calculation else null)
+    }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
         .combine(settingsError) { state, error -> state.copy(error = error ?: state.error) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SalahUiState())
 
@@ -114,6 +116,29 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             } catch (_: SecurityException) { message(R.string.ui_error_location_permission) }
             catch (_: Exception) { message(R.string.ui_error_location) }
             finally { locating.value = false }
+        }
+    }
+    fun importAdhanVoice(uri: android.net.Uri) {
+        if (importingAudio.value) return
+        importingAudio.value = true
+        viewModelScope.launch {
+            try {
+                val voice = container.recordings.import(uri)
+                try { container.settings.update { it.copy(adhanVoices = it.adhanVoices + voice, selectedVoiceId = voice.id) } }
+                catch (error: Exception) { container.recordings.delete(voice); throw error }
+            } catch (error: CancellationException) { throw error }
+            catch (_: Exception) { message(R.string.ui_audio_import_error) }
+            finally { importingAudio.value = false }
+        }
+    }
+    fun removeAdhanVoice(voice: AdhanVoice) {
+        viewModelScope.launch {
+            try {
+                container.settings.update { it.copy(adhanVoices = it.adhanVoices.filterNot { v -> v.id == voice.id },
+                    selectedVoiceId = it.selectedVoiceId.takeUnless { id -> id == voice.id }) }
+                withContext(Dispatchers.IO) { container.recordings.delete(voice) }
+            } catch (error: CancellationException) { throw error }
+            catch (_: Exception) { message(R.string.ui_error_generic) }
         }
     }
     fun bookmark(id: String) = update { current ->

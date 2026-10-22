@@ -164,4 +164,25 @@
     <string name="ui_resume_step">Sambung dari langkah %1$d</string>
     <string name="ui_content_language">Bahasa pelajaran ini: %1$s. Bahasa antara muka berasingan.</string>
     <string name="ui_calc_singapore">Singapura; Subuh 20°, Isyak 18°</string>
+    <string name="ui_quick_access">Belajar dan akses pantas</string>
+    <string name="ui_teach_prayer">Belajar solat</string>
+    <string name="ui_teach_wudu">Wuduk</string>
+    <string name="ui_prayer_types">Jenis solat</string>
+    <string name="ui_wudu_duas">Zikir selepas wuduk</string>
+    <string name="ui_translation_unavailable">Terjemahan pelajaran ini belum tersedia</string>
+    <string name="ui_translation_body">Terjemahan yang telah disemak belum tersedia dalam bahasa anda. Kembali ke pelajaran atau pilih untuk membaca teks asal.</string>
+    <string name="ui_read_original">Baca teks asal (%1$s)</string>
+    <string name="ui_country">Negara</string>
+    <string name="ui_all_countries">Semua negara</string>
+    <string name="ui_country_search">Cari negara</string>
+    <string name="ui_city_refine">Taip nama bandar atau pilih negara untuk mengecilkan hasil.</string>
+    <string name="ui_geo_credit">Data bandar luar talian: GeoNames, CC BY 4.0</string>
+    <string name="ui_adhan_voice">Suara azan</string>
+    <string name="ui_adhan_default">Rakaman aplikasi sedia ada</string>
+    <string name="ui_adhan_import">Tambah fail audio</string>
+    <string name="ui_adhan_import_body">Pilih rakaman yang anda dibenarkan guna. Fail disalin ke aplikasi untuk kegunaan luar talian dan suara pilihan dimainkan semasa azan automatik.</string>
+    <string name="ui_audio_size">Fail audio sah sehingga 20 MB setiap rakaman. Import menggunakan storan aplikasi tanpa menambah saiz muat turun APK.</string>
+    <string name="ui_audio_import_error">Audio gagal diimport. Pastikan fail sah dan tidak melebihi 20 MB.</string>
+    <string name="ui_adhan_remove">Buang rakaman</string>
+    <string name="ui_wudu_review">Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.</string>
 </resources>

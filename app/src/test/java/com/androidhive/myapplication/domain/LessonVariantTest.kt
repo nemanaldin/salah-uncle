@@ -14,8 +14,9 @@ class LessonVariantTest {
     @Test fun availableTranslationIsSelectedForTheSameSchool() {
         assertEquals(english, lesson(listOf(persian, english)).variant(School.HANAFI, AppLanguage.ENGLISH))
     }
-    @Test fun untranslatedOriginalKeepsItsRealLanguageMetadata() {
-        assertEquals("fa", lesson(listOf(persian)).variant(School.HANAFI, AppLanguage.ENGLISH)!!.language)
+    @Test fun untranslatedContentNeverSilentlyFallsBackToPersian() {
+        assertNull(lesson(listOf(persian)).variant(School.HANAFI, AppLanguage.ENGLISH))
+        assertEquals("fa", lesson(listOf(persian)).variant(School.HANAFI)!!.language)
     }
     @Test fun anotherSchoolIsNeverUsedAsAFallback() {
         assertNull(lesson(listOf(persian, english)).variant(School.SHAFII, AppLanguage.ENGLISH))

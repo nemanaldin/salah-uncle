@@ -1,4 +1,12 @@
-Salah is an offline prayer-learning Android app. Version 2.4 adds prayer and wudu introductions for Hanafi, Shafii, Maliki and Hanbali in ten languages while preserving the Compose layout and existing Persian Hanafi material. Adhan uses a separate foreground service and lock-screen activity.
+# Salah 2.5
+
+A Kotlin / Jetpack Compose prayer-learning app with direct teaching shortcuts, offline prayer calculations and qibla, ten interface languages, four Sunni schools and selectable adhan recordings.
+
+**Downloads:** open the latest successful [Android Actions run](https://github.com/nemanaldin/salah-uncle/actions/workflows/android.yml) for `uncle-work`, sign in to GitHub, and download **salah-downloads** under **Artifacts**. It contains the installable debug APK, unsigned release APK, source ZIP, offline Persian HTML report and Android screenshots. Extract the archive first; install `salah-2.5.0-debug.apk`. The release APK needs the owner's signing key. Development signing keys can differ between builds.
+
+[گزارش فارسی نسخهٔ ۲٫۵](docs/UPDATE_2_5_FA.md) · [Translation coverage](docs/TRANSLATION_COVERAGE.json) · [Offline cities and licence](docs/GEOGRAPHY.md) · [Adhan audio and rights](docs/ADHAN_RECORDINGS.md)
+
+The 21 original Hanafi lessons remain Persian-only; missing translations are explicitly identified and never silently replaced with Persian. The new prayer/wudu introductions and shared post-wudu remembrance have text in all ten languages. Text availability does not claim specialist/native-language editorial approval. User-supplied audio can be imported for offline use; no newly licensed recording is bundled in this change.
 
 Build with JDK 21 (Java/Kotlin bytecode targets 17), Android SDK 36, Build Tools 35.0.0, and the checked-in Gradle 8.13 wrapper:
 

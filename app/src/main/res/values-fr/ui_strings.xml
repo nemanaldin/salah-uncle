@@ -164,4 +164,25 @@
     <string name="ui_resume_step">Reprendre à l’étape %1$d</string>
     <string name="ui_content_language">Langue de ce cours : %1$s. La langue de l’interface est indépendante.</string>
     <string name="ui_calc_singapore">Singapour ; Fajr 20°, Isha 18°</string>
+    <string name="ui_quick_access">Apprendre et accès rapide</string>
+    <string name="ui_teach_prayer">Apprendre la prière</string>
+    <string name="ui_teach_wudu">Les ablutions</string>
+    <string name="ui_prayer_types">Types de prière</string>
+    <string name="ui_wudu_duas">Invocation après les ablutions</string>
+    <string name="ui_translation_unavailable">La traduction de cette leçon est indisponible</string>
+    <string name="ui_translation_body">Une traduction révisée de cette leçon est indisponible dans votre langue. Revenez aux leçons ou choisissez de lire le texte original.</string>
+    <string name="ui_read_original">Lire le texte original (%1$s)</string>
+    <string name="ui_country">Pays</string>
+    <string name="ui_all_countries">Tous les pays</string>
+    <string name="ui_country_search">Rechercher un pays</string>
+    <string name="ui_city_refine">Saisissez une ville ou choisissez un pays pour affiner les résultats.</string>
+    <string name="ui_geo_credit">Données des villes hors ligne : GeoNames, CC BY 4.0</string>
+    <string name="ui_adhan_voice">Voix de l’adhan</string>
+    <string name="ui_adhan_default">Enregistrement actuel de l’application</string>
+    <string name="ui_adhan_import">Ajouter un fichier audio</string>
+    <string name="ui_adhan_import_body">Choisissez un enregistrement que vous avez le droit d’utiliser. Il est copié dans l’application pour fonctionner hors ligne et sera utilisé pour l’adhan automatique.</string>
+    <string name="ui_audio_size">Fichiers audio valides de 20 Mo maximum chacun. Les imports utilisent le stockage de l’application sans augmenter la taille du téléchargement APK.</string>
+    <string name="ui_audio_import_error">Import audio impossible. Vérifiez que le fichier est valide et ne dépasse pas 20 Mo.</string>
+    <string name="ui_adhan_remove">Supprimer cet enregistrement</string>
+    <string name="ui_wudu_review">Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.</string>
 </resources>

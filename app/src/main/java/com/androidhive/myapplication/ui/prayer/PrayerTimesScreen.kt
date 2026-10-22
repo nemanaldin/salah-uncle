@@ -15,7 +15,10 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.*
-import com.androidhive.myapplication.data.location.City
+import com.androidhive.myapplication.data.location.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import com.androidhive.myapplication.ui.components.*
 import com.androidhive.myapplication.ui.home.countdown
 import com.androidhive.myapplication.ui.home.formatPrayerTime
@@ -56,24 +59,49 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
         state.error?.let { InfoCard(stringResource(it)) }
         OutlinedButton(onSettings, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(stringResource(R.string.ui_notifications)) }
     }
-    if (showCities) CityPicker(state.content.cities, onChoose = { onCity(it); showCities = false }, onDismiss = { showCities = false })
+    if (showCities) CityPicker(state.content.cities, settings.language, onChoose = { onCity(it); showCities = false }, onDismiss = { showCities = false })
 }
 
 @Composable
-private fun CityPicker(cities: List<City>, onChoose: (String) -> Unit, onDismiss: () -> Unit) {
+private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (String) -> Unit, onDismiss: () -> Unit) {
     var query by rememberSaveable { mutableStateOf("") }
-    val results = remember(cities, query) { cities.filter { query.isBlank() || it.name.contains(query, true) || it.province.contains(query, true) || it.country.contains(query, true) } }
+    var country by rememberSaveable { mutableStateOf<String?>(null) }
+    var choosingCountry by rememberSaveable { mutableStateOf(false) }
+    var countryQuery by rememberSaveable { mutableStateOf("") }
+    var results by remember { mutableStateOf(emptyList<City>()) }
+    val countries = remember(cities, language) { cities.map { it.countryCode }.distinct().sortedBy { countryName(it, language) } }
+    LaunchedEffect(cities, query, country) {
+        delay(120)
+        results = withContext(Dispatchers.Default) {
+            val key = normalizeCityQuery(query)
+            cities.asSequence().filter { (country == null || it.countryCode == country) && it.matches(key) }.take(100).toList()
+        }
+    }
     AlertDialog(onDismissRequest = onDismiss, title = { Text(stringResource(R.string.ui_location_manual)) },
         text = {
             Column(Modifier.fillMaxWidth()) {
+                ChoiceRow(stringResource(R.string.ui_country), country?.let { countryName(it, language) } ?: stringResource(R.string.ui_all_countries),
+                    { choosingCountry = true; countryQuery = "" }, Modifier.testTag("choose_country"))
                 OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("city_search"), label = { Text(stringResource(R.string.ui_location_search)) }, singleLine = true)
-                LazyColumn(Modifier.heightIn(max = 380.dp).testTag("city_results")) {
+                LazyColumn(Modifier.heightIn(max = 340.dp).testTag("city_results")) {
                     if (results.isEmpty()) item { SupportingText(stringResource(R.string.ui_location_empty)) }
                     items(results, key = { it.id }) { city ->
-                        ListItem(headlineContent = { Text(city.name) }, supportingContent = { Text(stringResource(R.string.ui_city_location, city.country, city.province)) },
+                        ListItem(headlineContent = { Text(city.name) }, supportingContent = { Text(listOf(city.countryName(language), city.province, city.zoneId).filter { it.isNotBlank() }.joinToString(" · ")) },
                             modifier = Modifier.clickable { onChoose(city.id) }.testTag("city_${city.id}"))
                     }
+                    if (results.size == 100) item { SupportingText(stringResource(R.string.ui_city_refine)) }
                 }
+                SupportingText(stringResource(R.string.ui_geo_credit))
             }
         }, confirmButton = { TextButton(onDismiss) { Text(stringResource(R.string.ui_cancel)) } })
+    if (choosingCountry) AlertDialog(onDismissRequest = { choosingCountry = false }, title = { Text(stringResource(R.string.ui_country)) },
+        text = { Column {
+            OutlinedTextField(countryQuery, { countryQuery = it }, Modifier.fillMaxWidth().testTag("country_search"), label = { Text(stringResource(R.string.ui_country_search)) }, singleLine = true)
+            LazyColumn(Modifier.heightIn(max = 350.dp)) {
+                item { TextButton({ country = null; choosingCountry = false; query = "" }) { Text(stringResource(R.string.ui_all_countries)) } }
+                items(countries.filter { normalizeCityQuery(countryName(it, language)).contains(normalizeCityQuery(countryQuery)) || it.equals(countryQuery, true) }, key = { it }) { code ->
+                    ListItem(headlineContent = { Text(countryName(code, language)) }, modifier = Modifier.clickable { country = code; query = ""; choosingCountry = false }.testTag("country_$code"))
+                }
+            }
+        } }, confirmButton = { TextButton({ choosingCountry = false }) { Text(stringResource(R.string.ui_close)) } })
 }
