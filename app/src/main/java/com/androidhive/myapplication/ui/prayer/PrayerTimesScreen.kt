@@ -33,7 +33,17 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
     val settings = state.settings ?: return
     var showCities by rememberSaveable { mutableStateOf(false) }
     PageColumn(Modifier.testTag("prayer_times_screen")) {
-        IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, stringResource(R.string.ui_times_body))
+        IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, settings.location?.label?.ifBlank { stringResource(R.string.ui_device_location) } ?: stringResource(R.string.ui_times_body))
+        state.today?.let { today -> AppCard {
+            SectionTitle(stringResource(R.string.ui_prayer_times))
+            today.moments.forEach { moment ->
+                val active = moment.id == state.next?.id && moment.time == state.next.time
+                Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text(stringResource(moment.id.labelRes()), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+                    Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
+                }
+            }
+        } }
         state.next?.let { next -> PhotoPanel {
             Text(stringResource(R.string.ui_next_prayer), color = Color(0xFFCCE9DB), style = MaterialTheme.typography.titleMedium)
             Text("${stringResource(next.id.labelRes())} · ${formatPrayerTime(next.time, settings)}", color = Color.White, style = MaterialTheme.typography.headlineMedium)
@@ -51,16 +61,6 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
                 Text(stringResource(if (state.locationBusy) R.string.ui_location_busy else R.string.ui_location_gps))
             }
         }
-        state.today?.let { today -> AppCard {
-            SectionTitle(stringResource(R.string.ui_prayer_times))
-            today.moments.forEach { moment ->
-                val active = moment.id == state.next?.id && moment.time == state.next.time
-                Row(Modifier.fillMaxWidth().padding(vertical = 9.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(stringResource(moment.id.labelRes()), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
-                    Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
-                }
-            }
-        } }
         state.error?.let { InfoCard(stringResource(it)) }
         OutlinedButton(onSettings, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(stringResource(R.string.ui_notifications)) }
     }

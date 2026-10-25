@@ -95,7 +95,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
             LinearProgressIndicator(progress = { (index + 1f) / variant.steps.size }, modifier = Modifier.fillMaxWidth())
             if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
                 AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
-            if (step.audio != null || step.body.any { it in '\u0600'..'\u06ff' }) SupportingText(stringResource(R.string.ui_recitation_language))
+            if (step.audio != null) SupportingText(stringResource(R.string.ui_recitation_language))
             if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
             if (step.illustrations.isNotEmpty()) AppCard {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
