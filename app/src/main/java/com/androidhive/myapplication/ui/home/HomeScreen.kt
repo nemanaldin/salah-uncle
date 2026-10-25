@@ -61,10 +61,14 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(countdown(state.now, state.next.time), color = Color(0xFFF5E3B8),
                         style = MaterialTheme.typography.headlineMedium.copy(textDirection = TextDirection.Ltr), modifier = Modifier.testTag("prayer_countdown"))
-                    Text(settings.location?.label?.ifBlank { stringResource(R.string.ui_device_location) }.orEmpty(), Modifier.weight(1f),
-                        color = Color(0xFFD2E8DF), style = MaterialTheme.typography.bodyMedium)
+                    TextButton(onTimes, Modifier.weight(1f).testTag("home_all_times")) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Text(settings.location?.label?.ifBlank { stringResource(R.string.ui_device_location) }.orEmpty(),
+                                color = Color(0xFFD2E8DF), style = MaterialTheme.typography.bodySmall)
+                            Text(stringResource(R.string.ui_prayer_times), color = Color.White)
+                        }
+                    }
                 }
-                TextButton(onTimes, Modifier.testTag("home_all_times")) { Text(stringResource(R.string.ui_prayer_times), color = Color.White) }
             } else {
                 Text(stringResource(R.string.ui_location_needed), color = Color.White, style = MaterialTheme.typography.titleMedium)
                 FilledTonalButton(onTimes, Modifier.testTag("home_set_location")) { Text(stringResource(R.string.ui_set_location)) }
@@ -103,7 +107,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                 shortcuts.chunked(columns).forEach { row ->
                     Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                         row.forEach { shortcut ->
-                            Card(onClick = shortcut.action, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.weight(1f).heightIn(min = 142.dp).testTag("home_${shortcut.id}"),
+                            Card(onClick = shortcut.action, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.weight(1f).heightIn(min = 128.dp).testTag("home_${shortcut.id}"),
                                 shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
                                 Column(Modifier.fillMaxWidth().padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                     val art = when (shortcut.id) {
@@ -113,7 +117,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                                         "qibla" -> R.drawable.heritage_qibla
                                         else -> lessonArtwork(shortcut.id)
                                     }
-                                    Image(painterResource(art), null, Modifier.size(76.dp).clip(CircleShape), contentScale = ContentScale.Fit)
+                                    Image(painterResource(art), null, Modifier.size(64.dp).clip(CircleShape), contentScale = ContentScale.Fit)
                                     Text(shortcut.title, style = MaterialTheme.typography.titleMedium)
                                 }
                             }

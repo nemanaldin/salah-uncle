@@ -150,20 +150,24 @@ class SalahFlowTest {
             File(screenshots, "home-${language.tag}.png").outputStream().use { stream ->
                 assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
             }
-            compose.onNodeWithTag("home_ghusl").performScrollTo().performClick()
+            compose.onNodeWithTag("home_ghusl").performScrollTo()
+            if (language == AppLanguage.PERSIAN) File(screenshots, "features-fa.png").outputStream().use { stream ->
+                assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
+            }
+            compose.onNodeWithTag("home_ghusl").performClick()
             compose.onNodeWithTag("translation_unavailable").assertDoesNotExist()
             val expected = lessons.single { it.id == "ghusl" }.variant(School.HANAFI, language)!!.steps.single().body
             compose.onNodeWithTag("lesson_body").assertTextEquals(expected)
             File(screenshots, "lesson-${language.tag}.png").outputStream().use { stream ->
                 assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
             }
-            compose.onNodeWithTag("nav_home").performClick()
+            compose.onNodeWithContentDescription(localized.getString(R.string.ui_back)).performClick()
         }
         compose.onNodeWithTag("home_all_times").performScrollTo().performClick()
         File(screenshots, "prayer-times.png").outputStream().use { stream ->
             assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
         }
-        compose.onNodeWithTag("nav_home").performClick()
+        compose.onNodeWithContentDescription(compose.activity.getString(R.string.ui_back)).performClick()
         compose.onNodeWithTag("home_qibla").performScrollTo().performClick()
         File(screenshots, "qibla.png").outputStream().use { stream ->
             assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
