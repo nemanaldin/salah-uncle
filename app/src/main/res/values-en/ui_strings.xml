@@ -185,4 +185,5 @@
     <string name="ui_audio_import_error">Could not import audio. Check that the file is valid and no larger than 20 MB.</string>
     <string name="ui_adhan_remove">Remove recording</string>
     <string name="ui_wudu_review">This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.</string>
+    <string name="ui_recitation_language">Instructions follow your language; recitations and recitation audio remain in Arabic.</string>
 </resources>

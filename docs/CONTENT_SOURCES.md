@@ -6,7 +6,7 @@ Each school has a separate prayer lesson with 10 steps and a wudu lesson with 4 
 
 These are introductory instructions for individual daily prayer. They do not attempt to cover all rulings on congregational prayer, travel, sickness, Friday prayer or witr. Recitations are Arabic; explanatory prose and titles are localized. The existing Hanafi audio is reused only for shared Arabic takbir, ruku and sujud formulas. No new animation or voice recording was generated.
 
-The previous 21 Hanafi lessons and their 73 Persian steps, audio associations and illustrations are preserved exactly. Their titles are translated into the ten languages; the longer original bodies remain explicitly tagged Persian. The reader identifies this language when it differs from the interface language.
+The original Persian archive and all media/step IDs remain intact. Version 2.6 adds nine source-compared body translations for each of its 73 steps. Sourced corrections for errors in the old text are applied separately in `translations/editorial-v1.json`, including the wrongly labeled five-bowing eclipse prayer. See [the 2.6 report](UPDATE_2_6_FA.md) for references and the pending independent native/specialist review.
 
 ## Sources and scope of adaptation
 
@@ -36,6 +36,6 @@ Run `python3 scripts/verify_content.py` to check all locale resources and placeh
 
 The new `wudu-remembrance` item uses the Arabic post-wudu testimony from [Sahih Muslim 234b](https://sunnah.com/muslim:234b), with original short explanatory text. It is explicitly shared across the four schools, not presented as a school-specific ritual. The old per-limb wudu prayers are retained as owner-provided source text and flagged for source/juristic review; they are not propagated into other schools.
 
-[TRANSLATION_COVERAGE.json](TRANSLATION_COVERAGE.json) is the exhaustive text-presence report. No reviewed translations of the 21 longer legacy Hanafi lessons have been supplied for the other nine languages. The UI now requires an explicit choice before opening the Persian original. Availability of the existing introductory translations does not establish native-language or specialist editorial approval.
+[TRANSLATION_COVERAGE.json](TRANSLATION_COVERAGE.json) is the exhaustive text-presence report. Version 2.6 supplies source-compared translations of all 21 legacy Hanafi lessons in the nine other languages. Every current lesson has a variant in each supported language. Text availability does not establish independent native-language or specialist editorial approval. Other schools retain separate introductory guides; Hanafi-only rulings are not mixed into them.
 
 See [GEOGRAPHY.md](GEOGRAPHY.md) for GeoNames attribution and [ADHAN_RECORDINGS.md](ADHAN_RECORDINGS.md) for source-page research, the unchanged recording's unresolved attribution, and the import workflow. No new bundled adhan recording is licensed or claimed by this change.

@@ -91,9 +91,11 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                     Icon(Icons.Default.Share, shareLabel)
                 }
             }
+            IllustratedHeading(lesson.title(settings.language), lessonArtwork(lesson.id))
             LinearProgressIndicator(progress = { (index + 1f) / variant.steps.size }, modifier = Modifier.fillMaxWidth())
             if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
                 AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
+            if (step.audio != null || step.body.any { it in '\u0600'..'\u06ff' }) SupportingText(stringResource(R.string.ui_recitation_language))
             if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
             if (step.illustrations.isNotEmpty()) AppCard {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -105,7 +107,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
             AppCard {
                 val direction = if (android.text.TextUtils.getLayoutDirectionFromLocale(java.util.Locale.forLanguageTag(variant.language)) == android.view.View.LAYOUT_DIRECTION_RTL) LayoutDirection.Rtl else LayoutDirection.Ltr
                 CompositionLocalProvider(LocalLayoutDirection provides direction) {
-                    SelectionContainer { Text(step.body, style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(variant.language))) }
+                    SelectionContainer { Text(step.body, modifier = Modifier.testTag("lesson_body"), style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(variant.language))) }
                 }
             }
             step.audio?.let { name -> MediaResources.audio[name]?.let { resource ->

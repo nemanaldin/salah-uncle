@@ -32,15 +32,17 @@ class SalahFlowTest {
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.lastLessonId == "prayer-hanafi" }
     }
 
-    @Test fun untranslatedLessonRequiresExplicitChoiceBeforeShowingPersian() {
+    @Test fun englishLegacyLessonShowsEnglishAndRetainsLanguageAfterRecreation() {
         ready()
         runBlocking { repository.update { it.copy(language = AppLanguage.ENGLISH) } }
         compose.waitUntil(30_000) { compose.onAllNodesWithText("Learn and explore").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("home_ghusl").performScrollTo().performClick()
-        compose.onNodeWithTag("translation_unavailable").assertExists()
-        compose.onNodeWithTag("lesson_reader").assertDoesNotExist()
-        compose.onNodeWithTag("read_original").performClick()
-        compose.onNodeWithTag("lesson_reader").assertExists()
+        compose.onNodeWithTag("translation_unavailable").assertDoesNotExist()
+        compose.onNodeWithTag("read_original").assertDoesNotExist()
+        compose.onNodeWithTag("lesson_body").assertTextContains("Ghusl: the full ritual bath", substring = true)
+        compose.activityRule.scenario.recreate()
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("lesson_reader").fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("lesson_body").assertTextContains("rinsing the mouth", substring = true)
         assertEquals(AppLanguage.ENGLISH, runBlocking { repository.snapshot() }.language)
     }
 
@@ -132,6 +134,9 @@ class SalahFlowTest {
         val outputDirectory = InstrumentationRegistry.getArguments().getString("additionalTestOutputDir")
             ?.let(::File) ?: (context.getExternalFilesDir(null) ?: context.cacheDir)
         val screenshots = File(outputDirectory, "qa-screenshots").apply { check(mkdirs() || isDirectory) }
+        runBlocking { repository.update { it.copy(location = SavedLocation(35.6892, 51.3890, "Tehran", "Asia/Tehran")) } }
+        compose.waitUntil(30_000) { compose.onAllNodesWithTag("prayer_countdown").fetchSemanticsNodes().isNotEmpty() }
+        val lessons = runBlocking { com.androidhive.myapplication.data.content.LessonRepository(context).load() }
         AppLanguage.entries.forEach { language ->
             runBlocking { repository.update { it.copy(language = language) } }
             val localized = com.androidhive.myapplication.core.localizedContext(context, language)
@@ -141,9 +146,27 @@ class SalahFlowTest {
                 assertEquals(if (language.isRtl) android.view.View.LAYOUT_DIRECTION_RTL else android.view.View.LAYOUT_DIRECTION_LTR,
                     compose.activity.resources.configuration.layoutDirection)
             }
+            compose.onNodeWithTag("home_hero").performScrollTo()
             File(screenshots, "home-${language.tag}.png").outputStream().use { stream ->
                 assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
             }
+            compose.onNodeWithTag("home_ghusl").performScrollTo().performClick()
+            compose.onNodeWithTag("translation_unavailable").assertDoesNotExist()
+            val expected = lessons.single { it.id == "ghusl" }.variant(School.HANAFI, language)!!.steps.single().body
+            compose.onNodeWithTag("lesson_body").assertTextEquals(expected)
+            File(screenshots, "lesson-${language.tag}.png").outputStream().use { stream ->
+                assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
+            }
+            compose.onNodeWithTag("nav_home").performClick()
+        }
+        compose.onNodeWithTag("home_all_times").performScrollTo().performClick()
+        File(screenshots, "prayer-times.png").outputStream().use { stream ->
+            assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
+        }
+        compose.onNodeWithTag("nav_home").performClick()
+        compose.onNodeWithTag("home_qibla").performScrollTo().performClick()
+        File(screenshots, "qibla.png").outputStream().use { stream ->
+            assertTrue(compose.onRoot().captureToImage().asAndroidBitmap().compress(android.graphics.Bitmap.CompressFormat.PNG, 100, stream))
         }
     }
 

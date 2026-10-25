@@ -12,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -32,7 +33,12 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
     val settings = state.settings ?: return
     var showCities by rememberSaveable { mutableStateOf(false) }
     PageColumn(Modifier.testTag("prayer_times_screen")) {
-        SupportingText(stringResource(R.string.ui_times_body))
+        IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, stringResource(R.string.ui_times_body))
+        state.next?.let { next -> PhotoPanel {
+            Text(stringResource(R.string.ui_next_prayer), color = Color(0xFFCCE9DB), style = MaterialTheme.typography.titleMedium)
+            Text("${stringResource(next.id.labelRes())} · ${formatPrayerTime(next.time, settings)}", color = Color.White, style = MaterialTheme.typography.headlineMedium)
+            Text(countdown(state.now, next.time), color = Color(0xFFF5E3B8), style = MaterialTheme.typography.headlineLarge)
+        } }
         AppCard {
             SectionTitle(stringResource(R.string.ui_location))
             val location = settings.location
@@ -45,11 +51,6 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
                 Text(stringResource(if (state.locationBusy) R.string.ui_location_busy else R.string.ui_location_gps))
             }
         }
-        state.next?.let { next -> AppCard {
-            SectionTitle(stringResource(R.string.ui_next_prayer))
-            Text("${stringResource(next.id.labelRes())} · ${formatPrayerTime(next.time, settings)}", style = MaterialTheme.typography.headlineMedium)
-            Text(countdown(state.now, next.time), style = MaterialTheme.typography.headlineMedium)
-        } }
         state.today?.let { today -> AppCard {
             SectionTitle(stringResource(R.string.ui_prayer_times))
             today.moments.forEach { moment ->

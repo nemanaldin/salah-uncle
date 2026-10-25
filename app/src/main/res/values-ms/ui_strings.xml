@@ -185,4 +185,5 @@
     <string name="ui_audio_import_error">Audio gagal diimport. Pastikan fail sah dan tidak melebihi 20 MB.</string>
     <string name="ui_adhan_remove">Buang rakaman</string>
     <string name="ui_wudu_review">Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.</string>
+    <string name="ui_recitation_language">Panduan mengikut bahasa pilihan; bacaan dan audio tilawah kekal dalam bahasa Arab.</string>
 </resources>

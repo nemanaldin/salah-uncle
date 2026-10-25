@@ -1,0 +1,66 @@
+{
+  "sourceCommit": "6dc5366532cefbb295b14237e10b7d3d2dc0f859",
+  "note": "Owner-provided artwork restored byte for byte; no Muslim Pro artwork copied.",
+  "files": [
+    {
+      "file": "heritage_mosque.png",
+      "originalPath": "app/src/main/res/drawable/mosque.png",
+      "bytes": 1354957,
+      "sha256": "1a52b317ed69e429619fed8c4a7e8a350100a5f406e913f3e587a77956d3e005"
+    },
+    {
+      "file": "heritage_prayer.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a22.png",
+      "bytes": 43507,
+      "sha256": "6c1fa4f4cd6cd8b0e8b49e96d1bb08502ea32fd321919962fe703cca81a22768"
+    },
+    {
+      "file": "heritage_wudu.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a11.png",
+      "bytes": 115191,
+      "sha256": "39164bc0abc2a1a6847aeabf90462634d2c43242dbb522cd61c8676e07126a72"
+    },
+    {
+      "file": "heritage_sujud.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a33.png",
+      "bytes": 52402,
+      "sha256": "ef7b1e3a347ab544f0006f77b97e7d6ad26022ac65f8ae01d970e8df94211101"
+    },
+    {
+      "file": "heritage_ghusl.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a44.png",
+      "bytes": 96803,
+      "sha256": "da276d1e583e2c1558ef90e251937db59027acd81b822bf1e373c91f6c998e6b"
+    },
+    {
+      "file": "heritage_dhikr.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a55.png",
+      "bytes": 49702,
+      "sha256": "ee38b84316e5d44f42c1c62ed59668589ffe44a8d5437eaa147b5230c4918d95"
+    },
+    {
+      "file": "heritage_dua.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/a66.png",
+      "bytes": 360737,
+      "sha256": "ced75ed56d10c291ca2baac09c557af8458cb833e8c057adb2e3e31b56f86e74"
+    },
+    {
+      "file": "heritage_times.png",
+      "originalPath": "app/src/main/res/drawable/olad ui/adhan_times.png",
+      "bytes": 49762,
+      "sha256": "ae06ae2af2041ec332c27b9c6e315a23622899cf64f0b6c56a671b327e4c80c6"
+    },
+    {
+      "file": "heritage_qibla.png",
+      "originalPath": "app/src/main/res/drawable/compass.png",
+      "bytes": 339740,
+      "sha256": "fee1952acd5a6c678b38e174c96a99b760fc82b1d8f55746f507c18aea3d8a36"
+    },
+    {
+      "file": "heritage_tayammum.png",
+      "originalPath": "app/src/main/res/drawable/tayammum.png",
+      "bytes": 45113,
+      "sha256": "faaef9ae0af236646e18fb309530fac3edcb1972de222e1470cd83236d3c79aa"
+    }
+  ]
+}

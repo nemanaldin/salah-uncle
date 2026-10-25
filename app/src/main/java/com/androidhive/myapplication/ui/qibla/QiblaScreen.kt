@@ -49,13 +49,15 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
     val outline = MaterialTheme.colorScheme.outlineVariant
     val description = stringResource(R.string.ui_compass_description)
     PageColumn(Modifier.testTag("qibla_screen")) {
-        SupportingText(stringResource(R.string.ui_qibla_body))
+        IllustratedHeading(stringResource(R.string.ui_qibla), R.drawable.heritage_qibla, stringResource(R.string.ui_qibla_body))
         AppCard {
             Box(Modifier.fillMaxWidth().aspectRatio(1f).semantics { contentDescription = description }, contentAlignment = Alignment.Center) {
                 Box(Modifier.fillMaxSize().graphicsLayer { rotationZ = -trueHeading }, contentAlignment = Alignment.TopCenter) {
                     Canvas(Modifier.fillMaxSize().padding(20.dp)) {
                         val radius = size.minDimension / 2
+                        drawCircle(primary.copy(alpha = .06f), radius = radius)
                         drawCircle(outline, radius = radius, style = Stroke(3.dp.toPx()))
+                        drawCircle(primary.copy(alpha = .15f), radius = radius * .72f, style = Stroke(1.dp.toPx()))
                         repeat(36) { i ->
                             val a = Math.toRadians(i * 10.0)
                             val inner = radius - if (i % 9 == 0) 18.dp.toPx() else 8.dp.toPx()

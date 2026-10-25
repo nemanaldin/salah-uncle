@@ -34,10 +34,48 @@ class LessonRepository(context: Context) {
         mutex.withLock {
             cached ?: assets.list("content").orEmpty().filter { it.endsWith(".json") }.sorted().flatMap { file ->
                 parse(assets.open("content/$file").bufferedReader().use { it.readText() })
-            }.also { lessons ->
+            }.let(::withTranslations).also { lessons ->
                 require(lessons.map { it.id }.distinct().size == lessons.size)
                 cached = lessons
             }
+        }
+    }
+
+    // Translations augment the original catalog: IDs, media and saved progress stay stable.
+    // Missing or mismatched data fails validation instead of silently displaying Persian.
+    private fun withTranslations(lessons: List<Lesson>): List<Lesson> {
+        fun read(path: String) = JSONObject(assets.open(path).bufferedReader().use { it.readText() })
+        val editorial = read("translations/editorial-v1.json")
+        require(editorial.getInt("schemaVersion") == 1)
+        val corrections = editorial.getJSONObject("faCorrections")
+        val titles = editorial.getJSONObject("titleOverrides")
+        val sources = editorial.getJSONObject("sources")
+        val overlays = AppLanguage.entries.filter { it != AppLanguage.PERSIAN }.associate { language ->
+            val json = read("translations/legacy-${language.tag}-v1.json")
+            require(json.getInt("schemaVersion") == 1 && json.getString("language") == language.tag)
+            language.tag to json.getJSONObject("lessons")
+        }
+        return lessons.map { lesson ->
+            if (overlays.values.none { it.has(lesson.id) }) return@map lesson
+            require(overlays.values.all { it.has(lesson.id) })
+            val original = lesson.variants.single { it.school == School.HANAFI && it.language == "fa" }
+            val references = sources.optJSONArray(lesson.id)?.let { array ->
+                (0 until array.length()).map { i -> array.getJSONObject(i).let { LessonSource(it.getString("title"), it.getString("url")) } }
+            }.orEmpty()
+            val updatedOriginal = original.copy(steps = original.steps.map { step ->
+                step.copy(body = corrections.optString(step.id).takeIf { it.isNotBlank() } ?: step.body)
+            }, sources = references)
+            val translations = overlays.map { (language, catalog) ->
+                val bodies = catalog.getJSONObject(lesson.id)
+                require(bodies.keys().asSequence().toSet() == original.steps.map { it.id }.toSet())
+                original.copy(language = language, steps = original.steps.map { step ->
+                    step.copy(body = bodies.getString(step.id).also { require(it.isNotBlank()) })
+                }, sources = references)
+            }
+            val titleOverride = titles.optJSONObject(lesson.id)?.let { objectTitles ->
+                objectTitles.keys().asSequence().associateWith { objectTitles.getString(it) }
+            }.orEmpty()
+            lesson.copy(variants = listOf(updatedOriginal) + translations, titles = lesson.titles + titleOverride)
         }
     }
 

@@ -185,4 +185,5 @@
     <string name="ui_audio_import_error">Import audio impossible. Vérifiez que le fichier est valide et ne dépasse pas 20 Mo.</string>
     <string name="ui_adhan_remove">Supprimer cet enregistrement</string>
     <string name="ui_wudu_review">Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.</string>
+    <string name="ui_recitation_language">Les explications suivent votre langue ; les récitations et leur audio restent en arabe.</string>
 </resources>

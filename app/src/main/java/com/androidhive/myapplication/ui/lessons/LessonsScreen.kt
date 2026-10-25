@@ -1,6 +1,12 @@
 package com.androidhive.myapplication.ui.lessons
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -34,6 +40,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         }
     }
     LazyColumn(Modifier.fillMaxSize().testTag("lesson_list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        item { IllustratedHeading(stringResource(R.string.ui_lessons), R.drawable.heritage_prayer) }
         item {
             OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("lesson_search"),
                 label = { Text(stringResource(R.string.ui_search_lessons)) }, singleLine = true,
@@ -54,8 +61,9 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
             val steps = lesson.variant(settings.school, settings.language)?.steps.orEmpty()
             val completed = steps.count { "${lesson.id}:${it.id}" in settings.completedSteps }
             AppCard(modifier = Modifier.testTag("lesson_${lesson.id}"), onClick = { onLesson(lesson.id) }) {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(lesson.title(settings.language), Modifier.weight(1f).padding(top = 8.dp), style = MaterialTheme.typography.titleLarge)
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Image(painterResource(lessonArtwork(lesson.id)), null, Modifier.size(64.dp).clip(CircleShape), contentScale = ContentScale.Fit)
+                    Text(lesson.title(settings.language), Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
                     val saved = lesson.id in settings.bookmarks
                     IconButton({ onBookmark(lesson.id) }, Modifier.testTag("bookmark_${lesson.id}")) {
                         Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),

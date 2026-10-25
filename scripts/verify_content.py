@@ -72,6 +72,33 @@ def verify():
     # Digest of original Persian variants at e43232a, before adding localized titles.
     digest = hashlib.sha256(json.dumps(original, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     assert digest == '06cb69865525803103375873035ddb15dc4c068d27739bd8c2feb532cc7eac81', 'Original Hanafi text or media changed'
+    from build_lesson_translations import source_data
+    _, original_steps, passages = source_data()
+    source_digest = hashlib.sha256((ASSETS/'content/hanafi-fa-v1.json').read_bytes()).hexdigest()
+    for language in LANGUAGES - {'fa'}:
+        compiled = json.loads((ASSETS/f'translations/legacy-{language}-v1.json').read_text())
+        template = json.loads((ROOT/f'content/legacy-i18n/{language}.json').read_text())['steps']
+        assert compiled['language'] == language and compiled['sourceSha256'] == source_digest
+        assert set(compiled['lessons']) == set(original)
+        assert set(template) == set(original_steps)
+        expected_tokens=json.loads((ROOT/'content/legacy-i18n/en.json').read_text())['steps']
+        for key,text in template.items():
+            assert re.findall(r'\{\{.*?\}\}',text)==re.findall(r'\{\{.*?\}\}',expected_tokens[key]), (language,key,'Arabic passages differ')
+        for lesson_id, bodies in compiled['lessons'].items():
+            assert set(bodies) == {x['id'] for x in original[lesson_id][0]['steps']}
+            for key, body in bodies.items():
+                expected = re.sub(r'\{\{([^}]+)\}\}', lambda m: passages[m[1]], template[key])
+                assert body == expected and body != original_steps[key]['body']
+                assert '{{' not in body
+        # A translated explanation must precede every retained Arabic-only recitation.
+        assert all(re.search(r'[\u0600-\u06ff\u0980-\u09ffA-Za-z]', text.split('{{')[0]) for text in template.values())
+    editorial = json.loads((ASSETS/'translations/editorial-v1.json').read_text())
+    assert set(editorial['faCorrections']) <= set(original_steps)
+    assert set(editorial['titleOverrides']['signs']) == LANGUAGES
+    heritage = json.loads((ROOT/'docs/HERITAGE_IMAGES.json').read_text())
+    for entry in heritage['files']:
+        image = (RES/'drawable-nodpi'/entry['file']).read_bytes()
+        assert len(image) == entry['bytes'] and hashlib.sha256(image).hexdigest() == entry['sha256']
     remembrance = by_id['wudu-remembrance']
     assert len(remembrance['variants']) == 40
     assert {(v['school'], v['language']) for v in remembrance['variants']} == {(school, language) for school in SCHOOLS for language in LANGUAGES}
@@ -95,7 +122,7 @@ def verify():
     assert json.loads((ROOT/'docs/TRANSLATION_COVERAGE.json').read_text()) == coverage(), 'Stale coverage report'
     print(f'PASS: {len(LANGUAGES)} locales, {len(reference)} strings each; {len(lessons)} lessons; 8 localized guides and shared wudu remembrance; original 21 lessons/73 steps preserved.')
     print(f'PASS: {len(rows)} offline world cities / 244 countries and territories; coordinates, zones and digest checked; legacy city IDs retained.')
-    print('TRANSLATION LIMIT: 21 legacy Hanafi lessons remain Persian-only; no implicit language fallback. See docs/TRANSLATION_COVERAGE.json.')
+    print('PASS: all 21 legacy lessons / 73 steps have nine translated body variants; original recitations preserved. Independent native/specialist sign-off remains pending.')
 
 if __name__ == '__main__':
     verify()

@@ -16,11 +16,26 @@ class ContentCatalogTest {
 
     @Test fun everyImportedLessonStepAndMediaReferenceExists() = runBlocking {
         val lessons = LessonRepository(context).load()
-        val legacy = lessons.filter { lesson -> lesson.variants.all { it.language == "fa" } }
+        val archived = org.json.JSONObject(context.assets.open("content/hanafi-fa-v1.json").bufferedReader().use { it.readText() }).getJSONArray("lessons")
+        val legacyIds = (0 until archived.length()).map { archived.getJSONObject(it).getString("id") }.toSet()
+        val legacy = lessons.filter { it.id in legacyIds }
         assertEquals(21, legacy.size)
         assertEquals(73, legacy.sumOf { it.variant(School.HANAFI)!!.steps.size })
         legacy.forEach { lesson ->
             assertNull(lesson.variant(School.SHAFII))
+            assertEquals(10, lesson.variants.size)
+            val original = requireNotNull(lesson.variant(School.HANAFI, AppLanguage.PERSIAN))
+            AppLanguage.entries.forEach { language ->
+                val translated = requireNotNull(lesson.variant(School.HANAFI, language))
+                assertEquals(language.tag, translated.language)
+                assertEquals(original.steps.map { it.id }, translated.steps.map { it.id })
+                original.steps.zip(translated.steps).forEach { (source, localized) ->
+                    if (language != AppLanguage.PERSIAN) assertNotEquals(lesson.id + ":" + language.tag, source.body, localized.body)
+                    assertEquals(source.audio, localized.audio)
+                    assertEquals(source.illustrations, localized.illustrations)
+                    assertTrue(localized.body.isNotBlank())
+                }
+            }
             lesson.variant(School.HANAFI)!!.steps.forEach { step ->
                 assertTrue(step.body.isNotBlank())
                 step.audio?.let { name ->

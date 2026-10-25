@@ -48,6 +48,22 @@ jobs:
             app/build/reports/
             app/build/test-results/
 
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: salah-installable-apk
+          retention-days: 90
+          path: app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: salah-release-and-reports
+          retention-days: 90
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/reports/
+            app/build/test-results/
+
   emulator:
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -117,4 +133,4 @@ jobs:
           retention-days: 90
           path: |
             downloads/
-            !downloads/salah-2.5.0-portable.zip
+            !downloads/salah-2.6.0-portable.zip
