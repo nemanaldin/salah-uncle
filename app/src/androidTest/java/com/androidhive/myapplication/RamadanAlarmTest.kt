@@ -11,7 +11,6 @@ import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
 import com.androidhive.myapplication.core.model.*
 import com.androidhive.myapplication.domain.ramadan.RamadanReminderKind
-import com.androidhive.myapplication.platform.alarm.RestoreAlarmsReceiver
 import com.androidhive.myapplication.platform.ramadan.*
 import kotlinx.coroutines.*
 import org.junit.Assert.*
@@ -22,7 +21,7 @@ import java.time.*
 @RunWith(AndroidJUnit4::class)
 class RamadanAlarmTest {
     @SdkSuppress(minSdkVersion = 31)
-    @Test fun independentExactSuhurAlarmRestoresAfterTimeChange() = runBlocking {
+    @Test fun independentExactSuhurAlarmRestoresAfterTimezoneChange() = runBlocking {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val context = instrumentation.targetContext
         fun shell(command: String) {
@@ -46,8 +45,18 @@ class RamadanAlarmTest {
                 PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE)
             manager.cancel(requireNotNull(operation))
             withTimeout(10_000) { while (manager.nextAlarmClock != null) delay(20) }
-            context.sendBroadcast(Intent(context, RestoreAlarmsReceiver::class.java).setAction(Intent.ACTION_TIME_CHANGED))
-            withTimeout(15_000) { while (manager.nextAlarmClock?.triggerTime != expected.time.toEpochMilli()) delay(20) }
+            // TIME_SET/TIMEZONE_CHANGED are protected broadcasts. Ask the system to
+            // change and restore the emulator zone, so its real receiver is exercised.
+            val originalZone = java.util.TimeZone.getDefault().id
+            instrumentation.uiAutomation.adoptShellPermissionIdentity(android.Manifest.permission.SET_TIME_ZONE)
+            try {
+                manager.setTimeZone(if (originalZone == "Pacific/Honolulu") "Europe/London" else "Pacific/Honolulu")
+                withTimeout(15_000) { while (manager.nextAlarmClock?.triggerTime != expected.time.toEpochMilli()) delay(20) }
+                assertEquals("Asia/Tehran", container.settings.snapshot().location!!.zoneId)
+            } finally {
+                manager.setTimeZone(originalZone)
+                instrumentation.uiAutomation.dropShellPermissionIdentity()
+            }
             assertEquals(AlertMode.OFF, container.settings.snapshot().alertMode)
         } finally {
             container.settings.update { original }
