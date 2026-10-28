@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">Salah</string>
     <string name="ui_home">Today</string>
-    <string name="ui_lessons">Learn</string>
+    <string name="ui_lessons">Topics</string>
     <string name="ui_tools">Tools</string>
     <string name="ui_settings">Settings</string>
     <string name="ui_back">Back</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">Continue learning</string>
     <string name="ui_start_learning">Take the first step</string>
     <string name="ui_start_learning_body">Start with wudu and the prayer guide. Go through each step at your own pace.</string>
-    <string name="ui_lessons_count">%1$d offline lessons</string>
+    <string name="ui_lessons_count">%1$d offline topics</string>
     <string name="ui_step_count">%1$d steps</string>
     <string name="ui_step_of">Step %1$d of %2$d</string>
     <string name="ui_progress">%1$d of %2$d steps completed</string>
     <string name="ui_read_lesson">Read lesson</string>
-    <string name="ui_resume_lesson">Resume lesson</string>
-    <string name="ui_search_lessons">Search lessons</string>
+    <string name="ui_resume_lesson">Recently viewed</string>
+    <string name="ui_search_lessons">Search topics</string>
     <string name="ui_all_lessons">All</string>
     <string name="ui_basics">Basics</string>
     <string name="ui_prayers">Prayers</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">Saved</string>
     <string name="ui_bookmark_add">Save lesson</string>
     <string name="ui_bookmark_remove">Remove saved lesson</string>
-    <string name="ui_empty_lessons">No lessons match your search.</string>
+    <string name="ui_empty_lessons">No topics match your search.</string>
     <string name="ui_empty_bookmarks">You have not saved any lessons yet.</string>
     <string name="ui_persian_content">This lesson is in Persian. The app interface language can be changed separately.</string>
     <string name="ui_lesson_source">Lesson sources</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">Pause audio</string>
     <string name="ui_repeat_audio">Repeat audio</string>
     <string name="ui_illustration">Illustration for this step</string>
-    <string name="ui_share_lesson">Share lesson</string>
+    <string name="ui_share_lesson">Share topic</string>
     <string name="ui_training">Prayer video lessons</string>
     <string name="ui_training_description">Follow the prayer steps with visual demonstrations.</string>
     <string name="ui_training_placeholder">The video lessons are being prepared</string>
@@ -164,8 +164,8 @@
     <string name="ui_resume_step">Resume from step %1$d</string>
     <string name="ui_content_language">This lesson is in %1$s. The interface language is independent.</string>
     <string name="ui_calc_singapore">Singapore; Fajr 20°, Isha 18°</string>
-    <string name="ui_quick_access">Learn and explore</string>
-    <string name="ui_teach_prayer">How to pray</string>
+    <string name="ui_quick_access">Quick access</string>
+    <string name="ui_teach_prayer">Prayer</string>
     <string name="ui_teach_wudu">Wudu</string>
     <string name="ui_prayer_types">Types of prayer</string>
     <string name="ui_wudu_duas">After wudu</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">Remove recording</string>
     <string name="ui_wudu_review">This remembrance is not exclusive to one school. This section does not attribute a separate supplication for washing each limb to the Prophet. The limb-specific prayers in the original text need source and scholarly review before being presented as Sunnah or extended to other schools.</string>
     <string name="ui_recitation_language">Instructions follow your language; recitations and recitation audio remain in Arabic.</string>
+    <string name="ui_alarm_device_notice">Check alarm volume and battery restrictions on your phone. The alarm stops automatically after two minutes.</string>
+    <string name="ui_alarm_offset_range">Enter 5 to 240 minutes.</string>
+    <string name="ui_alarm_offset_title">Wake-up time before Fajr</string>
+    <string name="ui_alarm_pending">Not scheduled yet: allow notifications and exact alarms to activate the reminder.</string>
+    <string name="ui_alarm_preview_note">Plays the system alarm sound for testing; saved reminder times stay unchanged.</string>
+    <string name="ui_alarm_sound_error">The alarm sound could not play. Check the system alarm tone and volume.</string>
+    <string name="ui_calendar_adjustment">Adjust Hijri calendar</string>
+    <string name="ui_calendar_estimate">Dates use an estimated Umm al-Qura calendar. Follow local moon-sighting announcements and adjust the dates if needed; prayer times stay unchanged.</string>
+    <string name="ui_days_adjustment">%1$d day(s)</string>
+    <string name="ui_enable_alarm_notifications">Allow alarm notifications</string>
+    <string name="ui_iftar">Iftar · Maghrib</string>
+    <string name="ui_iftar_now">It is time for iftar according to your selected prayer calculation.</string>
+    <string name="ui_iftar_reminder">Iftar reminder</string>
+    <string name="ui_minutes_before_fajr">%1$d minutes before Fajr</string>
+    <string name="ui_next_alarm">Next reminder: %1$s</string>
+    <string name="ui_only_ramadan">Only during Ramadan</string>
+    <string name="ui_preview_alarm">Test alarm sound</string>
+    <string name="ui_ramadan">Ramadan</string>
+    <string name="ui_ramadan_day">Ramadan · day %1$d</string>
+    <string name="ui_ramadan_intro">Suhur ends at Fajr; iftar follows Maghrib. Times use your location and selected prayer calculation method.</string>
+    <string name="ui_ramadan_period">Ramadan %1$d · %2$s to %3$s</string>
+    <string name="ui_stop_alarm">Stop alarm</string>
+    <string name="ui_suhur_alarm">Suhur wake-up alarm</string>
+    <string name="ui_suhur_alarm_body">Wake before Fajr to prepare for suhur. This reminder does not move the fasting cutoff.</string>
+    <string name="ui_suhur_end">Suhur ends · Fajr</string>
+    <string name="ui_suhur_wake_now">Time to wake up for suhur. Check the remaining time until Fajr.</string>
+    <string name="ui_calendar_estimate_short">Estimated Umm al-Qura dates</string>
 </resources>

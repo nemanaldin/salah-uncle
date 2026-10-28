@@ -23,6 +23,10 @@ class AppContainer(private val application: Application) {
     val lessons = LessonRepository(application)
     val cities = CityRepository(application)
     val prayerEngine = PrayerEngine()
+    val ramadanEngine = com.androidhive.myapplication.domain.ramadan.RamadanEngine(prayerEngine)
+    val ramadanNotifications = com.androidhive.myapplication.platform.ramadan.RamadanNotifications(application)
+    val ramadanAlarms = com.androidhive.myapplication.platform.ramadan.RamadanAlarmCoordinator(application, settings, ramadanEngine, ramadanNotifications)
+    val suhurSession = com.androidhive.myapplication.platform.ramadan.SuhurSession()
     val notifications = PrayerNotifications(application)
     val alarms = AlarmCoordinator(application, settings, prayerEngine, notifications)
     val deviceLocation = DeviceLocation(application)
@@ -31,6 +35,6 @@ class AppContainer(private val application: Application) {
     val recordings = com.androidhive.myapplication.platform.audio.AdhanRecordings(application)
     fun capabilities(): DeviceCapabilities {
         val manager = application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        return DeviceCapabilities(alarms.exactAllowed(), notifications.allowed(), Build.VERSION.SDK_INT < 34 || manager.canUseFullScreenIntent())
+        return DeviceCapabilities(alarms.exactAllowed(), notifications.allowed(), Build.VERSION.SDK_INT < 34 || manager.canUseFullScreenIntent(), ramadanNotifications.allowed(), ramadanNotifications.allowed(com.androidhive.myapplication.domain.ramadan.RamadanReminderKind.IFTAR))
     }
 }

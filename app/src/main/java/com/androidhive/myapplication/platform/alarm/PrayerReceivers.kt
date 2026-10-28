@@ -40,7 +40,7 @@ class RestoreAlarmsReceiver : BroadcastReceiver() {
                 val location = settings.location
                 if (location?.mode == LocationMode.GPS) settings.copy(location = location.copy(zoneId = ZoneId.systemDefault().id)) else settings
             }
-            container.alarms.refresh()
+            try { container.alarms.refresh() } finally { container.ramadanAlarms.refresh() }
         }
     }
     companion object {

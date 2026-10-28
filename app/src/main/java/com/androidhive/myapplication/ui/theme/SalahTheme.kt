@@ -56,5 +56,7 @@ fun SalahTheme(settings: AppSettings = AppSettings(), content: @Composable () ->
     CompositionLocalProvider(
         LocalDensity provides Density(density.density, density.fontScale * settings.textScale),
         LocalLayoutDirection provides if (settings.language.isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
-    ) { MaterialTheme(colorScheme = if (dark) Dark else Light, typography = Typography, content = content) }
+    ) { com.androidhive.myapplication.ui.components.PrayerArtworkProvider {
+        MaterialTheme(colorScheme = if (dark) Dark else Light, typography = Typography, content = content)
+    } }
 }

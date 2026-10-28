@@ -87,6 +87,10 @@ class ContentCatalogTest {
     @Test fun everyManualCityHasAnExplicitValidTimezone() = runBlocking {
         val cities = CityRepository(context).load()
         assertEquals(34006 + 279, cities.size)
+        cities.forEach { city ->
+            assertFalse(city.displayName(AppLanguage.ENGLISH).any { it in '\u0600'..'\u06ff' })
+            assertFalse(city.provinceName(AppLanguage.ENGLISH).any { it in '\u0600'..'\u06ff' })
+        }
         assertEquals(244, cities.map { it.countryCode }.distinct().size)
         assertTrue(cities.any { it.countryCode == "ID" && it.name == "Jakarta" && it.zoneId == "Asia/Jakarta" })
         assertTrue(cities.any { it.countryCode == "US" && it.zoneId == "America/New_York" })

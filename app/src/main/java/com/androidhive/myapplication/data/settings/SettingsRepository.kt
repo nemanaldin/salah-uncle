@@ -57,6 +57,7 @@ class SettingsRepository(context: Context) {
         val zone = stringPreferencesKey("location_zone")
         val mode = stringPreferencesKey("location_mode")
         val cityId = stringPreferencesKey("city_id")
+        val locationNames = stringPreferencesKey("location_names_v1")
         val preset = stringPreferencesKey("calculation_preset")
         val asr = stringPreferencesKey("asr_convention")
         val alerts = stringPreferencesKey("alert_mode")
@@ -68,6 +69,11 @@ class SettingsRepository(context: Context) {
         val lastLesson = stringPreferencesKey("last_lesson")
         val lastStep = stringPreferencesKey("last_step")
         val hidden = longPreferencesKey("hidden_notification_until")
+        val suhur = booleanPreferencesKey("suhur_enabled")
+        val suhurMinutes = intPreferencesKey("suhur_before_fajr_minutes")
+        val iftar = booleanPreferencesKey("iftar_enabled")
+        val ramadanOnly = booleanPreferencesKey("ramadan_only")
+        val hijriAdjustment = intPreferencesKey("hijri_adjustment")
     }
 
     companion object {
@@ -75,7 +81,11 @@ class SettingsRepository(context: Context) {
             val school = enumOrDefault(p[Keys.school], School.HANAFI)
             val location = if (p[Keys.lat] == null || p[Keys.lon] == null) null else runCatching {
                 SavedLocation(p[Keys.lat]!!, p[Keys.lon]!!, p[Keys.label].orEmpty(), p[Keys.zone] ?: ZoneId.systemDefault().id,
-                    enumOrDefault(p[Keys.mode], LocationMode.MANUAL), p[Keys.cityId])
+                    enumOrDefault(p[Keys.mode], LocationMode.MANUAL), p[Keys.cityId],
+                    runCatching { JSONObject(p[Keys.locationNames] ?: "{}").let { names ->
+                        names.keys().asSequence().filter { tag -> AppLanguage.entries.any { it.tag == tag } }
+                            .associateWith { names.getString(it) }.filterValues { it.isNotBlank() }
+                    } }.getOrDefault(emptyMap()))
             }.getOrNull()
             val overrides = p[Keys.overrides].orEmpty().mapNotNull { entry ->
                 val pair = entry.split('=', limit = 2)
@@ -101,6 +111,9 @@ class SettingsRepository(context: Context) {
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
                 adhanVoices = voices, selectedVoiceId = p[Keys.selectedVoice]?.takeIf { id -> voices.any { it.id == id } },
                 prayerAlerts = overrides, bookmarks = p[Keys.bookmarks].orEmpty(), completedSteps = p[Keys.completed].orEmpty(),
+                ramadan = RamadanOptions(
+                    p[Keys.suhur] ?: false, (p[Keys.suhurMinutes] ?: 90).coerceIn(5, 240),
+                    p[Keys.iftar] ?: false, p[Keys.ramadanOnly] ?: true, (p[Keys.hijriAdjustment] ?: 0).coerceIn(-2, 2)),
                 lastLessonId = p[Keys.lastLesson], lastStepId = p[Keys.lastStep], hiddenNotificationUntil = p[Keys.hidden] ?: 0L,
             )
         }
@@ -113,10 +126,11 @@ class SettingsRepository(context: Context) {
             p[Keys.reduceMotion] = s.reduceMotion
             if (s.location != null) {
                 p[Keys.lat] = s.location.latitude; p[Keys.lon] = s.location.longitude
+                p[Keys.locationNames] = JSONObject(s.location.names).toString()
                 p[Keys.label] = s.location.label; p[Keys.zone] = s.location.zoneId; p[Keys.mode] = s.location.mode.name
                 s.location.cityId?.let { p[Keys.cityId] = it } ?: p.remove(Keys.cityId)
             } else {
-                p.remove(Keys.lat); p.remove(Keys.lon); p.remove(Keys.label); p.remove(Keys.zone); p.remove(Keys.mode); p.remove(Keys.cityId)
+                p.remove(Keys.locationNames); p.remove(Keys.lat); p.remove(Keys.lon); p.remove(Keys.label); p.remove(Keys.zone); p.remove(Keys.mode); p.remove(Keys.cityId)
             }
             p[Keys.preset] = s.calculationPreset.name; p[Keys.asr] = s.asrConvention.name; p[Keys.alerts] = s.alertMode.name
             p[Keys.voices] = JSONArray().apply { s.adhanVoices.forEach { voice -> put(JSONObject().apply {
@@ -128,6 +142,9 @@ class SettingsRepository(context: Context) {
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)
             s.lastStepId?.let { p[Keys.lastStep] = it } ?: p.remove(Keys.lastStep)
             p[Keys.hidden] = s.hiddenNotificationUntil
+            p[Keys.suhur] = s.ramadan.suhurEnabled; p[Keys.suhurMinutes] = s.ramadan.minutesBeforeFajr
+            p[Keys.iftar] = s.ramadan.iftarEnabled; p[Keys.ramadanOnly] = s.ramadan.onlyRamadan
+            p[Keys.hijriAdjustment] = s.ramadan.calendarAdjustment
         }
     }
 }

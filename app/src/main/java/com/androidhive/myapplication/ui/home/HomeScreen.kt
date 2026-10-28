@@ -44,7 +44,7 @@ private data class Shortcut(val id: String, val title: String, val action: () ->
 
 @Composable
 fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> Unit, onLessons: () -> Unit,
-    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit) {
+    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit) {
     val settings = state.settings ?: return
     val available = state.content.lessons.filter { it.variant(settings.school) != null }
     val last = available.firstOrNull { it.id == settings.lastLessonId }
@@ -63,7 +63,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                         style = MaterialTheme.typography.headlineMedium.copy(textDirection = TextDirection.Ltr), modifier = Modifier.testTag("prayer_countdown"))
                     TextButton(onTimes, Modifier.weight(1f).testTag("home_all_times")) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text(settings.location?.label?.ifBlank { stringResource(R.string.ui_device_location) }.orEmpty(),
+                            Text(settings.location?.labelFor(settings.language)?.ifBlank { stringResource(R.string.ui_device_location) }.orEmpty(),
                                 color = Color(0xFFD2E8DF), style = MaterialTheme.typography.bodySmall)
                             Text(stringResource(R.string.ui_prayer_times), color = Color.White)
                         }
@@ -81,6 +81,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                     Surface(shape = RoundedCornerShape(16.dp), color = if (active) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
                         Column(Modifier.widthIn(min = 68.dp).padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                            PrayerArtwork(moment.id.artwork(), Modifier.size(28.dp))
                             Text(stringResource(moment.id.labelRes()), style = MaterialTheme.typography.labelMedium)
                             Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
                         }
@@ -90,6 +91,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
         }
         SectionTitle(stringResource(R.string.ui_quick_access))
         val shortcuts = buildList {
+            add(Shortcut("ramadan", stringResource(R.string.ui_ramadan), onRamadan))
             add(Shortcut("prayer", stringResource(R.string.ui_teach_prayer)) { onLesson(settings.school.guideId) })
             add(Shortcut("wudu", stringResource(R.string.ui_teach_wudu)) { onLesson("purification-${settings.school.name.lowercase(Locale.ROOT)}") })
             listOf("ghusl", "tayammum", "sajdah-sahw").forEach { id ->
@@ -117,7 +119,8 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                                         "qibla" -> R.drawable.heritage_qibla
                                         else -> lessonArtwork(shortcut.id)
                                     }
-                                    Image(painterResource(art), null, Modifier.size(64.dp).clip(CircleShape), contentScale = ContentScale.Fit)
+                                    if (shortcut.id == "ramadan") PrayerArtwork(PrayerSymbol.TARAWIH, Modifier.size(64.dp))
+                                    else Image(painterResource(art), null, Modifier.size(64.dp).clip(CircleShape), contentScale = ContentScale.Fit)
                                     Text(shortcut.title, style = MaterialTheme.typography.titleMedium)
                                 }
                             }

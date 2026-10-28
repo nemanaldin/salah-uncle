@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">Salah</string>
     <string name="ui_home">Hari ini</string>
-    <string name="ui_lessons">Belajar</string>
+    <string name="ui_lessons">Topik</string>
     <string name="ui_tools">Alat</string>
     <string name="ui_settings">Tetapan</string>
     <string name="ui_back">Kembali</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">Teruskan pembelajaran</string>
     <string name="ui_start_learning">Mulakan langkah pertama</string>
     <string name="ui_start_learning_body">Mulakan dengan panduan wuduk dan solat. Ikuti setiap langkah mengikut kemampuan anda.</string>
-    <string name="ui_lessons_count">%1$d pelajaran luar talian</string>
+    <string name="ui_lessons_count">%1$d topik luar talian</string>
     <string name="ui_step_count">%1$d langkah</string>
     <string name="ui_step_of">Langkah %1$d daripada %2$d</string>
     <string name="ui_progress">%1$d daripada %2$d langkah selesai</string>
     <string name="ui_read_lesson">Baca pelajaran</string>
-    <string name="ui_resume_lesson">Sambung pelajaran</string>
-    <string name="ui_search_lessons">Cari pelajaran</string>
+    <string name="ui_resume_lesson">Bacaan terkini</string>
+    <string name="ui_search_lessons">Cari topik</string>
     <string name="ui_all_lessons">Semua</string>
     <string name="ui_basics">Asas</string>
     <string name="ui_prayers">Solat</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">Disimpan</string>
     <string name="ui_bookmark_add">Simpan pelajaran</string>
     <string name="ui_bookmark_remove">Buang pelajaran disimpan</string>
-    <string name="ui_empty_lessons">Tiada pelajaran yang sepadan.</string>
+    <string name="ui_empty_lessons">Tiada topik sepadan.</string>
     <string name="ui_empty_bookmarks">Anda belum menyimpan sebarang pelajaran.</string>
     <string name="ui_persian_content">Pelajaran ini dalam bahasa Parsi. Bahasa antara muka boleh diubah secara berasingan.</string>
     <string name="ui_lesson_source">Sumber pelajaran</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">Jedakan audio</string>
     <string name="ui_repeat_audio">Ulang audio</string>
     <string name="ui_illustration">Ilustrasi langkah ini</string>
-    <string name="ui_share_lesson">Kongsi pelajaran</string>
+    <string name="ui_share_lesson">Kongsi topik</string>
     <string name="ui_training">Pelajaran video solat</string>
     <string name="ui_training_description">Ikuti langkah solat melalui demonstrasi visual.</string>
     <string name="ui_training_placeholder">Pelajaran video sedang disediakan</string>
@@ -164,8 +164,8 @@
     <string name="ui_resume_step">Sambung dari langkah %1$d</string>
     <string name="ui_content_language">Bahasa pelajaran ini: %1$s. Bahasa antara muka berasingan.</string>
     <string name="ui_calc_singapore">Singapura; Subuh 20°, Isyak 18°</string>
-    <string name="ui_quick_access">Belajar dan akses pantas</string>
-    <string name="ui_teach_prayer">Belajar solat</string>
+    <string name="ui_quick_access">Akses pantas</string>
+    <string name="ui_teach_prayer">Solat</string>
     <string name="ui_teach_wudu">Wuduk</string>
     <string name="ui_prayer_types">Jenis solat</string>
     <string name="ui_wudu_duas">Zikir selepas wuduk</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">Buang rakaman</string>
     <string name="ui_wudu_review">Zikir ini tidak khusus kepada satu mazhab. Bahagian ini tidak menisbahkan doa berasingan bagi setiap anggota wuduk kepada Nabi. Doa bagi setiap anggota dalam teks asal memerlukan semakan sumber dan fiqh sebelum disebut sunnah atau diperluas kepada mazhab lain.</string>
     <string name="ui_recitation_language">Panduan mengikut bahasa pilihan; bacaan dan audio tilawah kekal dalam bahasa Arab.</string>
+    <string name="ui_alarm_device_notice">Semak kelantangan penggera dan sekatan bateri telefon. Bunyi berhenti sendiri selepas dua minit.</string>
+    <string name="ui_alarm_offset_range">Masukkan 5 hingga 240 minit.</string>
+    <string name="ui_alarm_offset_title">Waktu bangun sebelum Subuh</string>
+    <string name="ui_alarm_pending">Belum dijadualkan: benarkan pemberitahuan dan penggera tepat untuk mengaktifkan peringatan.</string>
+    <string name="ui_alarm_preview_note">Menguji nada penggera sistem tanpa mengubah waktu peringatan tersimpan.</string>
+    <string name="ui_alarm_sound_error">Bunyi penggera tidak dapat dimainkan. Semak nada dan kelantangan penggera sistem.</string>
+    <string name="ui_calendar_adjustment">Laraskan tarikh Hijrah</string>
+    <string name="ui_calendar_estimate">Tarikh ialah anggaran kalendar Umm al-Qura. Ikuti pengumuman anak bulan setempat dan laraskan jika perlu; waktu solat tidak berubah.</string>
+    <string name="ui_days_adjustment">%1$d hari</string>
+    <string name="ui_enable_alarm_notifications">Benarkan pemberitahuan penggera</string>
+    <string name="ui_iftar">Berbuka · Maghrib</string>
+    <string name="ui_iftar_now">Waktu berbuka telah tiba mengikut kaedah kiraan solat pilihan anda.</string>
+    <string name="ui_iftar_reminder">Peringatan berbuka</string>
+    <string name="ui_minutes_before_fajr">%1$d minit sebelum Subuh</string>
+    <string name="ui_next_alarm">Peringatan seterusnya: %1$s</string>
+    <string name="ui_only_ramadan">Hanya dalam Ramadan</string>
+    <string name="ui_preview_alarm">Uji bunyi penggera</string>
+    <string name="ui_ramadan">Ramadan</string>
+    <string name="ui_ramadan_day">Ramadan · hari %1$d</string>
+    <string name="ui_ramadan_intro">Sahur berakhir pada Subuh; berbuka pada Maghrib. Waktu mengikut lokasi dan kaedah pengiraan pilihan anda.</string>
+    <string name="ui_ramadan_period">Ramadan %1$d · %2$s hingga %3$s</string>
+    <string name="ui_stop_alarm">Hentikan penggera</string>
+    <string name="ui_suhur_alarm">Penggera bangun sahur</string>
+    <string name="ui_suhur_alarm_body">Bangun sebelum Subuh untuk menyediakan sahur. Peringatan ini tidak mengubah waktu akhir makan dan minum.</string>
+    <string name="ui_suhur_end">Akhir sahur · Subuh</string>
+    <string name="ui_suhur_wake_now">Masa untuk bangun sahur. Semak masa berbaki hingga Subuh.</string>
+    <string name="ui_calendar_estimate_short">Anggaran tarikh Umm al-Qura</string>
 </resources>

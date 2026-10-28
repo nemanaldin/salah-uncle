@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">Salah</string>
     <string name="ui_home">Bugün</string>
-    <string name="ui_lessons">Öğren</string>
+    <string name="ui_lessons">Konular</string>
     <string name="ui_tools">Araçlar</string>
     <string name="ui_settings">Ayarlar</string>
     <string name="ui_back">Geri</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">Öğrenmeye devam et</string>
     <string name="ui_start_learning">İlk adımı atın</string>
     <string name="ui_start_learning_body">Abdest ve namaz rehberiyle başlayın. Adımları kendi hızınızda tamamlayın.</string>
-    <string name="ui_lessons_count">%1$d çevrimdışı ders</string>
+    <string name="ui_lessons_count">%1$d çevrimdışı konu</string>
     <string name="ui_step_count">%1$d adım</string>
     <string name="ui_step_of">Adım %1$d / %2$d</string>
     <string name="ui_progress">%2$d adımın %1$d tanesi tamamlandı</string>
     <string name="ui_read_lesson">Dersi oku</string>
-    <string name="ui_resume_lesson">Derse devam et</string>
-    <string name="ui_search_lessons">Ders ara</string>
+    <string name="ui_resume_lesson">Son okunan</string>
+    <string name="ui_search_lessons">Konu ara</string>
     <string name="ui_all_lessons">Tümü</string>
     <string name="ui_basics">Temel bilgiler</string>
     <string name="ui_prayers">Namaz</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">Kaydedilenler</string>
     <string name="ui_bookmark_add">Dersi kaydet</string>
     <string name="ui_bookmark_remove">Dersi kaydedilenlerden çıkar</string>
-    <string name="ui_empty_lessons">Aramanızla eşleşen ders yok.</string>
+    <string name="ui_empty_lessons">Aramanızla eşleşen konu yok.</string>
     <string name="ui_empty_bookmarks">Henüz ders kaydetmediniz.</string>
     <string name="ui_persian_content">Bu ders Farsçadır. Arayüz dili ayrıca değiştirilebilir.</string>
     <string name="ui_lesson_source">Ders kaynakları</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">Sesi duraklat</string>
     <string name="ui_repeat_audio">Sesi tekrarla</string>
     <string name="ui_illustration">Bu adımın çizimi</string>
-    <string name="ui_share_lesson">Dersi paylaş</string>
+    <string name="ui_share_lesson">Konuyu paylaş</string>
     <string name="ui_training">Videolu namaz dersleri</string>
     <string name="ui_training_description">Namaz adımlarını görsel anlatımlarla takip edin.</string>
     <string name="ui_training_placeholder">Video dersler hazırlanıyor</string>
@@ -164,8 +164,8 @@
     <string name="ui_resume_step">%1$d. adımdan devam et</string>
     <string name="ui_content_language">Bu dersin dili: %1$s. Arayüz dili bağımsızdır.</string>
     <string name="ui_calc_singapore">Singapur; imsak 20°, yatsı 18°</string>
-    <string name="ui_quick_access">Öğren ve keşfet</string>
-    <string name="ui_teach_prayer">Namaz öğren</string>
+    <string name="ui_quick_access">Hızlı erişim</string>
+    <string name="ui_teach_prayer">Namaz</string>
     <string name="ui_teach_wudu">Abdest</string>
     <string name="ui_prayer_types">Namaz çeşitleri</string>
     <string name="ui_wudu_duas">Abdest sonrası zikir</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">Kaydı kaldır</string>
     <string name="ui_wudu_review">Bu zikir tek bir mezhebe özgü değildir. Burada her uzvu yıkamak için ayrı bir dua Peygamber’e atfedilmez. Özgün metindeki uzva özel dualar sünnet diye sunulmadan veya diğer mezheplere aktarılmadan önce kaynak ve fıkıh incelemesi gerektirir.</string>
     <string name="ui_recitation_language">Açıklamalar seçtiğiniz dildedir; zikirler ve sesli okumalar Arapça kalır.</string>
+    <string name="ui_alarm_device_notice">Telefonun alarm sesini ve pil kısıtlamalarını kontrol edin. Zil iki dakika sonra kendiliğinden durur.</string>
+    <string name="ui_alarm_offset_range">5 ile 240 dakika arasında bir değer girin.</string>
+    <string name="ui_alarm_offset_title">Fecrden önce uyanma zamanı</string>
+    <string name="ui_alarm_pending">Henüz planlanmadı: hatırlatıcı için bildirim ve kesin alarm erişimini açın.</string>
+    <string name="ui_alarm_preview_note">Sistemin alarm sesini dener; kayıtlı hatırlatıcı saatlerini değiştirmez.</string>
+    <string name="ui_alarm_sound_error">Alarm sesi çalınamadı. Sistemin alarm tonunu ve ses düzeyini kontrol edin.</string>
+    <string name="ui_calendar_adjustment">Hicri tarihi ayarla</string>
+    <string name="ui_calendar_estimate">Tarihler tahmini Ümmülkura takvimine dayanır. Yerel hilal duyurularını izleyip gerekirse tarihi ayarlayın; namaz vakitleri değişmez.</string>
+    <string name="ui_days_adjustment">%1$d gün</string>
+    <string name="ui_enable_alarm_notifications">Alarm bildirimlerine izin ver</string>
+    <string name="ui_iftar">İftar · Akşam</string>
+    <string name="ui_iftar_now">Seçtiğiniz namaz hesabına göre iftar vakti geldi.</string>
+    <string name="ui_iftar_reminder">İftar hatırlatıcısı</string>
+    <string name="ui_minutes_before_fajr">Fecrden %1$d dakika önce</string>
+    <string name="ui_next_alarm">Sonraki hatırlatıcı: %1$s</string>
+    <string name="ui_only_ramadan">Yalnızca Ramazanda</string>
+    <string name="ui_preview_alarm">Alarm sesini dene</string>
+    <string name="ui_ramadan">Ramazan</string>
+    <string name="ui_ramadan_day">Ramazan · %1$d. gün</string>
+    <string name="ui_ramadan_intro">Sahur fecirle biter; iftar akşam vaktidir. Saatler konumunuza ve seçtiğiniz hesaplama yöntemine göre belirlenir.</string>
+    <string name="ui_ramadan_period">Ramazan %1$d · %2$s – %3$s</string>
+    <string name="ui_stop_alarm">Alarmı durdur</string>
+    <string name="ui_suhur_alarm">Sahura kalkma alarmı</string>
+    <string name="ui_suhur_alarm_body">Sahura hazırlanmak için fecirden önce uyanın. Bu hatırlatıcı yeme ve içmenin sona erdiği vakti değiştirmez.</string>
+    <string name="ui_suhur_end">Sahur bitişi · Fecir</string>
+    <string name="ui_suhur_wake_now">Sahura kalkma vakti. Fecre kalan zamanı kontrol edin.</string>
+    <string name="ui_calendar_estimate_short">Tahmini Ümmülkura tarihleri</string>
 </resources>

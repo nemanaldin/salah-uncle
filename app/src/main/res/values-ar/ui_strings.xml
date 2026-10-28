@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">صلاح</string>
     <string name="ui_home">اليوم</string>
-    <string name="ui_lessons">تعلّم</string>
+    <string name="ui_lessons">المواضيع</string>
     <string name="ui_tools">الأدوات</string>
     <string name="ui_settings">الإعدادات</string>
     <string name="ui_back">رجوع</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">تابع التعلّم</string>
     <string name="ui_start_learning">ابدأ الخطوة الأولى</string>
     <string name="ui_start_learning_body">ابدأ بدليل الوضوء والصلاة، وتقدّم خطوة بخطوة بالوتيرة المناسبة لك.</string>
-    <string name="ui_lessons_count">%1$d درسًا دون إنترنت</string>
+    <string name="ui_lessons_count">%1$d موضوع دون إنترنت</string>
     <string name="ui_step_count">%1$d خطوات</string>
     <string name="ui_step_of">الخطوة %1$d من %2$d</string>
     <string name="ui_progress">اكتملت %1$d من %2$d خطوات</string>
     <string name="ui_read_lesson">اقرأ الدرس</string>
-    <string name="ui_resume_lesson">تابع الدرس</string>
-    <string name="ui_search_lessons">ابحث في الدروس</string>
+    <string name="ui_resume_lesson">آخر ما قرأت</string>
+    <string name="ui_search_lessons">البحث عن موضوع</string>
     <string name="ui_all_lessons">الكل</string>
     <string name="ui_basics">الأساسيات</string>
     <string name="ui_prayers">الصلاة</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">المحفوظات</string>
     <string name="ui_bookmark_add">احفظ الدرس</string>
     <string name="ui_bookmark_remove">أزل الدرس من المحفوظات</string>
-    <string name="ui_empty_lessons">لا توجد دروس مطابقة لبحثك.</string>
+    <string name="ui_empty_lessons">لا توجد مواضيع مطابقة.</string>
     <string name="ui_empty_bookmarks">لم تحفظ أي درس بعد.</string>
     <string name="ui_persian_content">هذا الدرس بالفارسية. يمكنك تغيير لغة الواجهة بشكل مستقل.</string>
     <string name="ui_lesson_source">مصادر الدرس</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">إيقاف الصوت مؤقتًا</string>
     <string name="ui_repeat_audio">تكرار الصوت</string>
     <string name="ui_illustration">رسم توضيحي للخطوة</string>
-    <string name="ui_share_lesson">مشاركة الدرس</string>
+    <string name="ui_share_lesson">مشاركة الموضوع</string>
     <string name="ui_training">دروس الصلاة بالفيديو</string>
     <string name="ui_training_description">تابع خطوات الصلاة عبر العروض المرئية.</string>
     <string name="ui_training_placeholder">دروس الفيديو قيد الإعداد</string>
@@ -164,9 +164,9 @@
     <string name="ui_resume_step">تابع من الخطوة %1$d</string>
     <string name="ui_content_language">لغة هذا الدرس: %1$s. لغة الواجهة مستقلة.</string>
     <string name="ui_calc_singapore">سنغافورة؛ الفجر ٢٠°، العشاء ١٨°</string>
-    <string name="ui_quick_access">التعلّم والوصول السريع</string>
-    <string name="ui_teach_prayer">تعليم الصلاة</string>
-    <string name="ui_teach_wudu">تعليم الوضوء</string>
+    <string name="ui_quick_access">وصول سريع</string>
+    <string name="ui_teach_prayer">الصلاة</string>
+    <string name="ui_teach_wudu">الوضوء</string>
     <string name="ui_prayer_types">أنواع الصلاة</string>
     <string name="ui_wudu_duas">الذكر بعد الوضوء</string>
     <string name="ui_translation_unavailable">ترجمة هذا الدرس غير متوفرة بعد</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">حذف التسجيل</string>
     <string name="ui_wudu_review">هذا الذكر ليس خاصاً بمذهب واحد. لا ننسب هنا دعاءً مستقلاً لكل عضو إلى النبي. الأدعية لكل عضو في النص القديم تحتاج إلى مراجعة مصادرها وحكمها قبل وصفها بأنها سنة أو تعميمها على مذاهب أخرى.</string>
     <string name="ui_recitation_language">تتبع الشروح اللغة المختارة، وتبقى الأذكار والتلاوة الصوتية بالعربية.</string>
+    <string name="ui_alarm_device_notice">تحقق من مستوى صوت المنبه وقيود البطارية في هاتفك. يتوقف الرنين تلقائياً بعد دقيقتين.</string>
+    <string name="ui_alarm_offset_range">أدخل من ٥ إلى ٢٤٠ دقيقة.</string>
+    <string name="ui_alarm_offset_title">وقت الاستيقاظ قبل الفجر</string>
+    <string name="ui_alarm_pending">لم يُجدول بعد: اسمح بالإشعارات والمنبهات الدقيقة لتفعيل التذكير.</string>
+    <string name="ui_alarm_preview_note">يشغّل نغمة منبه النظام للتجربة دون تغيير مواعيد التذكيرات المحفوظة.</string>
+    <string name="ui_alarm_sound_error">تعذر تشغيل صوت المنبه. تحقق من النغمة ومستوى صوت المنبه في النظام.</string>
+    <string name="ui_calendar_adjustment">تعديل التاريخ الهجري</string>
+    <string name="ui_calendar_estimate">التواريخ تقديرية وفق تقويم أم القرى. اتبع إعلان رؤية الهلال محلياً وعدّل التاريخ عند الحاجة؛ لا تتغير أوقات الصلاة.</string>
+    <string name="ui_days_adjustment">%1$d يوم</string>
+    <string name="ui_enable_alarm_notifications">السماح بإشعارات المنبه</string>
+    <string name="ui_iftar">الإفطار · المغرب</string>
+    <string name="ui_iftar_now">حان وقت الإفطار وفق طريقة حساب الصلاة المختارة.</string>
+    <string name="ui_iftar_reminder">تذكير الإفطار</string>
+    <string name="ui_minutes_before_fajr">قبل الفجر بـ %1$d دقيقة</string>
+    <string name="ui_next_alarm">التذكير التالي: %1$s</string>
+    <string name="ui_only_ramadan">خلال رمضان فقط</string>
+    <string name="ui_preview_alarm">تجربة صوت المنبه</string>
+    <string name="ui_ramadan">رمضان</string>
+    <string name="ui_ramadan_day">رمضان · اليوم %1$d</string>
+    <string name="ui_ramadan_intro">ينتهي السحور عند الفجر ويكون الإفطار عند المغرب. تعتمد الأوقات على موقعك وطريقة الحساب المختارة.</string>
+    <string name="ui_ramadan_period">رمضان %1$d · من %2$s إلى %3$s</string>
+    <string name="ui_stop_alarm">إيقاف المنبه</string>
+    <string name="ui_suhur_alarm">منبه الاستيقاظ للسحور</string>
+    <string name="ui_suhur_alarm_body">استيقظ قبل الفجر للاستعداد للسحور. لا يغيّر هذا التذكير موعد انتهاء الأكل والشرب.</string>
+    <string name="ui_suhur_end">نهاية السحور · الفجر</string>
+    <string name="ui_suhur_wake_now">حان وقت الاستيقاظ للسحور. تحقق من الوقت المتبقي حتى الفجر.</string>
+    <string name="ui_calendar_estimate_short">تواريخ تقديرية وفق أم القرى</string>
 </resources>

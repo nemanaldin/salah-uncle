@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">نماز</string>
     <string name="ui_home">امروز</string>
-    <string name="ui_lessons">آموزش</string>
+    <string name="ui_lessons">مطالب</string>
     <string name="ui_tools">ابزارها</string>
     <string name="ui_settings">تنظیمات</string>
     <string name="ui_back">بازگشت</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">ادامهٔ یادگیری</string>
     <string name="ui_start_learning">اولین قدم را بردار</string>
     <string name="ui_start_learning_body">از وضو و شیوهٔ نماز شروع کن؛ هر مرحله را با سرعت خودت پیش ببر.</string>
-    <string name="ui_lessons_count">%1$d درس آفلاین</string>
+    <string name="ui_lessons_count">%1$d مطلب آفلاین</string>
     <string name="ui_step_count">%1$d مرحله</string>
     <string name="ui_step_of">مرحلهٔ %1$d از %2$d</string>
     <string name="ui_progress">%1$d از %2$d مرحله تکمیل شده</string>
     <string name="ui_read_lesson">خواندن درس</string>
-    <string name="ui_resume_lesson">ادامهٔ درس</string>
-    <string name="ui_search_lessons">جست‌وجوی آموزش</string>
+    <string name="ui_resume_lesson">آخرین مطالعه</string>
+    <string name="ui_search_lessons">جست‌وجوی موضوع</string>
     <string name="ui_all_lessons">همه</string>
     <string name="ui_basics">مقدمات</string>
     <string name="ui_prayers">نمازها</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">نشان‌شده‌ها</string>
     <string name="ui_bookmark_add">نشان‌کردن درس</string>
     <string name="ui_bookmark_remove">حذف نشان درس</string>
-    <string name="ui_empty_lessons">درسی با این جست‌وجو پیدا نشد.</string>
+    <string name="ui_empty_lessons">موضوعی با این جست‌وجو پیدا نشد.</string>
     <string name="ui_empty_bookmarks">هنوز درسی نشان نکرده‌ای.</string>
     <string name="ui_persian_content">متن این درس فارسی است؛ زبان رابط برنامه جداگانه قابل انتخاب است.</string>
     <string name="ui_lesson_source">منابع درس</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">توقف موقت</string>
     <string name="ui_repeat_audio">تکرار صوت</string>
     <string name="ui_illustration">تصویر این مرحله</string>
-    <string name="ui_share_lesson">اشتراک‌گذاری درس</string>
+    <string name="ui_share_lesson">اشتراک‌گذاری مطلب</string>
     <string name="ui_training">آموزش ویدئویی نماز</string>
     <string name="ui_training_description">مراحل نماز را همراه تصویر و حرکت دنبال کن.</string>
     <string name="ui_training_placeholder">ویدئوهای آموزشی در حال آماده‌سازی‌اند</string>
@@ -164,9 +164,9 @@
     <string name="ui_resume_step">ادامه از مرحلهٔ %1$d</string>
     <string name="ui_content_language">زبان این درس %1$s است. زبان رابط مستقل تنظیم می‌شود.</string>
     <string name="ui_calc_singapore">سنگاپور؛ فجر ۲۰°، عشا ۱۸°</string>
-    <string name="ui_quick_access">آموزش‌ها و دسترسی سریع</string>
-    <string name="ui_teach_prayer">آموزش نماز</string>
-    <string name="ui_teach_wudu">آموزش وضو</string>
+    <string name="ui_quick_access">دسترسی سریع</string>
+    <string name="ui_teach_prayer">نماز</string>
+    <string name="ui_teach_wudu">وضو</string>
     <string name="ui_prayer_types">انواع نماز</string>
     <string name="ui_wudu_duas">ذکر پس از وضو</string>
     <string name="ui_translation_unavailable">ترجمهٔ این آموزش آماده نیست</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">حذف این صدا</string>
     <string name="ui_wudu_review">این ذکر به یک مذهب خاص محدود نیست. در این بخش برای شستن هر عضو دعای مخصوصی به پیامبر نسبت داده نشده است. دعاهای عضو به عضو در متن قدیمی، پیش از معرفی به‌عنوان سنت یا تعمیم به مذاهب دیگر، به بررسی سند و نظر فقهی نیاز دارند.</string>
     <string name="ui_recitation_language">توضیح مراحل به زبان انتخابی است؛ ذکرها و تلاوتِ صوتی به عربی حفظ شده‌اند.</string>
+    <string name="ui_alarm_device_notice">صدای زنگ و محدودیت باتری گوشی را بررسی کن. زنگ پس از دو دقیقه خودکار قطع می‌شود.</string>
+    <string name="ui_alarm_offset_range">عددی بین ۵ تا ۲۴۰ دقیقه وارد کن.</string>
+    <string name="ui_alarm_offset_title">زمان بیدارشدن پیش از صبح</string>
+    <string name="ui_alarm_pending">هنوز زمان‌بندی نشده: برای فعال‌شدن یادآور، اجازهٔ اعلان و آلارم دقیق را فعال کن.</string>
+    <string name="ui_alarm_preview_note">صدای زنگ سیستم را آزمایش می‌کند؛ زمان یادآورهای ذخیره‌شده تغییر نمی‌کند.</string>
+    <string name="ui_alarm_sound_error">صدای زنگ پخش نشد. آهنگ زنگ سیستم و بلندی صدای آلارم را بررسی کن.</string>
+    <string name="ui_calendar_adjustment">تنظیم تاریخ قمری</string>
+    <string name="ui_calendar_estimate">تاریخ‌ها برآورد تقویم ام‌القری هستند. اعلام رؤیت هلال محل را دنبال کن و در صورت نیاز تاریخ را تنظیم کن؛ اوقات نماز تغییر نمی‌کنند.</string>
+    <string name="ui_days_adjustment">%1$d روز</string>
+    <string name="ui_enable_alarm_notifications">اجازهٔ اعلان زنگ</string>
+    <string name="ui_iftar">افطار · مغرب</string>
+    <string name="ui_iftar_now">براساس روش محاسبهٔ انتخابی، وقت افطار رسیده است.</string>
+    <string name="ui_iftar_reminder">یادآور افطار</string>
+    <string name="ui_minutes_before_fajr">%1$d دقیقه پیش از اذان صبح</string>
+    <string name="ui_next_alarm">یادآور بعدی: %1$s</string>
+    <string name="ui_only_ramadan">فقط در ماه رمضان</string>
+    <string name="ui_preview_alarm">آزمایش صدای زنگ</string>
+    <string name="ui_ramadan">ماه رمضان</string>
+    <string name="ui_ramadan_day">رمضان · روز %1$d</string>
+    <string name="ui_ramadan_intro">پایان سحر، اذان صبح است و افطار با مغرب محاسبه می‌شود. زمان‌ها از مکان و روش محاسبهٔ انتخابی می‌آیند.</string>
+    <string name="ui_ramadan_period">رمضان %1$d · از %2$s تا %3$s</string>
+    <string name="ui_stop_alarm">قطع زنگ</string>
+    <string name="ui_suhur_alarm">زنگ بیدارباش سحر</string>
+    <string name="ui_suhur_alarm_body">برای آماده‌شدن سحر، پیش از اذان صبح بیدار شو. این یادآور زمان پایان خوردن و آشامیدن را تغییر نمی‌دهد.</string>
+    <string name="ui_suhur_end">پایان سحر · صبح</string>
+    <string name="ui_suhur_wake_now">وقت بیدارشدن برای سحر است. زمان باقی‌مانده تا اذان صبح را بررسی کن.</string>
+    <string name="ui_calendar_estimate_short">تاریخ‌های تقریبی تقویم ام‌القری</string>
 </resources>

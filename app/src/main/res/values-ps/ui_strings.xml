@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">صلاح</string>
     <string name="ui_home">نن</string>
-    <string name="ui_lessons">زده کړه</string>
+    <string name="ui_lessons">موضوعات</string>
     <string name="ui_tools">وسیلې</string>
     <string name="ui_settings">امستنې</string>
     <string name="ui_back">شاته</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">زده کړې ته دوام ورکړئ</string>
     <string name="ui_start_learning">لومړی ګام واخلئ</string>
     <string name="ui_start_learning_body">د اوداسه او لمانځه له لارښوده پیل وکړئ. هر ګام په خپل سرعت بشپړ کړئ.</string>
-    <string name="ui_lessons_count">%1$d نالیکي درسونه</string>
+    <string name="ui_lessons_count">%1$d افلاین موضوعات</string>
     <string name="ui_step_count">%1$d ګامونه</string>
     <string name="ui_step_of">د %2$d څخه %1$d ګام</string>
     <string name="ui_progress">د %2$d څخه %1$d ګامونه بشپړ شوي</string>
     <string name="ui_read_lesson">درس ولولئ</string>
-    <string name="ui_resume_lesson">درس ته دوام ورکړئ</string>
-    <string name="ui_search_lessons">درسونه ولټوئ</string>
+    <string name="ui_resume_lesson">وروستۍ لوستنه</string>
+    <string name="ui_search_lessons">موضوع ولټوئ</string>
     <string name="ui_all_lessons">ټول</string>
     <string name="ui_basics">بنسټونه</string>
     <string name="ui_prayers">لمونځونه</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">خوندي شوي</string>
     <string name="ui_bookmark_add">درس خوندي کړئ</string>
     <string name="ui_bookmark_remove">خوندي شوی درس لرې کړئ</string>
-    <string name="ui_empty_lessons">له پلټنې سره سمون لرونکی درس نشته.</string>
+    <string name="ui_empty_lessons">سمون لرونکې موضوع ونه موندل شوه.</string>
     <string name="ui_empty_bookmarks">تاسو لا کوم درس نه دی خوندي کړی.</string>
     <string name="ui_persian_content">دا درس په فارسي دی. د اپ ژبه جلا بدلېدای شي.</string>
     <string name="ui_lesson_source">د درس سرچینې</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">غږ وځنډوئ</string>
     <string name="ui_repeat_audio">غږ تکرار کړئ</string>
     <string name="ui_illustration">د دې ګام انځور</string>
-    <string name="ui_share_lesson">درس شریک کړئ</string>
+    <string name="ui_share_lesson">موضوع شریکه کړئ</string>
     <string name="ui_training">د لمانځه ویډیويي درسونه</string>
     <string name="ui_training_description">د لمانځه ګامونه د لیدیزو بېلګو له لارې تعقیب کړئ.</string>
     <string name="ui_training_placeholder">ویډیويي درسونه چمتو کېږي</string>
@@ -164,9 +164,9 @@
     <string name="ui_resume_step">له %1$d ګامه دوام ورکړئ</string>
     <string name="ui_content_language">د دې درس ژبه: %1$s. د اپ ژبه جلا ده.</string>
     <string name="ui_calc_singapore">سنګاپور؛ سهار ۲۰°، ماخوستن ۱۸°</string>
-    <string name="ui_quick_access">زده کړه او چټک لاسرسی</string>
-    <string name="ui_teach_prayer">د لمانځه زده کړه</string>
-    <string name="ui_teach_wudu">د اوداسه زده کړه</string>
+    <string name="ui_quick_access">چټک لاسرسی</string>
+    <string name="ui_teach_prayer">لمونځ</string>
+    <string name="ui_teach_wudu">اودس</string>
     <string name="ui_prayer_types">د لمانځه ډولونه</string>
     <string name="ui_wudu_duas">له اوداسه وروسته ذکر</string>
     <string name="ui_translation_unavailable">د دې لوست ژباړه لا چمتو نه ده</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">ثبت شوی غږ لرې کړئ</string>
     <string name="ui_wudu_review">دا ذکر یوازې په یوه مذهب پورې ځانګړی نه دی. دلته د هر غړي د مینځلو لپاره جلا دعا نبي ته نه منسوبېږي. په زاړه متن کې د هر غړي دعاګانې د سنت بللو یا نورو مذهبونو ته د غځولو وړاندې د سرچینې او فقهي نظر بیاکتنې ته اړتیا لري.</string>
     <string name="ui_recitation_language">لارښوونې په ټاکلې ژبه دي؛ اذکار او غږیز تلاوت په عربي پاتې کېږي.</string>
+    <string name="ui_alarm_device_notice">د موبایل د زنګ غږ او د بیټرۍ محدودیتونه وګورئ. زنګ له دوو دقیقو وروسته پخپله بندېږي.</string>
+    <string name="ui_alarm_offset_range">له ۵ تر ۲۴۰ دقیقو عدد ولیکئ.</string>
+    <string name="ui_alarm_offset_title">له سهار مخکې د ویښېدو وخت</string>
+    <string name="ui_alarm_pending">لا نه دی مهالویش شوی: د یادونې لپاره د خبرتیا او دقیق زنګ اجازه فعاله کړئ.</string>
+    <string name="ui_alarm_preview_note">د سیستم د زنګ غږ ازمويي؛ د خوندي یادونو وختونه نه بدلوي.</string>
+    <string name="ui_alarm_sound_error">د زنګ غږ ونه غږېد. د سیستم د زنګ اهنګ او د غږ کچه وګورئ.</string>
+    <string name="ui_calendar_adjustment">هجري نېټه برابره کړئ</string>
+    <string name="ui_calendar_estimate">نېټې د ام القری د تقویم اټکل دی. د خپلې سیمې د سپوږمۍ اعلان تعقیب او که اړتیا وي نېټه برابره کړئ؛ د لمانځه وختونه نه بدلېږي.</string>
+    <string name="ui_days_adjustment">%1$d ورځې</string>
+    <string name="ui_enable_alarm_notifications">د زنګ د خبرتیا اجازه</string>
+    <string name="ui_iftar">روژه ماتی · ماښام</string>
+    <string name="ui_iftar_now">د ټاکل شوې محاسبې له مخې د روژه ماتي وخت دی.</string>
+    <string name="ui_iftar_reminder">د روژه ماتي یادونه</string>
+    <string name="ui_minutes_before_fajr">له سهار %1$d دقیقې مخکې</string>
+    <string name="ui_next_alarm">بله یادونه: %1$s</string>
+    <string name="ui_only_ramadan">یوازې په رمضان کې</string>
+    <string name="ui_preview_alarm">د زنګ غږ وازمویئ</string>
+    <string name="ui_ramadan">رمضان</string>
+    <string name="ui_ramadan_day">رمضان · %1$d ورځ</string>
+    <string name="ui_ramadan_intro">پېشلمی په سهار ختمېږي او روژه ماتی په ماښام دی. وختونه ستاسې د ځای او ټاکلې محاسبې له مخې دي.</string>
+    <string name="ui_ramadan_period">رمضان %1$d · له %2$s تر %3$s</string>
+    <string name="ui_stop_alarm">زنګ بند کړئ</string>
+    <string name="ui_suhur_alarm">د پېشلمي د ویښېدو زنګ</string>
+    <string name="ui_suhur_alarm_body">د پېشلمي چمتو کولو لپاره له سهار مخکې ویښ شئ. دا یادونه د خوراک او څښاک وروستی وخت نه بدلوي.</string>
+    <string name="ui_suhur_end">د پېشلمي پای · سهار</string>
+    <string name="ui_suhur_wake_now">د پېشلمي لپاره د ویښېدو وخت دی. تر سهاره پاتې وخت وګورئ.</string>
+    <string name="ui_calendar_estimate_short">د ام القری اټکلي نېټې</string>
 </resources>

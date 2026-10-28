@@ -83,7 +83,7 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
             if (!heading.available) InfoCard(stringResource(R.string.ui_qibla_no_sensor))
             else if (heading.accuracy <= SensorManager.SENSOR_STATUS_ACCURACY_LOW) SupportingText(stringResource(R.string.ui_qibla_calibration))
         }
-        SupportingText(location.label.ifBlank { stringResource(R.string.ui_device_location) })
+        SupportingText(location.labelFor(settings.language).ifBlank { stringResource(R.string.ui_device_location) })
         TextButton(onLocation) { Text(stringResource(R.string.ui_set_location)) }
     }
 }

@@ -47,6 +47,7 @@ data class SavedLocation(
     val zoneId: String,
     val mode: LocationMode = LocationMode.MANUAL,
     val cityId: String? = null,
+    val names: Map<String, String> = emptyMap(),
 ) {
     init {
         require(latitude.isFinite() && latitude in -90.0..90.0)
@@ -54,6 +55,8 @@ data class SavedLocation(
         ZoneId.of(zoneId)
     }
     val zone: ZoneId get() = ZoneId.of(zoneId)
+    fun labelFor(language: AppLanguage): String = names[language.tag] ?: names["en"]
+        ?: label.takeIf { language == AppLanguage.PERSIAN || it.none { ch -> ch in '\u0600'..'\u06ff' } }.orEmpty()
 }
 
 data class AdhanVoice(val id: String, val title: String, val fileName: String, val bytes: Long) {
@@ -80,6 +83,7 @@ data class AppSettings(
     val lastLessonId: String? = null,
     val lastStepId: String? = null,
     val hiddenNotificationUntil: Long = 0L,
+    val ramadan: RamadanOptions = RamadanOptions(),
 ) {
     fun selectedVoice(): AdhanVoice? = adhanVoices.firstOrNull { it.id == selectedVoiceId }
     fun withSchool(value: School): AppSettings = copy(

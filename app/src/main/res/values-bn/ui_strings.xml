@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">সালাহ</string>
     <string name="ui_home">আজ</string>
-    <string name="ui_lessons">শিখুন</string>
+    <string name="ui_lessons">বিষয়</string>
     <string name="ui_tools">সরঞ্জাম</string>
     <string name="ui_settings">সেটিংস</string>
     <string name="ui_back">ফিরে যান</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">শেখা চালিয়ে যান</string>
     <string name="ui_start_learning">প্রথম ধাপ নিন</string>
     <string name="ui_start_learning_body">ওজু ও নামাজের নির্দেশিকা দিয়ে শুরু করুন। নিজের গতিতে প্রতিটি ধাপ অনুসরণ করুন।</string>
-    <string name="ui_lessons_count">%1$dটি অফলাইন পাঠ</string>
+    <string name="ui_lessons_count">%1$d অফলাইন বিষয়</string>
     <string name="ui_step_count">%1$dটি ধাপ</string>
     <string name="ui_step_of">%2$dটির মধ্যে ধাপ %1$d</string>
     <string name="ui_progress">%2$dটি ধাপের মধ্যে %1$dটি সম্পন্ন</string>
     <string name="ui_read_lesson">পাঠ পড়ুন</string>
-    <string name="ui_resume_lesson">পাঠ চালিয়ে যান</string>
-    <string name="ui_search_lessons">পাঠ খুঁজুন</string>
+    <string name="ui_resume_lesson">সাম্প্রতিক পাঠ</string>
+    <string name="ui_search_lessons">বিষয় খুঁজুন</string>
     <string name="ui_all_lessons">সব</string>
     <string name="ui_basics">প্রাথমিক বিষয়</string>
     <string name="ui_prayers">নামাজ</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">সংরক্ষিত</string>
     <string name="ui_bookmark_add">পাঠ সংরক্ষণ করুন</string>
     <string name="ui_bookmark_remove">সংরক্ষিত পাঠ সরান</string>
-    <string name="ui_empty_lessons">অনুসন্ধানের সঙ্গে মেলে এমন পাঠ নেই।</string>
+    <string name="ui_empty_lessons">মিলে এমন কোনো বিষয় নেই।</string>
     <string name="ui_empty_bookmarks">আপনি এখনো কোনো পাঠ সংরক্ষণ করেননি।</string>
     <string name="ui_persian_content">এই পাঠটি ফারসি ভাষায়। অ্যাপের ভাষা আলাদাভাবে বদলানো যায়।</string>
     <string name="ui_lesson_source">পাঠের উৎস</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">অডিও থামান</string>
     <string name="ui_repeat_audio">অডিও পুনরাবৃত্তি</string>
     <string name="ui_illustration">এই ধাপের চিত্র</string>
-    <string name="ui_share_lesson">পাঠ শেয়ার করুন</string>
+    <string name="ui_share_lesson">বিষয় শেয়ার করুন</string>
     <string name="ui_training">নামাজের ভিডিও পাঠ</string>
     <string name="ui_training_description">দৃশ্যমান প্রদর্শনের মাধ্যমে নামাজের ধাপ অনুসরণ করুন।</string>
     <string name="ui_training_placeholder">ভিডিও পাঠ তৈরি হচ্ছে</string>
@@ -164,9 +164,9 @@
     <string name="ui_resume_step">ধাপ %1$d থেকে চালিয়ে যান</string>
     <string name="ui_content_language">এই পাঠের ভাষা: %1$s। অ্যাপের ভাষা আলাদা।</string>
     <string name="ui_calc_singapore">সিঙ্গাপুর; ফজর ২০°, এশা ১৮°</string>
-    <string name="ui_quick_access">শেখা ও দ্রুত প্রবেশ</string>
-    <string name="ui_teach_prayer">নামাজ শিক্ষা</string>
-    <string name="ui_teach_wudu">ওজু শিক্ষা</string>
+    <string name="ui_quick_access">দ্রুত প্রবেশ</string>
+    <string name="ui_teach_prayer">নামাজ</string>
+    <string name="ui_teach_wudu">অজু</string>
     <string name="ui_prayer_types">নামাজের প্রকার</string>
     <string name="ui_wudu_duas">ওজুর পরের জিকির</string>
     <string name="ui_translation_unavailable">এই পাঠের অনুবাদ এখনো প্রস্তুত নয়</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">রেকর্ডিং সরান</string>
     <string name="ui_wudu_review">এই জিকির কোনো এক মাজহাবের জন্য নির্দিষ্ট নয়। এখানে প্রতি অঙ্গ ধোয়ার জন্য পৃথক দোয়া নবীর নামে বলা হয়নি। পুরোনো লেখার অঙ্গভিত্তিক দোয়াকে সুন্নত বলা বা অন্য মাজহাবে প্রয়োগ করার আগে সূত্র ও ফিকহি যাচাই প্রয়োজন।</string>
     <string name="ui_recitation_language">নির্দেশনা নির্বাচিত ভাষায়; জিকির ও তিলাওয়াতের অডিও আরবিতেই থাকে।</string>
+    <string name="ui_alarm_device_notice">ফোনের অ্যালার্মের শব্দ ও ব্যাটারির সীমাবদ্ধতা দেখুন। দুই মিনিট পরে অ্যালার্ম নিজে থেকে বন্ধ হয়।</string>
+    <string name="ui_alarm_offset_range">৫ থেকে ২৪০ মিনিট লিখুন।</string>
+    <string name="ui_alarm_offset_title">ফজরের আগে ঘুম থেকে ওঠার সময়</string>
+    <string name="ui_alarm_pending">এখনো নির্ধারিত হয়নি: স্মরণবার্তা চালু করতে বিজ্ঞপ্তি ও নির্ভুল অ্যালার্মের অনুমতি দিন।</string>
+    <string name="ui_alarm_preview_note">সিস্টেমের অ্যালার্মের শব্দ পরীক্ষা করে; সংরক্ষিত স্মরণবার্তার সময় বদলায় না।</string>
+    <string name="ui_alarm_sound_error">অ্যালার্মের শব্দ চালানো যায়নি। সিস্টেমের অ্যালার্মের সুর ও শব্দমাত্রা দেখুন।</string>
+    <string name="ui_calendar_adjustment">হিজরি তারিখ সমন্বয়</string>
+    <string name="ui_calendar_estimate">তারিখ উম্মুল কুরা ক্যালেন্ডারের আনুমানিক হিসাব। স্থানীয় চাঁদ দেখার ঘোষণা মেনে প্রয়োজনে তারিখ ঠিক করুন; নামাজের সময় বদলাবে না।</string>
+    <string name="ui_days_adjustment">%1$d দিন</string>
+    <string name="ui_enable_alarm_notifications">অ্যালার্মের বিজ্ঞপ্তির অনুমতি</string>
+    <string name="ui_iftar">ইফতার · মাগরিব</string>
+    <string name="ui_iftar_now">নির্বাচিত নামাজের হিসাব অনুযায়ী ইফতারের সময় হয়েছে।</string>
+    <string name="ui_iftar_reminder">ইফতারের স্মরণবার্তা</string>
+    <string name="ui_minutes_before_fajr">ফজরের %1$d মিনিট আগে</string>
+    <string name="ui_next_alarm">পরবর্তী স্মরণবার্তা: %1$s</string>
+    <string name="ui_only_ramadan">শুধু রমজানে</string>
+    <string name="ui_preview_alarm">অ্যালার্মের শব্দ পরীক্ষা</string>
+    <string name="ui_ramadan">রমজান</string>
+    <string name="ui_ramadan_day">রমজান · দিন %1$d</string>
+    <string name="ui_ramadan_intro">সাহরি ফজরে শেষ হয় এবং ইফতার মাগরিবে। সময় আপনার অবস্থান ও নির্বাচিত গণনাপদ্ধতি অনুযায়ী।</string>
+    <string name="ui_ramadan_period">রমজান %1$d · %2$s থেকে %3$s</string>
+    <string name="ui_stop_alarm">অ্যালার্ম বন্ধ করুন</string>
+    <string name="ui_suhur_alarm">সাহরিতে ওঠার অ্যালার্ম</string>
+    <string name="ui_suhur_alarm_body">সাহরির প্রস্তুতিতে ফজরের আগে উঠুন। এই স্মরণবার্তা পানাহারের শেষসীমা বদলায় না।</string>
+    <string name="ui_suhur_end">সাহরির শেষ · ফজর</string>
+    <string name="ui_suhur_wake_now">সাহরির জন্য ওঠার সময়। ফজর পর্যন্ত বাকি সময় দেখুন।</string>
+    <string name="ui_calendar_estimate_short">উম্মুল কুরা অনুযায়ী আনুমানিক তারিখ</string>
 </resources>

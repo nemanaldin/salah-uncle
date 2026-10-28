@@ -1,12 +1,12 @@
-# Salah 2.6
+# Salah 2.7
 
-A Kotlin / Jetpack Compose prayer-learning app with direct teaching shortcuts, offline prayer calculations and qibla, ten interface languages, four Sunni schools and selectable adhan recordings.
+A Kotlin / Jetpack Compose prayer reference and utility app with continuous bookmarked topics, offline prayer times and qibla, ten languages, four Sunni schools, selectable adhan recordings and Ramadan suhur/iftar reminders.
 
-**Downloads:** open the latest successful [Android Actions run](https://github.com/nemanaldin/salah-uncle/actions/workflows/android.yml) for `uncle-work`, sign in to GitHub, and download **salah-downloads** under **Artifacts**. It contains the installable debug APK, unsigned release APK, source ZIP, offline Persian HTML report and Android screenshots. Extract the archive first; install `salah-2.6.0-debug.apk`. The release APK needs the owner's signing key. Development signing keys can differ between builds.
+**Downloads:** open the latest successful [Android Actions run](https://github.com/nemanaldin/salah-uncle/actions/workflows/android.yml) for `uncle-work`, sign in to GitHub, and download **salah-downloads** under **Artifacts**. It contains the installable debug APK, unsigned release APK, source ZIP, offline Persian HTML report and Android screenshots. Extract the archive first; install `salah-2.7.0-debug.apk`. The release APK needs the owner's signing key. Development signing keys can differ between builds.
 
-[گزارش فارسی نسخهٔ ۲٫۶](docs/UPDATE_2_6_FA.md) · [Translation coverage](docs/TRANSLATION_COVERAGE.json) · [Offline cities and licence](docs/GEOGRAPHY.md) · [Adhan audio and rights](docs/ADHAN_RECORDINGS.md)
+[گزارش فارسی نسخهٔ ۲٫۷](docs/UPDATE_2_7_FA.md) · [Translation coverage](docs/TRANSLATION_COVERAGE.json) · [Offline cities and licence](docs/GEOGRAPHY.md) · [Adhan audio and rights](docs/ADHAN_RECORDINGS.md)
 
-All 21 legacy Hanafi lessons / 73 steps now have explanatory bodies in all ten languages, with Arabic recitations preserved. The photographic UI restores artwork from the owner’s original version. See the source-compared editorial corrections and pending independent native/specialist review in the 2.6 report. The new prayer/wudu introductions and shared post-wudu remembrance have text in all ten languages. Text availability does not claim specialist/native-language editorial approval. User-supplied audio can be imported for offline use; no newly licensed recording is bundled in this change.
+Topics open as complete continuous articles with stable star bookmarks; no next-step or completion UI is shown. Existing progress data is retained during upgrades. All 21 legacy Hanafi topics / 73 source sections have explanatory bodies in all ten languages, with Arabic recitations preserved. The photographic UI restores artwork from the owner’s original version. See the source-compared editorial corrections and pending independent native/specialist review in the 2.6 report. The new prayer/wudu introductions and shared post-wudu remembrance have text in all ten languages. Text availability does not claim specialist/native-language editorial approval. User-supplied audio can be imported for offline use; no newly licensed recording is bundled in this change.
 
 Build with JDK 21 (Java/Kotlin bytecode targets 17), Android SDK 36, Build Tools 35.0.0, and the checked-in Gradle 8.13 wrapper:
 
@@ -40,3 +40,5 @@ Prayer displays update even when every alert is off. Alarm scheduling selects th
 The Google Flow training page is intentionally empty of generated animation. Add the exported media later using [the video integration guide](docs/GOOGLE_FLOW_VIDEOS.md). It already has an offline video area, chapter selection and a link to the existing step-by-step prayer guide.
 
 See [the 2.4 language and school notes](docs/LANGUAGES_SCHOOLS_FA.md), [content sources](docs/CONTENT_SOURCES.md), and [the original 2.3 implementation notes](docs/IMPLEMENTATION_FA.md). CI validates content, builds debug and shrunk release APKs, checks lint and unit tests, and runs UI regression tests on an accelerated Android 34 emulator, including screenshots of all ten interface languages. No publishing action is configured.
+
+Ramadan uses the existing Fajr/Maghrib engine and an explicitly estimated, adjustable Umm al-Qura month. Suhur defaults to 90 minutes before Fajr, independently of adhan alerts, and requires exact-alarm and notification access before scheduling. Audio uses the system alarm stream with stop controls and a bounded lifetime. The full month and existing/manual city labels are available offline. Localized common names use a canonical Latin fallback when a native form is unavailable. See [2.7 behavior and remaining device checks](docs/UPDATE_2_7_FA.md).

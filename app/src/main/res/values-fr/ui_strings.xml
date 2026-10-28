@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <resources>
     <string name="ui_app_name">Salah</string>
     <string name="ui_home">Aujourd’hui</string>
-    <string name="ui_lessons">Apprendre</string>
+    <string name="ui_lessons">Sujets</string>
     <string name="ui_tools">Outils</string>
     <string name="ui_settings">Paramètres</string>
     <string name="ui_back">Retour</string>
@@ -50,13 +50,13 @@
     <string name="ui_continue_learning">Poursuivre l’apprentissage</string>
     <string name="ui_start_learning">Faites le premier pas</string>
     <string name="ui_start_learning_body">Commencez par les ablutions et la prière. Avancez à votre rythme.</string>
-    <string name="ui_lessons_count">%1$d cours hors ligne</string>
+    <string name="ui_lessons_count">%1$d sujets hors ligne</string>
     <string name="ui_step_count">%1$d étapes</string>
     <string name="ui_step_of">Étape %1$d sur %2$d</string>
     <string name="ui_progress">%1$d étapes terminées sur %2$d</string>
     <string name="ui_read_lesson">Lire le cours</string>
-    <string name="ui_resume_lesson">Reprendre le cours</string>
-    <string name="ui_search_lessons">Rechercher un cours</string>
+    <string name="ui_resume_lesson">Consulté récemment</string>
+    <string name="ui_search_lessons">Rechercher un sujet</string>
     <string name="ui_all_lessons">Tous</string>
     <string name="ui_basics">Bases</string>
     <string name="ui_prayers">Prières</string>
@@ -64,7 +64,7 @@
     <string name="ui_bookmarks">Enregistrés</string>
     <string name="ui_bookmark_add">Enregistrer le cours</string>
     <string name="ui_bookmark_remove">Retirer des cours enregistrés</string>
-    <string name="ui_empty_lessons">Aucun cours ne correspond à la recherche.</string>
+    <string name="ui_empty_lessons">Aucun sujet ne correspond.</string>
     <string name="ui_empty_bookmarks">Vous n’avez encore enregistré aucun cours.</string>
     <string name="ui_persian_content">Ce cours est en persan. La langue de l’interface se règle séparément.</string>
     <string name="ui_lesson_source">Sources du cours</string>
@@ -78,7 +78,7 @@
     <string name="ui_pause_audio">Mettre en pause</string>
     <string name="ui_repeat_audio">Répéter l’audio</string>
     <string name="ui_illustration">Illustration de cette étape</string>
-    <string name="ui_share_lesson">Partager le cours</string>
+    <string name="ui_share_lesson">Partager le sujet</string>
     <string name="ui_training">Cours de prière en vidéo</string>
     <string name="ui_training_description">Suivez les étapes de la prière grâce aux démonstrations visuelles.</string>
     <string name="ui_training_placeholder">Les vidéos sont en préparation</string>
@@ -164,9 +164,9 @@
     <string name="ui_resume_step">Reprendre à l’étape %1$d</string>
     <string name="ui_content_language">Langue de ce cours : %1$s. La langue de l’interface est indépendante.</string>
     <string name="ui_calc_singapore">Singapour ; Fajr 20°, Isha 18°</string>
-    <string name="ui_quick_access">Apprendre et accès rapide</string>
-    <string name="ui_teach_prayer">Apprendre la prière</string>
-    <string name="ui_teach_wudu">Les ablutions</string>
+    <string name="ui_quick_access">Accès rapide</string>
+    <string name="ui_teach_prayer">Prière</string>
+    <string name="ui_teach_wudu">Ablutions</string>
     <string name="ui_prayer_types">Types de prière</string>
     <string name="ui_wudu_duas">Invocation après les ablutions</string>
     <string name="ui_translation_unavailable">La traduction de cette leçon est indisponible</string>
@@ -186,4 +186,31 @@
     <string name="ui_adhan_remove">Supprimer cet enregistrement</string>
     <string name="ui_wudu_review">Cette invocation ne se limite pas à une école. Cette section n’attribue pas au Prophète une invocation distincte pour chaque membre. Les invocations par membre du texte original nécessitent une vérification des sources et un examen juridique avant d’être présentées comme sunna ou étendues aux autres écoles.</string>
     <string name="ui_recitation_language">Les explications suivent votre langue ; les récitations et leur audio restent en arabe.</string>
+    <string name="ui_alarm_device_notice">Vérifiez le volume de l’alarme et les restrictions de batterie du téléphone. La sonnerie s’arrête après deux minutes.</string>
+    <string name="ui_alarm_offset_range">Saisissez entre 5 et 240 minutes.</string>
+    <string name="ui_alarm_offset_title">Réveil avant le Fajr</string>
+    <string name="ui_alarm_pending">Pas encore programmé : autorisez les notifications et les alarmes exactes pour activer le rappel.</string>
+    <string name="ui_alarm_preview_note">Teste la sonnerie du système sans modifier les horaires des rappels enregistrés.</string>
+    <string name="ui_alarm_sound_error">La sonnerie n’a pas pu être lue. Vérifiez la tonalité et le volume de l’alarme système.</string>
+    <string name="ui_calendar_adjustment">Ajuster la date hégirienne</string>
+    <string name="ui_calendar_estimate">Les dates sont une estimation du calendrier Umm al-Qura. Suivez l’annonce locale du croissant et ajustez si nécessaire ; les heures de prière restent inchangées.</string>
+    <string name="ui_days_adjustment">%1$d jour(s)</string>
+    <string name="ui_enable_alarm_notifications">Autoriser les notifications d’alarme</string>
+    <string name="ui_iftar">Iftar · Maghrib</string>
+    <string name="ui_iftar_now">L’heure de l’iftar est arrivée selon le calcul de prière choisi.</string>
+    <string name="ui_iftar_reminder">Rappel de l’iftar</string>
+    <string name="ui_minutes_before_fajr">%1$d minutes avant le Fajr</string>
+    <string name="ui_next_alarm">Prochain rappel : %1$s</string>
+    <string name="ui_only_ramadan">Pendant le Ramadan seulement</string>
+    <string name="ui_preview_alarm">Tester la sonnerie</string>
+    <string name="ui_ramadan">Ramadan</string>
+    <string name="ui_ramadan_day">Ramadan · jour %1$d</string>
+    <string name="ui_ramadan_intro">Le suhur se termine au Fajr et l’iftar suit le Maghrib. Les horaires utilisent votre lieu et la méthode de calcul choisie.</string>
+    <string name="ui_ramadan_period">Ramadan %1$d · du %2$s au %3$s</string>
+    <string name="ui_stop_alarm">Arrêter l’alarme</string>
+    <string name="ui_suhur_alarm">Réveil pour le suhur</string>
+    <string name="ui_suhur_alarm_body">Réveillez-vous avant le Fajr pour préparer le suhur. Ce rappel ne modifie pas l’heure limite pour manger et boire.</string>
+    <string name="ui_suhur_end">Fin du suhur · Fajr</string>
+    <string name="ui_suhur_wake_now">Il est temps de se lever pour le suhur. Vérifiez le temps restant avant le Fajr.</string>
+    <string name="ui_calendar_estimate_short">Dates estimées : Umm al-Qura</string>
 </resources>

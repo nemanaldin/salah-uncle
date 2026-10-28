@@ -33,13 +33,14 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
     val settings = state.settings ?: return
     var showCities by rememberSaveable { mutableStateOf(false) }
     PageColumn(Modifier.testTag("prayer_times_screen")) {
-        IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, settings.location?.label?.ifBlank { stringResource(R.string.ui_device_location) } ?: stringResource(R.string.ui_times_body))
+        IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, settings.location?.labelFor(settings.language)?.ifBlank { stringResource(R.string.ui_device_location) } ?: stringResource(R.string.ui_times_body))
         state.today?.let { today -> AppCard {
             SectionTitle(stringResource(R.string.ui_prayer_times))
             today.moments.forEach { moment ->
                 val active = moment.id == state.next?.id && moment.time == state.next.time
-                Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(stringResource(moment.id.labelRes()), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+                Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    PrayerArtwork(moment.id.artwork(), Modifier.size(32.dp))
+                    Text(stringResource(moment.id.labelRes()), Modifier.weight(1f), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
                     Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
                 }
             }
@@ -53,7 +54,7 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
             SectionTitle(stringResource(R.string.ui_location))
             val location = settings.location
             if (location != null) {
-                Text(location.label.ifBlank { stringResource(R.string.ui_device_location) }, style = MaterialTheme.typography.titleMedium)
+                Text(location.labelFor(settings.language).ifBlank { stringResource(R.string.ui_device_location) }, style = MaterialTheme.typography.titleMedium)
                 SupportingText(stringResource(R.string.ui_timezone, location.zoneId))
             } else SupportingText(stringResource(R.string.ui_location_needed))
             Button({ showCities = true }, Modifier.fillMaxWidth().testTag("choose_city")) { Text(stringResource(R.string.ui_location_manual)) }
@@ -92,7 +93,7 @@ private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (Str
                 LazyColumn(Modifier.heightIn(max = 340.dp).testTag("city_results")) {
                     if (results.isEmpty()) item { SupportingText(stringResource(R.string.ui_location_empty)) }
                     items(results, key = { it.id }) { city ->
-                        ListItem(headlineContent = { Text(city.name) }, supportingContent = { Text(listOf(city.countryName(language), city.province, city.zoneId).filter { it.isNotBlank() }.joinToString(" · ")) },
+                        ListItem(headlineContent = { Text(city.displayName(language)) }, supportingContent = { Text(listOf(city.countryName(language), city.provinceName(language), city.zoneId).filter { it.isNotBlank() }.joinToString(" · ")) },
                             modifier = Modifier.clickable { onChoose(city.id) }.testTag("city_${city.id}"))
                     }
                     if (results.size == 100) item { SupportingText(stringResource(R.string.ui_city_refine)) }

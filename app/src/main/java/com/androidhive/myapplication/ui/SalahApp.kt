@@ -7,6 +7,7 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -34,7 +35,7 @@ import com.androidhive.myapplication.ui.prayer.PrayerTimesScreen
 import com.androidhive.myapplication.ui.qibla.QiblaScreen
 import com.androidhive.myapplication.ui.settings.SettingsScreen
 
-data class DeviceActions(val location: () -> Unit, val notifications: () -> Unit, val exactAlarms: () -> Unit, val fullScreen: () -> Unit)
+data class DeviceActions(val location: () -> Unit, val notifications: () -> Unit, val exactAlarms: () -> Unit, val fullScreen: () -> Unit, val ramadanNotifications: () -> Unit = notifications)
 private data class Destination(val route: String, val title: Int, val icon: ImageVector)
 private val destinations = listOf(
     Destination("home", R.string.ui_home, Icons.Default.Home),
@@ -72,11 +73,11 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     val navigation = rememberNavController()
     val backStack by navigation.currentBackStackEntryAsState()
     val route = backStack?.destination?.route ?: "home"
-    LaunchedEffect(route) { model.showCountdown(route == "home" || route == "times") }
+    LaunchedEffect(route) { model.showCountdown(route == "home" || route == "times" || route == "ramadan") }
     val topLevel = destinations.any { it.route == route }
     val selectedRoute = when {
         route.startsWith("lesson/") || route == "training" -> "lessons"
-        route == "times" || route == "qibla" -> "tools"
+        route == "times" || route == "qibla" || route == "ramadan" -> "tools"
         route == "about" -> "settings"
         else -> route
     }
@@ -91,6 +92,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     val title = when (route) {
         "times" -> stringResource(R.string.ui_prayer_times)
         "qibla" -> stringResource(R.string.ui_qibla)
+        "ramadan" -> stringResource(R.string.ui_ramadan)
         "training" -> stringResource(R.string.ui_training)
         "about" -> stringResource(R.string.ui_about)
         "lesson/{id}" -> state.content.lessons.firstOrNull { it.id == lessonId }?.title(settings.language).orEmpty()
@@ -99,7 +101,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         else -> stringResource(destinations.firstOrNull { it.route == route }?.title ?: R.string.ui_app_name)
     }
     LaunchedEffect(pendingRoute) {
-        if (pendingRoute in listOf("times", "home")) { navigate(pendingRoute!!); onRouteHandled() }
+        if (pendingRoute in listOf("times", "home", "ramadan")) { navigate(pendingRoute!!); onRouteHandled() }
     }
     val wide = LocalConfiguration.current.screenWidthDp >= 720
     Scaffold(
@@ -108,6 +110,12 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
             actions = { if (topLevel) {
                 Text(stringResource(settings.school.labelRes()), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                 if (route != "settings") IconButton({ selectMain("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Default.Settings, stringResource(R.string.ui_settings)) }
+            } else if (route == "lesson/{id}" && lessonId != null) {
+                val saved = lessonId in settings.bookmarks
+                IconButton({ model.bookmark(lessonId) }, Modifier.testTag("reader_bookmark")) {
+                    Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),
+                        tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
+                }
             } }) },
         bottomBar = { if (!wide && topLevel) NavigationBar {
             destinations.forEach { destination ->
@@ -129,7 +137,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
             Box(Modifier.weight(1f).fillMaxHeight(), contentAlignment = Alignment.TopCenter) {
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().fillMaxHeight(),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
-                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }) }
+                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }) }
                     composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent) }
                     composable("tools") { ToolsScreen(settings.school, navigate) }
                     composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent, "prayers") }
@@ -139,11 +147,17 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         if (mode != AlertMode.OFF) actions.notifications()
                     }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message, { navigate("voices") }) }
                     composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }) }
+                    composable("ramadan") {
+                        val ramadan by model.ramadan.collectAsStateWithLifecycle()
+                        val playback by container.suhurSession.state.collectAsStateWithLifecycle()
+                        com.androidhive.myapplication.ui.ramadan.RamadanScreen(state, ramadan, playback, model::update, model::previewSuhur, model::stopSuhurPreview,
+                            { navigate("times") }, actions.ramadanNotifications, actions.exactAlarms, actions.fullScreen)
+                    }
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
                     composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message) }
                     composable("lesson/{id}") { entry ->
                         val lesson = state.content.lessons.firstOrNull { it.id == entry.arguments?.getString("id") }
-                        if (lesson != null) LessonScreen(lesson, settings, model::recordReading, model::completeStep,
+                        if (lesson != null) LessonScreen(lesson, settings, model::recordReading,
                             { navigation.popBackStack() }, model::message)
                         else PageColumn {
                             if (state.content.error == null) CircularProgressIndicator()
@@ -165,7 +179,7 @@ private fun ToolsScreen(school: School, navigate: (String) -> Unit) {
     PageColumn {
         val guide = if (school == School.HANAFI) "lesson/dhikr" to R.string.ui_remembrance
             else "lesson/${school.guideId}" to R.string.ui_open_prayer_guide
-        listOf("times" to R.string.ui_prayer_times, "qibla" to R.string.ui_qibla, guide, "training" to R.string.ui_training).forEach { (route, label) ->
+        listOf("ramadan" to R.string.ui_ramadan, "times" to R.string.ui_prayer_times, "qibla" to R.string.ui_qibla, guide, "training" to R.string.ui_training).forEach { (route, label) ->
             AppCard(modifier = Modifier.testTag("tool_${route.replace('/', '_')}"), onClick = { navigate(route) }) { SectionTitle(stringResource(label)) }
         }
     }

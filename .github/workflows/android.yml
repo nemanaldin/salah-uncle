@@ -133,4 +133,4 @@ jobs:
           retention-days: 90
           path: |
             downloads/
-            !downloads/salah-2.6.0-portable.zip
+            !downloads/salah-2.7.0-portable.zip

@@ -118,6 +118,17 @@ def verify():
         assert -90 <= float(row[3]) <= 90 and -180 <= float(row[4]) <= 180
         ZoneInfo(row[5])
         assert isinstance(json.loads(row[6]), list)
+    place_names = json.loads((geography/'place-names-v1.json').read_text())
+    old_places = json.loads((ASSETS/'locations.json').read_text())
+    expected_ids = {f'{country}/{province}/{name}' for country, provinces in old_places.items() for province, places in provinces.items() for name in places}
+    assert set(place_names['legacy']) == expected_ids and len(expected_ids) == 279
+    for value in place_names['legacy'].values():
+        assert value['en'].strip() and value['provinceEn'].strip()
+        assert not re.search(r'[\u0600-\u06ff]', value['en'] + value['provinceEn'])
+    for value in place_names['common'].values(): assert set(value) == LANGUAGES
+    for entry in json.loads((ROOT/'docs/PRAYER_ARTWORK.json').read_text())['files']:
+        raw = (RES/'drawable-nodpi'/entry['file']).read_bytes()
+        assert len(raw) == entry['bytes'] and hashlib.sha256(raw).hexdigest() == entry['sha256']
     from content_coverage import coverage
     assert json.loads((ROOT/'docs/TRANSLATION_COVERAGE.json').read_text()) == coverage(), 'Stale coverage report'
     print(f'PASS: {len(LANGUAGES)} locales, {len(reference)} strings each; {len(lessons)} lessons; 8 localized guides and shared wudu remembrance; original 21 lessons/73 steps preserved.')

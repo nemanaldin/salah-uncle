@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             }
         })[SalahViewModel::class.java]
         pendingRoute = if (savedInstanceState == null) intent.getStringExtra(EXTRA_ROUTE) else savedInstanceState.getString(EXTRA_ROUTE)
-        val actions = DeviceActions(::requestLocation, ::requestNotifications, ::requestExactAlarm, ::requestFullScreen)
+        val actions = DeviceActions(::requestLocation, { requestNotifications() }, ::requestExactAlarm, ::requestFullScreen, { requestNotifications(true) })
         setContent {
             val state by model.state.collectAsStateWithLifecycle()
             val systemDark = isSystemInDarkTheme()
@@ -79,8 +79,9 @@ class MainActivity : AppCompatActivity() {
         if (granted) model.currentLocation()
         else locationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))
     }
-    private fun requestNotifications() {
-        if ((application as SalahApplication).container.notifications.allowed()) return
+    private fun requestNotifications(ramadan: Boolean = false) {
+        val container = (application as SalahApplication).container
+        if (if (ramadan) (container.ramadanNotifications.allowed() && container.ramadanNotifications.allowed(com.androidhive.myapplication.domain.ramadan.RamadanReminderKind.IFTAR)) else container.notifications.allowed()) return
         if (Build.VERSION.SDK_INT < 33 || ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
             notificationSettings(); return
         }
