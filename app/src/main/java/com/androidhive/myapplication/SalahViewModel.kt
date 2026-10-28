@@ -101,6 +101,24 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         loadContent()
         refreshCapabilities()
         viewModelScope.launch {
+            combine(settingsState.map { it?.location }.distinctUntilChanged(), content.map { it.cities }.distinctUntilChanged()) { stored, cities -> stored to cities }
+                .collect { (stored, cities) ->
+                    if (stored != null && stored.mode == LocationMode.MANUAL) {
+                        val city = cities.firstOrNull { it.id == stored.cityId } ?: cities.firstOrNull {
+                            it.name == stored.label && kotlin.math.abs(it.latitude - stored.latitude) < .001 && kotlin.math.abs(it.longitude - stored.longitude) < .001
+                        }
+                        if (city != null && (stored.names != city.names || stored.cityId != city.id)) {
+                            try {
+                                container.settings.update {
+                                    if (it.location == stored) it.copy(location = stored.copy(names = city.names, cityId = city.id)) else it
+                                }
+                            } catch (error: CancellationException) { throw error }
+                            catch (_: Exception) { message(R.string.ui_error_generic) }
+                        }
+                    }
+                }
+        }
+        viewModelScope.launch {
             settingsState.filterNotNull().map { AlarmConfig(it.location, it.calculationPreset, it.asrConvention, it.alertMode, it.prayerAlerts, it.ramadan) }
                 .distinctUntilChanged().collectLatest {
                     refreshAlarms()
@@ -118,15 +136,6 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
                     val videos = async { container.lessons.videos() }
                     val loadedCities = cities.await()
                     content.value = ContentState(lessons.await(), loadedCities, videos.await())
-                    val stored = container.settings.snapshot().location
-                    if (stored != null && stored.mode == LocationMode.MANUAL) {
-                        val city = loadedCities.firstOrNull { it.id == stored.cityId } ?: loadedCities.firstOrNull {
-                            it.name == stored.label && kotlin.math.abs(it.latitude - stored.latitude) < .001 && kotlin.math.abs(it.longitude - stored.longitude) < .001
-                        }
-                        if (city != null && (stored.names != city.names || stored.cityId != city.id)) container.settings.update {
-                            if (it.location == stored) it.copy(location = stored.copy(names = city.names, cityId = city.id)) else it
-                        }
-                    }
                 }
             } catch (error: CancellationException) { throw error }
             catch (_: Exception) { content.value = content.value.copy(error = R.string.ui_error_content) }

@@ -8,7 +8,11 @@ import com.androidhive.myapplication.SalahApplication
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.data.settings.SettingsRepository
 import com.androidhive.myapplication.domain.ramadan.*
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.time.*
@@ -26,16 +30,16 @@ class RamadanAlarmCoordinator(context: Context, private val settings: SettingsRe
             putExtra(KIND, kind.name)
             reminder?.let { putExtra(TIME, it.time.toEpochMilli()); putExtra(DATE, it.fastingDate.toString()); putExtra(FAJR, it.fajr.toEpochMilli()) }
         }, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-    private fun cancel() { RamadanReminderKind.entries.forEach { manager.cancel(pending(it)) } }
+    private fun cancelScheduledReminders() { RamadanReminderKind.entries.forEach { manager.cancel(pending(it)) } }
     suspend fun refresh() = withContext(Dispatchers.IO) { mutex.withLock {
-        cancel()
+        cancelScheduledReminders()
         val s = settings.snapshot()
         if (!s.ramadan.suhurEnabled && !(app as SalahApplication).container.suhurSession.state.value.preview) app.stopService(Intent(app, SuhurAlarmService::class.java))
         if (!s.ramadan.iftarEnabled) notifications.cancelIftar()
         // A wake-up alarm is never advertised as scheduled while exact delivery or
         // visible notification controls are unavailable. Preferences retain intent.
         if (!s.ramadan.suhurEnabled && !s.ramadan.iftarEnabled) return@withLock
-        if (s.location == null || !exactAllowed() ) return@withLock
+        if (s.location == null || !exactAllowed()) return@withLock
         notifications.channels(s.language)
         try {
             for (kind in RamadanReminderKind.entries) if (notifications.allowed(kind)) engine.next(s, kind, clock.instant())?.let { reminder ->
@@ -44,7 +48,7 @@ class RamadanAlarmCoordinator(context: Context, private val settings: SettingsRe
                 else if (Build.VERSION.SDK_INT >= 23) manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, reminder.time.toEpochMilli(), operation)
                 else manager.setExact(AlarmManager.RTC_WAKEUP, reminder.time.toEpochMilli(), operation)
             }
-        } catch (error: Exception) { cancel(); throw error }
+        } catch (error: Exception) { cancelScheduledReminders(); throw error }
     } }
     suspend fun deliver(intent: Intent) {
         try {

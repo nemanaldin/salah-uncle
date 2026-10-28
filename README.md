@@ -33,11 +33,11 @@ Code responsibilities:
 - `platform`: location/sensors, alarm delivery, notifications and audio lifecycles.
 - `ui`: Compose navigation, localized RTL/LTR screens and reading controls.
 
-The catalog contains the original 21 Hanafi lessons and 73 steps, plus 8 new guides with 80 language variants and 560 localized steps. Search, bookmarks, step completion and resume use stable lesson/step IDs. School-specific guides never fall back to another school's content. Source attribution is visible in the reader and the selected school's Sources page; specialist and native-language release reviews have not been claimed.
+The catalog contains the original 21 Hanafi lessons and 73 steps, plus 8 new guides with 80 language variants and 560 localized steps. Search, bookmarks and resume use stable topic/section IDs; historical completion data is retained without a completion interface. School-specific guides never fall back to another school's content. Source attribution is visible in the reader and the selected school's Sources page; specialist and native-language release reviews have not been claimed.
 
 Prayer displays update even when every alert is off. Alarm scheduling selects the next enabled prayer, excluding sunrise. Reboot, package update, clock/timezone changes and exact-alarm permission changes restore scheduling, including notification-only mode. Missing exact-alarm access uses an inexact fallback; the relevant settings explain possible delay. Android can prevent background foreground-service starts after inexact alarms, in which case the prayer notification remains available. Delivery and audio on physical devices, including vendor power-management policies, require device QA.
 
-The Google Flow training page is intentionally empty of generated animation. Add the exported media later using [the video integration guide](docs/GOOGLE_FLOW_VIDEOS.md). It already has an offline video area, chapter selection and a link to the existing step-by-step prayer guide.
+The Google Flow training page is intentionally empty of generated animation. Add the exported media later using [the video integration guide](docs/GOOGLE_FLOW_VIDEOS.md). It already has an offline video area, chapter selection and a link to the existing continuous prayer reference.
 
 See [the 2.4 language and school notes](docs/LANGUAGES_SCHOOLS_FA.md), [content sources](docs/CONTENT_SOURCES.md), and [the original 2.3 implementation notes](docs/IMPLEMENTATION_FA.md). CI validates content, builds debug and shrunk release APKs, checks lint and unit tests, and runs UI regression tests on an accelerated Android 34 emulator, including screenshots of all ten interface languages. No publishing action is configured.
 
