@@ -1,0 +1,55 @@
+{
+  "generatedOn": "2026-10-28",
+  "tool": "OpenAI imagegen",
+  "note": "Original generated artwork for this project. No third-party app image was copied. Fajr is pre-sunrise and Maghrib is after sunset. Android renders cells from the unchanged source atlases; original generation outputs are retained.",
+  "files": [
+    {
+      "file": "prayer_atlas.png",
+      "bytes": 1874316,
+      "sha256": "e5774afc04504d1324b631c50cb87ddb936321c0ca956108c49397523af8959a",
+      "size": [
+        1254,
+        1254
+      ],
+      "grid": [
+        4,
+        4
+      ]
+    },
+    {
+      "file": "prayer_atlas_extra.png",
+      "bytes": 1635776,
+      "sha256": "5f5b1fd61496420a4ecca9a99111b2aebbac1b5fca3e65e70cd0535e4c9cb7c8",
+      "size": [
+        1254,
+        1254
+      ],
+      "grid": [
+        2,
+        2
+      ]
+    }
+  ],
+  "symbols": [
+    "FAJR",
+    "DHUHR",
+    "ASR",
+    "MAGHRIB",
+    "ISHA",
+    "FRIDAY",
+    "CONGREGATION",
+    "EID",
+    "FUNERAL",
+    "TRAVEL",
+    "ECLIPSE",
+    "QADA",
+    "TAHAJJUD",
+    "TARAWIH",
+    "TASBIH",
+    "MOSQUE",
+    "SUNRISE",
+    "QADR",
+    "ISHRAQ",
+    "AWWABIN"
+  ]
+}

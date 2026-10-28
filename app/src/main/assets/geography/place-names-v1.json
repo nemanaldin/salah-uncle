@@ -1,0 +1,1532 @@
+{
+  "schemaVersion": 1,
+  "note": "Explicit display names only. Legacy IDs, coordinates and zones are unchanged. Common names have localized forms; other non-Persian locales use a Latin canonical name. These are place-name adaptations, not a claim that every world city has ten reviewed native spellings.",
+  "legacy": {
+    "ایران/تهران/تهران": {
+      "en": "Tehran",
+      "provinceEn": "Tehran"
+    },
+    "ایران/تهران/کرج": {
+      "en": "Karaj",
+      "provinceEn": "Tehran"
+    },
+    "ایران/تهران/ری": {
+      "en": "Rey",
+      "provinceEn": "Tehran"
+    },
+    "ایران/تهران/اسلامشهر": {
+      "en": "Eslamshahr",
+      "provinceEn": "Tehran"
+    },
+    "ایران/تهران/ورامین": {
+      "en": "Varamin",
+      "provinceEn": "Tehran"
+    },
+    "ایران/اصفهان/اصفهان": {
+      "en": "Isfahan",
+      "provinceEn": "Isfahan"
+    },
+    "ایران/اصفهان/کاشان": {
+      "en": "Kashan",
+      "provinceEn": "Isfahan"
+    },
+    "ایران/اصفهان/نجف‌آباد": {
+      "en": "Najafabad",
+      "provinceEn": "Isfahan"
+    },
+    "ایران/اصفهان/خمینی‌شهر": {
+      "en": "Khomeyni Shahr",
+      "provinceEn": "Isfahan"
+    },
+    "ایران/اصفهان/شاهین‌شهر": {
+      "en": "Shahin Shahr",
+      "provinceEn": "Isfahan"
+    },
+    "ایران/فارس/شیراز": {
+      "en": "Shiraz",
+      "provinceEn": "Fars"
+    },
+    "ایران/فارس/مرودشت": {
+      "en": "Marvdasht",
+      "provinceEn": "Fars"
+    },
+    "ایران/فارس/جهرم": {
+      "en": "Jahrom",
+      "provinceEn": "Fars"
+    },
+    "ایران/فارس/لار": {
+      "en": "Lar",
+      "provinceEn": "Fars"
+    },
+    "ایران/فارس/کازرون": {
+      "en": "Kazerun",
+      "provinceEn": "Fars"
+    },
+    "ایران/خوزستان/اهواز": {
+      "en": "Ahvaz",
+      "provinceEn": "Khuzestan"
+    },
+    "ایران/خوزستان/دزفول": {
+      "en": "Dezful",
+      "provinceEn": "Khuzestan"
+    },
+    "ایران/خوزستان/آبادان": {
+      "en": "Abadan",
+      "provinceEn": "Khuzestan"
+    },
+    "ایران/خوزستان/اندیمشک": {
+      "en": "Andimeshk",
+      "provinceEn": "Khuzestan"
+    },
+    "ایران/خوزستان/بهبهان": {
+      "en": "Behbahan",
+      "provinceEn": "Khuzestan"
+    },
+    "ایران/آذربایجان شرقی/تبریز": {
+      "en": "Tabriz",
+      "provinceEn": "East Azerbaijan"
+    },
+    "ایران/آذربایجان شرقی/مراغه": {
+      "en": "Maragheh",
+      "provinceEn": "East Azerbaijan"
+    },
+    "ایران/آذربایجان شرقی/مرند": {
+      "en": "Marand",
+      "provinceEn": "East Azerbaijan"
+    },
+    "ایران/آذربایجان شرقی/میانه": {
+      "en": "Mianeh",
+      "provinceEn": "East Azerbaijan"
+    },
+    "ایران/آذربایجان شرقی/اهر": {
+      "en": "Ahar",
+      "provinceEn": "East Azerbaijan"
+    },
+    "ایران/مازندران/ساری": {
+      "en": "Sari",
+      "provinceEn": "Mazandaran"
+    },
+    "ایران/مازندران/بابل": {
+      "en": "Babol",
+      "provinceEn": "Mazandaran"
+    },
+    "ایران/مازندران/آمل": {
+      "en": "Amol",
+      "provinceEn": "Mazandaran"
+    },
+    "ایران/مازندران/قائم‌شهر": {
+      "en": "Qaem Shahr",
+      "provinceEn": "Mazandaran"
+    },
+    "ایران/مازندران/بهشهر": {
+      "en": "Behshahr",
+      "provinceEn": "Mazandaran"
+    },
+    "ایران/خراسان رضوی/مشهد": {
+      "en": "Mashhad",
+      "provinceEn": "Razavi Khorasan"
+    },
+    "ایران/خراسان رضوی/نیشابور": {
+      "en": "Neyshabur",
+      "provinceEn": "Razavi Khorasan"
+    },
+    "ایران/خراسان رضوی/سبزوار": {
+      "en": "Sabzevar",
+      "provinceEn": "Razavi Khorasan"
+    },
+    "ایران/خراسان رضوی/تربت حیدریه": {
+      "en": "Torbat-e Heydariyeh",
+      "provinceEn": "Razavi Khorasan"
+    },
+    "ایران/خراسان رضوی/کاشمر": {
+      "en": "Kashmar",
+      "provinceEn": "Razavi Khorasan"
+    },
+    "ایران/گیلان/رشت": {
+      "en": "Rasht",
+      "provinceEn": "Gilan"
+    },
+    "ایران/گیلان/انزلی": {
+      "en": "Bandar-e Anzali",
+      "provinceEn": "Gilan"
+    },
+    "ایران/گیلان/لاهیجان": {
+      "en": "Lahijan",
+      "provinceEn": "Gilan"
+    },
+    "ایران/گیلان/لنگرود": {
+      "en": "Langarud",
+      "provinceEn": "Gilan"
+    },
+    "ایران/گیلان/آستارا": {
+      "en": "Astara",
+      "provinceEn": "Gilan"
+    },
+    "ایران/آذربایجان غربی/ارومیه": {
+      "en": "Urmia",
+      "provinceEn": "West Azerbaijan"
+    },
+    "ایران/آذربایجان غربی/خوی": {
+      "en": "Khoy",
+      "provinceEn": "West Azerbaijan"
+    },
+    "ایران/آذربایجان غربی/مهاباد": {
+      "en": "Mahabad",
+      "provinceEn": "West Azerbaijan"
+    },
+    "ایران/آذربایجان غربی/میاندوآب": {
+      "en": "Miandoab",
+      "provinceEn": "West Azerbaijan"
+    },
+    "ایران/آذربایجان غربی/سلماس": {
+      "en": "Salmas",
+      "provinceEn": "West Azerbaijan"
+    },
+    "ایران/کرمانشاه/کرمانشاه": {
+      "en": "Kermanshah",
+      "provinceEn": "Kermanshah"
+    },
+    "ایران/کرمانشاه/اسلام‌آباد غرب": {
+      "en": "Eslamabad-e Gharb",
+      "provinceEn": "Kermanshah"
+    },
+    "ایران/کرمانشاه/هرسین": {
+      "en": "Harsin",
+      "provinceEn": "Kermanshah"
+    },
+    "ایران/کرمانشاه/کنگاور": {
+      "en": "Kangavar",
+      "provinceEn": "Kermanshah"
+    },
+    "ایران/کرمانشاه/پاوه": {
+      "en": "Paveh",
+      "provinceEn": "Kermanshah"
+    },
+    "ایران/سیستان و بلوچستان/زاهدان": {
+      "en": "Zahedan",
+      "provinceEn": "Sistan and Baluchestan"
+    },
+    "ایران/سیستان و بلوچستان/زابل": {
+      "en": "Zabol",
+      "provinceEn": "Sistan and Baluchestan"
+    },
+    "ایران/سیستان و بلوچستان/ایرانشهر": {
+      "en": "Iranshahr",
+      "provinceEn": "Sistan and Baluchestan"
+    },
+    "ایران/سیستان و بلوچستان/چابهار": {
+      "en": "Chabahar",
+      "provinceEn": "Sistan and Baluchestan"
+    },
+    "ایران/سیستان و بلوچستان/خاش": {
+      "en": "Khash",
+      "provinceEn": "Sistan and Baluchestan"
+    },
+    "ایران/کردستان/سنندج": {
+      "en": "Sanandaj",
+      "provinceEn": "Kurdistan"
+    },
+    "ایران/کردستان/سقز": {
+      "en": "Saqqez",
+      "provinceEn": "Kurdistan"
+    },
+    "ایران/کردستان/مریوان": {
+      "en": "Marivan",
+      "provinceEn": "Kurdistan"
+    },
+    "ایران/کردستان/بانه": {
+      "en": "Baneh",
+      "provinceEn": "Kurdistan"
+    },
+    "ایران/کردستان/قروه": {
+      "en": "Qorveh",
+      "provinceEn": "Kurdistan"
+    },
+    "ایران/همدان/همدان": {
+      "en": "Hamadan",
+      "provinceEn": "Hamadan"
+    },
+    "ایران/همدان/ملایر": {
+      "en": "Malayer",
+      "provinceEn": "Hamadan"
+    },
+    "ایران/همدان/نهاوند": {
+      "en": "Nahavand",
+      "provinceEn": "Hamadan"
+    },
+    "ایران/همدان/اسدآباد": {
+      "en": "Asadabad",
+      "provinceEn": "Hamadan"
+    },
+    "ایران/همدان/بهار": {
+      "en": "Bahar",
+      "provinceEn": "Hamadan"
+    },
+    "ایران/چهارمحال و بختیاری/شهرکرد": {
+      "en": "Shahr-e Kord",
+      "provinceEn": "Chaharmahal and Bakhtiari"
+    },
+    "ایران/چهارمحال و بختیاری/بروجن": {
+      "en": "Borujen",
+      "provinceEn": "Chaharmahal and Bakhtiari"
+    },
+    "ایران/چهارمحال و بختیاری/لردگان": {
+      "en": "Lordegan",
+      "provinceEn": "Chaharmahal and Bakhtiari"
+    },
+    "ایران/چهارمحال و بختیاری/فارسان": {
+      "en": "Farsan",
+      "provinceEn": "Chaharmahal and Bakhtiari"
+    },
+    "ایران/چهارمحال و بختیاری/سامان": {
+      "en": "Saman",
+      "provinceEn": "Chaharmahal and Bakhtiari"
+    },
+    "ایران/لرستان/خرم‌آباد": {
+      "en": "Khorramabad",
+      "provinceEn": "Lorestan"
+    },
+    "ایران/لرستان/بروجرد": {
+      "en": "Borujerd",
+      "provinceEn": "Lorestan"
+    },
+    "ایران/لرستان/دورود": {
+      "en": "Dorud",
+      "provinceEn": "Lorestan"
+    },
+    "ایران/لرستان/الیگودرز": {
+      "en": "Aligudarz",
+      "provinceEn": "Lorestan"
+    },
+    "ایران/لرستان/کوهدشت": {
+      "en": "Kuhdasht",
+      "provinceEn": "Lorestan"
+    },
+    "ایران/البرز/کرج": {
+      "en": "Karaj",
+      "provinceEn": "Alborz"
+    },
+    "ایران/البرز/نظرآباد": {
+      "en": "Nazarabad",
+      "provinceEn": "Alborz"
+    },
+    "ایران/البرز/اشتهارد": {
+      "en": "Eshtehard",
+      "provinceEn": "Alborz"
+    },
+    "ایران/البرز/طالقان": {
+      "en": "Taleqan",
+      "provinceEn": "Alborz"
+    },
+    "ایران/البرز/ساوجبلاغ": {
+      "en": "Savojbolagh",
+      "provinceEn": "Alborz"
+    },
+    "ایران/قم/قم": {
+      "en": "Qom",
+      "provinceEn": "Qom"
+    },
+    "ایران/قم/جعفریه": {
+      "en": "Jafariyeh",
+      "provinceEn": "Qom"
+    },
+    "ایران/قم/کهک": {
+      "en": "Kahak",
+      "provinceEn": "Qom"
+    },
+    "ایران/قم/قنوات": {
+      "en": "Qanavat",
+      "provinceEn": "Qom"
+    },
+    "ایران/قم/دستجرد": {
+      "en": "Dastjerd",
+      "provinceEn": "Qom"
+    },
+    "ایران/یزد/یزد": {
+      "en": "Yazd",
+      "provinceEn": "Yazd"
+    },
+    "ایران/یزد/میبد": {
+      "en": "Meybod",
+      "provinceEn": "Yazd"
+    },
+    "ایران/یزد/اردکان": {
+      "en": "Ardakan",
+      "provinceEn": "Yazd"
+    },
+    "ایران/یزد/مهریز": {
+      "en": "Mehriz",
+      "provinceEn": "Yazd"
+    },
+    "ایران/یزد/بافق": {
+      "en": "Bafq",
+      "provinceEn": "Yazd"
+    },
+    "ایران/بوشهر/بوشهر": {
+      "en": "Bushehr",
+      "provinceEn": "Bushehr"
+    },
+    "ایران/بوشهر/برازجان": {
+      "en": "Borazjan",
+      "provinceEn": "Bushehr"
+    },
+    "ایران/بوشهر/بندر گناوه": {
+      "en": "Bandar-e Ganaveh",
+      "provinceEn": "Bushehr"
+    },
+    "ایران/بوشهر/کنگان": {
+      "en": "Kangan",
+      "provinceEn": "Bushehr"
+    },
+    "ایران/بوشهر/خورموج": {
+      "en": "Khormuj",
+      "provinceEn": "Bushehr"
+    },
+    "ایران/زنجان/زنجان": {
+      "en": "Zanjan",
+      "provinceEn": "Zanjan"
+    },
+    "ایران/زنجان/ابهر": {
+      "en": "Abhar",
+      "provinceEn": "Zanjan"
+    },
+    "ایران/زنجان/خرمدره": {
+      "en": "Khorramdarreh",
+      "provinceEn": "Zanjan"
+    },
+    "ایران/زنجان/طارم": {
+      "en": "Tarom",
+      "provinceEn": "Zanjan"
+    },
+    "ایران/زنجان/ماهنشان": {
+      "en": "Mahneshan",
+      "provinceEn": "Zanjan"
+    },
+    "ایران/گلستان/گرگان": {
+      "en": "Gorgan",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/گنبد کاووس": {
+      "en": "Gonbad-e Kavus",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/علی‌آباد کتول": {
+      "en": "Aliabad-e Katul",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/بندر ترکمن": {
+      "en": "Bandar Torkaman",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/آق‌قلا": {
+      "en": "Aq Qala",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/مراوه‌تپه": {
+      "en": "Maraveh Tappeh",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/کلاله": {
+      "en": "Kalaleh",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/گالیکش": {
+      "en": "Galikash",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/آزادشهر": {
+      "en": "Azadshahr",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/گمیش تپه": {
+      "en": "Gomish Tappeh",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/سیمین‌شهر": {
+      "en": "Simin Shahr",
+      "provinceEn": "Golestan"
+    },
+    "ایران/گلستان/اینچه‌برون": {
+      "en": "Incheh Borun",
+      "provinceEn": "Golestan"
+    },
+    "ایران/اردبیل/اردبیل": {
+      "en": "Ardabil",
+      "provinceEn": "Ardabil"
+    },
+    "ایران/اردبیل/مشگین‌شهر": {
+      "en": "Meshgin Shahr",
+      "provinceEn": "Ardabil"
+    },
+    "ایران/اردبیل/پارس‌آباد": {
+      "en": "Parsabad",
+      "provinceEn": "Ardabil"
+    },
+    "ایران/اردبیل/خلخال": {
+      "en": "Khalkhal",
+      "provinceEn": "Ardabil"
+    },
+    "ایران/اردبیل/گرمی": {
+      "en": "Germi",
+      "provinceEn": "Ardabil"
+    },
+    "ایران/مرکزی/اراک": {
+      "en": "Arak",
+      "provinceEn": "Markazi"
+    },
+    "ایران/مرکزی/ساوه": {
+      "en": "Saveh",
+      "provinceEn": "Markazi"
+    },
+    "ایران/مرکزی/خمین": {
+      "en": "Khomeyn",
+      "provinceEn": "Markazi"
+    },
+    "ایران/مرکزی/محلات": {
+      "en": "Mahallat",
+      "provinceEn": "Markazi"
+    },
+    "ایران/مرکزی/دلیجان": {
+      "en": "Delijan",
+      "provinceEn": "Markazi"
+    },
+    "ایران/هرمزگان/بندرعباس": {
+      "en": "Bandar Abbas",
+      "provinceEn": "Hormozgan"
+    },
+    "ایران/هرمزگان/میناب": {
+      "en": "Minab",
+      "provinceEn": "Hormozgan"
+    },
+    "ایران/هرمزگان/قشم": {
+      "en": "Qeshm",
+      "provinceEn": "Hormozgan"
+    },
+    "ایران/هرمزگان/کیش": {
+      "en": "Kish",
+      "provinceEn": "Hormozgan"
+    },
+    "ایران/هرمزگان/بندر لنگه": {
+      "en": "Bandar Lengeh",
+      "provinceEn": "Hormozgan"
+    },
+    "ایران/قزوین/قزوین": {
+      "en": "Qazvin",
+      "provinceEn": "Qazvin"
+    },
+    "ایران/قزوین/تاکستان": {
+      "en": "Takestan",
+      "provinceEn": "Qazvin"
+    },
+    "ایران/قزوین/الوند": {
+      "en": "Alvand",
+      "provinceEn": "Qazvin"
+    },
+    "ایران/قزوین/آبیک": {
+      "en": "Abyek",
+      "provinceEn": "Qazvin"
+    },
+    "ایران/قزوین/بوئین‌زهرا": {
+      "en": "Buin Zahra",
+      "provinceEn": "Qazvin"
+    },
+    "ایران/سمنان/سمنان": {
+      "en": "Semnan",
+      "provinceEn": "Semnan"
+    },
+    "ایران/سمنان/شاهرود": {
+      "en": "Shahrud",
+      "provinceEn": "Semnan"
+    },
+    "ایران/سمنان/دامغان": {
+      "en": "Damghan",
+      "provinceEn": "Semnan"
+    },
+    "ایران/سمنان/گرمسار": {
+      "en": "Garmsar",
+      "provinceEn": "Semnan"
+    },
+    "ایران/سمنان/مهدیشهر": {
+      "en": "Mehdi Shahr",
+      "provinceEn": "Semnan"
+    },
+    "ایران/خراسان شمالی/بجنورد": {
+      "en": "Bojnurd",
+      "provinceEn": "North Khorasan"
+    },
+    "ایران/خراسان شمالی/شیروان": {
+      "en": "Shirvan",
+      "provinceEn": "North Khorasan"
+    },
+    "ایران/خراسان شمالی/اسفراین": {
+      "en": "Esfarayen",
+      "provinceEn": "North Khorasan"
+    },
+    "ایران/خراسان شمالی/مانه و سملقان": {
+      "en": "Maneh and Samalqan",
+      "provinceEn": "North Khorasan"
+    },
+    "ایران/خراسان شمالی/جاجرم": {
+      "en": "Jajarm",
+      "provinceEn": "North Khorasan"
+    },
+    "ایران/خراسان جنوبی/بیرجند": {
+      "en": "Birjand",
+      "provinceEn": "South Khorasan"
+    },
+    "ایران/خراسان جنوبی/قائن": {
+      "en": "Qayen",
+      "provinceEn": "South Khorasan"
+    },
+    "ایران/خراسان جنوبی/طبس": {
+      "en": "Tabas",
+      "provinceEn": "South Khorasan"
+    },
+    "ایران/خراسان جنوبی/فردوس": {
+      "en": "Ferdows",
+      "provinceEn": "South Khorasan"
+    },
+    "ایران/خراسان جنوبی/نهبندان": {
+      "en": "Nehbandan",
+      "provinceEn": "South Khorasan"
+    },
+    "ایران/کرمان/کرمان": {
+      "en": "Kerman",
+      "provinceEn": "Kerman"
+    },
+    "ایران/کرمان/سیرجان": {
+      "en": "Sirjan",
+      "provinceEn": "Kerman"
+    },
+    "ایران/کرمان/رفسنجان": {
+      "en": "Rafsanjan",
+      "provinceEn": "Kerman"
+    },
+    "ایران/کرمان/جیرفت": {
+      "en": "Jiroft",
+      "provinceEn": "Kerman"
+    },
+    "ایران/کرمان/بم": {
+      "en": "Bam",
+      "provinceEn": "Kerman"
+    },
+    "ایران/کهگیلویه و بویراحمد/یاسوج": {
+      "en": "Yasuj",
+      "provinceEn": "Kohgiluyeh and Boyer-Ahmad"
+    },
+    "ایران/کهگیلویه و بویراحمد/دوگنبدان": {
+      "en": "Dogonbadan",
+      "provinceEn": "Kohgiluyeh and Boyer-Ahmad"
+    },
+    "ایران/کهگیلویه و بویراحمد/دهدشت": {
+      "en": "Dehdasht",
+      "provinceEn": "Kohgiluyeh and Boyer-Ahmad"
+    },
+    "ایران/کهگیلویه و بویراحمد/سی‌سخت": {
+      "en": "Sisakht",
+      "provinceEn": "Kohgiluyeh and Boyer-Ahmad"
+    },
+    "ایران/کهگیلویه و بویراحمد/چرام": {
+      "en": "Choram",
+      "provinceEn": "Kohgiluyeh and Boyer-Ahmad"
+    },
+    "افغانستان/کابل/کابل": {
+      "en": "Kabul",
+      "provinceEn": "Kabul"
+    },
+    "افغانستان/کابل/چارکار": {
+      "en": "Charikar",
+      "provinceEn": "Kabul"
+    },
+    "افغانستان/کابل/پغمان": {
+      "en": "Paghman",
+      "provinceEn": "Kabul"
+    },
+    "افغانستان/هرات/هرات": {
+      "en": "Herat",
+      "provinceEn": "Herat"
+    },
+    "افغانستان/هرات/غوریان": {
+      "en": "Ghoryan",
+      "provinceEn": "Herat"
+    },
+    "افغانستان/هرات/کرخ": {
+      "en": "Karukh",
+      "provinceEn": "Herat"
+    },
+    "افغانستان/قندهار/قندهار": {
+      "en": "Kandahar",
+      "provinceEn": "Kandahar"
+    },
+    "افغانستان/قندهار/سپین بولدک": {
+      "en": "Spin Boldak",
+      "provinceEn": "Kandahar"
+    },
+    "افغانستان/قندهار/ارغنداب": {
+      "en": "Arghandab",
+      "provinceEn": "Kandahar"
+    },
+    "افغانستان/بلخ/مزار شریف": {
+      "en": "Mazar-e Sharif",
+      "provinceEn": "Balkh"
+    },
+    "افغانستان/بلخ/بلخ": {
+      "en": "Balkh",
+      "provinceEn": "Balkh"
+    },
+    "افغانستان/بلخ/خلم": {
+      "en": "Khulm",
+      "provinceEn": "Balkh"
+    },
+    "افغانستان/ننگرهار/جلال‌آباد": {
+      "en": "Jalalabad",
+      "provinceEn": "Nangarhar"
+    },
+    "افغانستان/ننگرهار/بهسود": {
+      "en": "Behsud",
+      "provinceEn": "Nangarhar"
+    },
+    "افغانستان/ننگرهار/سرخ‌رود": {
+      "en": "Surkh Rod",
+      "provinceEn": "Nangarhar"
+    },
+    "افغانستان/هلمند/لشکرگاه": {
+      "en": "Lashkar Gah",
+      "provinceEn": "Helmand"
+    },
+    "افغانستان/هلمند/گرشک": {
+      "en": "Gereshk",
+      "provinceEn": "Helmand"
+    },
+    "افغانستان/هلمند/سنگین": {
+      "en": "Sangin",
+      "provinceEn": "Helmand"
+    },
+    "افغانستان/غزنی/غزنی": {
+      "en": "Ghazni",
+      "provinceEn": "Ghazni"
+    },
+    "افغانستان/غزنی/اندړ": {
+      "en": "Andar",
+      "provinceEn": "Ghazni"
+    },
+    "افغانستان/غزنی/قره‌باغ": {
+      "en": "Qarabagh",
+      "provinceEn": "Ghazni"
+    },
+    "افغانستان/بدخشان/فیض‌آباد": {
+      "en": "Fayzabad",
+      "provinceEn": "Badakhshan"
+    },
+    "افغانستان/بدخشان/اشکاشم": {
+      "en": "Ishkashim",
+      "provinceEn": "Badakhshan"
+    },
+    "افغانستان/بدخشان/کشم": {
+      "en": "Kishim",
+      "provinceEn": "Badakhshan"
+    },
+    "افغانستان/تخار/تالقان": {
+      "en": "Taloqan",
+      "provinceEn": "Takhar"
+    },
+    "افغانستان/تخار/فرخار": {
+      "en": "Farkhar",
+      "provinceEn": "Takhar"
+    },
+    "افغانستان/تخار/چاه‌آب": {
+      "en": "Chah Ab",
+      "provinceEn": "Takhar"
+    },
+    "افغانستان/بغلان/پلخمری": {
+      "en": "Pul-e Khumri",
+      "provinceEn": "Baghlan"
+    },
+    "افغانستان/بغلان/نهرین": {
+      "en": "Nahrin",
+      "provinceEn": "Baghlan"
+    },
+    "افغانستان/بغلان/دوشی": {
+      "en": "Doshi",
+      "provinceEn": "Baghlan"
+    },
+    "افغانستان/کندز/کندز": {
+      "en": "Kunduz",
+      "provinceEn": "Kunduz"
+    },
+    "افغانستان/کندز/خان‌آباد": {
+      "en": "Khanabad",
+      "provinceEn": "Kunduz"
+    },
+    "افغانستان/کندز/امام صاحب": {
+      "en": "Imam Sahib",
+      "provinceEn": "Kunduz"
+    },
+    "افغانستان/پروان/چارکار": {
+      "en": "Charikar",
+      "provinceEn": "Parwan"
+    },
+    "افغانستان/پروان/جبل‌السراج": {
+      "en": "Jabal Saraj",
+      "provinceEn": "Parwan"
+    },
+    "افغانستان/پروان/سیاه‌گرد": {
+      "en": "Siah Gerd",
+      "provinceEn": "Parwan"
+    },
+    "افغانستان/فاریاب/میمنه": {
+      "en": "Maymana",
+      "provinceEn": "Faryab"
+    },
+    "افغانستان/فاریاب/اندخوی": {
+      "en": "Andkhoy",
+      "provinceEn": "Faryab"
+    },
+    "افغانستان/فاریاب/شیرین تگاب": {
+      "en": "Shirin Tagab",
+      "provinceEn": "Faryab"
+    },
+    "افغانستان/جوزجان/شبرغان": {
+      "en": "Sheberghan",
+      "provinceEn": "Jowzjan"
+    },
+    "افغانستان/جوزجان/آقچه": {
+      "en": "Aqcha",
+      "provinceEn": "Jowzjan"
+    },
+    "افغانستان/جوزجان/قرقین": {
+      "en": "Qarqin",
+      "provinceEn": "Jowzjan"
+    },
+    "افغانستان/سرپل/سرپل": {
+      "en": "Sar-e Pol",
+      "provinceEn": "Sar-e Pol"
+    },
+    "افغانستان/سرپل/صیاد": {
+      "en": "Sayyad",
+      "provinceEn": "Sar-e Pol"
+    },
+    "افغانستان/سرپل/سوزمه‌قلعه": {
+      "en": "Sozma Qala",
+      "provinceEn": "Sar-e Pol"
+    },
+    "افغانستان/سمنگان/ایبک": {
+      "en": "Aybak",
+      "provinceEn": "Samangan"
+    },
+    "افغانستان/سمنگان/دره صوف": {
+      "en": "Dara-e Suf",
+      "provinceEn": "Samangan"
+    },
+    "افغانستان/سمنگان/خرم و سارباغ": {
+      "en": "Khuram wa Sarbagh",
+      "provinceEn": "Samangan"
+    },
+    "افغانستان/وردک/میدان‌شهر": {
+      "en": "Maydan Shahr",
+      "provinceEn": "Wardak"
+    },
+    "افغانستان/وردک/جلریز": {
+      "en": "Jalrez",
+      "provinceEn": "Wardak"
+    },
+    "افغانستان/وردک/نرخ": {
+      "en": "Nerkh",
+      "provinceEn": "Wardak"
+    },
+    "افغانستان/دایکندی/نیلی": {
+      "en": "Nili",
+      "provinceEn": "Daykundi"
+    },
+    "افغانستان/دایکندی/سنگ تخت": {
+      "en": "Sang Takht",
+      "provinceEn": "Daykundi"
+    },
+    "افغانستان/دایکندی/شهرستان": {
+      "en": "Shahristan",
+      "provinceEn": "Daykundi"
+    },
+    "افغانستان/ارزگان/ترین‌کوت": {
+      "en": "Tarin Kowt",
+      "provinceEn": "Uruzgan"
+    },
+    "افغانستان/ارزگان/دهراوود": {
+      "en": "Deh Rawud",
+      "provinceEn": "Uruzgan"
+    },
+    "افغانستان/ارزگان/چوره": {
+      "en": "Chora",
+      "provinceEn": "Uruzgan"
+    },
+    "افغانستان/زابل/قلات": {
+      "en": "Qalat",
+      "provinceEn": "Zabul"
+    },
+    "افغانستان/زابل/شاه‌جوی": {
+      "en": "Shah Joy",
+      "provinceEn": "Zabul"
+    },
+    "افغانستان/زابل/اتغر": {
+      "en": "Atghar",
+      "provinceEn": "Zabul"
+    },
+    "افغانستان/پکتیا/گردیز": {
+      "en": "Gardez",
+      "provinceEn": "Paktia"
+    },
+    "افغانستان/پکتیا/زورمت": {
+      "en": "Zurmat",
+      "provinceEn": "Paktia"
+    },
+    "افغانستان/پکتیا/سیدکرم": {
+      "en": "Sayed Karam",
+      "provinceEn": "Paktia"
+    },
+    "افغانستان/پکتیکا/شرن": {
+      "en": "Sharana",
+      "provinceEn": "Paktika"
+    },
+    "افغانستان/پکتیکا/اورگون": {
+      "en": "Urgun",
+      "provinceEn": "Paktika"
+    },
+    "افغانستان/پکتیکا/زرمت": {
+      "en": "Zurmat",
+      "provinceEn": "Paktika"
+    },
+    "افغانستان/خوست/خوست": {
+      "en": "Khost",
+      "provinceEn": "Khost"
+    },
+    "افغانستان/خوست/صبری": {
+      "en": "Sabari",
+      "provinceEn": "Khost"
+    },
+    "افغانستان/خوست/علی‌شیر": {
+      "en": "Ali Sher",
+      "provinceEn": "Khost"
+    },
+    "افغانستان/نورستان/پرون": {
+      "en": "Parun",
+      "provinceEn": "Nuristan"
+    },
+    "افغانستان/نورستان/کامدیش": {
+      "en": "Kamdesh",
+      "provinceEn": "Nuristan"
+    },
+    "افغانستان/نورستان/وایگل": {
+      "en": "Waigal",
+      "provinceEn": "Nuristan"
+    },
+    "افغانستان/لغمان/مهترلام": {
+      "en": "Mehtarlam",
+      "provinceEn": "Laghman"
+    },
+    "افغانستان/لغمان/قرغه‌یی": {
+      "en": "Qarghayi",
+      "provinceEn": "Laghman"
+    },
+    "افغانستان/لغمان/داولت‌شاه": {
+      "en": "Dawlat Shah",
+      "provinceEn": "Laghman"
+    },
+    "افغانستان/پنجشیر/بازارک": {
+      "en": "Bazarak",
+      "provinceEn": "Panjshir"
+    },
+    "افغانستان/پنجشیر/روخه": {
+      "en": "Rokha",
+      "provinceEn": "Panjshir"
+    },
+    "افغانستان/پنجشیر/دارا": {
+      "en": "Dara",
+      "provinceEn": "Panjshir"
+    },
+    "افغانستان/بامیان/بامیان": {
+      "en": "Bamyan",
+      "provinceEn": "Bamyan"
+    },
+    "افغانستان/بامیان/پنجاب": {
+      "en": "Panjab",
+      "provinceEn": "Bamyan"
+    },
+    "افغانستان/بامیان/یکاولنگ": {
+      "en": "Yakawlang",
+      "provinceEn": "Bamyan"
+    },
+    "افغانستان/غور/فیروزکوه": {
+      "en": "Firozkoh",
+      "provinceEn": "Ghor"
+    },
+    "افغانستان/غور/تیوره": {
+      "en": "Taywara",
+      "provinceEn": "Ghor"
+    },
+    "افغانستان/غور/شahrک": {
+      "en": "Shahrak",
+      "provinceEn": "Ghor"
+    },
+    "افغانستان/فراه/فراه": {
+      "en": "Farah",
+      "provinceEn": "Farah"
+    },
+    "افغانستان/فراه/اناردره": {
+      "en": "Anar Dara",
+      "provinceEn": "Farah"
+    },
+    "افغانستان/فراه/پشت‌رود": {
+      "en": "Pusht Rod",
+      "provinceEn": "Farah"
+    },
+    "افغانستان/بادغیس/قلعه‌نو": {
+      "en": "Qala-e Naw",
+      "provinceEn": "Badghis"
+    },
+    "افغانستان/بادغیس/آب‌کمری": {
+      "en": "Ab Kamari",
+      "provinceEn": "Badghis"
+    },
+    "افغانستان/بادغیس/قادس": {
+      "en": "Qadis",
+      "provinceEn": "Badghis"
+    },
+    "افغانستان/کنر/اسدآباد": {
+      "en": "Asadabad",
+      "provinceEn": "Kunar"
+    },
+    "افغانستان/کنر/چپه‌دره": {
+      "en": "Chapa Dara",
+      "provinceEn": "Kunar"
+    },
+    "افغانستان/کنر/ناری": {
+      "en": "Nari",
+      "provinceEn": "Kunar"
+    },
+    "افغانستان/لوگر/پل‌عالم": {
+      "en": "Pul-e Alam",
+      "provinceEn": "Logar"
+    },
+    "افغانستان/لوگر/برکی‌برک": {
+      "en": "Baraki Barak",
+      "provinceEn": "Logar"
+    },
+    "افغانستان/لوگر/محمدآغه": {
+      "en": "Mohammad Agha",
+      "provinceEn": "Logar"
+    },
+    "افغانستان/کاپیسا/محمود راقی": {
+      "en": "Mahmud Raqi",
+      "provinceEn": "Kapisa"
+    },
+    "افغانستان/کاپیسا/هسه اول": {
+      "en": "Hesa Awal",
+      "provinceEn": "Kapisa"
+    },
+    "افغانستان/کاپیسا/نجراب": {
+      "en": "Nijrab",
+      "provinceEn": "Kapisa"
+    },
+    "تاجیکستان/دوشنبه/دوشنبه": {
+      "en": "Dushanbe",
+      "provinceEn": "Dushanbe"
+    },
+    "تاجیکستان/دوشنبه/وارزاب": {
+      "en": "Varzob",
+      "provinceEn": "Dushanbe"
+    },
+    "تاجیکستان/دوشنبه/حصار": {
+      "en": "Hisor",
+      "provinceEn": "Dushanbe"
+    },
+    "تاجیکستان/سغد/خجند": {
+      "en": "Khujand",
+      "provinceEn": "Sughd"
+    },
+    "تاجیکستان/سغد/پنجکنت": {
+      "en": "Panjakent",
+      "provinceEn": "Sughd"
+    },
+    "تاجیکستان/سغد/اسفره": {
+      "en": "Isfara",
+      "provinceEn": "Sughd"
+    },
+    "تاجیکستان/سغد/کاني‌بدام": {
+      "en": "Konibodom",
+      "provinceEn": "Sughd"
+    },
+    "تاجیکستان/سغد/غفوروف": {
+      "en": "Ghafurov",
+      "provinceEn": "Sughd"
+    },
+    "تاجیکستان/ختلان/قرغان‌تپه": {
+      "en": "Bokhtar",
+      "provinceEn": "Khatlon"
+    },
+    "تاجیکستان/ختلان/کولاب": {
+      "en": "Kulob",
+      "provinceEn": "Khatlon"
+    },
+    "تاجیکستان/ختلان/دنگره": {
+      "en": "Danghara",
+      "provinceEn": "Khatlon"
+    },
+    "تاجیکستان/ختلان/نارک": {
+      "en": "Norak",
+      "provinceEn": "Khatlon"
+    },
+    "تاجیکستان/ختلان/یوان": {
+      "en": "Yovon",
+      "provinceEn": "Khatlon"
+    },
+    "تاجیکستان/بدخشان/خاروغ": {
+      "en": "Khorugh",
+      "provinceEn": "Gorno-Badakhshan"
+    },
+    "تاجیکستان/بدخشان/اشکاشم": {
+      "en": "Ishkoshim",
+      "provinceEn": "Gorno-Badakhshan"
+    },
+    "تاجیکستان/بدخشان/روشان": {
+      "en": "Rushon",
+      "provinceEn": "Gorno-Badakhshan"
+    },
+    "تاجیکستان/بدخشان/مورغاب": {
+      "en": "Murghob",
+      "provinceEn": "Gorno-Badakhshan"
+    },
+    "تاجیکستان/بدخشان/وانج": {
+      "en": "Vanj",
+      "provinceEn": "Gorno-Badakhshan"
+    },
+    "تاجیکستان/نواحی تابع جمهوری/ترسن‌زاده": {
+      "en": "Tursunzoda",
+      "provinceEn": "Districts of Republican Subordination"
+    },
+    "تاجیکستان/نواحی تابع جمهوری/رشت": {
+      "en": "Rasht",
+      "provinceEn": "Districts of Republican Subordination"
+    },
+    "تاجیکستان/نواحی تابع جمهوری/نورآباد": {
+      "en": "Nurobod",
+      "provinceEn": "Districts of Republican Subordination"
+    },
+    "تاجیکستان/نواحی تابع جمهوری/راغون": {
+      "en": "Roghun",
+      "provinceEn": "Districts of Republican Subordination"
+    },
+    "تاجیکستان/نواحی تابع جمهوری/فایزآباد": {
+      "en": "Fayzobod",
+      "provinceEn": "Districts of Republican Subordination"
+    }
+  },
+  "common": {
+    "IR|maraveh tappeh": {
+      "fa": "مراوه‌تپه",
+      "en": "Maraveh Tappeh",
+      "ar": "مراوه تپه",
+      "tr": "Merave Tepe",
+      "ur": "مراوہ تپہ",
+      "id": "Maraveh Tappeh",
+      "bn": "মারাভে তাপ্পেহ",
+      "ms": "Maraveh Tappeh",
+      "ps": "مراوه تپه",
+      "fr": "Maraveh Tappeh"
+    },
+    "IR|maraveh tappe": {
+      "fa": "مراوه‌تپه",
+      "en": "Maraveh Tappeh",
+      "ar": "مراوه تپه",
+      "tr": "Merave Tepe",
+      "ur": "مراوہ تپہ",
+      "id": "Maraveh Tappeh",
+      "bn": "মারাভে তাপ্পেহ",
+      "ms": "Maraveh Tappeh",
+      "ps": "مراوه تپه",
+      "fr": "Maraveh Tappeh"
+    },
+    "IR|tehran": {
+      "fa": "تهران",
+      "en": "Tehran",
+      "ar": "طهران",
+      "tr": "Tahran",
+      "ur": "تہران",
+      "id": "Teheran",
+      "bn": "তেহরান",
+      "ms": "Tehran",
+      "ps": "تهران",
+      "fr": "Téhéran"
+    },
+    "IR|isfahan": {
+      "fa": "اصفهان",
+      "en": "Isfahan",
+      "ar": "أصفهان",
+      "tr": "İsfahan",
+      "ur": "اصفہان",
+      "id": "Isfahan",
+      "bn": "ইসফাহান",
+      "ms": "Isfahan",
+      "ps": "اصفهان",
+      "fr": "Ispahan"
+    },
+    "IR|esfahan": {
+      "fa": "اصفهان",
+      "en": "Isfahan",
+      "ar": "أصفهان",
+      "tr": "İsfahan",
+      "ur": "اصفہان",
+      "id": "Isfahan",
+      "bn": "ইসফাহান",
+      "ms": "Isfahan",
+      "ps": "اصفهان",
+      "fr": "Ispahan"
+    },
+    "IR|mashhad": {
+      "fa": "مشهد",
+      "en": "Mashhad",
+      "ar": "مشهد",
+      "tr": "Meşhed",
+      "ur": "مشہد",
+      "id": "Masyhad",
+      "bn": "মাশহাদ",
+      "ms": "Mashhad",
+      "ps": "مشهد",
+      "fr": "Machhad"
+    },
+    "IR|shiraz": {
+      "fa": "شیراز",
+      "en": "Shiraz",
+      "ar": "شيراز",
+      "tr": "Şiraz",
+      "ur": "شیراز",
+      "id": "Syiraz",
+      "bn": "শিরাজ",
+      "ms": "Shiraz",
+      "ps": "شیراز",
+      "fr": "Chiraz"
+    },
+    "IR|tabriz": {
+      "fa": "تبریز",
+      "en": "Tabriz",
+      "ar": "تبريز",
+      "tr": "Tebriz",
+      "ur": "تبریز",
+      "id": "Tabriz",
+      "bn": "তাবরিজ",
+      "ms": "Tabriz",
+      "ps": "تبریز",
+      "fr": "Tabriz"
+    },
+    "IR|karaj": {
+      "fa": "کرج",
+      "en": "Karaj",
+      "ar": "كرج",
+      "tr": "Kerec",
+      "ur": "کرج",
+      "id": "Karaj",
+      "bn": "কারাজ",
+      "ms": "Karaj",
+      "ps": "کرج",
+      "fr": "Karaj"
+    },
+    "IR|gorgan": {
+      "fa": "گرگان",
+      "en": "Gorgan",
+      "ar": "جرجان",
+      "tr": "Gürgan",
+      "ur": "گرگان",
+      "id": "Gorgan",
+      "bn": "গোরগান",
+      "ms": "Gorgan",
+      "ps": "ګرګان",
+      "fr": "Gorgan"
+    },
+    "IR|qom": {
+      "fa": "قم",
+      "en": "Qom",
+      "ar": "قم",
+      "tr": "Kum",
+      "ur": "قم",
+      "id": "Qom",
+      "bn": "কোম",
+      "ms": "Qom",
+      "ps": "قم",
+      "fr": "Qom"
+    },
+    "AF|kabul": {
+      "fa": "کابل",
+      "en": "Kabul",
+      "ar": "كابل",
+      "tr": "Kâbil",
+      "ur": "کابل",
+      "id": "Kabul",
+      "bn": "কাবুল",
+      "ms": "Kabul",
+      "ps": "کابل",
+      "fr": "Kaboul"
+    },
+    "AF|herat": {
+      "fa": "هرات",
+      "en": "Herat",
+      "ar": "هرات",
+      "tr": "Herat",
+      "ur": "ہرات",
+      "id": "Herat",
+      "bn": "হেরাত",
+      "ms": "Herat",
+      "ps": "هرات",
+      "fr": "Hérat"
+    },
+    "AF|kandahar": {
+      "fa": "قندهار",
+      "en": "Kandahar",
+      "ar": "قندهار",
+      "tr": "Kandahar",
+      "ur": "قندھار",
+      "id": "Kandahar",
+      "bn": "কান্দাহার",
+      "ms": "Kandahar",
+      "ps": "کندهار",
+      "fr": "Kandahar"
+    },
+    "AF|jalalabad": {
+      "fa": "جلال‌آباد",
+      "en": "Jalalabad",
+      "ar": "جلال آباد",
+      "tr": "Celalabad",
+      "ur": "جلال آباد",
+      "id": "Jalalabad",
+      "bn": "জালালাবাদ",
+      "ms": "Jalalabad",
+      "ps": "جلال اباد",
+      "fr": "Jalalabad"
+    },
+    "AF|mazar-e sharif": {
+      "fa": "مزار شریف",
+      "en": "Mazar-e Sharif",
+      "ar": "مزار شريف",
+      "tr": "Mezar-ı Şerif",
+      "ur": "مزار شریف",
+      "id": "Mazar-e Sharif",
+      "bn": "মাজার-ই-শরিফ",
+      "ms": "Mazar-e Sharif",
+      "ps": "مزار شریف",
+      "fr": "Mazar-e Charif"
+    },
+    "AF|mazar-e-sharif": {
+      "fa": "مزار شریف",
+      "en": "Mazar-e Sharif",
+      "ar": "مزار شريف",
+      "tr": "Mezar-ı Şerif",
+      "ur": "مزار شریف",
+      "id": "Mazar-e Sharif",
+      "bn": "মাজার-ই-শরিফ",
+      "ms": "Mazar-e Sharif",
+      "ps": "مزار شریف",
+      "fr": "Mazar-e Charif"
+    },
+    "TJ|dushanbe": {
+      "fa": "دوشنبه",
+      "en": "Dushanbe",
+      "ar": "دوشنبه",
+      "tr": "Duşanbe",
+      "ur": "دوشنبے",
+      "id": "Dushanbe",
+      "bn": "দুশানবে",
+      "ms": "Dushanbe",
+      "ps": "دوشنبه",
+      "fr": "Douchanbé"
+    },
+    "SA|mecca": {
+      "fa": "مکه",
+      "en": "Mecca",
+      "ar": "مكة المكرمة",
+      "tr": "Mekke",
+      "ur": "مکہ مکرمہ",
+      "id": "Makkah",
+      "bn": "মক্কা",
+      "ms": "Makkah",
+      "ps": "مکه مکرمه",
+      "fr": "La Mecque"
+    },
+    "SA|makkah": {
+      "fa": "مکه",
+      "en": "Mecca",
+      "ar": "مكة المكرمة",
+      "tr": "Mekke",
+      "ur": "مکہ مکرمہ",
+      "id": "Makkah",
+      "bn": "মক্কা",
+      "ms": "Makkah",
+      "ps": "مکه مکرمه",
+      "fr": "La Mecque"
+    },
+    "SA|medina": {
+      "fa": "مدینه",
+      "en": "Medina",
+      "ar": "المدينة المنورة",
+      "tr": "Medine",
+      "ur": "مدینہ منورہ",
+      "id": "Madinah",
+      "bn": "মদিনা",
+      "ms": "Madinah",
+      "ps": "مدینه منوره",
+      "fr": "Médine"
+    },
+    "AE|dubai": {
+      "fa": "دبی",
+      "en": "Dubai",
+      "ar": "دبي",
+      "tr": "Dubai",
+      "ur": "دبئی",
+      "id": "Dubai",
+      "bn": "দুবাই",
+      "ms": "Dubai",
+      "ps": "دوبۍ",
+      "fr": "Dubaï"
+    },
+    "TR|istanbul": {
+      "fa": "استانبول",
+      "en": "Istanbul",
+      "ar": "إسطنبول",
+      "tr": "İstanbul",
+      "ur": "استنبول",
+      "id": "Istanbul",
+      "bn": "ইস্তানবুল",
+      "ms": "Istanbul",
+      "ps": "استانبول",
+      "fr": "Istanbul"
+    },
+    "ID|jakarta": {
+      "fa": "جاکارتا",
+      "en": "Jakarta",
+      "ar": "جاكرتا",
+      "tr": "Cakarta",
+      "ur": "جکارتہ",
+      "id": "Jakarta",
+      "bn": "জাকার্তা",
+      "ms": "Jakarta",
+      "ps": "جاکارتا",
+      "fr": "Jakarta"
+    },
+    "BD|dhaka": {
+      "fa": "داکا",
+      "en": "Dhaka",
+      "ar": "دكا",
+      "tr": "Dakka",
+      "ur": "ڈھاکہ",
+      "id": "Dhaka",
+      "bn": "ঢাকা",
+      "ms": "Dhaka",
+      "ps": "ډاکه",
+      "fr": "Dacca"
+    },
+    "MY|kuala lumpur": {
+      "fa": "کوالالامپور",
+      "en": "Kuala Lumpur",
+      "ar": "كوالالمبور",
+      "tr": "Kuala Lumpur",
+      "ur": "کوالالمپور",
+      "id": "Kuala Lumpur",
+      "bn": "কুয়ালালামপুর",
+      "ms": "Kuala Lumpur",
+      "ps": "کوالالمپور",
+      "fr": "Kuala Lumpur"
+    },
+    "PK|karachi": {
+      "fa": "کراچی",
+      "en": "Karachi",
+      "ar": "كراتشي",
+      "tr": "Karaçi",
+      "ur": "کراچی",
+      "id": "Karachi",
+      "bn": "করাচি",
+      "ms": "Karachi",
+      "ps": "کراچۍ",
+      "fr": "Karachi"
+    },
+    "PK|islamabad": {
+      "fa": "اسلام‌آباد",
+      "en": "Islamabad",
+      "ar": "إسلام آباد",
+      "tr": "İslamabad",
+      "ur": "اسلام آباد",
+      "id": "Islamabad",
+      "bn": "ইসলামাবাদ",
+      "ms": "Islamabad",
+      "ps": "اسلام اباد",
+      "fr": "Islamabad"
+    },
+    "PK|lahore": {
+      "fa": "لاهور",
+      "en": "Lahore",
+      "ar": "لاهور",
+      "tr": "Lahor",
+      "ur": "لاہور",
+      "id": "Lahore",
+      "bn": "লাহোর",
+      "ms": "Lahore",
+      "ps": "لاهور",
+      "fr": "Lahore"
+    },
+    "EG|cairo": {
+      "fa": "قاهره",
+      "en": "Cairo",
+      "ar": "القاهرة",
+      "tr": "Kahire",
+      "ur": "قاہرہ",
+      "id": "Kairo",
+      "bn": "কায়রো",
+      "ms": "Kaherah",
+      "ps": "قاهره",
+      "fr": "Le Caire"
+    },
+    "GB|london": {
+      "fa": "لندن",
+      "en": "London",
+      "ar": "لندن",
+      "tr": "Londra",
+      "ur": "لندن",
+      "id": "London",
+      "bn": "লন্ডন",
+      "ms": "London",
+      "ps": "لندن",
+      "fr": "Londres"
+    },
+    "FR|paris": {
+      "fa": "پاریس",
+      "en": "Paris",
+      "ar": "باريس",
+      "tr": "Paris",
+      "ur": "پیرس",
+      "id": "Paris",
+      "bn": "প্যারিস",
+      "ms": "Paris",
+      "ps": "پاریس",
+      "fr": "Paris"
+    },
+    "US|new york city": {
+      "fa": "نیویورک",
+      "en": "New York City",
+      "ar": "نيويورك",
+      "tr": "New York",
+      "ur": "نیویارک",
+      "id": "New York",
+      "bn": "নিউইয়র্ক",
+      "ms": "New York",
+      "ps": "نیویارک",
+      "fr": "New York"
+    },
+    "US|new york": {
+      "fa": "نیویورک",
+      "en": "New York City",
+      "ar": "نيويورك",
+      "tr": "New York",
+      "ur": "نیویارک",
+      "id": "New York",
+      "bn": "নিউইয়র্ক",
+      "ms": "New York",
+      "ps": "نیویارک",
+      "fr": "New York"
+    }
+  }
+}
