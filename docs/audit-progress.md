@@ -11,7 +11,7 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | Item | Description | Status | Commit | Tests / limits |
 |---|---|---|---|---|
 | 1.1 | Late adhan notifications | done | 10e824234ecdfef2e9d2e5c05279babd923f5c63 | 8 delay-boundary tests passed; legacy policy reproduced 4 failures before fix; device delivery unverified |
-| 1.2 | Qibla sensor states | done | f0c5f890fe62ba36f758c26baa15b382e2d9710c | 9 heading-state tests passed; physical sensors and registration failure on device unverified |
+| 1.2 | Qibla sensor states | done | f0c5f890fe62ba36f758c26baa15b382e2d9710c | 12 heading-state tests passed including invalid-matrix recovery; follow-up 50245b89a9cd6b356b663bf9f033a622aa1b390a; physical sensors unverified |
 | 1.3 | Home and settings recovery states | done | c2a351757a1886a054bc56f26e52033cfcf3ec06 | 11 home/read tests passed including a reproduced cancellation race; follow-up b8430daba1c39357f763667f81727e403d680a3b; no device I/O fault injection |
 | 1.4 | First-launch language selection | done | 7ef02aa9d8a694eec5ba9f735393f28c571f627c | 7 language initialization tests passed; Android locale recreation requires phone check |
 | 1.5 | Independent content loading | done | 5a17834efe8b31045b94bbd1800a0fa772b0ae13 | 5 independent loading tests passed; non-cooperative failure regression added in b8430daba1c39357f763667f81727e403d680a3b |
@@ -32,13 +32,14 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | phase2 | 126/126 | 66 / 0 | build + unit + lint passed |
 | phase3 | 131/131 | 66 / 0 | build + unit + lint passed |
 | phase4 | 131/131 | 66 / 0 | build + unit + lint passed |
+| final | 136/136 | 66 / 0 | build + unit + lint passed |
 
 Phase 1 lint first hit an internal JVM MethodHandle error with a temporary C1-only JVM option. Restarting the daemon with normal Java 21 options completed lint; project tool versions were unchanged.
 
 
 ## Final diff review
 
-Full diff read; cancellation race fixed in b8430daba1c39357f763667f81727e403d680a3b (two added tests); sensor-state follow-up being committed. Final build/unit/lint pending.
+Done: full 2,726-line diff and subsequent fixes read. Cancelled-read race fixed in b8430daba1c39357f763667f81727e403d680a3b; invalid sensor matrix follow-up 50245b89a9cd6b356b663bf9f033a622aa1b390a. Five review regression tests added. Final build, all 136 unit tests, lint (66 warnings/0 errors), Android test compilation and content verification passed. No local adb target; device tests remain unverified.
 
 
 Baseline and phase checks: `/workspace/audit-evidence/` (actual logs/results). No local adb target or /dev/kvm; device, sensors, GPS and audio execution are not verified.
