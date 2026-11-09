@@ -15,12 +15,22 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | 1.3 | Home and settings recovery states | done | c2a351757a1886a054bc56f26e52033cfcf3ec06 | 10 home-state and read-recovery tests passed; no device I/O fault injection |
 | 1.4 | First-launch language selection | done | 7ef02aa9d8a694eec5ba9f735393f28c571f627c | 7 language initialization tests passed; Android locale recreation requires phone check |
 | 1.5 | Independent content loading | done | 5a17834efe8b31045b94bbd1800a0fa772b0ae13 | 4 independent loading tests passed; reader, picker and video placeholder use separate errors |
-| 1.6 | Lazy lesson audio | done | this item commit (resolved immediately after creation) | 4 lazy resource lifecycle tests passed; real audio and audio focus unverified |
-| 2.1 | Multi-source location fallback | not started | — | — |
+| 1.6 | Lazy lesson audio | done | ab582d2c5c0a62411c62e3774406d8eda87801dc | 4 lazy resource lifecycle tests passed; real audio and audio focus unverified |
+| 2.1 | Multi-source location fallback | done | this item commit (resolved immediately after creation) | 9 location selection tests passed; preferred 2min/200m, fallback 10min/5km; GPS and permission behavior on phone unverified |
 | 2.2 | Calculation method confirmation | not started | — | — |
 | 2.3 | Umm al-Qura Ramadan Isha | not started | — | — |
 | 2.4 | Partial high-latitude prayer times | not started | — | — |
 | 3 | Language and variant readiness | not started | — | — |
 | 4 | School-specific content review report | not started | — | — |
+
+## Actual check results
+
+| Check | Unit tests | Lint warnings / errors | Result |
+|---|---|---|---|
+| baseline | 52/52 | 65 / 0 | build + unit + lint passed |
+| phase1 | 94/94 | 66 / 0 | build + unit + lint passed |
+
+Phase 1 lint first hit an internal JVM MethodHandle error with a temporary C1-only JVM option. Restarting the daemon with normal Java 21 options completed lint; project tool versions were unchanged.
+
 
 Baseline and phase checks: `/workspace/audit-evidence/` (actual logs/results). No local adb target or /dev/kvm; device, sensors, GPS and audio execution are not verified.

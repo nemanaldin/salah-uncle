@@ -12,7 +12,9 @@ import android.os.CancellationSignal
 import com.androidhive.myapplication.core.model.LocationMode
 import com.androidhive.myapplication.core.model.SavedLocation
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withTimeout
+import kotlinx.coroutines.withTimeoutOrNull
+import com.androidhive.myapplication.domain.location.LocationFix
+import com.androidhive.myapplication.domain.location.selectLocation
 import java.time.ZoneId
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -27,17 +29,22 @@ class DeviceLocation(context: Context) {
         val precise = ContextCompat.checkSelfPermission(app, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
         val approximate = ContextCompat.checkSelfPermission(app, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
         if (!precise && !approximate) throw SecurityException("Location permission required")
-        val providers = listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER)
-            .filter { manager.allProviders.contains(it) && manager.isProviderEnabled(it) }
-            .filter { precise || it != LocationManager.GPS_PROVIDER }
-        if (providers.isEmpty()) throw LocationUnavailable()
+        val permitted = listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER, LocationManager.PASSIVE_PROVIDER)
+            .filter { manager.allProviders.contains(it) && (precise || it != LocationManager.GPS_PROVIDER) }
+        val providers = permitted.filter { it != LocationManager.PASSIVE_PROVIDER && manager.isProviderEnabled(it) }
         @Suppress("MissingPermission")
-        val recent = providers.mapNotNull { manager.getLastKnownLocation(it) }
-            .filter { SystemClock.elapsedRealtimeNanos() - it.elapsedRealtimeNanos in 0..600_000_000_000L }
-            .minByOrNull { it.accuracy }
-        val result = recent ?: withTimeout(25_000L) { request(providers.first()) }
+        val cached = permitted.mapNotNull { provider ->
+            try { manager.getLastKnownLocation(provider)?.fix() } catch (_: RuntimeException) { null }
+        }
+        val result = selectLocation(providers, cached, SystemClock::elapsedRealtimeNanos) { provider ->
+            // A timeout belongs to this provider; outer cancellation still propagates.
+            withTimeoutOrNull(8_000L) { request(provider).fix() }
+        } ?: throw LocationUnavailable()
         return SavedLocation(result.latitude, result.longitude, "", ZoneId.systemDefault().id, LocationMode.GPS)
     }
+
+    private fun Location.fix() = LocationFix(latitude, longitude,
+        if (hasAccuracy()) accuracy else Float.NaN, elapsedRealtimeNanos)
 
     @Suppress("MissingPermission")
     private suspend fun request(provider: String): Location = suspendCancellableCoroutine { continuation ->
