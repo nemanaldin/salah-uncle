@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">د پېشلمي پای · سهار</string>
     <string name="ui_suhur_wake_now">د پېشلمي لپاره د ویښېدو وخت دی. تر سهاره پاتې وخت وګورئ.</string>
     <string name="ui_calendar_estimate_short">د ام القری اټکلي نېټې</string>
+    <string name="ui_notification_entered">د %1$s وخت داخل شوی · محاسبه شوی وخت: %2$s</string>
 </resources>

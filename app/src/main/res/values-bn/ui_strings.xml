@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">সাহরির শেষ · ফজর</string>
     <string name="ui_suhur_wake_now">সাহরির জন্য ওঠার সময়। ফজর পর্যন্ত বাকি সময় দেখুন।</string>
     <string name="ui_calendar_estimate_short">উম্মুল কুরা অনুযায়ী আনুমানিক তারিখ</string>
+    <string name="ui_notification_entered">%1$s-এর সময় হয়েছে · গণনা করা সময়: %2$s</string>
 </resources>

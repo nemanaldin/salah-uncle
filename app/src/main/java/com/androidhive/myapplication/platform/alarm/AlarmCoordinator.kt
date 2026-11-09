@@ -12,6 +12,8 @@ import com.androidhive.myapplication.core.model.enumOrDefault
 import com.androidhive.myapplication.data.settings.SettingsRepository
 import com.androidhive.myapplication.domain.prayer.PrayerEngine
 import com.androidhive.myapplication.domain.prayer.PrayerMoment
+import com.androidhive.myapplication.domain.prayer.PrayerDelivery
+import com.androidhive.myapplication.domain.prayer.prayerDelivery
 import com.androidhive.myapplication.platform.audio.AdhanService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
@@ -81,15 +83,14 @@ class AlarmCoordinator(
             if (time <= 0L || snapshot.location == null) return
             val id = enumOrDefault(intent.getStringExtra(EXTRA_ID), PrayerId.SUNRISE)
             val moment = PrayerMoment(id, java.time.Instant.ofEpochMilli(time))
-            val lateness = Duration.between(moment.time, clock.instant()).seconds
-            if (lateness !in 0L..600L) return
-            val mode = snapshot.alertFor(id)
-            if (mode == AlertMode.OFF) return
+            val now = clock.instant()
+            val delivery = prayerDelivery(snapshot.alertFor(id), moment.time, now)
+            if (delivery == PrayerDelivery.IGNORE) return
             // Reject an obsolete delivery after location or calculation settings changed.
             val valid = engine.upcoming(snapshot, moment.time.minusSeconds(1)).any { it.id == id && it.time == moment.time }
             if (!valid) return
-            notifications.showDue(snapshot, moment)
-            if (mode == AlertMode.ADHAN) {
+            notifications.showDue(snapshot, moment, late = Duration.between(moment.time, now) > Duration.ofSeconds(600))
+            if (delivery == PrayerDelivery.PLAY_ADHAN) {
                 val service = Intent(app, AdhanService::class.java).putExtra(EXTRA_ID, id.name)
                     .putExtra(AdhanService.EXTRA_LANGUAGE, snapshot.language.name)
                     .putExtra(AdhanService.EXTRA_VOICE_FILE, snapshot.selectedVoice()?.fileName)

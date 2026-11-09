@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">Akhir sahur · Subuh</string>
     <string name="ui_suhur_wake_now">Waktunya bangun sahur. Periksa sisa waktu hingga Subuh.</string>
     <string name="ui_calendar_estimate_short">Perkiraan kalender Ummul Qura</string>
+    <string name="ui_notification_entered">Waktu %1$s telah masuk · waktu perhitungan: %2$s</string>
 </resources>

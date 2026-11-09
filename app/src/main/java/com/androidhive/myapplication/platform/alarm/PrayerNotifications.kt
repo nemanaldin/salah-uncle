@@ -62,15 +62,21 @@ class PrayerNotifications(context: Context) {
         try { manager.notify(NEXT_ID, notification.build()) } catch (_: SecurityException) { /* Permission can change between checks. */ }
     }
 
-    fun showDue(settings: AppSettings, moment: PrayerMoment) {
+    fun showDue(settings: AppSettings, moment: PrayerMoment, late: Boolean = false) {
         if (!allowed()) return
         channel(settings)
         val c = localizedContext(app, settings.language)
+        val entered = if (late) {
+            val zone = settings.location?.zone ?: return
+            val original = DateTimeFormatter.ofLocalizedDateTime(java.time.format.FormatStyle.SHORT)
+                .withLocale(Locale.forLanguageTag(settings.language.tag)).withZone(zone).format(moment.time)
+            c.getString(R.string.ui_notification_entered, c.getString(moment.id.labelRes()), original)
+        } else c.getString(R.string.ui_notification_due, c.getString(moment.id.labelRes()))
         try {
             manager.notify(DUE_ID, NotificationCompat.Builder(app, CHANNEL)
                 .setSmallIcon(R.drawable.ic_stat_prayer)
                 .setContentTitle(c.getString(R.string.ui_adhan_now))
-                .setContentText(c.getString(R.string.ui_notification_due, c.getString(moment.id.labelRes())))
+                .setContentText(entered)
                 .setContentIntent(open()).setAutoCancel(true).setSilent(true).setTimeoutAfter(30 * 60_000L).build())
         } catch (_: SecurityException) { /* A denied notification must not break the alarm chain. */ }
     }

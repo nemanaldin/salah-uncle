@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">نهاية السحور · الفجر</string>
     <string name="ui_suhur_wake_now">حان وقت الاستيقاظ للسحور. تحقق من الوقت المتبقي حتى الفجر.</string>
     <string name="ui_calendar_estimate_short">تواريخ تقديرية وفق أم القرى</string>
+    <string name="ui_notification_entered">دخل وقت %1$s · الوقت المحسوب: %2$s</string>
 </resources>

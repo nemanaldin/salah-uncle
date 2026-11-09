@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">پایان سحر · صبح</string>
     <string name="ui_suhur_wake_now">وقت بیدارشدن برای سحر است. زمان باقی‌مانده تا اذان صبح را بررسی کن.</string>
     <string name="ui_calendar_estimate_short">تاریخ‌های تقریبی تقویم ام‌القری</string>
+    <string name="ui_notification_entered">وقت نماز %1$s رسیده است · زمان محاسبه‌شده: %2$s</string>
 </resources>

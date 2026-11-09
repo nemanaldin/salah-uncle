@@ -213,4 +213,5 @@
     <string name="ui_suhur_end">Suhur ends · Fajr</string>
     <string name="ui_suhur_wake_now">Time to wake up for suhur. Check the remaining time until Fajr.</string>
     <string name="ui_calendar_estimate_short">Estimated Umm al-Qura dates</string>
+    <string name="ui_notification_entered">The time for %1$s has entered · calculated time: %2$s</string>
 </resources>
