@@ -216,4 +216,5 @@
     <string name="ui_notification_entered">%1$s کا وقت داخل ہو چکا ہے · حساب شدہ وقت: %2$s</string>
     <string name="ui_compass_waiting">قطب نما کی پیمائش کا انتظار…</string>
     <string name="ui_compass_invalid">فون کی سمت معتبر نہیں۔ عدد حقیقی شمال سے قبلے کا زاویہ ہے۔</string>
+    <string name="ui_saved_data_unavailable">محفوظ ترتیبات پڑھی نہیں جا سکیں۔ ڈیٹا اور نشان زد موضوعات حذف نہیں ہوئے؛ دوبارہ کوشش کریں۔</string>
 </resources>

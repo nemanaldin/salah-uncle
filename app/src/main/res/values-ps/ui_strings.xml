@@ -216,4 +216,5 @@
     <string name="ui_notification_entered">د %1$s وخت داخل شوی · محاسبه شوی وخت: %2$s</string>
     <string name="ui_compass_waiting">د قطب‌نما د معلوماتو په تمه…</string>
     <string name="ui_compass_invalid">د تلیفون لوری معتبر نه دی. شمېره له حقیقي شماله د قبلې زاویه ده.</string>
+    <string name="ui_saved_data_unavailable">خوندي تنظیمات نه لوستل کېږي. معلومات او نښې نه دي ړنګ شوي؛ بیا هڅه وکړه.</string>
 </resources>

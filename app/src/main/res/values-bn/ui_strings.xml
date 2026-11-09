@@ -216,4 +216,5 @@
     <string name="ui_notification_entered">%1$s-এর সময় হয়েছে · গণনা করা সময়: %2$s</string>
     <string name="ui_compass_waiting">কম্পাসের তথ্যের অপেক্ষায়…</string>
     <string name="ui_compass_invalid">ফোনের দিক নির্ভরযোগ্য নয়। সংখ্যাটি প্রকৃত উত্তর থেকে কিবলার কোণ।</string>
+    <string name="ui_saved_data_unavailable">সংরক্ষিত সেটিংস পড়া যায়নি। তথ্য ও বুকমার্ক মুছে ফেলা হয়নি; আবার চেষ্টা করুন।</string>
 </resources>

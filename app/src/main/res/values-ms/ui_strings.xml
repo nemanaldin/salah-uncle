@@ -216,4 +216,5 @@
     <string name="ui_notification_entered">Waktu %1$s telah masuk · waktu dikira: %2$s</string>
     <string name="ui_compass_waiting">Menunggu bacaan kompas…</string>
     <string name="ui_compass_invalid">Arah telefon tidak tersedia. Nombor ialah sudut kiblat dari utara sebenar.</string>
+    <string name="ui_saved_data_unavailable">Tetapan tersimpan tidak dapat dibaca. Data dan penanda tidak dipadam; cuba lagi.</string>
 </resources>

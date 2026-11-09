@@ -32,8 +32,8 @@ class RamadanAlarmCoordinator(context: Context, private val settings: SettingsRe
         }, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
     private fun cancelScheduledReminders() { RamadanReminderKind.entries.forEach { manager.cancel(pending(it)) } }
     suspend fun refresh() = withContext(Dispatchers.IO) { mutex.withLock {
-        cancelScheduledReminders()
         val s = settings.snapshot()
+        cancelScheduledReminders()
         if (!s.ramadan.suhurEnabled && !(app as SalahApplication).container.suhurSession.state.value.preview) app.stopService(Intent(app, SuhurAlarmService::class.java))
         if (!s.ramadan.iftarEnabled) notifications.cancelIftar()
         // A wake-up alarm is never advertised as scheduled while exact delivery or

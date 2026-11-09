@@ -6,6 +6,7 @@ import android.os.Build
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidhive.myapplication.core.model.*
+import com.androidhive.myapplication.core.RetryingReader
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.TrainingVideo
 import com.androidhive.myapplication.data.location.City
@@ -33,14 +34,16 @@ data class SalahUiState(
     val audioImportBusy: Boolean = false,
     val capabilities: DeviceCapabilities = DeviceCapabilities(),
     val error: Int? = null,
+    val calculationFailed: Boolean = false,
+    val settingsReadFailed: Boolean = false,
 )
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class SalahViewModel(private val container: AppContainer) : ViewModel() {
     private val eventsMutable = MutableSharedFlow<Int>(extraBufferCapacity = 8)
     val events = eventsMutable.asSharedFlow()
-    private val settingsError = MutableStateFlow<Int?>(null)
-    private val settingsState = container.settings.settings.catch { settingsError.value = R.string.ui_error_generic }
+    private val settingsReader = RetryingReader(viewModelScope) { container.settings.settings }
+    private val settingsState = settingsReader.state.map { it.value }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
     private val content = MutableStateFlow(ContentState())
     private val importingAudio = MutableStateFlow(false)
@@ -58,9 +61,11 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             container.prayerEngine.day(settings.location, settings.calculationPreset, settings.asrConvention) to container.prayerEngine.next(settings, now)
         } else null
         SalahUiState(settings, loaded, now, result?.getOrNull()?.first, result?.getOrNull()?.second,
-            locationBusy = busy, error = loaded.error ?: if (result?.isFailure == true) R.string.ui_error_calculation else null)
+            locationBusy = busy, error = loaded.error ?: if (result?.isFailure == true) R.string.ui_error_calculation else null,
+            calculationFailed = result?.isFailure == true)
     }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
-        .combine(settingsError) { state, error -> state.copy(error = error ?: state.error) }
+        .combine(settingsReader.state) { state, read -> state.copy(settingsReadFailed = read.error != null,
+            error = if (read.error != null) R.string.ui_error_generic else state.error) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SalahUiState())
 
     val ramadan = combine(settingsState.filterNotNull(), flow {
@@ -142,7 +147,11 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         }
     }
 
+    fun retrySavedSettings() { settingsReader.retry() }
     fun update(transform: (AppSettings) -> AppSettings) {
+        if (settingsReader.state.value.error != null || settingsReader.state.value.loading) {
+            message(R.string.ui_saved_data_unavailable); return
+        }
         viewModelScope.launch {
             try { container.settings.update(transform) }
             catch (error: CancellationException) { throw error }

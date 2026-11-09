@@ -25,6 +25,8 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AppSettings
+import com.androidhive.myapplication.domain.prayer.HomePrayerState
+import com.androidhive.myapplication.domain.prayer.homePrayerState
 import com.androidhive.myapplication.ui.components.*
 import java.time.Duration
 import java.time.Instant
@@ -44,7 +46,7 @@ private data class Shortcut(val id: String, val title: String, val action: () ->
 
 @Composable
 fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> Unit, onLessons: () -> Unit,
-    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit) {
+    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit, onRetrySettings: () -> Unit = {}) {
     val settings = state.settings ?: return
     val available = state.content.lessons.filter { it.variant(settings.school) != null }
     val last = available.firstOrNull { it.id == settings.lastLessonId }
@@ -70,8 +72,21 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                     }
                 }
             } else {
-                Text(stringResource(R.string.ui_location_needed), color = Color.White, style = MaterialTheme.typography.titleMedium)
-                FilledTonalButton(onTimes, Modifier.testTag("home_set_location")) { Text(stringResource(R.string.ui_set_location)) }
+                when (homePrayerState(settings.location != null, false, state.calculationFailed, state.settingsReadFailed)) {
+                    HomePrayerState.LOCATION_NOT_SET -> {
+                        Text(stringResource(R.string.ui_location_needed), color = Color.White, style = MaterialTheme.typography.titleMedium)
+                        FilledTonalButton(onTimes, Modifier.testTag("home_set_location")) { Text(stringResource(R.string.ui_set_location)) }
+                    }
+                    HomePrayerState.LOADING_FAILED -> {
+                        Text(stringResource(R.string.ui_saved_data_unavailable), color = Color.White)
+                        FilledTonalButton(onRetrySettings) { Text(stringResource(R.string.ui_retry)) }
+                    }
+                    HomePrayerState.LOADING -> CircularProgressIndicator()
+                    else -> {
+                        Text(stringResource(R.string.ui_error_calculation), color = Color.White)
+                        FilledTonalButton(onTimes, Modifier.testTag("home_all_times")) { Text(stringResource(R.string.ui_prayer_times)) }
+                    }
+                }
             }
         }
         state.today?.let { today ->

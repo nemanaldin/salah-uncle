@@ -216,4 +216,5 @@
     <string name="ui_notification_entered">The time for %1$s has entered · calculated time: %2$s</string>
     <string name="ui_compass_waiting">Waiting for a compass sample…</string>
     <string name="ui_compass_invalid">Phone direction is unavailable. The number is the Qibla bearing from true north.</string>
+    <string name="ui_saved_data_unavailable">Saved settings could not be read. Data and bookmarks were not deleted; retry reading.</string>
 </resources>

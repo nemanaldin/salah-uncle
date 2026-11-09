@@ -55,13 +55,13 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     if (settings == null) {
         Surface(Modifier.fillMaxSize()) {
             Box(Modifier.safeDrawingPadding(), contentAlignment = Alignment.Center) {
-                if (state.error != null) Text(stringResource(state.error)) else CircularProgressIndicator()
+                if (state.settingsReadFailed) SavedDataRecovery(model::retrySavedSettings) else CircularProgressIndicator()
             }
         }
         return
     }
     if (!settings.onboardingComplete) {
-        Scaffold(snackbarHost = { SnackbarHost(snackbar) }) { padding ->
+        Scaffold(topBar = { if (state.settingsReadFailed) SavedDataRecovery(model::retrySavedSettings) }, snackbarHost = { SnackbarHost(snackbar) }) { padding ->
             Box(Modifier.padding(padding)) {
                 OnboardingScreen(settings, { language -> model.update { it.copy(language = language) } },
                     { school -> model.update { it.withSchool(school) } },
@@ -134,10 +134,11 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         modifier = Modifier.testTag("nav_${destination.route}"))
                 }
             }
-            Box(Modifier.weight(1f).fillMaxHeight(), contentAlignment = Alignment.TopCenter) {
-                NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().fillMaxHeight(),
+            Column(Modifier.weight(1f).fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
+                if (state.settingsReadFailed) SavedDataRecovery(model::retrySavedSettings)
+                NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().weight(1f),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
-                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }) }
+                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }, model::retrySavedSettings) }
                     composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent) }
                     composable("tools") { ToolsScreen(settings.school, navigate) }
                     composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent, "prayers") }
@@ -205,5 +206,13 @@ private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) ->
         OutlinedButton({ openExternal(context, android.content.Intent(android.content.Intent.ACTION_SENDTO, android.net.Uri.parse("mailto:moeinarazi53@gmail.com")), error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_contact)) }
         OutlinedButton({ openUrl(context, "https://cafebazaar.ir/app/${context.packageName}", error) }, Modifier.fillMaxWidth()) { Text(stringResource(R.string.ui_rate)) }
         OutlinedButton({ shareText(context, "https://cafebazaar.ir/app/${context.packageName}", shareLabel, error) }, Modifier.fillMaxWidth()) { Text(shareLabel) }
+    }
+}
+
+@Composable
+private fun SavedDataRecovery(onRetry: () -> Unit) {
+    Column(Modifier.fillMaxWidth().padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        InfoCard(stringResource(R.string.ui_saved_data_unavailable))
+        TextButton(onRetry, Modifier.testTag("retry_saved_settings")) { Text(stringResource(R.string.ui_retry)) }
     }
 }
