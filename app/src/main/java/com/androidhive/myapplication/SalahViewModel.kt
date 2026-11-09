@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.androidhive.myapplication.core.model.*
 import com.androidhive.myapplication.core.RetryingReader
+import com.androidhive.myapplication.core.LoadSlot
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.TrainingVideo
 import com.androidhive.myapplication.data.location.City
@@ -23,7 +24,11 @@ data class RamadanContent(
     val nextIftar: com.androidhive.myapplication.domain.ramadan.RamadanReminder? = null,
     val error: Int? = null, val loading: Boolean = true,
 )
-data class ContentState(val lessons: List<Lesson> = emptyList(), val cities: List<City> = emptyList(), val videos: List<TrainingVideo> = emptyList(), val error: Int? = null)
+data class ContentState(
+    val lessons: List<Lesson> = emptyList(), val cities: List<City> = emptyList(), val videos: List<TrainingVideo> = emptyList(),
+    val lessonsLoading: Boolean = true, val citiesLoading: Boolean = true, val videosLoading: Boolean = true,
+    val lessonsError: Int? = null, val citiesError: Int? = null, val videosError: Int? = null,
+)
 data class SalahUiState(
     val settings: AppSettings? = null,
     val content: ContentState = ContentState(),
@@ -45,11 +50,17 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
     private val settingsReader = RetryingReader(viewModelScope) { container.settings.settings }
     private val settingsState = settingsReader.state.map { it.value }
         .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-    private val content = MutableStateFlow(ContentState())
+    private val lessonLoad = LoadSlot(emptyList<Lesson>(), viewModelScope) { container.lessons.load() }
+    private val cityLoad = LoadSlot(emptyList<City>(), viewModelScope) { container.cities.load() }
+    private val videoLoad = LoadSlot(emptyList<TrainingVideo>(), viewModelScope) { container.lessons.videos() }
+    private val content = combine(lessonLoad.state, cityLoad.state, videoLoad.state) { lessons, cities, videos ->
+        ContentState(lessons.data, cities.data, videos.data, lessons.loading, cities.loading, videos.loading,
+            R.string.ui_error_content.takeIf { lessons.failed }, R.string.ui_error_content.takeIf { cities.failed },
+            R.string.ui_error_content.takeIf { videos.failed })
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, ContentState())
     private val importingAudio = MutableStateFlow(false)
     private val locating = MutableStateFlow(false)
     private val capabilities = MutableStateFlow(DeviceCapabilities())
-    private var contentJob: Job? = null
     private val countdownVisible = MutableStateFlow(true)
     private val ticks = countdownVisible.flatMapLatest { visible ->
         if (!visible) flowOf(Instant.now()) else flow {
@@ -61,7 +72,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             container.prayerEngine.day(settings.location, settings.calculationPreset, settings.asrConvention) to container.prayerEngine.next(settings, now)
         } else null
         SalahUiState(settings, loaded, now, result?.getOrNull()?.first, result?.getOrNull()?.second,
-            locationBusy = busy, error = loaded.error ?: if (result?.isFailure == true) R.string.ui_error_calculation else null,
+            locationBusy = busy, error = if (result?.isFailure == true) R.string.ui_error_calculation else null,
             calculationFailed = result?.isFailure == true)
     }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
         .combine(settingsReader.state) { state, read -> state.copy(settingsReadFailed = read.error != null,
@@ -131,21 +142,10 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         }
     }
 
-    fun loadContent() {
-        contentJob?.cancel()
-        contentJob = viewModelScope.launch {
-            try {
-                coroutineScope {
-                    val lessons = async { container.lessons.load() }
-                    val cities = async { container.cities.load() }
-                    val videos = async { container.lessons.videos() }
-                    val loadedCities = cities.await()
-                    content.value = ContentState(lessons.await(), loadedCities, videos.await())
-                }
-            } catch (error: CancellationException) { throw error }
-            catch (_: Exception) { content.value = content.value.copy(error = R.string.ui_error_content) }
-        }
-    }
+    fun loadContent() { retryLessons(); retryCities(); retryVideos() }
+    fun retryLessons() = lessonLoad.retry()
+    fun retryCities() = cityLoad.retry()
+    fun retryVideos() = videoLoad.retry()
 
     fun retrySavedSettings() { settingsReader.retry() }
     fun update(transform: (AppSettings) -> AppSettings) {

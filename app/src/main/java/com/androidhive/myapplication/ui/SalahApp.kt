@@ -139,15 +139,15 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().weight(1f),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
                     composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }, model::retrySavedSettings) }
-                    composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent) }
+                    composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons) }
                     composable("tools") { ToolsScreen(settings.school, navigate) }
-                    composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::loadContent, "prayers") }
+                    composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, "prayers") }
                     composable("voices") { com.androidhive.myapplication.ui.settings.AdhanVoicesScreen(state, model::update, model::importAdhanVoice, model::removeAdhanVoice, model::message) }
                     composable("settings") { SettingsScreen(state, model::update, { mode ->
                         model.update { it.copy(alertMode = mode) }
                         if (mode != AlertMode.OFF) actions.notifications()
                     }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message, { navigate("voices") }) }
-                    composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }) }
+                    composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }, model::retryCities) }
                     composable("ramadan") {
                         val ramadan by model.ramadan.collectAsStateWithLifecycle()
                         val playback by container.suhurSession.state.collectAsStateWithLifecycle()
@@ -155,16 +155,16 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                             { navigate("times") }, actions.ramadanNotifications, actions.exactAlarms, actions.fullScreen)
                     }
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
-                    composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message) }
+                    composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message, state.content.videosLoading, state.content.videosError, model::retryVideos) }
                     composable("lesson/{id}") { entry ->
                         val lesson = state.content.lessons.firstOrNull { it.id == entry.arguments?.getString("id") }
                         if (lesson != null) LessonScreen(lesson, settings, model::recordReading,
                             { navigation.popBackStack() }, model::message)
                         else PageColumn {
-                            if (state.content.error == null) CircularProgressIndicator()
+                            if (state.content.lessonsLoading) CircularProgressIndicator()
                             else {
-                                InfoCard(stringResource(state.content.error))
-                                TextButton(model::loadContent) { Text(stringResource(R.string.ui_retry)) }
+                                InfoCard(stringResource(state.content.lessonsError ?: R.string.ui_empty_lessons))
+                                TextButton(model::retryLessons) { Text(stringResource(R.string.ui_retry)) }
                             }
                         }
                     }

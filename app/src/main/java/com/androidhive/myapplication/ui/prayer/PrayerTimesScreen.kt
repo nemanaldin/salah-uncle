@@ -29,7 +29,7 @@ import com.androidhive.myapplication.ui.home.countdown
 import com.androidhive.myapplication.ui.home.formatPrayerTime
 
 @Composable
-fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -> Unit, onSettings: () -> Unit) {
+fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -> Unit, onSettings: () -> Unit, onRetryCities: () -> Unit = {}) {
     val settings = state.settings ?: return
     var showCities by rememberSaveable { mutableStateOf(false) }
     PageColumn(Modifier.testTag("prayer_times_screen")) {
@@ -65,11 +65,11 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
         state.error?.let { InfoCard(stringResource(it)) }
         OutlinedButton(onSettings, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(stringResource(R.string.ui_notifications)) }
     }
-    if (showCities) CityPicker(state.content.cities, settings.language, onChoose = { onCity(it); showCities = false }, onDismiss = { showCities = false })
+    if (showCities) CityPicker(state.content.cities, settings.language, onChoose = { onCity(it); showCities = false }, onDismiss = { showCities = false }, loading = state.content.citiesLoading, error = state.content.citiesError, onRetry = onRetryCities)
 }
 
 @Composable
-private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (String) -> Unit, onDismiss: () -> Unit) {
+private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (String) -> Unit, onDismiss: () -> Unit, loading: Boolean, error: Int?, onRetry: () -> Unit) {
     var query by rememberSaveable { mutableStateOf("") }
     var country by rememberSaveable { mutableStateOf<String?>(null) }
     var choosingCountry by rememberSaveable { mutableStateOf(false) }
@@ -90,8 +90,10 @@ private fun CityPicker(cities: List<City>, language: AppLanguage, onChoose: (Str
                 ChoiceRow(stringResource(R.string.ui_country), country?.let { countryName(it, language) } ?: stringResource(R.string.ui_all_countries),
                     { choosingCountry = true; countryQuery = "" }, Modifier.testTag("choose_country"))
                 OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("city_search"), label = { Text(stringResource(R.string.ui_location_search)) }, singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done), keyboardActions = KeyboardActions(onDone = { keyboard?.hide() }))
+                if (loading) CircularProgressIndicator()
+                error?.let { InfoCard(stringResource(it)); TextButton(onRetry) { Text(stringResource(R.string.ui_retry)) } }
                 LazyColumn(Modifier.heightIn(max = 340.dp).testTag("city_results")) {
-                    if (results.isEmpty()) item { SupportingText(stringResource(R.string.ui_location_empty)) }
+                    if (results.isEmpty() && !loading && error == null) item { SupportingText(stringResource(R.string.ui_location_empty)) }
                     items(results, key = { it.id }) { city ->
                         ListItem(headlineContent = { Text(city.displayName(language)) }, supportingContent = { Text(listOf(city.countryName(language), city.provinceName(language), city.zoneId).filter { it.isNotBlank() }.joinToString(" · ")) },
                             modifier = Modifier.clickable { onChoose(city.id) }.testTag("city_${city.id}"))

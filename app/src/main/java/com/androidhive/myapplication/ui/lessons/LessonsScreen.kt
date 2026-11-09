@@ -53,10 +53,11 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
             }
         }
         item { AppCard(onClick = onTraining) { SectionTitle(stringResource(R.string.ui_training)); SupportingText(stringResource(R.string.ui_training_placeholder)) } }
-        state.content.error?.let { error -> item {
+        state.content.lessonsError?.let { error -> item {
             InfoCard(stringResource(error)); TextButton(onRetry) { Text(stringResource(R.string.ui_retry)) }
         } }
-        if (filtered.isEmpty()) item { SupportingText(stringResource(if (category == "saved") R.string.ui_empty_bookmarks else R.string.ui_empty_lessons)) }
+        if (state.content.lessonsLoading) item { CircularProgressIndicator() }
+        if (!state.content.lessonsLoading && state.content.lessonsError == null && filtered.isEmpty()) item { SupportingText(stringResource(if (category == "saved") R.string.ui_empty_bookmarks else R.string.ui_empty_lessons)) }
         items(filtered, key = { it.id }) { lesson ->
             AppCard(modifier = Modifier.testTag("lesson_${lesson.id}"), onClick = { onLesson(lesson.id) }) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {

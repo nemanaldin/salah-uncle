@@ -27,11 +27,13 @@ import com.androidhive.myapplication.data.content.TrainingVideo
 import com.androidhive.myapplication.ui.components.*
 
 @Composable
-fun TrainingScreen(videos: List<TrainingVideo>, settings: AppSettings, onGuide: () -> Unit, onError: (Int) -> Unit) {
+fun TrainingScreen(videos: List<TrainingVideo>, settings: AppSettings, onGuide: () -> Unit, onError: (Int) -> Unit, loading: Boolean = false, error: Int? = null, onRetry: () -> Unit = {}) {
     var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
     PageColumn(Modifier.testTag("training_screen")) {
         SupportingText(stringResource(R.string.ui_training_description))
-        if (videos.isEmpty()) {
+        if (loading) CircularProgressIndicator()
+        error?.let { InfoCard(stringResource(it)); TextButton(onRetry) { Text(stringResource(R.string.ui_retry)) } }
+        if (videos.isEmpty() && !loading && error == null) {
             Surface(Modifier.fillMaxWidth().aspectRatio(16f / 9f), shape = RoundedCornerShape(26.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(Icons.Default.PlayArrow, null, Modifier.size(64.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
@@ -40,7 +42,7 @@ fun TrainingScreen(videos: List<TrainingVideo>, settings: AppSettings, onGuide: 
             SectionTitle(stringResource(R.string.ui_training_placeholder))
             SupportingText(stringResource(R.string.ui_training_placeholder_body))
             Button(onGuide, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(stringResource(R.string.ui_open_prayer_guide)) }
-        } else {
+        } else if (videos.isNotEmpty()) {
             val selected = videos.firstOrNull { it.id == selectedId } ?: videos.first()
             SectionTitle(selected.title(settings.language))
             key(selected.id) { TrainingPlayer(selected, onError) }
