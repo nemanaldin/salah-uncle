@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">Confirmer cette méthode de calcul</string>
     <string name="ui_calculation_confirmed">Méthode confirmée pour ce lieu.</string>
     <string name="ui_time_unavailable">Horaire indisponible</string>
+    <string name="ui_experimental_status">Expérimental / pas encore relu</string>
+    <string name="ui_experimental_language_notice">Le contenu en %1$s est expérimental et sa relecture n’est pas encore terminée.</string>
 </resources>

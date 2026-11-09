@@ -1,0 +1,11 @@
+# Language and lesson readiness
+
+Release policy requested by the owner: Persian (`fa`), Turkish (`tr`) and English (`en`) are stable and carry the internal `reviewed` readiness value. Arabic, Urdu, Indonesian, Bengali, Malay, Pashto and French carry `experimental`. All ten languages remain selectable. **This designation does not assert native-speaker sign-off, a complete linguistic audit, or approval of religious content by a scholar.** The unresolved content issues in `audit-content-review.md` remain pending in every language.
+
+`AppLanguage.reviewStatus` defines the language policy. `assets/metadata/review-status.properties` explicitly records readiness for each of the 330 lesson/school/language variants after translation overlays. `LessonVariant.reviewStatus` is populated by `LessonRepository`, using `ReviewMetadata` to honor an explicit per-variant downgrade. Missing/unknown statuses default to experimental. A variant can never promote one of the seven experimental languages to reviewed.
+
+Metadata is separate so no instructional JSON, ruling, translation body, title, media reference or source wording needed editing. To add a variant, add its explicit metadata record; `scripts/verify_content.py` detects missing/extra keys and wrong readiness values. A future downgrade of a stable variant is supported by the reader/policy; the current release validation expects the owner's fixed three-language policy, and that validation policy must be updated if a reviewer requests a downgrade.
+
+The onboarding and settings language pickers label experimental languages and show a notice for the selected experimental language. The continuous article reader also shows a notice whenever the displayed variant or selected language is experimental. No course sequence, completion gate or hidden language was added. Source-language Arabic recitations remain intentional; readiness tests verify metadata and availability, not religious or linguistic accuracy.
+
+Unit tests exercise parsing, safe defaults, language restrictions, per-variant downgrades and the actual packaged metadata. An Android catalog test exercises repository integration; it was compiled but cannot be executed without a device in this environment. Real-phone checks must cover RTL/LTR layouts, text wrapping and notice visibility after a restart.

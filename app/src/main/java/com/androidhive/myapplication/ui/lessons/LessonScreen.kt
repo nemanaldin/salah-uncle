@@ -30,6 +30,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.AppLanguage
 import com.androidhive.myapplication.core.model.AppSettings
+import com.androidhive.myapplication.core.model.ReviewStatus
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.MediaResources
 import com.androidhive.myapplication.platform.audio.LessonAudioController
@@ -91,6 +92,11 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                     IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { it.body }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
                 }
                 TopicHeading(lesson.title(settings.language), lesson.id)
+                if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) {
+                    val language = if (settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) settings.language.nativeName
+                        else AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language
+                    Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, language)) }
+                }
                 if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
                     AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
                 if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))

@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">Konfirmasi metode perhitungan ini</string>
     <string name="ui_calculation_confirmed">Metode dikonfirmasi untuk lokasi ini.</string>
     <string name="ui_time_unavailable">Waktu tidak tersedia</string>
+    <string name="ui_experimental_status">Eksperimental / belum ditinjau</string>
+    <string name="ui_experimental_language_notice">Konten %1$s bersifat eksperimental dan peninjauannya belum selesai.</string>
 </resources>

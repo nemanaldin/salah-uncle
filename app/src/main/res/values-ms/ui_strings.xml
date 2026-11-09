@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">Sahkan kaedah pengiraan ini</string>
     <string name="ui_calculation_confirmed">Kaedah disahkan untuk lokasi ini.</string>
     <string name="ui_time_unavailable">Waktu tidak tersedia</string>
+    <string name="ui_experimental_status">Eksperimen / belum disemak</string>
+    <string name="ui_experimental_language_notice">Kandungan %1$s adalah eksperimen dan semakannya belum selesai.</string>
 </resources>

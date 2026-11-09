@@ -105,6 +105,18 @@ def verify():
     for variant in remembrance['variants']:
         assert [x['id'] for x in variant['steps']] == ['after-wudu', 'shared-source']
         assert variant['sources'][0]['url'] == 'https://sunnah.com/muslim:234b'
+    # Readiness is separate from religious wording; every runtime variant has an explicit status.
+    metadata_lines = (ASSETS/'metadata/review-status.properties').read_text().splitlines()
+    entries = [line.split('=', 1) for line in metadata_lines if line.strip() and not line.startswith('#')]
+    readiness = dict(entries)
+    assert len(entries) == len(readiness), 'Duplicate readiness entry'
+    assert readiness.pop('schemaVersion') == '1'
+    expected = {(lesson['id'], variant['school'], variant['language']) for lesson in lessons for variant in lesson['variants']}
+    expected |= {(lesson['id'], 'HANAFI', language) for lesson in legacy for language in LANGUAGES}
+    assert set(readiness) == {f'variant.{lesson}.{school}.{lang}' for lesson,school,lang in expected}
+    for lesson, school, lang in expected:
+        assert readiness[f'variant.{lesson}.{school}.{lang}'] == ('reviewed' if lang in {'fa','tr','en'} else 'experimental')
+    print(f'PASS: explicit readiness for {len(expected)} variants; seven experimental languages remain usable; no scholarly approval implied.')
     geography = ASSETS / 'geography'
     metadata = json.loads((geography / 'metadata.json').read_text())
     compressed = (geography / 'cities-v1.bin').read_bytes()

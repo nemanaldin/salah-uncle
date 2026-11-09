@@ -73,6 +73,14 @@ class ContentCatalogTest {
             assertEquals("https://sunnah.com/muslim:234b", variant.sources.single().url)
         } }
     }
+    @Test fun parsedLessonVariantsHonorPackagedReadinessMetadata() = runBlocking {
+        val lessons = LessonRepository(context).load()
+        val variants = lessons.flatMap { it.variants }
+        assertEquals(330, variants.size)
+        variants.forEach { variant ->
+            assertEquals(AppLanguage.entries.single { it.tag == variant.language }.reviewStatus, variant.reviewStatus)
+        }
+    }
     @Test fun androidLoadsEachLanguageResourcesAndCorrectLayoutDirection() {
         val labels = mapOf("fa" to "زبان برنامه", "en" to "App language", "ar" to "لغة التطبيق", "tr" to "Uygulama dili",
             "ur" to "ایپ کی زبان", "id" to "Bahasa aplikasi", "bn" to "অ্যাপের ভাষা", "ms" to "Bahasa aplikasi",

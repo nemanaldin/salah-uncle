@@ -24,11 +24,12 @@ fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, o
             FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 AppLanguage.entries.forEach { language ->
                     FilterChip(selected = language == settings.language, onClick = { onLanguage(language) },
-                        label = { Text(language.nativeName) },
+                        label = { Text(languageChoiceLabel(language)) },
                         modifier = Modifier.testTag("language_${language.tag}"))
                 }
             }
         }
+        LanguageReadinessNotice(settings.language)
         AppCard {
             SectionTitle(stringResource(R.string.ui_choose_school))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {

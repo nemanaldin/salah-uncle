@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">این روش را تأیید می‌کنم</string>
     <string name="ui_calculation_confirmed">روش برای این مکان تأیید شد.</string>
     <string name="ui_time_unavailable">زمان در دسترس نیست</string>
+    <string name="ui_experimental_status">آزمایشی؛ بازبینی‌نشده</string>
+    <string name="ui_experimental_language_notice">محتوای %1$s آزمایشی است و بازبینی آن هنوز تکمیل نشده است.</string>
 </resources>

@@ -3,6 +3,7 @@ package com.androidhive.myapplication.data.content
 import android.content.Context
 import com.androidhive.myapplication.core.model.AppLanguage
 import com.androidhive.myapplication.core.model.School
+import com.androidhive.myapplication.core.model.ReviewStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -11,7 +12,7 @@ import org.json.JSONObject
 
 data class LessonStep(val id: String, val body: String, val audio: String?, val illustrations: List<String>)
 data class LessonSource(val title: String, val url: String)
-data class LessonVariant(val school: School, val language: String, val steps: List<LessonStep>, val sources: List<LessonSource> = emptyList())
+data class LessonVariant(val school: School, val language: String, val steps: List<LessonStep>, val sources: List<LessonSource> = emptyList(), val reviewStatus: ReviewStatus = ReviewStatus.EXPERIMENTAL)
 data class Lesson(
     val id: String, val titleFa: String, val titleEn: String, val category: String,
     val source: String, val variants: List<LessonVariant>, val titles: Map<String, String> = emptyMap(),
@@ -34,7 +35,12 @@ class LessonRepository(context: Context) {
         mutex.withLock {
             cached ?: assets.list("content").orEmpty().filter { it.endsWith(".json") }.sorted().flatMap { file ->
                 parse(assets.open("content/$file").bufferedReader().use { it.readText() })
-            }.let(::withTranslations).also { lessons ->
+            }.let(::withTranslations).let { lessons ->
+                val review = ReviewMetadata.parse(assets.open("metadata/review-status.properties").bufferedReader().use { it.readText() })
+                lessons.map { lesson -> lesson.copy(variants = lesson.variants.map { variant ->
+                    variant.copy(reviewStatus = review.status(lesson.id, variant.school, variant.language))
+                }) }
+            }.also { lessons ->
                 require(lessons.map { it.id }.distinct().size == lessons.size)
                 cached = lessons
             }

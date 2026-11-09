@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">Bu hesaplama yöntemini onayla</string>
     <string name="ui_calculation_confirmed">Yöntem bu konum için onaylandı.</string>
     <string name="ui_time_unavailable">Vakit mevcut değil</string>
+    <string name="ui_experimental_status">Deneysel / henüz incelenmedi</string>
+    <string name="ui_experimental_language_notice">%1$s içeriği deneyseldir ve incelemesi henüz tamamlanmamıştır.</string>
 </resources>

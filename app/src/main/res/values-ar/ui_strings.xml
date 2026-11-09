@@ -220,4 +220,6 @@
     <string name="ui_confirm_calculation">تأكيد طريقة الحساب</string>
     <string name="ui_calculation_confirmed">تم تأكيد الطريقة لهذا الموقع.</string>
     <string name="ui_time_unavailable">الوقت غير متاح</string>
+    <string name="ui_experimental_status">تجريبية / لم تُراجع بعد</string>
+    <string name="ui_experimental_language_notice">المحتوى باللغة %1$s تجريبي ولم تكتمل مراجعته بعد.</string>
 </resources>

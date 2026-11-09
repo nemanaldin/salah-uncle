@@ -4,9 +4,9 @@ import com.batoulapps.adhan.CalculationMethod
 import com.batoulapps.adhan.Madhab
 import java.time.ZoneId
 
-enum class AppLanguage(val tag: String, val nativeName: String, val isRtl: Boolean = false) {
-    PERSIAN("fa", "فارسی", true), ENGLISH("en", "English"), ARABIC("ar", "العربية", true),
-    TURKISH("tr", "Türkçe"), URDU("ur", "اردو", true), INDONESIAN("id", "Bahasa Indonesia"),
+enum class AppLanguage(val tag: String, val nativeName: String, val isRtl: Boolean = false, val reviewStatus: ReviewStatus = ReviewStatus.EXPERIMENTAL) {
+    PERSIAN("fa", "فارسی", true, ReviewStatus.REVIEWED), ENGLISH("en", "English", reviewStatus = ReviewStatus.REVIEWED), ARABIC("ar", "العربية", true),
+    TURKISH("tr", "Türkçe", reviewStatus = ReviewStatus.REVIEWED), URDU("ur", "اردو", true), INDONESIAN("id", "Bahasa Indonesia"),
     BENGALI("bn", "বাংলা"), MALAY("ms", "Bahasa Melayu"), PASHTO("ps", "پښتو", true), FRENCH("fr", "Français")
 }
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
