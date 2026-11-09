@@ -18,7 +18,7 @@ import org.json.JSONObject
 class SettingsRepository(context: Context) {
     private val app = context.applicationContext
     private val store = PreferenceDataStoreFactory.create(
-        migrations = listOf(LegacyMigration(app)),
+        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app)),
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
         produceFile = { app.preferencesDataStoreFile("salah_settings") },
     )
@@ -43,7 +43,26 @@ class SettingsRepository(context: Context) {
         override suspend fun cleanUp() = Unit
     }
 
+    private class InitialLanguageMigration(private val context: Context) : DataMigration<Preferences> {
+        override suspend fun shouldMigrate(currentData: Preferences) = currentData[Keys.languageInitialized] != true
+        override suspend fun migrate(currentData: Preferences): Preferences {
+            val config = context.resources.configuration
+            val tags = if (android.os.Build.VERSION.SDK_INT >= 24) {
+                (0 until config.locales.size()).map { config.locales[it].toLanguageTag() }
+            } else {
+                @Suppress("DEPRECATION")
+                listOf(config.locale.toLanguageTag())
+            }
+            return currentData.toMutablePreferences().apply {
+                this[Keys.language] = initialLanguage(currentData[Keys.language], tags).name
+                this[Keys.languageInitialized] = true
+            }
+        }
+        override suspend fun cleanUp() = Unit
+    }
+
     private object Keys {
+        val languageInitialized = booleanPreferencesKey("language_initialized_v1")
         val migrated = booleanPreferencesKey("legacy_migrated_v1")
         val language = stringPreferencesKey("language")
         val school = stringPreferencesKey("school")
