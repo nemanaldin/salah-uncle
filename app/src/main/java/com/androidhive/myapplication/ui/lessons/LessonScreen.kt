@@ -33,6 +33,7 @@ import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.MediaResources
 import com.androidhive.myapplication.platform.audio.LessonAudioController
+import com.androidhive.myapplication.platform.audio.LessonAudioState
 import com.androidhive.myapplication.platform.openUrl
 import com.androidhive.myapplication.platform.shareText
 import com.androidhive.myapplication.ui.components.*
@@ -64,12 +65,15 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
     val lifecycle = LocalLifecycleOwner.current
     val currentError by rememberUpdatedState(onError)
     val currentRead by rememberUpdatedState(onRead)
-    val audio = remember(lesson.id, variant.language) { LessonAudioController(context) { currentError(R.string.ui_error_audio) } }
-    val playback by audio.state.collectAsStateWithLifecycle()
+    val hasAudio = variant.steps.any { it.audio in MediaResources.audio }
+    val audio = remember(lesson.id, variant.language, hasAudio) {
+        if (hasAudio) LessonAudioController(context) { currentError(R.string.ui_error_audio) } else null
+    }
+    val playback = audio?.state?.collectAsStateWithLifecycle()?.value ?: LessonAudioState()
     DisposableEffect(audio, lifecycle) {
-        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_STOP) audio.stop() }
+        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_STOP) audio?.stop() }
         lifecycle.lifecycle.addObserver(observer)
-        onDispose { lifecycle.lifecycle.removeObserver(observer); audio.release() }
+        onDispose { lifecycle.lifecycle.removeObserver(observer); audio?.release() }
     }
     LaunchedEffect(lesson.id, variant.language) {
         snapshotFlow { scroll.firstVisibleItemIndex }.distinctUntilChanged().collect { index ->
@@ -107,14 +111,14 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                 }
                 section.audio?.let { name -> MediaResources.audio[name]?.let { resource ->
                     SupportingText(stringResource(R.string.ui_recitation_language))
-                    Button({ audio.toggle(resource) }, Modifier.fillMaxWidth().testTag("topic_audio_${section.id}")) {
+                    Button({ audio?.toggle(resource) }, Modifier.fillMaxWidth().testTag("topic_audio_${section.id}")) {
                         Icon(Icons.Default.PlayArrow, null); Spacer(Modifier.width(8.dp))
                         Text(stringResource(if (playback.playing && playback.resource == resource) R.string.ui_pause_audio else R.string.ui_play_audio))
                     }
                     val repeatLabel = stringResource(R.string.ui_repeat_audio)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                         Text(repeatLabel, Modifier.weight(1f).padding(top = 11.dp))
-                        Switch(playback.repeat, audio::repeat, Modifier.testTag("repeat_${section.id}").semantics { contentDescription = repeatLabel })
+                        Switch(playback.repeat, { audio?.repeat(it) }, Modifier.testTag("repeat_${section.id}").semantics { contentDescription = repeatLabel })
                     }
                 } }
             }

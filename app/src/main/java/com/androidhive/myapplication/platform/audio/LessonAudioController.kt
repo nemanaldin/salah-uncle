@@ -2,6 +2,7 @@ package com.androidhive.myapplication.platform.audio
 
 import android.content.Context
 import android.net.Uri
+import com.androidhive.myapplication.core.LazyResource
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -18,17 +19,19 @@ class LessonAudioController(context: Context, private val onError: () -> Unit) {
     private val app = context.applicationContext
     private val mutable = MutableStateFlow(LessonAudioState())
     val state = mutable.asStateFlow()
-    private val player = ExoPlayer.Builder(app).build().apply {
+    private val player = LazyResource(create = { ExoPlayer.Builder(app).build().apply {
         setAudioAttributes(AudioAttributes.Builder().setContentType(C.AUDIO_CONTENT_TYPE_SPEECH).setUsage(C.USAGE_MEDIA).build(), true)
         setHandleAudioBecomingNoisy(true)
+        repeatMode = if (mutable.value.repeat) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         addListener(object : Player.Listener {
             override fun onIsPlayingChanged(isPlaying: Boolean) { mutable.value = mutable.value.copy(playing = isPlaying) }
             override fun onPlayerError(error: PlaybackException) { stop(); onError() }
         })
-    }
+    } }, dispose = { it.release() })
     fun toggle(resource: Int) = toggleSource(Uri.parse("android.resource://${app.packageName}/$resource"), resource)
     fun toggle(uri: Uri) = toggleSource(uri, null)
     private fun toggleSource(uri: Uri, resource: Int?) {
+        val player = player.get()
         if (mutable.value.source != uri.toString()) {
             player.setMediaItem(MediaItem.fromUri(uri))
             mutable.value = mutable.value.copy(resource = resource, source = uri.toString())
@@ -39,9 +42,9 @@ class LessonAudioController(context: Context, private val onError: () -> Unit) {
         }
     }
     fun repeat(value: Boolean) {
-        player.repeatMode = if (value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
+        player.peek()?.repeatMode = if (value) Player.REPEAT_MODE_ONE else Player.REPEAT_MODE_OFF
         mutable.value = mutable.value.copy(repeat = value)
     }
-    fun stop() { player.stop(); mutable.value = mutable.value.copy(resource = null, playing = false, source = null) }
+    fun stop() { player.peek()?.stop(); mutable.value = mutable.value.copy(resource = null, playing = false, source = null) }
     fun release() = player.release()
 }

@@ -14,8 +14,8 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | 1.2 | Qibla sensor states | done | f0c5f890fe62ba36f758c26baa15b382e2d9710c | 9 heading-state tests passed; physical sensors and registration failure on device unverified |
 | 1.3 | Home and settings recovery states | done | c2a351757a1886a054bc56f26e52033cfcf3ec06 | 10 home-state and read-recovery tests passed; no device I/O fault injection |
 | 1.4 | First-launch language selection | done | 7ef02aa9d8a694eec5ba9f735393f28c571f627c | 7 language initialization tests passed; Android locale recreation requires phone check |
-| 1.5 | Independent content loading | done | this item commit (resolved immediately after creation) | 4 independent loading tests passed; reader, picker and video placeholder use separate errors |
-| 1.6 | Lazy lesson audio | not started | — | — |
+| 1.5 | Independent content loading | done | 5a17834efe8b31045b94bbd1800a0fa772b0ae13 | 4 independent loading tests passed; reader, picker and video placeholder use separate errors |
+| 1.6 | Lazy lesson audio | done | this item commit (resolved immediately after creation) | 4 lazy resource lifecycle tests passed; real audio and audio focus unverified |
 | 2.1 | Multi-source location fallback | not started | — | — |
 | 2.2 | Calculation method confirmation | not started | — | — |
 | 2.3 | Umm al-Qura Ramadan Isha | not started | — | — |
