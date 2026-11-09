@@ -14,3 +14,21 @@ class CompassHeadingTest {
     @Test fun accuracyCanBecomeInvalidAfterAValidSample() { assertTrue(compassHeading(350f,HeadingConfidence.HIGH).usable);assertFalse(compassHeading(350f,HeadingConfidence.UNRELIABLE).usable) }
     @Test fun validSamplesAreNormalized() { assertEquals(350f,compassHeading(-10f,HeadingConfidence.HIGH).magneticDegrees!!,0f) }
 }
+
+class HeadingSamplesTest {
+    @Test fun accuracyBeforeFirstSampleStillWaits() {
+        assertEquals(HeadingStatus.WAITING, HeadingSamples().accuracy(HeadingConfidence.HIGH).status)
+    }
+    @Test fun failedMatrixCannotBeResurrectedByAnAccuracyCallback() {
+        val samples = HeadingSamples()
+        assertTrue(samples.accept(120f, HeadingConfidence.HIGH).usable)
+        samples.invalidate()
+        val state = samples.accuracy(HeadingConfidence.HIGH)
+        assertEquals(HeadingStatus.INVALID, state.status); assertFalse(state.usable)
+    }
+    @Test fun aNewSampleRecoversAfterAnInvalidMatrix() {
+        val samples = HeadingSamples()
+        samples.accept(120f, HeadingConfidence.HIGH); samples.invalidate()
+        assertEquals(30f, samples.accept(30f, HeadingConfidence.MEDIUM).magneticDegrees!!, 0f)
+    }
+}
