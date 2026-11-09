@@ -214,4 +214,6 @@
     <string name="ui_suhur_wake_now">সাহরির জন্য ওঠার সময়। ফজর পর্যন্ত বাকি সময় দেখুন।</string>
     <string name="ui_calendar_estimate_short">উম্মুল কুরা অনুযায়ী আনুমানিক তারিখ</string>
     <string name="ui_notification_entered">%1$s-এর সময় হয়েছে · গণনা করা সময়: %2$s</string>
+    <string name="ui_compass_waiting">কম্পাসের তথ্যের অপেক্ষায়…</string>
+    <string name="ui_compass_invalid">ফোনের দিক নির্ভরযোগ্য নয়। সংখ্যাটি প্রকৃত উত্তর থেকে কিবলার কোণ।</string>
 </resources>

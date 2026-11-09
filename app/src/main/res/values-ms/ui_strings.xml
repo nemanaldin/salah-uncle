@@ -214,4 +214,6 @@
     <string name="ui_suhur_wake_now">Masa untuk bangun sahur. Semak masa berbaki hingga Subuh.</string>
     <string name="ui_calendar_estimate_short">Anggaran tarikh Umm al-Qura</string>
     <string name="ui_notification_entered">Waktu %1$s telah masuk · waktu dikira: %2$s</string>
+    <string name="ui_compass_waiting">Menunggu bacaan kompas…</string>
+    <string name="ui_compass_invalid">Arah telefon tidak tersedia. Nombor ialah sudut kiblat dari utara sebenar.</string>
 </resources>

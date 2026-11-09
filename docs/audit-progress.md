@@ -10,8 +10,8 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 
 | Item | Description | Status | Commit | Tests / limits |
 |---|---|---|---|---|
-| 1.1 | Late adhan notifications | done | this item commit (resolved immediately after creation) | 8 delay-boundary tests passed; legacy policy reproduced 4 failures before fix; device delivery unverified |
-| 1.2 | Qibla sensor states | not started | — | — |
+| 1.1 | Late adhan notifications | done | 10e824234ecdfef2e9d2e5c05279babd923f5c63 | 8 delay-boundary tests passed; legacy policy reproduced 4 failures before fix; device delivery unverified |
+| 1.2 | Qibla sensor states | done | this item commit (resolved immediately after creation) | 9 heading-state tests passed; physical sensors and registration failure on device unverified |
 | 1.3 | Home and settings recovery states | not started | — | — |
 | 1.4 | First-launch language selection | not started | — | — |
 | 1.5 | Independent content loading | not started | — | — |

@@ -214,4 +214,6 @@
     <string name="ui_suhur_wake_now">سحری کے لیے بیدار ہونے کا وقت ہے۔ فجر تک باقی وقت دیکھیں۔</string>
     <string name="ui_calendar_estimate_short">ام القریٰ کی تخمینی تاریخیں</string>
     <string name="ui_notification_entered">%1$s کا وقت داخل ہو چکا ہے · حساب شدہ وقت: %2$s</string>
+    <string name="ui_compass_waiting">قطب نما کی پیمائش کا انتظار…</string>
+    <string name="ui_compass_invalid">فون کی سمت معتبر نہیں۔ عدد حقیقی شمال سے قبلے کا زاویہ ہے۔</string>
 </resources>

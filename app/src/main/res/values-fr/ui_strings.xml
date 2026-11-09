@@ -214,4 +214,6 @@
     <string name="ui_suhur_wake_now">Il est temps de se lever pour le suhur. Vérifiez le temps restant avant le Fajr.</string>
     <string name="ui_calendar_estimate_short">Dates estimées : Umm al-Qura</string>
     <string name="ui_notification_entered">L’heure de %1$s est entrée · heure calculée : %2$s</string>
+    <string name="ui_compass_waiting">En attente des données de la boussole…</string>
+    <string name="ui_compass_invalid">La direction du téléphone est indisponible. Le nombre indique l’angle de la Qibla depuis le nord vrai.</string>
 </resources>

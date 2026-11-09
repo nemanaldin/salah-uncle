@@ -214,4 +214,6 @@
     <string name="ui_suhur_wake_now">Sahura kalkma vakti. Fecre kalan zamanı kontrol edin.</string>
     <string name="ui_calendar_estimate_short">Tahmini Ümmülkura tarihleri</string>
     <string name="ui_notification_entered">%1$s vakti girdi · hesaplanan zaman: %2$s</string>
+    <string name="ui_compass_waiting">Pusula verisi bekleniyor…</string>
+    <string name="ui_compass_invalid">Telefon yönü geçersiz. Sayı, gerçek kuzeye göre kıble açısıdır.</string>
 </resources>

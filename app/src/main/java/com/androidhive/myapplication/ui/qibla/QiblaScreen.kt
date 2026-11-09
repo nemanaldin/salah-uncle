@@ -1,7 +1,6 @@
 package com.androidhive.myapplication.ui.qibla
 
 import android.hardware.GeomagneticField
-import android.hardware.SensorManager
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.snap
 import androidx.compose.animation.core.tween
@@ -24,6 +23,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.domain.qibla.QiblaMath
+import com.androidhive.myapplication.domain.qibla.HeadingStatus
 import com.androidhive.myapplication.platform.location.Heading
 import com.androidhive.myapplication.platform.location.HeadingRepository
 import com.androidhive.myapplication.ui.components.*
@@ -37,10 +37,10 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
     if (location == null) { PageColumn { InfoCard(stringResource(R.string.ui_qibla_location)); Button(onLocation) { Text(stringResource(R.string.ui_set_location)) } }; return }
     val rotation = LocalView.current.display?.rotation ?: 0
     val flow = remember(headings, rotation) { headings.observe(rotation) }
-    val heading by flow.collectAsStateWithLifecycle(initialValue = Heading(true))
+    val heading by flow.collectAsStateWithLifecycle(initialValue = Heading())
     val bearing = remember(location) { QiblaMath.bearing(location.latitude, location.longitude) }
     val declination = remember(location) { GeomagneticField(location.latitude.toFloat(), location.longitude.toFloat(), 0f, System.currentTimeMillis()).declination }
-    val trueHeading = if (heading.available) QiblaMath.normalize(heading.magneticDegrees + declination) else 0f
+    val trueHeading = if (heading.usable) QiblaMath.normalize(heading.magneticDegrees!! + declination) else 0f
     val relative = QiblaMath.relativeBearing(bearing, trueHeading)
     var target by remember { mutableFloatStateOf(relative) }
     LaunchedEffect(relative) { target += QiblaMath.shortestDelta(QiblaMath.normalize(target), relative) }
@@ -67,7 +67,7 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
                     }
                     Text(stringResource(R.string.ui_north), Modifier.padding(top = 32.dp), color = primary, style = MaterialTheme.typography.labelLarge)
                 }
-                Canvas(Modifier.fillMaxSize().padding(55.dp).graphicsLayer { rotationZ = angle }) {
+                if (heading.usable) Canvas(Modifier.fillMaxSize().padding(55.dp).graphicsLayer { rotationZ = angle }.testTag("qibla_needle")) {
                     val radius = size.minDimension / 2
                     val path = Path().apply {
                         moveTo(center.x, center.y - radius * .8f)
@@ -80,8 +80,12 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
                 }
             }
             Text(stringResource(R.string.ui_qibla_bearing, String.format(Locale.forLanguageTag(settings.language.tag), "%.1f", bearing)), style = MaterialTheme.typography.titleMedium)
-            if (!heading.available) InfoCard(stringResource(R.string.ui_qibla_no_sensor))
-            else if (heading.accuracy <= SensorManager.SENSOR_STATUS_ACCURACY_LOW) SupportingText(stringResource(R.string.ui_qibla_calibration))
+            when (heading.status) {
+                HeadingStatus.WAITING -> SupportingText(stringResource(R.string.ui_compass_waiting))
+                HeadingStatus.INVALID -> InfoCard(stringResource(R.string.ui_compass_invalid))
+                HeadingStatus.NEEDS_CALIBRATION -> SupportingText(stringResource(R.string.ui_qibla_calibration))
+                HeadingStatus.VALID -> Unit
+            }
         }
         SupportingText(location.labelFor(settings.language).ifBlank { stringResource(R.string.ui_device_location) })
         TextButton(onLocation) { Text(stringResource(R.string.ui_set_location)) }
