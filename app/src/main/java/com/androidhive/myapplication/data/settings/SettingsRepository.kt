@@ -77,6 +77,7 @@ class SettingsRepository(context: Context) {
         val mode = stringPreferencesKey("location_mode")
         val cityId = stringPreferencesKey("city_id")
         val locationNames = stringPreferencesKey("location_names_v1")
+        val confirmedCalculation = stringPreferencesKey("confirmed_calculation_v1")
         val preset = stringPreferencesKey("calculation_preset")
         val asr = stringPreferencesKey("asr_convention")
         val alerts = stringPreferencesKey("alert_mode")
@@ -125,6 +126,7 @@ class SettingsRepository(context: Context) {
                 textScale = (p[Keys.scale] ?: 1f).coerceIn(.85f, 1.5f),
                 reduceMotion = p[Keys.reduceMotion] ?: false,
                 location = location,
+                confirmedCalculation = p[Keys.confirmedCalculation],
                 calculationPreset = enumOrDefault(p[Keys.preset], CalculationPreset.KARACHI),
                 asrConvention = enumOrDefault(p[Keys.asr], school.defaultAsr),
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
@@ -151,6 +153,7 @@ class SettingsRepository(context: Context) {
             } else {
                 p.remove(Keys.locationNames); p.remove(Keys.lat); p.remove(Keys.lon); p.remove(Keys.label); p.remove(Keys.zone); p.remove(Keys.mode); p.remove(Keys.cityId)
             }
+            s.confirmedCalculation?.let { p[Keys.confirmedCalculation] = it } ?: p.remove(Keys.confirmedCalculation)
             p[Keys.preset] = s.calculationPreset.name; p[Keys.asr] = s.asrConvention.name; p[Keys.alerts] = s.alertMode.name
             p[Keys.voices] = JSONArray().apply { s.adhanVoices.forEach { voice -> put(JSONObject().apply {
                 put("id", voice.id); put("title", voice.title); put("file", voice.fileName); put("bytes", voice.bytes)

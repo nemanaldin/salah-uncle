@@ -23,6 +23,7 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AlertMode
 import com.androidhive.myapplication.core.model.School
+import com.androidhive.myapplication.core.model.confirmCalculation
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.platform.openExternal
 import com.androidhive.myapplication.platform.openUrl
@@ -147,7 +148,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         model.update { it.copy(alertMode = mode) }
                         if (mode != AlertMode.OFF) actions.notifications()
                     }, actions.notifications, actions.exactAlarms, actions.fullScreen, { navigate("about") }, model::message, { navigate("voices") }) }
-                    composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }, model::retryCities) }
+                    composable("times") { PrayerTimesScreen(state, model::selectCity, actions.location, { selectMain("settings") }, model::retryCities, { model.update { it.confirmCalculation() } }) }
                     composable("ramadan") {
                         val ramadan by model.ramadan.collectAsStateWithLifecycle()
                         val playback by container.suhurSession.state.collectAsStateWithLifecycle()

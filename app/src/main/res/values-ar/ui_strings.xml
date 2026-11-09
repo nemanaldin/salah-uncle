@@ -217,4 +217,6 @@
     <string name="ui_compass_waiting">بانتظار قراءة البوصلة…</string>
     <string name="ui_compass_invalid">اتجاه الهاتف غير متاح. الرقم هو زاوية القبلة من الشمال الحقيقي.</string>
     <string name="ui_saved_data_unavailable">تعذرت قراءة الإعدادات. لم تُحذف البيانات أو العلامات؛ أعد المحاولة.</string>
+    <string name="ui_confirm_calculation">تأكيد طريقة الحساب</string>
+    <string name="ui_calculation_confirmed">تم تأكيد الطريقة لهذا الموقع.</string>
 </resources>

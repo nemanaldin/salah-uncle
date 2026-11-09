@@ -217,4 +217,6 @@
     <string name="ui_compass_waiting">কম্পাসের তথ্যের অপেক্ষায়…</string>
     <string name="ui_compass_invalid">ফোনের দিক নির্ভরযোগ্য নয়। সংখ্যাটি প্রকৃত উত্তর থেকে কিবলার কোণ।</string>
     <string name="ui_saved_data_unavailable">সংরক্ষিত সেটিংস পড়া যায়নি। তথ্য ও বুকমার্ক মুছে ফেলা হয়নি; আবার চেষ্টা করুন।</string>
+    <string name="ui_confirm_calculation">এই গণনা পদ্ধতি নিশ্চিত করুন</string>
+    <string name="ui_calculation_confirmed">এই স্থানের জন্য পদ্ধতি নিশ্চিত করা হয়েছে।</string>
 </resources>

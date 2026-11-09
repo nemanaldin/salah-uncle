@@ -217,4 +217,6 @@
     <string name="ui_compass_waiting">Menunggu data kompas…</string>
     <string name="ui_compass_invalid">Arah ponsel tidak tersedia. Angka menunjukkan arah kiblat dari utara sejati.</string>
     <string name="ui_saved_data_unavailable">Pengaturan tersimpan tidak dapat dibaca. Data dan penanda tidak dihapus; coba lagi.</string>
+    <string name="ui_confirm_calculation">Konfirmasi metode perhitungan ini</string>
+    <string name="ui_calculation_confirmed">Metode dikonfirmasi untuk lokasi ini.</string>
 </resources>

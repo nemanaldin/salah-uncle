@@ -29,11 +29,21 @@ import com.androidhive.myapplication.ui.home.countdown
 import com.androidhive.myapplication.ui.home.formatPrayerTime
 
 @Composable
-fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -> Unit, onSettings: () -> Unit, onRetryCities: () -> Unit = {}) {
+fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -> Unit, onSettings: () -> Unit, onRetryCities: () -> Unit = {}, onConfirmCalculation: () -> Unit = {}) {
     val settings = state.settings ?: return
     var showCities by rememberSaveable { mutableStateOf(false) }
     PageColumn(Modifier.testTag("prayer_times_screen")) {
         IllustratedHeading(stringResource(R.string.ui_prayer_times), R.drawable.heritage_times, settings.location?.labelFor(settings.language)?.ifBlank { stringResource(R.string.ui_device_location) } ?: stringResource(R.string.ui_times_body))
+        if (settings.location != null) AppCard {
+            SectionTitle(stringResource(R.string.ui_calculation_method))
+            Text(stringResource(settings.calculationPreset.labelRes()), Modifier.testTag("active_calculation_method"), style = MaterialTheme.typography.titleMedium)
+            SupportingText(stringResource(if (settings.asrConvention == AsrConvention.HANAFI) R.string.ui_asr_hanafi else R.string.ui_asr_standard))
+            if (settings.needsCalculationConfirmation()) {
+                InfoCard(stringResource(R.string.ui_calculation_note))
+                Button(onConfirmCalculation, Modifier.testTag("confirm_calculation")) { Text(stringResource(R.string.ui_confirm_calculation)) }
+            } else SupportingText(stringResource(R.string.ui_calculation_confirmed))
+            TextButton(onSettings) { Text(stringResource(R.string.ui_calculation)) }
+        }
         state.today?.let { today -> AppCard {
             SectionTitle(stringResource(R.string.ui_prayer_times))
             today.moments.forEach { moment ->

@@ -73,6 +73,7 @@ data class AppSettings(
     val reduceMotion: Boolean = false,
     val location: SavedLocation? = null,
     val calculationPreset: CalculationPreset = CalculationPreset.KARACHI,
+    val confirmedCalculation: String? = null,
     val asrConvention: AsrConvention = school.defaultAsr,
     val alertMode: AlertMode = AlertMode.OFF,
     val prayerAlerts: Map<PrayerId, AlertMode> = emptyMap(),

@@ -217,4 +217,6 @@
     <string name="ui_compass_waiting">En attente des données de la boussole…</string>
     <string name="ui_compass_invalid">La direction du téléphone est indisponible. Le nombre indique l’angle de la Qibla depuis le nord vrai.</string>
     <string name="ui_saved_data_unavailable">Impossible de lire les réglages enregistrés. Les données et favoris ne sont pas supprimés ; réessayez.</string>
+    <string name="ui_confirm_calculation">Confirmer cette méthode de calcul</string>
+    <string name="ui_calculation_confirmed">Méthode confirmée pour ce lieu.</string>
 </resources>

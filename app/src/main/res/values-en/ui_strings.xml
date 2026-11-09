@@ -217,4 +217,6 @@
     <string name="ui_compass_waiting">Waiting for a compass sample…</string>
     <string name="ui_compass_invalid">Phone direction is unavailable. The number is the Qibla bearing from true north.</string>
     <string name="ui_saved_data_unavailable">Saved settings could not be read. Data and bookmarks were not deleted; retry reading.</string>
+    <string name="ui_confirm_calculation">Confirm this calculation method</string>
+    <string name="ui_calculation_confirmed">Method confirmed for this location.</string>
 </resources>
