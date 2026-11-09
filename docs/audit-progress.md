@@ -20,8 +20,8 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | 2.2 | Calculation method confirmation | done | 0e5bb73d36c679401f8cca3d5c291be16a8e5668 | 6 confirmation tests passed; Karachi retained; confirmation persists with coordinates zone method and Asr |
 | 2.3 | Umm al-Qura Ramadan Isha | done | 7e80177c91638f5f51baa3d4fd1cbe5b78f42ca6 | 7 tests passed; first and last Ramadan days reproduced 90 vs 120 failures before fix; Saudi calendar assumption documented |
 | 2.4 | Partial high-latitude prayer times | done | 47f70e085bc49b8b90b88e1c65beb8a3af33acc4 | 10 new partial-day tests passed plus Ramadan regression tests; Tromso crash reproduced before fix; no invented times |
-| 3 | Language and variant readiness | done | this item commit (resolved immediately after creation) | 5 metadata unit tests passed; 330 variants checked; 1 Android repository test added and compiled but not run; all content hashes preserved |
-| 4 | School-specific content review report | not started | — | — |
+| 3 | Language and variant readiness | done | 136cc2e630c0aeb4615bd9b6b1b010cb3eee23fc | 5 metadata unit tests passed; 330 variants checked; 1 Android repository test added and compiled but not run; all content hashes preserved |
+| 4 | School-specific content review report | done | this item commit (resolved immediately after creation) | 11 report entries with standard-book chapters, draft wording and confidence; no religious correctness test or scholar approval claimed |
 
 ## Actual check results
 
@@ -30,6 +30,7 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | baseline | 52/52 | 65 / 0 | build + unit + lint passed |
 | phase1 | 94/94 | 66 / 0 | build + unit + lint passed |
 | phase2 | 126/126 | 66 / 0 | build + unit + lint passed |
+| phase3 | 131/131 | 66 / 0 | build + unit + lint passed |
 
 Phase 1 lint first hit an internal JVM MethodHandle error with a temporary C1-only JVM option. Restarting the daemon with normal Java 21 options completed lint; project tool versions were unchanged.
 
