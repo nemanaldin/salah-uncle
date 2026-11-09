@@ -17,8 +17,8 @@ All instructional content and translations must remain byte-for-byte unchanged. 
 | 1.5 | Independent content loading | done | 5a17834efe8b31045b94bbd1800a0fa772b0ae13 | 4 independent loading tests passed; reader, picker and video placeholder use separate errors |
 | 1.6 | Lazy lesson audio | done | ab582d2c5c0a62411c62e3774406d8eda87801dc | 4 lazy resource lifecycle tests passed; real audio and audio focus unverified |
 | 2.1 | Multi-source location fallback | done | 4df7c54b1e06fe228748f8df3ea033cdd93c0c8b | 9 location selection tests passed; preferred 2min/200m, fallback 10min/5km; GPS and permission behavior on phone unverified |
-| 2.2 | Calculation method confirmation | done | this item commit (resolved immediately after creation) | 6 confirmation tests passed; Karachi retained; confirmation persists with coordinates zone method and Asr |
-| 2.3 | Umm al-Qura Ramadan Isha | not started | — | — |
+| 2.2 | Calculation method confirmation | done | 0e5bb73d36c679401f8cca3d5c291be16a8e5668 | 6 confirmation tests passed; Karachi retained; confirmation persists with coordinates zone method and Asr |
+| 2.3 | Umm al-Qura Ramadan Isha | done | this item commit (resolved immediately after creation) | 7 tests passed; first and last Ramadan days reproduced 90 vs 120 failures before fix; Saudi calendar assumption documented |
 | 2.4 | Partial high-latitude prayer times | not started | — | — |
 | 3 | Language and variant readiness | not started | — | — |
 | 4 | School-specific content review report | not started | — | — |

@@ -37,7 +37,7 @@ class PrayerEngine(private val clock: Clock = Clock.systemUTC()) {
         val times = PrayerTimes(
             Coordinates(location.latitude, location.longitude),
             DateComponents(date.year, date.monthValue, date.dayOfMonth),
-            preset.parameters(asr),
+            preset.parameters(asr, date),
         )
         val moments = listOf(
             PrayerId.FAJR to times.fajr, PrayerId.SUNRISE to times.sunrise,

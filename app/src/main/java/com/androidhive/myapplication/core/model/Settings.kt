@@ -31,6 +31,16 @@ enum class CalculationPreset(val method: CalculationMethod) {
     SINGAPORE(CalculationMethod.SINGAPORE);
 
     fun parameters(asr: AsrConvention) = method.parameters.apply { madhab = asr.madhab }
+
+    /** Adhan 1.2.1 leaves the Umm al-Qura Ramadan interval adjustment to callers.
+     * Use the calculation location's civil date and Saudi Umm al-Qura calendar,
+     * independent of the user's display-only lunar-sighting adjustment. */
+    fun parameters(asr: AsrConvention, date: java.time.LocalDate) = parameters(asr).apply {
+        if (this@CalculationPreset == UMM_AL_QURA &&
+            java.time.chrono.HijrahDate.from(date).get(java.time.temporal.ChronoField.MONTH_OF_YEAR) == 9) {
+            ishaInterval = 120
+        }
+    }
 }
 
 enum class PrayerId(val canAlert: Boolean = true) {

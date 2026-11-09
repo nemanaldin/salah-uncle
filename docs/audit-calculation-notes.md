@@ -1,0 +1,7 @@
+# Calculation behavior verified for this audit
+
+The dependency remains `com.batoulapps.adhan:adhan:1.2.1` (`app/build.gradle`). The pinned [CalculationMethod.java](https://github.com/batoulapps/adhan-kotlin/blob/v1.2.1/adhan/src/main/java/com/batoulapps/adhan/CalculationMethod.java) returns a 90-minute interval for Umm al-Qura and explicitly instructs callers to add 30 minutes in Ramadan. The [pinned README](https://github.com/batoulapps/adhan-kotlin/blob/v1.2.1/README.md#calculation-parameters) gives the same instruction. The library does not receive a Hijri calendar or apply the Ramadan interval automatically.
+
+Before the fix, first/last Ramadan-day tests both returned 90 rather than 120 minutes. After the fix, only the Umm al-Qura preset uses 120 minutes in Ramadan; other presets and Fajr remain unchanged. Each date creates fresh calculation parameters, so a cached Ramadan calculation cannot mutate a later month's parameters.
+
+The date is the selected location's civil date converted with Java's Umm al-Qura Hijrah calendar. The app's +/-2 day display/fasting-calendar adjustment does not modify this preset's Saudi calendar convention. This is an explicit implementation assumption, not a claim about a user's local moon sighting. Real local timetables and Ramadan boundary dates still require comparison on a phone. No school text or translation was edited.
