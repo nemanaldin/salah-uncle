@@ -219,4 +219,5 @@
     <string name="ui_saved_data_unavailable">Kayıtlı ayarlar okunamadı. Veriler ve yer imleri silinmedi; yeniden deneyin.</string>
     <string name="ui_confirm_calculation">Bu hesaplama yöntemini onayla</string>
     <string name="ui_calculation_confirmed">Yöntem bu konum için onaylandı.</string>
+    <string name="ui_time_unavailable">Vakit mevcut değil</string>
 </resources>

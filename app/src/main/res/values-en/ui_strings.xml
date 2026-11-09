@@ -219,4 +219,5 @@
     <string name="ui_saved_data_unavailable">Saved settings could not be read. Data and bookmarks were not deleted; retry reading.</string>
     <string name="ui_confirm_calculation">Confirm this calculation method</string>
     <string name="ui_calculation_confirmed">Method confirmed for this location.</string>
+    <string name="ui_time_unavailable">Time not available</string>
 </resources>

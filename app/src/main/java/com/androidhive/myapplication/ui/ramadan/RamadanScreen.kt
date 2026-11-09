@@ -143,8 +143,15 @@ fun RamadanScreen(state: SalahUiState, content: RamadanContent, playback: SuhurP
         }
         calendar?.let { month ->
             item { SectionTitle(stringResource(R.string.ui_ramadan_period, month.hijriYear, dateFormat.format(month.start), dateFormat.format(month.end))) }
-            items(month.days, key = { it.date.toString() }) { value ->
-                AppCard(modifier = Modifier.testTag("ramadan_day_${value.dayOfRamadan}"), onClick = { selected = value.date.toString(); scope.launch { if (settings.reduceMotion) scroll.scrollToItem(0) else scroll.animateScrollToItem(0) } }) {
+            items(java.time.temporal.ChronoUnit.DAYS.between(month.start, month.end).toInt() + 1,
+                key = { month.start.plusDays(it.toLong()).toString() }) { index ->
+                val date = month.start.plusDays(index.toLong())
+                val value = month.days.firstOrNull { it.date == date }
+                if (value == null) AppCard {
+                    Text(stringResource(R.string.ui_ramadan_day, index + 1), color = MaterialTheme.colorScheme.primary)
+                    Text(dateFormat.format(date), style = MaterialTheme.typography.titleMedium)
+                    SupportingText(stringResource(R.string.ui_time_unavailable))
+                } else AppCard(modifier = Modifier.testTag("ramadan_day_${value.dayOfRamadan}"), onClick = { selected = value.date.toString(); scope.launch { if (settings.reduceMotion) scroll.scrollToItem(0) else scroll.animateScrollToItem(0) } }) {
                     Text(stringResource(R.string.ui_ramadan_day, value.dayOfRamadan), color = MaterialTheme.colorScheme.primary)
                     Text(dateFormat.format(value.date), style = MaterialTheme.typography.titleMedium)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

@@ -46,12 +46,13 @@ fun PrayerTimesScreen(state: SalahUiState, onCity: (String) -> Unit, onGps: () -
         }
         state.today?.let { today -> AppCard {
             SectionTitle(stringResource(R.string.ui_prayer_times))
-            today.moments.forEach { moment ->
-                val active = moment.id == state.next?.id && moment.time == state.next.time
+            PrayerId.entries.forEach { id ->
+                val moment = today.moments.firstOrNull { it.id == id }
+                val active = moment != null && moment == state.next
                 Row(Modifier.fillMaxWidth().padding(vertical = 2.dp), verticalAlignment = androidx.compose.ui.Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    PrayerArtwork(moment.id.artwork(), Modifier.size(32.dp))
-                    Text(stringResource(moment.id.labelRes()), Modifier.weight(1f), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
-                    Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
+                    PrayerArtwork(id.artwork(), Modifier.size(32.dp))
+                    Text(stringResource(id.labelRes()), Modifier.weight(1f), color = if (active) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+                    Text(moment?.let { formatPrayerTime(it.time, settings) } ?: stringResource(R.string.ui_time_unavailable), style = MaterialTheme.typography.titleMedium)
                 }
             }
         } }

@@ -7,7 +7,7 @@ import java.time.chrono.HijrahDate
 import java.time.temporal.ChronoField
 
 data class FastingDay(val date: LocalDate, val dayOfRamadan: Int, val fajr: Instant, val iftar: Instant)
-data class RamadanCalendar(val hijriYear: Int, val start: LocalDate, val end: LocalDate, val days: List<FastingDay>)
+data class RamadanCalendar(val hijriYear: Int, val start: LocalDate, val end: LocalDate, val days: List<FastingDay>, val unavailableDates: Set<LocalDate> = emptySet())
 enum class RamadanReminderKind { SUHUR, IFTAR }
 data class RamadanReminder(val kind: RamadanReminderKind, val time: Instant, val fastingDate: LocalDate, val fajr: Instant)
 
@@ -31,6 +31,11 @@ class RamadanEngine(private val prayers: PrayerEngine) {
         val times = prayers.day(location, settings.calculationPreset, settings.asrConvention, date).moments
         return FastingDay(date, number, times.single { it.id == PrayerId.FAJR }.time, times.single { it.id == PrayerId.MAGHRIB }.time)
     }
+    private fun availableDay(settings: AppSettings, date: LocalDate, number: Int = 0): FastingDay? =
+        try { fastingDay(settings, date, number) }
+        catch (error: kotlinx.coroutines.CancellationException) { throw error }
+        catch (_: Exception) { null }
+
     fun calendar(settings: AppSettings, date: LocalDate, year: Int = periodYear(date, settings.ramadan.calendarAdjustment)): RamadanCalendar {
         val location = requireNotNull(settings.location)
         val adjustment = settings.ramadan.calendarAdjustment
@@ -38,8 +43,9 @@ class RamadanEngine(private val prayers: PrayerEngine) {
         synchronized(cache) { cache[key]?.let { return it } }
         val first = HijrahDate.of(year, 9, 1)
         val start = LocalDate.from(first).minusDays(adjustment.toLong())
-        val days = (0 until first.lengthOfMonth()).map { fastingDay(settings, start.plusDays(it.toLong()), it + 1) }
-        return RamadanCalendar(year, start, days.last().date, days).also { synchronized(cache) { cache[key] = it } }
+        val dates = (0 until first.lengthOfMonth()).map { start.plusDays(it.toLong()) }
+        val days = dates.mapIndexedNotNull { index, day -> availableDay(settings, day, index + 1) }
+        return RamadanCalendar(year, start, dates.last(), days, dates.toSet() - days.map { it.date }.toSet()).also { synchronized(cache) { cache[key] = it } }
     }
     fun next(settings: AppSettings, kind: RamadanReminderKind, after: Instant): RamadanReminder? {
         if (kind == RamadanReminderKind.SUHUR && !settings.ramadan.suhurEnabled || kind == RamadanReminderKind.IFTAR && !settings.ramadan.iftarEnabled) return null
@@ -50,7 +56,7 @@ class RamadanEngine(private val prayers: PrayerEngine) {
             return RamadanReminder(kind, time, day.date, day.fajr)
         }
         if (!settings.ramadan.onlyRamadan) return (0L..2L).asSequence()
-            .map { candidate(fastingDay(settings, date.plusDays(it))) }.firstOrNull { it.time.isAfter(after) }
+            .mapNotNull { availableDay(settings, date.plusDays(it))?.let(::candidate) }.firstOrNull { it.time.isAfter(after) }
         val year = periodYear(date, settings.ramadan.calendarAdjustment)
         // The next suhur may already belong to the next Ramadan on its last day.
         for (value in year..year + 1) calendar(settings, date, value).days.asSequence()
@@ -61,7 +67,7 @@ class RamadanEngine(private val prayers: PrayerEngine) {
         if (settings.location == null) return false
         val enabled = if (reminder.kind == RamadanReminderKind.SUHUR) settings.ramadan.suhurEnabled else settings.ramadan.iftarEnabled
         if (!enabled || settings.ramadan.onlyRamadan && !isRamadan(reminder.fastingDate, settings.ramadan.calendarAdjustment)) return false
-        val day = fastingDay(settings, reminder.fastingDate)
+        val day = availableDay(settings, reminder.fastingDate) ?: return false
         val expected = if (reminder.kind == RamadanReminderKind.SUHUR) day.fajr.minusSeconds(settings.ramadan.minutesBeforeFajr * 60L) else day.iftar
         return expected == reminder.time && day.fajr == reminder.fajr
     }

@@ -219,4 +219,5 @@
     <string name="ui_saved_data_unavailable">محفوظ ترتیبات پڑھی نہیں جا سکیں۔ ڈیٹا اور نشان زد موضوعات حذف نہیں ہوئے؛ دوبارہ کوشش کریں۔</string>
     <string name="ui_confirm_calculation">اس حسابی طریقے کی تصدیق کریں</string>
     <string name="ui_calculation_confirmed">اس مقام کے لیے طریقہ تصدیق شدہ ہے۔</string>
+    <string name="ui_time_unavailable">وقت دستیاب نہیں</string>
 </resources>

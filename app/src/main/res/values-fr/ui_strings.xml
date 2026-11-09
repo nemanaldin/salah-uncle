@@ -219,4 +219,5 @@
     <string name="ui_saved_data_unavailable">Impossible de lire les réglages enregistrés. Les données et favoris ne sont pas supprimés ; réessayez.</string>
     <string name="ui_confirm_calculation">Confirmer cette méthode de calcul</string>
     <string name="ui_calculation_confirmed">Méthode confirmée pour ce lieu.</string>
+    <string name="ui_time_unavailable">Horaire indisponible</string>
 </resources>

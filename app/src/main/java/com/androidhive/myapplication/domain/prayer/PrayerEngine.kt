@@ -14,10 +14,34 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
 data class PrayerMoment(val id: PrayerId, val time: Instant)
-data class DailyPrayers(val date: LocalDate, val moments: List<PrayerMoment>)
+data class DailyPrayers(val date: LocalDate, val moments: List<PrayerMoment>) {
+    val unavailable: List<PrayerId> get() = PrayerId.entries.filter { id -> moments.none { it.id == id } }
+}
+
+fun interface PrayerDayCalculator {
+    fun calculate(location: SavedLocation, preset: CalculationPreset, asr: AsrConvention, date: LocalDate): DailyPrayers
+}
+
+private val adhanDayCalculator = PrayerDayCalculator { location, preset, asr, date ->
+    val times = PrayerTimes(
+        Coordinates(location.latitude, location.longitude),
+        DateComponents(date.year, date.monthValue, date.dayOfMonth),
+        preset.parameters(asr, date),
+    )
+    // Adhan 1.x leaves wall-clock milliseconds in Date values. Strip that noise
+    // so recomputation after process death can validate the same alarm.
+    val moments = listOf(
+        PrayerId.FAJR to times.fajr, PrayerId.SUNRISE to times.sunrise,
+        PrayerId.DHUHR to times.dhuhr, PrayerId.ASR to times.asr,
+        PrayerId.MAGHRIB to times.maghrib, PrayerId.ISHA to times.isha,
+    ).mapNotNull { (id, dateTime) ->
+        dateTime?.let { PrayerMoment(id, it.toInstant().truncatedTo(ChronoUnit.SECONDS)) }
+    }
+    DailyPrayers(date, moments)
+}
 
 /** Android-free calculation shared by the visible UI, notifications and alarm scheduling. */
-class PrayerEngine(private val clock: Clock = Clock.systemUTC()) {
+class PrayerEngine(private val clock: Clock = Clock.systemUTC(), private val calculator: PrayerDayCalculator = adhanDayCalculator) {
     private data class Key(
         val latitude: Double, val longitude: Double, val date: LocalDate,
         val preset: CalculationPreset, val asr: AsrConvention,
@@ -34,27 +58,16 @@ class PrayerEngine(private val clock: Clock = Clock.systemUTC()) {
     ): DailyPrayers {
         val key = Key(location.latitude, location.longitude, date, preset, asr)
         synchronized(cache) { cache[key]?.let { return it } }
-        val times = PrayerTimes(
-            Coordinates(location.latitude, location.longitude),
-            DateComponents(date.year, date.monthValue, date.dayOfMonth),
-            preset.parameters(asr, date),
-        )
-        val moments = listOf(
-            PrayerId.FAJR to times.fajr, PrayerId.SUNRISE to times.sunrise,
-            PrayerId.DHUHR to times.dhuhr, PrayerId.ASR to times.asr,
-            PrayerId.MAGHRIB to times.maghrib, PrayerId.ISHA to times.isha,
-        // Adhan 1.x leaves Calendar milliseconds from the time of calculation in its Date values.
-        // Strip that noise so recomputation after process death can validate the same alarm.
-        ).mapNotNull { (id, dateTime) -> dateTime?.let { PrayerMoment(id, it.toInstant().truncatedTo(ChronoUnit.SECONDS)) } }
-        check(moments.count { it.id.canAlert } == 5) { "Prayer times unavailable for this date and location" }
-        return DailyPrayers(date, moments).also { synchronized(cache) { cache[key] = it } }
+        return calculator.calculate(location, preset, asr, date).also { synchronized(cache) { cache[key] = it } }
     }
 
     fun upcoming(settings: AppSettings, after: Instant = clock.instant()): List<PrayerMoment> {
         val location = settings.location ?: return emptyList()
         val date = after.atZone(location.zone).toLocalDate()
         return (0L..2L).flatMap { offset ->
-            day(location, settings.calculationPreset, settings.asrConvention, date.plusDays(offset)).moments
+            try { day(location, settings.calculationPreset, settings.asrConvention, date.plusDays(offset)).moments }
+            catch (error: kotlinx.coroutines.CancellationException) { throw error }
+            catch (_: Exception) { emptyList() }
         }.filter { it.id.canAlert && it.time.isAfter(after) }.sortedBy { it.time }
     }
 

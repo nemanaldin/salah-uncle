@@ -68,12 +68,18 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         }
     }
     val state = combine(settingsState, content, ticks, locating) { settings, loaded, now, busy ->
-        val result = if (settings?.location != null) runCatching {
-            container.prayerEngine.day(settings.location, settings.calculationPreset, settings.asrConvention) to container.prayerEngine.next(settings, now)
-        } else null
-        SalahUiState(settings, loaded, now, result?.getOrNull()?.first, result?.getOrNull()?.second,
-            locationBusy = busy, error = if (result?.isFailure == true) R.string.ui_error_calculation else null,
-            calculationFailed = result?.isFailure == true)
+        val today = settings?.location?.let { location -> runCatching {
+            container.prayerEngine.day(location, settings.calculationPreset, settings.asrConvention, now.atZone(location.zone).toLocalDate())
+        } }
+        // Searching subsequent days must not depend on today's calculation succeeding.
+        val next = settings?.location?.let { runCatching { container.prayerEngine.next(settings, now) } }
+        val failed = today?.isFailure == true || next?.isFailure == true
+        val displayDay = today?.getOrNull() ?: settings?.location?.let {
+            DailyPrayers(now.atZone(it.zone).toLocalDate(), emptyList())
+        }
+        SalahUiState(settings, loaded, now, displayDay, next?.getOrNull(), locationBusy = busy,
+            error = if (failed) R.string.ui_error_calculation else null, calculationFailed = failed)
+
     }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
         .combine(settingsReader.state) { state, read -> state.copy(settingsReadFailed = read.error != null,
             error = if (read.error != null) R.string.ui_error_generic else state.error) }

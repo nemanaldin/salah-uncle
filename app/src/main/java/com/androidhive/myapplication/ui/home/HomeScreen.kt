@@ -91,14 +91,15 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
         }
         state.today?.let { today ->
             LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp), contentPadding = PaddingValues(horizontal = 2.dp)) {
-                items(today.moments.filter { it.id.canAlert }, key = { it.id }) { moment ->
-                    val active = moment == state.next
+                items(com.androidhive.myapplication.core.model.PrayerId.obligatory, key = { it }) { id ->
+                    val moment = today.moments.firstOrNull { it.id == id }
+                    val active = moment != null && moment == state.next
                     Surface(shape = RoundedCornerShape(16.dp), color = if (active) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
                         Column(Modifier.widthIn(min = 68.dp).padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                            PrayerArtwork(moment.id.artwork(), Modifier.size(28.dp))
-                            Text(stringResource(moment.id.labelRes()), style = MaterialTheme.typography.labelMedium)
-                            Text(formatPrayerTime(moment.time, settings), style = MaterialTheme.typography.titleMedium)
+                            PrayerArtwork(id.artwork(), Modifier.size(28.dp))
+                            Text(stringResource(id.labelRes()), style = MaterialTheme.typography.labelMedium)
+                            Text(moment?.let { formatPrayerTime(it.time, settings) } ?: stringResource(R.string.ui_time_unavailable), style = MaterialTheme.typography.titleMedium)
                         }
                     }
                 }
