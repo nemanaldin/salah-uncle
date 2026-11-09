@@ -34,4 +34,15 @@ class ReadRecoveryTest {
         val reader=RetryingReader(backgroundScope) {flow {if(++calls==1) awaitCancellation();emit(AppSettings(bookmarks=setOf("keep")))}}
         runCurrent();reader.retry();runCurrent();assertEquals(setOf("keep"),reader.state.value.value!!.bookmarks);assertNull(reader.state.value.error)
     }
+    @Test fun cancelledReadFailureCannotPoisonRecoveredSettings() = runTest {
+        var calls = 0
+        val saved = AppSettings(bookmarks = setOf("keep"))
+        val reader = RetryingReader(backgroundScope) { flow {
+            if (++calls == 1) withContext(NonCancellable) { delay(1000); throw IOException("old read failed") }
+            emit(saved)
+        } }
+        runCurrent(); reader.retry(); runCurrent(); advanceTimeBy(1000); runCurrent()
+        assertEquals(saved, reader.state.value.value)
+        assertNull(reader.state.value.error)
+    }
 }

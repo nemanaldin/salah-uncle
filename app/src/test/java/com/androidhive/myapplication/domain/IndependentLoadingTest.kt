@@ -42,4 +42,13 @@ class IndependentLoadingTest {
         slot.retry(); runCurrent(); slot.retry(); runCurrent(); advanceTimeBy(1000); runCurrent()
         assertEquals("new", slot.state.value.data)
     }
+    @Test fun cancelledLoadFailureCannotPoisonRecoveredCatalog() = runTest {
+        var calls = 0
+        val slot = LoadSlot("", backgroundScope) {
+            if (++calls == 1) withContext(NonCancellable) { delay(1000); error("old load failed") } else "new"
+        }
+        slot.retry(); runCurrent(); slot.retry(); runCurrent(); advanceTimeBy(1000); runCurrent()
+        assertEquals("new", slot.state.value.data)
+        assertFalse(slot.state.value.failed)
+    }
 }
