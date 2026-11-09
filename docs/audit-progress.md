@@ -43,3 +43,9 @@ Done: full 2,726-line diff and subsequent fixes read. Cancelled-read race fixed 
 
 
 Baseline and phase checks: `/workspace/audit-evidence/` (actual logs/results). No local adb target or /dev/kvm; device, sensors, GPS and audio execution are not verified.
+
+## Publication follow-up — 2026-11-09
+
+The owner subsequently requested a GitHub push and an installable APK download. Commit `177d3abc772c82cbcde905109e0213c9c25c0ab7` was pushed successfully to the same fork's `work` branch. Remote `main` and `uncle-work` remained at their earlier hashes; PR #1 was not edited.
+
+A separate `Download audit APK` workflow builds and tests this branch and publishes a debug APK as a clearly labelled prerelease with a SHA-256 checksum. Its first run is pending at the time of this commit. The local APK and the preceding audit's test evidence remain available; no app source or educational wording changed in this publication follow-up. The earlier no-push statements describe the original audit hand-off before this new authorization.

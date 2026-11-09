@@ -1,0 +1,74 @@
+name: Download audit APK
+
+on:
+  push:
+    branches: [work]
+    paths: [.github/workflows/download-apk.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: audit-apk-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - uses: gradle/actions/wrapper-validation@v4
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install Android compilation SDK
+        run: sdkmanager 'platforms;android-36' 'build-tools;35.0.0'
+      - name: Verify content, run unit tests and build APK
+        run: |
+          python3 scripts/verify_content.py
+          ./gradlew --no-daemon --console=plain --max-workers=3 :app:testDebugUnitTest :app:assembleDebug
+      - name: Prepare installable download
+        run: |
+          mkdir -p download
+          cp app/build/outputs/apk/debug/app-debug.apk download/Salah-2.7.0-audit-debug.apk
+          cd download
+          sha256sum Salah-2.7.0-audit-debug.apk > SHA256SUMS.txt
+      - name: Save APK and test reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: salah-audit-apk-${{ github.sha }}
+          retention-days: 90
+          path: |
+            download/
+            app/build/reports/tests/
+            app/build/test-results/
+      - name: Publish a clearly labelled test download
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          release_tag="audit-apk-${GITHUB_SHA:0:12}"
+          cat > download-notes.md <<'NOTES'
+          Installable debug/test APK for the audit fixes on the work branch.
+          This is a prerelease, not a production or store release.
+          Educational/fiqh wording is unchanged. Content review remains pending qualified scholars.
+          Unit tests and the build are verified in this workflow; phone sensors, GPS and real audio are not verified here.
+          NOTES
+          if gh release view "$release_tag" >/dev/null 2>&1; then
+            echo "The existing download is preserved: $release_tag"
+          else
+            gh release create "$release_tag" download/Salah-2.7.0-audit-debug.apk download/SHA256SUMS.txt \
+              --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title 'Salah 2.7.0 — audit test APK' --notes-file download-notes.md
+          fi
+          gh release view "$release_tag" --json url --jq .url >> "$GITHUB_STEP_SUMMARY"
