@@ -45,6 +45,7 @@ fun IllustratedHeading(title: String, @DrawableRes artwork: Int, subtitle: Strin
             Text(title, style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onBackground)
             subtitle?.let { SupportingText(it) }
         }
-        Image(painterResource(artwork), null, Modifier.size(82.dp), contentScale = ContentScale.Fit)
+        if (artwork == R.drawable.heritage_tayammum) TayammumArtwork(Modifier.size(82.dp))
+        else Image(painterResource(artwork), null, Modifier.size(82.dp), contentScale = ContentScale.Fit)
     }
 }

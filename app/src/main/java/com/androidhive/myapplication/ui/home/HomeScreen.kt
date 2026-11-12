@@ -24,6 +24,7 @@ import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.data.content.visibleFor
+import com.androidhive.myapplication.data.content.visibleTopic
 import com.androidhive.myapplication.data.content.readingTarget
 import com.androidhive.myapplication.domain.prayer.HomePrayerState
 import com.androidhive.myapplication.domain.prayer.homePrayerState
@@ -111,7 +112,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             add(QuickAccessItem("prayer", stringResource(R.string.ui_teach_prayer)) { onLesson(settings.school.guideId) })
             add(QuickAccessItem("wudu", stringResource(R.string.ui_teach_wudu)) { onLesson("purification-${settings.school.name.lowercase(Locale.ROOT)}") })
             listOf("ghusl", "tayammum", "sajdah-sahw").forEach { id ->
-                available.firstOrNull { it.id == id }?.let { lesson ->
+                available.visibleTopic(id, settings)?.let { lesson ->
                     add(QuickAccessItem(id, lesson.title(settings.language)) { onLesson(id) })
                 }
             }
@@ -119,17 +120,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             add(QuickAccessItem("wudu-duas", stringResource(R.string.ui_wudu_duas)) { onLesson("wudu-remembrance") })
             add(QuickAccessItem("qibla", stringResource(R.string.ui_qibla), onQibla))
         }
-        QuickAccessGrid(shortcuts) { id, modifier ->
-            val art = when (id) {
-                "prayer", "types" -> R.drawable.heritage_prayer
-                "wudu" -> R.drawable.heritage_wudu
-                "wudu-duas" -> R.drawable.heritage_dua
-                "qibla" -> R.drawable.heritage_qibla
-                else -> lessonArtwork(id)
-            }
-            if (id == "ramadan") PrayerArtwork(PrayerSymbol.TARAWIH, modifier)
-            else Image(painterResource(art), null, modifier.clip(CircleShape), contentScale = ContentScale.Fit)
-        }
+        QuickAccessGrid(shortcuts) { id, modifier -> HomeShortcutArtwork(id, modifier) }
         OutlinedButton(onLessons, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text(stringResource(R.string.ui_all_lessons)) }
         if (last != null) AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(settings.lastLessonId ?: last.id) }) {
             Text(stringResource(R.string.ui_resume_lesson), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)

@@ -28,16 +28,7 @@ private fun QuickAccessPreview(language: AppLanguage, dark: Boolean = false) {
                 "tayammum" to R.string.ui_teach_tayammum, "sajdah-sahw" to R.string.ui_teach_sujud,
                 "types" to R.string.ui_prayer_types, "wudu-duas" to R.string.ui_wudu_duas, "qibla" to R.string.ui_qibla)
                 .map { (id, title) -> QuickAccessItem(id, stringResource(title)) {} }
-            QuickAccessGrid(items) { id, modifier ->
-                val art = when (id) {
-                    "prayer", "types" -> R.drawable.heritage_prayer
-                    "wudu-duas" -> R.drawable.heritage_dua
-                    "qibla" -> R.drawable.heritage_qibla
-                    else -> lessonArtwork(id)
-                }
-                if (id == "ramadan") PrayerArtwork(PrayerSymbol.TARAWIH, modifier)
-                else Image(painterResource(art), null, modifier)
-            }
+            QuickAccessGrid(items) { id, modifier -> HomeShortcutArtwork(id, modifier) }
         }
     }
 }

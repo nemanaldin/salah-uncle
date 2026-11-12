@@ -64,6 +64,6 @@ Authorized by salah-app-prompt.docx: current branch work; local commits only, no
 | 8 | Optional prayer/wudu/ghusl slides and text view | done | 3fc5c823df584123b52ff8b1e4717908566c76ff | Build, 161 unit tests, lint 65 warnings/0 errors; 6 exact-text/navigation tests; actual swipes unverified |
 | 9 | Draft dhikr arrangement and post-wudu integration | done | ee4a0436063941d26ead6a2e1a0bed5d93c0d57d | Build, 168 unit tests, lint 65 warnings/0 errors; 7 source/order/school/migration tests; all source wording unchanged; scholarly/device review pending |
 | 10 | Accessibility and large-text/dark/RTL quality | done | 4c56a290599df515b8047e1850915cdf70a04531 | Build, 170 unit tests, lint 65 warnings/0 errors; Android tests compiled; connected test failed: no connected devices; TalkBack/visual shaping unverified |
-| 11 | Compact adaptive quick access | done | this commit; resolved after creation | Build, 173 unit tests, lint 65 warnings/0 errors; 3 new grid policy tests and compiled click test; previews compile, device layout unverified |
-| 12 | Existing tayammum artwork and school-isolated entry | not started | — | — |
+| 11 | Compact adaptive quick access | done | 796e34af1e26e412a673400f3b2a66fe16cf82be | Build, 173 unit tests, lint 65 warnings/0 errors; 3 new grid policy tests and compiled click test; previews compile, device layout unverified |
+| 12 | Existing tayammum artwork and school-isolated entry | done | this commit; resolved after creation | Build, 177 unit tests, lint 65 warnings/0 errors; 4 exact scope tests; original sheet intact, zero new image bytes; device rendering unverified |
 | 13 | Consistent draft step artwork | not started | — | — |

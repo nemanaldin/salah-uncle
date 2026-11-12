@@ -94,7 +94,8 @@ fun PrayerArtwork(symbol: PrayerSymbol, modifier: Modifier = Modifier) {
 @Composable
 fun TopicArtwork(id: String, modifier: Modifier = Modifier) {
     val symbol = topicSymbol(id)
-    if (symbol != null) PrayerArtwork(symbol, modifier)
+    if (id == "tayammum") TayammumArtwork(modifier)
+    else if (symbol != null) PrayerArtwork(symbol, modifier)
     else Image(painterResource(lessonArtwork(id)), null, modifier.clip(CircleShape))
 }
 @Composable
@@ -102,5 +103,36 @@ fun TopicHeading(title: String, id: String) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(title, Modifier.weight(1f), style = MaterialTheme.typography.headlineSmall)
         TopicArtwork(id, Modifier.size(76.dp))
+    }
+}
+
+/** Same existing source sheet as the article; its first panel is readable at thumbnail size. */
+@Composable
+fun TayammumArtwork(modifier: Modifier = Modifier) {
+    val sheet = ImageBitmap.imageResource(R.drawable.heritage_tayammum)
+    Canvas(modifier.clip(CircleShape)) {
+        val width = sheet.width / 4
+        val height = sheet.height / 2
+        val scale = min(size.width / width, size.height / height)
+        val dw = (width * scale).toInt(); val dh = (height * scale).toInt()
+        drawImage(sheet, srcOffset = IntOffset.Zero, srcSize = IntSize(width, height),
+            dstOffset = IntOffset(((size.width - dw) / 2).toInt(), ((size.height - dh) / 2).toInt()), dstSize = IntSize(dw, dh))
+    }
+}
+
+/** Shortcut art is shared by production and previews to preserve its identity/order. */
+@Composable
+fun HomeShortcutArtwork(id: String, modifier: Modifier = Modifier) {
+    val art = when (id) {
+        "prayer", "types" -> R.drawable.heritage_prayer
+        "wudu" -> R.drawable.heritage_wudu
+        "wudu-duas" -> R.drawable.heritage_dua
+        "qibla" -> R.drawable.heritage_qibla
+        else -> lessonArtwork(id)
+    }
+    when (id) {
+        "ramadan" -> PrayerArtwork(PrayerSymbol.TARAWIH, modifier)
+        "tayammum" -> TayammumArtwork(modifier)
+        else -> Image(painterResource(art), null, modifier.clip(CircleShape))
     }
 }
