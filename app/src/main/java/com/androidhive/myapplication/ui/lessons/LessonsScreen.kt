@@ -23,11 +23,17 @@ import androidx.compose.ui.unit.dp
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.data.content.visibleFor
+import com.androidhive.myapplication.data.content.searchLessons
+import com.androidhive.myapplication.data.content.LessonSearchHit
+import com.androidhive.myapplication.data.content.sectionHeading
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.delay
 import com.androidhive.myapplication.ui.components.*
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit, initialCategory: String = "all") {
+fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit, initialCategory: String = "all", onSection: (String, String) -> Unit = { id, _ -> onLesson(id) }) {
     val settings = state.settings ?: return
     var query by rememberSaveable { mutableStateOf("") }
     var category by rememberSaveable(initialCategory) { mutableStateOf(initialCategory) }
@@ -40,6 +46,18 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
                 (query.isBlank() || lesson.title(settings.language).contains(query, true) || lesson.titleFa.contains(query, true) || lesson.titleEn.contains(query, true))
         }
     }
+    var hits by remember { mutableStateOf(emptyList<LessonSearchHit>()) }
+    var searchedFor by remember { mutableStateOf<Triple<String, com.androidhive.myapplication.core.model.School, com.androidhive.myapplication.core.model.AppLanguage>?>(null) }
+    LaunchedEffect(query, state.content.lessons, settings.school, settings.language) {
+        if (query.isBlank()) hits = emptyList() else {
+            delay(150)
+            val results = withContext(Dispatchers.Default) { searchLessons(state.content.lessons, settings, query).take(100).toList() }
+            hits = results
+            searchedFor = Triple(query, settings.school, settings.language)
+        }
+    }
+    val currentHits = hits.takeIf { searchedFor == Triple(query, settings.school, settings.language) }.orEmpty()
+    val savedSections = settings.sectionBookmarks.filter { it.school == settings.school && it.language == settings.language }
     LazyColumn(Modifier.fillMaxSize().testTag("lesson_list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item { IllustratedHeading(stringResource(R.string.ui_lessons), R.drawable.heritage_prayer) }
         item {
@@ -58,8 +76,21 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
             InfoCard(stringResource(error)); TextButton(onRetry) { Text(stringResource(R.string.ui_retry)) }
         } }
         if (state.content.lessonsLoading) item { CircularProgressIndicator() }
-        if (!state.content.lessonsLoading && state.content.lessonsError == null && filtered.isEmpty()) item { SupportingText(stringResource(if (category == "saved") R.string.ui_empty_bookmarks else R.string.ui_empty_lessons)) }
-        items(filtered, key = { it.id }) { lesson ->
+        if (!state.content.lessonsLoading && state.content.lessonsError == null && filtered.isEmpty() && (query.isBlank() || currentHits.isEmpty()) && (category != "saved" || savedSections.isEmpty())) item { SupportingText(stringResource(if (category == "saved") R.string.ui_empty_bookmarks else R.string.ui_empty_lessons)) }
+        if (query.isNotBlank()) items(currentHits, key = { "hit:${it.lessonId}:${it.sectionId}" }) { hit ->
+            AppCard(modifier = Modifier.testTag("search_${hit.lessonId}_${hit.sectionId}"), onClick = { onSection(hit.lessonId, hit.sectionId) }) {
+                SectionTitle(hit.lessonTitle); SupportingText(hit.sectionTitle); Text(hit.excerpt)
+            }
+        }
+        if (query.isBlank() && category == "saved") items(savedSections, key = { "saved:${it.lessonId}:${it.sectionId}" }) { bookmark ->
+            val lesson = state.content.lessons.firstOrNull { it.id == bookmark.lessonId }
+            val step = lesson?.variant(settings.school, settings.language)?.steps?.firstOrNull { it.id == bookmark.sectionId }
+            if (lesson != null && step != null) AppCard(onClick = { onSection(lesson.id, step.id) }) {
+                SectionTitle(lesson.title(settings.language)); SupportingText(sectionHeading(step))
+                if (bookmark.note.isNotBlank()) Text(bookmark.note)
+            }
+        }
+        items(if (query.isBlank()) filtered else emptyList(), key = { it.id }) { lesson ->
             AppCard(modifier = Modifier.testTag("lesson_${lesson.id}"), onClick = { onLesson(lesson.id) }) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     TopicArtwork(lesson.id, Modifier.size(64.dp))

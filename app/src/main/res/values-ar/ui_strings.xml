@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">الوقت غير متاح</string>
     <string name="ui_experimental_status">تجريبية / لم تُراجع بعد</string>
     <string name="ui_experimental_language_notice">المحتوى باللغة %1$s تجريبي ولم تكتمل مراجعته بعد.</string>
+    <string name="ui_article_contents">المحتويات</string>
+    <string name="ui_section_bookmark">حفظ هذا القسم</string>
+    <string name="ui_section_note">ملاحظة اختيارية</string>
+    <string name="ui_remove_section_bookmark">إزالة علامة القسم</string>
 </resources>

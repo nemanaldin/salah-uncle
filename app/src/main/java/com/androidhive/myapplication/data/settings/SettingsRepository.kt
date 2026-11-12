@@ -101,6 +101,7 @@ class SettingsRepository(context: Context) {
         val voices = stringPreferencesKey("adhan_voices_v1")
         val selectedVoice = stringPreferencesKey("adhan_voice_id")
         val overrides = stringSetPreferencesKey("prayer_alerts")
+        val sectionBookmarks = stringPreferencesKey("section_bookmarks_v1")
         val bookmarks = stringSetPreferencesKey("bookmarks")
         val completed = stringSetPreferencesKey("completed_steps")
         val lastLesson = stringPreferencesKey("last_lesson")
@@ -135,6 +136,13 @@ class SettingsRepository(context: Context) {
                     AdhanVoice(item.getString("id"), item.getString("title"), item.getString("file"), item.getLong("bytes"))
                 }.getOrNull() }.distinctBy { it.id }
             }.getOrDefault(emptyList())
+            val sectionBookmarks = runCatching {
+                val array = JSONArray(p[Keys.sectionBookmarks] ?: "[]")
+                (0 until array.length()).map { index -> array.getJSONObject(index).let { item ->
+                    SectionBookmark(item.getString("lesson"), item.getString("section"), School.valueOf(item.getString("school")),
+                        AppLanguage.valueOf(item.getString("language")), item.optString("note"))
+                } }
+            }.getOrElse { throw java.io.IOException("Section bookmarks could not be read", it) }
             return AppSettings(
                 language = enumOrDefault(p[Keys.language], AppLanguage.PERSIAN),
                 school = school,
@@ -148,6 +156,7 @@ class SettingsRepository(context: Context) {
                 asrConvention = enumOrDefault(p[Keys.asr], school.defaultAsr),
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
                 adhanVoices = voices, selectedVoiceId = p[Keys.selectedVoice]?.takeIf { id -> voices.any { it.id == id } },
+                sectionBookmarks = sectionBookmarks,
                 prayerAlerts = overrides, bookmarks = p[Keys.bookmarks].orEmpty(), completedSteps = p[Keys.completed].orEmpty(),
                 ramadan = RamadanOptions(
                     p[Keys.suhur] ?: false, (p[Keys.suhurMinutes] ?: 90).coerceIn(5, 240),
@@ -177,6 +186,10 @@ class SettingsRepository(context: Context) {
             }) } }.toString()
             s.selectedVoiceId?.let { p[Keys.selectedVoice] = it } ?: p.remove(Keys.selectedVoice)
             p[Keys.overrides] = s.prayerAlerts.map { "${it.key.name}=${it.value.name}" }.toSet()
+            p[Keys.sectionBookmarks] = JSONArray().apply { s.sectionBookmarks.forEach { bookmark -> put(JSONObject().apply {
+                put("lesson", bookmark.lessonId); put("section", bookmark.sectionId); put("school", bookmark.school.name)
+                put("language", bookmark.language.name); put("note", bookmark.note)
+            }) } }.toString()
             p[Keys.bookmarks] = s.bookmarks; p[Keys.completed] = s.completedSteps
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)
             s.lastStepId?.let { p[Keys.lastStep] = it } ?: p.remove(Keys.lastStep)

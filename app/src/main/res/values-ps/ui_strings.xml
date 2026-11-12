@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">وخت شتون نه لري</string>
     <string name="ui_experimental_status">ازمایښتي / لا نه ده کتل شوې</string>
     <string name="ui_experimental_language_notice">د %1$s منځپانګه ازمایښتي ده او بیاکتنه یې لا نه ده بشپړه شوې.</string>
+    <string name="ui_article_contents">د برخو لړ</string>
+    <string name="ui_section_bookmark">دا برخه خوندي کړئ</string>
+    <string name="ui_section_note">اختیاري یادښت</string>
+    <string name="ui_remove_section_bookmark">د برخې نښه لرې کړئ</string>
 </resources>

@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">Horaire indisponible</string>
     <string name="ui_experimental_status">Expérimental / pas encore relu</string>
     <string name="ui_experimental_language_notice">Le contenu en %1$s est expérimental et sa relecture n’est pas encore terminée.</string>
+    <string name="ui_article_contents">Contents</string>
+    <string name="ui_section_bookmark">Save this section</string>
+    <string name="ui_section_note">Optional note</string>
+    <string name="ui_remove_section_bookmark">Remove section bookmark</string>
 </resources>

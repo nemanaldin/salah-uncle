@@ -90,6 +90,7 @@ data class AppSettings(
     val adhanVoices: List<AdhanVoice> = emptyList(),
     val selectedVoiceId: String? = null,
     val bookmarks: Set<String> = emptySet(),
+    val sectionBookmarks: List<SectionBookmark> = emptyList(),
     val completedSteps: Set<String> = emptySet(),
     val lastLessonId: String? = null,
     val lastStepId: String? = null,

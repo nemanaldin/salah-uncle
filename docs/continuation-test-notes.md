@@ -1,0 +1,7 @@
+# Existing Android test compatibility
+
+Existing tests remain byte-for-byte unchanged, as requested. `SalahFlowTest` includes scenarios selecting all four schools (around lines 96–118) and enumerating all ten picker languages (around line 141). Those assumptions intentionally differ from this continuation's release policy (one visible school/seven languages). They cannot be claimed to pass against the new default picker. Raw catalog-isolation tests still test all four schools and ten stored languages and are retained.
+
+New tests exercise the active policy and its reversible injected configuration. A later authorized update of legacy UI expectations or a separately named legacy-policy test configuration is needed before claiming the entire historical UI suite passes. No test is deleted, edited, disabled or automatically run under an undisclosed alternate policy. Locally, no adb target/KVM is available; instrumentation results are not asserted.
+
+Section bookmarks are additive in a new preferences field. Existing topic bookmark, progress and last-reading fields retain their values and IDs. Unreadable new bookmark JSON throws a read error instead of silently returning an empty collection and overwriting it. Unit tests cover transformations and isolation; a device persistence/restart test remains required.

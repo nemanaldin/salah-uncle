@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -31,6 +32,7 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.AppLanguage
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.core.model.ReviewStatus
+import com.androidhive.myapplication.core.model.SectionBookmark
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.MediaResources
 import com.androidhive.myapplication.platform.audio.LessonAudioController
@@ -39,12 +41,14 @@ import com.androidhive.myapplication.platform.openUrl
 import com.androidhive.myapplication.platform.shareText
 import com.androidhive.myapplication.ui.components.*
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 
 /** One continuous reference article. Source sections and media retain their IDs;
  * there is no completion gate, lesson sequence or course-progress UI. */
 @Composable
 fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
-    onBack: () -> Unit, onError: (Int) -> Unit) {
+    onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
+    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}) {
     var showOriginal by rememberSaveable(lesson.id, settings.school, settings.language) { mutableStateOf(false) }
     val translated = lesson.variant(settings.school, settings.language)
     val original = lesson.variant(settings.school)
@@ -60,8 +64,14 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         }
         return
     }
-    val initial = if (settings.lastLessonId == lesson.id) variant.steps.indexOfFirst { it.id == settings.lastStepId }.coerceAtLeast(0) else 0
+    val requested = variant.steps.indexOfFirst { it.id == initialSection }
+    val initial = if (requested >= 0) requested else if (settings.lastLessonId == lesson.id) variant.steps.indexOfFirst { it.id == settings.lastStepId }.coerceAtLeast(0) else 0
     val scroll = rememberLazyListState(initialFirstVisibleItemIndex = if (initial > 0) initial + 1 else 0)
+    val scope = rememberCoroutineScope()
+    var editing by remember { mutableStateOf<SectionBookmark?>(null) }
+    editing?.let { bookmark -> SectionBookmarkDialog(bookmark, settings.sectionBookmarks.firstOrNull { it.sameSection(bookmark) },
+        onSaveSection, onRemoveSection, { editing = null }) }
+    LaunchedEffect(initialSection) { if (requested >= 0) scroll.scrollToItem(requested + 1) }
     val context = LocalContext.current
     val lifecycle = LocalLifecycleOwner.current
     val currentError by rememberUpdatedState(onError)
@@ -92,6 +102,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
                     IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { it.body }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
                 }
                 TopicHeading(lesson.title(settings.language), lesson.id)
+                ArticleContents(variant.steps) { id -> scope.launch { scroll.animateScrollToItem(variant.steps.indexOfFirst { it.id == id } + 1) } }
                 if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) {
                     val language = if (settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) settings.language.nativeName
                         else AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language
@@ -104,6 +115,12 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         }
         items(variant.steps, key = { it.id }) { section ->
             AppCard(modifier = Modifier.testTag("topic_section_${section.id}")) {
+                val bookmark = SectionBookmark(lesson.id, section.id, settings.school, settings.language)
+                val saved = settings.sectionBookmarks.any { it.sameSection(bookmark) }
+                IconButton({ editing = bookmark }, Modifier.testTag("section_bookmark_${section.id}")) {
+                    Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark),
+                        tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
+                }
                 if (section.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     section.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
                         Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))

@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">Waktu tidak tersedia</string>
     <string name="ui_experimental_status">Eksperimen / belum disemak</string>
     <string name="ui_experimental_language_notice">Kandungan %1$s adalah eksperimen dan semakannya belum selesai.</string>
+    <string name="ui_article_contents">Contents</string>
+    <string name="ui_section_bookmark">Save this section</string>
+    <string name="ui_section_note">Optional note</string>
+    <string name="ui_remove_section_bookmark">Remove section bookmark</string>
 </resources>

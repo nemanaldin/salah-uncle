@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">Time not available</string>
     <string name="ui_experimental_status">Experimental / not yet reviewed</string>
     <string name="ui_experimental_language_notice">%1$s content is experimental and has not yet completed review.</string>
+    <string name="ui_article_contents">Contents</string>
+    <string name="ui_section_bookmark">Save this section</string>
+    <string name="ui_section_note">Optional note</string>
+    <string name="ui_remove_section_bookmark">Remove section bookmark</string>
 </resources>

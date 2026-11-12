@@ -222,4 +222,8 @@
     <string name="ui_time_unavailable">Vakit mevcut değil</string>
     <string name="ui_experimental_status">Deneysel / henüz incelenmedi</string>
     <string name="ui_experimental_language_notice">%1$s içeriği deneyseldir ve incelemesi henüz tamamlanmamıştır.</string>
+    <string name="ui_article_contents">Bölümler</string>
+    <string name="ui_section_bookmark">Bu bölümü kaydet</string>
+    <string name="ui_section_note">İsteğe bağlı not</string>
+    <string name="ui_remove_section_bookmark">Bölüm yer imini kaldır</string>
 </resources>
