@@ -31,7 +31,7 @@ data class TrainingVideo(
     val reviewStatus: ReviewStatus = ReviewStatus.EXPERIMENTAL, val titles: Map<String, String> = emptyMap(),
     val source: String = "", val version: String = "",
 ) {
-    fun title(language: AppLanguage) = titles[language.tag] ?: titles["en"]
+    fun title(language: AppLanguage) = titles[language.tag]?.takeIf { it.isNotBlank() } ?: titles["en"]?.takeIf { it.isNotBlank() }
         ?: if (titles.isEmpty() && language == AppLanguage.PERSIAN) titleFa else titleEn
     fun matches(school: School, language: AppLanguage) = this.school == school && language in languages
     fun status(language: AppLanguage) = if (language.reviewStatus == ReviewStatus.REVIEWED) reviewStatus else ReviewStatus.EXPERIMENTAL

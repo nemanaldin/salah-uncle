@@ -7,6 +7,7 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -170,8 +171,11 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                     composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message, state.content.videosLoading, state.content.videosError, model::retryVideos) }
                     composable("lesson/{id}?section={section}&offset={offset}", arguments = listOf(navArgument("section") { defaultValue = "" }, navArgument("offset") { type = androidx.navigation.NavType.IntType; defaultValue = 0 })) { entry ->
                         val requestedId = entry.arguments?.getString("id").orEmpty()
-                        val requestedSection = entry.arguments?.getString("section")?.takeIf { it.isNotBlank() }
-                            ?: settings.lastStepId.takeIf { settings.lastLessonId == requestedId }
+                        // Keep the entry's original resume target stable while recordReading updates settings.
+                        val requestedSection by rememberSaveable(requestedId, settings.school, settings.language) {
+                            mutableStateOf(entry.arguments?.getString("section")?.takeIf { it.isNotBlank() }
+                                ?: settings.lastStepId.takeIf { settings.lastLessonId == requestedId })
+                        }
                         val target = readingTarget(requestedId, requestedSection, settings.school, entry.arguments?.getInt("offset") ?: 0)
                         val lesson = state.content.lessons.firstOrNull { it.id == target.lessonId }
                         val targetStep = lesson?.variant(settings.school, settings.language)?.steps?.let { readingStep(it, target.sectionId) }

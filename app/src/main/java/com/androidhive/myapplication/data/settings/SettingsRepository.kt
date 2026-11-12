@@ -18,7 +18,7 @@ import org.json.JSONObject
 class SettingsRepository(context: Context) {
     private val app = context.applicationContext
     private val store = PreferenceDataStoreFactory.create(
-        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app), VisibilityMigration(), WuduBookmarkMigration()),
+        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app), WuduBookmarkMigration(), VisibilityMigration()),
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
         produceFile = { app.preferencesDataStoreFile("salah_settings") },
     )
@@ -79,15 +79,13 @@ class SettingsRepository(context: Context) {
 
     private class WuduBookmarkMigration : DataMigration<Preferences> {
         override suspend fun shouldMigrate(currentData: Preferences) = currentData[Keys.wuduBookmarks] != true
-        override suspend fun migrate(currentData: Preferences): Preferences = currentData.toMutablePreferences().apply {
-            encode(decode(currentData).migratePostWuduBookmark(), this)
-            this[Keys.wuduBookmarks] = true
-        }
+        override suspend fun migrate(currentData: Preferences): Preferences =
+            migrateWuduPreferences(currentData, decode(currentData), ::sectionBookmarksJson)
         override suspend fun cleanUp() = Unit
     }
 
     private object Keys {
-        val wuduBookmarks = booleanPreferencesKey("post_wudu_bookmarks_v1")
+        val wuduBookmarks = SectionBookmarkPreferences.migrated
         val visibility = stringPreferencesKey("visibility_policy_v1")
         val languageInitialized = booleanPreferencesKey("language_initialized_v1")
         val migrated = booleanPreferencesKey("legacy_migrated_v1")
@@ -111,7 +109,7 @@ class SettingsRepository(context: Context) {
         val voices = stringPreferencesKey("adhan_voices_v1")
         val selectedVoice = stringPreferencesKey("adhan_voice_id")
         val overrides = stringSetPreferencesKey("prayer_alerts")
-        val sectionBookmarks = stringPreferencesKey("section_bookmarks_v1")
+        val sectionBookmarks = SectionBookmarkPreferences.bookmarks
         val bookmarks = stringSetPreferencesKey("bookmarks")
         val completed = stringSetPreferencesKey("completed_steps")
         val lastLesson = stringPreferencesKey("last_lesson")
@@ -174,6 +172,12 @@ class SettingsRepository(context: Context) {
                 lastLessonId = p[Keys.lastLesson], lastStepId = p[Keys.lastStep], hiddenNotificationUntil = p[Keys.hidden] ?: 0L,
             )
         }
+        private fun sectionBookmarksJson(bookmarks: List<SectionBookmark>): String = JSONArray().apply {
+            bookmarks.forEach { bookmark -> put(JSONObject().apply {
+                put("lesson", bookmark.lessonId); put("section", bookmark.sectionId); put("school", bookmark.school.name)
+                put("language", bookmark.language.name); put("note", bookmark.note); put("offset", bookmark.offset)
+            }) }
+        }.toString()
         private fun encode(s: AppSettings, p: MutablePreferences) {
             p[Keys.language] = s.language.name
             p[Keys.school] = s.school.name
@@ -196,10 +200,7 @@ class SettingsRepository(context: Context) {
             }) } }.toString()
             s.selectedVoiceId?.let { p[Keys.selectedVoice] = it } ?: p.remove(Keys.selectedVoice)
             p[Keys.overrides] = s.prayerAlerts.map { "${it.key.name}=${it.value.name}" }.toSet()
-            p[Keys.sectionBookmarks] = JSONArray().apply { s.sectionBookmarks.forEach { bookmark -> put(JSONObject().apply {
-                put("lesson", bookmark.lessonId); put("section", bookmark.sectionId); put("school", bookmark.school.name)
-                put("language", bookmark.language.name); put("note", bookmark.note); put("offset", bookmark.offset)
-            }) } }.toString()
+            p[Keys.sectionBookmarks] = sectionBookmarksJson(s.sectionBookmarks)
             p[Keys.bookmarks] = s.bookmarks; p[Keys.completed] = s.completedSteps
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)
             s.lastStepId?.let { p[Keys.lastStep] = it } ?: p.remove(Keys.lastStep)

@@ -134,10 +134,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
     val bookmark: (LessonStep, Int) -> Unit = { step, offset -> editing = SectionBookmark(step.originLessonId ?: lesson.id, step.id, settings.school, settings.language, offset = offset) }
     val header: @Composable () -> Unit = {
         TopicHeading(lesson.title(settings.language), lesson.id)
-        if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL)
-            Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, settings.language.nativeName)) }
-        if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language, variant.language))
-        if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
+        ReaderNotices(lesson, variant, settings)
         ArticleContents(variant.steps, jump)
         if (eligible) TextButton({ textMode = !textMode }, Modifier.testTag("reader_mode")) { Text(stringResource(if (textMode) R.string.ui_show_slides else R.string.ui_show_text)) }
         IconButton({ shareText(context, (if (variant.steps.any { it.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW }) context.getString(R.string.ui_arrangement_draft) + "\n\n" else "") + lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
@@ -151,13 +148,13 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
         item("sources") { ReaderSources(lesson, variant, externalError) }
     } else Column(Modifier.fillMaxSize().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         TextButton({ textMode = true }, Modifier.testTag("reader_mode")) { Text(stringResource(R.string.ui_show_text)) }
-        LanguageReadinessNotice(settings.language)
-        if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
         ArticleContents(variant.steps, jump)
         val positionLabel = stringResource(R.string.ui_step_of, pager.currentPage + 1, slides.size)
         HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth().testTag("guide_pager").semantics { stateDescription = positionLabel }, key = { slides[it].key }) { index ->
             val slide = slides[index]
-            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 8.dp)) {
+            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                ReaderNotices(lesson, variant, settings)
                 ReaderSection(lesson.id, slide.step, slide.text, direction, variant.language, settings, playback,
                     { bookmark(slide.step, slide.offset) }, audio, index == 0)
                 if (index == slides.lastIndex) ReaderSources(lesson, variant, externalError)
@@ -224,4 +221,13 @@ private fun OriginalSectionArtwork(lessonId: String, step: LessonStep, school: S
             Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
         } }
     } else if (isSlideGuide(lessonId, school)) TopicArtwork(lessonId, Modifier.size(80.dp))
+}
+
+/** Notices stay readable inside the page scroll, leaving navigation reachable at 200% font. */
+@Composable
+private fun ReaderNotices(lesson: Lesson, variant: LessonVariant, settings: AppSettings) {
+    if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL)
+        Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, settings.language.nativeName)) }
+    if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language, variant.language))
+    if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
 }

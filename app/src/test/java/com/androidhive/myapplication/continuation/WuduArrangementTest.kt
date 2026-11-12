@@ -55,4 +55,10 @@ class WuduArrangementTest {
         assertTrue(topicBookmarkIds("purification-hanafi",School.HANAFI).any { it in old })
         assertFalse(topicBookmarkIds("purification-maliki",School.MALIKI).any { it in old })
     }
+    @Test fun overviewStepsWithoutSeparateDhikrAreMarkedWithoutEditingTheirBody() {
+        val arranged=readingCatalogue(listOf(guide,legacy,post),settings).single().variants.single().steps.first()
+        assertTrue(arranged.needsDhikrSource)
+        assertEquals(guide.variants.single().steps.first().body,arranged.body)
+        assertFalse(guide.variants.single().steps.first().needsDhikrSource)
+    }
 }

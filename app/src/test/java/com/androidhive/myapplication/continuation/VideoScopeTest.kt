@@ -20,4 +20,8 @@ class VideoScopeTest {
         assertFalse(other.visibleFor(settings))
         assertTrue(other.visibleFor(settings,ActiveContent.policy.copy(schools=ActiveContent.policy.schools+School.MALIKI)))
     }
+    @Test fun blankLocalizedTitlesFallBackToAnAvailableEnglishTitle() {
+        assertEquals("English", TrainingVideo("id", "فارسی", "Legacy", "training/file.mp4", titles = mapOf("en" to "English", "ar" to " ")).title(AppLanguage.ARABIC))
+        assertEquals("Legacy", TrainingVideo("id", "فارسی", "Legacy", "training/file.mp4", titles = mapOf("en" to "")).title(AppLanguage.ENGLISH))
+    }
 }

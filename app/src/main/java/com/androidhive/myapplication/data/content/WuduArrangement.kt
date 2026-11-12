@@ -34,7 +34,7 @@ fun readingCatalogue(catalog: List<Lesson>, settings: AppSettings): List<Lesson>
                 val used = mutableSetOf<String>()
                 val steps = buildList {
                     for (main in variant.steps) {
-                        add(main)
+                        add(if (school == School.HANAFI) main.copy(needsDhikrSource = true) else main)
                         for (id in groups[main.id].orEmpty()) legacy?.steps?.firstOrNull { it.id == id }?.let { step ->
                             add(draft(step, "wudu")); used += id
                         }
