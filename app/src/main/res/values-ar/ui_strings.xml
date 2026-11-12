@@ -234,4 +234,7 @@
     <string name="ui_compass_valid">اتجاه المستشعر صالح</string>
     <string name="ui_contents_expanded">المحتويات موسعة</string>
     <string name="ui_contents_collapsed">المحتويات مطوية</string>
+    <string name="ui_teach_ghusl">الغسل</string>
+    <string name="ui_teach_tayammum">التيمم</string>
+    <string name="ui_teach_sujud">سجود السهو</string>
 </resources>

@@ -234,4 +234,7 @@
     <string name="ui_compass_valid">Sensor heading is valid</string>
     <string name="ui_contents_expanded">Contents expanded</string>
     <string name="ui_contents_collapsed">Contents collapsed</string>
+    <string name="ui_teach_ghusl">Ghusl</string>
+    <string name="ui_teach_tayammum">Tayammum</string>
+    <string name="ui_teach_sujud">Sujud al-sahw</string>
 </resources>

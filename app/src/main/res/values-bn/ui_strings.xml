@@ -234,4 +234,7 @@
     <string name="ui_compass_valid">সেন্সরের দিক বৈধ</string>
     <string name="ui_contents_expanded">সূচি প্রসারিত</string>
     <string name="ui_contents_collapsed">সূচি সংকুচিত</string>
+    <string name="ui_teach_ghusl">গোসল</string>
+    <string name="ui_teach_tayammum">তায়াম্মুম</string>
+    <string name="ui_teach_sujud">সিজদায়ে সাহু</string>
 </resources>

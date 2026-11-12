@@ -234,4 +234,7 @@
     <string name="ui_compass_valid">د حسګر لوری معتبر دی</string>
     <string name="ui_contents_expanded">لړ پرانیستی دی</string>
     <string name="ui_contents_collapsed">لړ تړلی دی</string>
+    <string name="ui_teach_ghusl">غسل</string>
+    <string name="ui_teach_tayammum">تیمم</string>
+    <string name="ui_teach_sujud">د سهوې سجده</string>
 </resources>

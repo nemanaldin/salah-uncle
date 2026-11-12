@@ -9,14 +9,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDirection
@@ -30,6 +28,7 @@ import com.androidhive.myapplication.data.content.readingTarget
 import com.androidhive.myapplication.domain.prayer.HomePrayerState
 import com.androidhive.myapplication.domain.prayer.homePrayerState
 import com.androidhive.myapplication.ui.components.*
+import com.androidhive.myapplication.ui.theme.SalahPhotoTokens
 import java.time.Duration
 import java.time.Instant
 import java.time.format.DateTimeFormatter
@@ -44,7 +43,6 @@ fun countdown(now: Instant, next: Instant): String {
     return String.format(Locale.ROOT, "%02d:%02d:%02d", seconds / 3600, seconds % 3600 / 60, seconds % 60)
 }
 
-private data class Shortcut(val id: String, val title: String, val action: () -> Unit)
 
 @Composable
 fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> Unit, onLessons: () -> Unit,
@@ -55,37 +53,37 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
     PageColumn(Modifier.testTag("home_screen")) {
         PhotoPanel(Modifier.testTag("home_hero")) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text(stringResource(R.string.ui_next_prayer), Modifier.weight(1f), color = Color(0xFFCCE9DB), style = MaterialTheme.typography.labelLarge)
+                Text(stringResource(R.string.ui_next_prayer), Modifier.weight(1f), color = SalahPhotoTokens.support, style = MaterialTheme.typography.labelLarge)
                 Text(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(Locale.forLanguageTag(settings.language.tag))
                     .withZone(settings.location?.zone ?: java.time.ZoneId.systemDefault()).format(state.now),
-                    color = Color(0xFFE9D3A7), style = MaterialTheme.typography.labelMedium)
+                    color = SalahPhotoTokens.date, style = MaterialTheme.typography.labelMedium)
             }
             if (state.next != null) {
-                Text("${stringResource(state.next.id.labelRes())} · ${formatPrayerTime(state.next.time, settings)}", color = Color.White, style = MaterialTheme.typography.headlineMedium)
+                Text("${stringResource(state.next.id.labelRes())} · ${formatPrayerTime(state.next.time, settings)}", color = SalahPhotoTokens.onPhoto, style = MaterialTheme.typography.headlineMedium)
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(countdown(state.now, state.next.time), color = Color(0xFFF5E3B8),
+                    Text(countdown(state.now, state.next.time), color = SalahPhotoTokens.countdown,
                         style = MaterialTheme.typography.headlineMedium.copy(textDirection = TextDirection.Ltr), modifier = Modifier.testTag("prayer_countdown"))
                     TextButton(onTimes, Modifier.weight(1f).testTag("home_all_times")) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Text(settings.location?.labelFor(settings.language)?.ifBlank { stringResource(R.string.ui_device_location) }.orEmpty(),
-                                color = Color(0xFFD2E8DF), style = MaterialTheme.typography.bodySmall)
-                            Text(stringResource(R.string.ui_prayer_times), color = Color.White)
+                                color = SalahPhotoTokens.location, style = MaterialTheme.typography.bodySmall)
+                            Text(stringResource(R.string.ui_prayer_times), color = SalahPhotoTokens.onPhoto)
                         }
                     }
                 }
             } else {
                 when (homePrayerState(settings.location != null, false, state.calculationFailed, state.settingsReadFailed)) {
                     HomePrayerState.LOCATION_NOT_SET -> {
-                        Text(stringResource(R.string.ui_location_needed), color = Color.White, style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.ui_location_needed), color = SalahPhotoTokens.onPhoto, style = MaterialTheme.typography.titleMedium)
                         FilledTonalButton(onTimes, Modifier.testTag("home_set_location")) { Text(stringResource(R.string.ui_set_location)) }
                     }
                     HomePrayerState.LOADING_FAILED -> {
-                        Text(stringResource(R.string.ui_saved_data_unavailable), color = Color.White)
+                        Text(stringResource(R.string.ui_saved_data_unavailable), color = SalahPhotoTokens.onPhoto)
                         FilledTonalButton(onRetrySettings) { Text(stringResource(R.string.ui_retry)) }
                     }
                     HomePrayerState.LOADING -> CircularProgressIndicator()
                     else -> {
-                        Text(stringResource(R.string.ui_error_calculation), color = Color.White)
+                        Text(stringResource(R.string.ui_error_calculation), color = SalahPhotoTokens.onPhoto)
                         FilledTonalButton(onTimes, Modifier.testTag("home_all_times")) { Text(stringResource(R.string.ui_prayer_times)) }
                     }
                 }
@@ -96,7 +94,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
                 items(com.androidhive.myapplication.core.model.PrayerId.obligatory, key = { it }) { id ->
                     val moment = today.moments.firstOrNull { it.id == id }
                     val active = moment != null && moment == state.next
-                    Surface(shape = RoundedCornerShape(16.dp), color = if (active) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
+                    Surface(shape = MaterialTheme.shapes.medium, color = if (active) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surface,
                         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
                         Column(Modifier.widthIn(min = 68.dp).padding(10.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                             PrayerArtwork(id.artwork(), Modifier.size(28.dp))
@@ -109,44 +107,28 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
         }
         SectionTitle(stringResource(R.string.ui_quick_access))
         val shortcuts = buildList {
-            add(Shortcut("ramadan", stringResource(R.string.ui_ramadan), onRamadan))
-            add(Shortcut("prayer", stringResource(R.string.ui_teach_prayer)) { onLesson(settings.school.guideId) })
-            add(Shortcut("wudu", stringResource(R.string.ui_teach_wudu)) { onLesson("purification-${settings.school.name.lowercase(Locale.ROOT)}") })
+            add(QuickAccessItem("ramadan", stringResource(R.string.ui_ramadan), onRamadan))
+            add(QuickAccessItem("prayer", stringResource(R.string.ui_teach_prayer)) { onLesson(settings.school.guideId) })
+            add(QuickAccessItem("wudu", stringResource(R.string.ui_teach_wudu)) { onLesson("purification-${settings.school.name.lowercase(Locale.ROOT)}") })
             listOf("ghusl", "tayammum", "sajdah-sahw").forEach { id ->
                 available.firstOrNull { it.id == id }?.let { lesson ->
-                    add(Shortcut(id, lesson.title(settings.language)) { onLesson(id) })
+                    add(QuickAccessItem(id, lesson.title(settings.language)) { onLesson(id) })
                 }
             }
-            add(Shortcut("types", stringResource(R.string.ui_prayer_types), onPrayerTypes))
-            add(Shortcut("wudu-duas", stringResource(R.string.ui_wudu_duas)) { onLesson("wudu-remembrance") })
-            add(Shortcut("qibla", stringResource(R.string.ui_qibla), onQibla))
+            add(QuickAccessItem("types", stringResource(R.string.ui_prayer_types), onPrayerTypes))
+            add(QuickAccessItem("wudu-duas", stringResource(R.string.ui_wudu_duas)) { onLesson("wudu-remembrance") })
+            add(QuickAccessItem("qibla", stringResource(R.string.ui_qibla), onQibla))
         }
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val columns = if (maxWidth >= 600.dp) 3 else if (maxWidth < 240.dp) 1 else 2
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                shortcuts.chunked(columns).forEach { row ->
-                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        row.forEach { shortcut ->
-                            Card(onClick = shortcut.action, border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), modifier = Modifier.weight(1f).heightIn(min = 128.dp).testTag("home_${shortcut.id}"),
-                                shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                                Column(Modifier.fillMaxWidth().padding(12.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                    val art = when (shortcut.id) {
-                                        "prayer", "types" -> R.drawable.heritage_prayer
-                                        "wudu" -> R.drawable.heritage_wudu
-                                        "wudu-duas" -> R.drawable.heritage_dua
-                                        "qibla" -> R.drawable.heritage_qibla
-                                        else -> lessonArtwork(shortcut.id)
-                                    }
-                                    if (shortcut.id == "ramadan") PrayerArtwork(PrayerSymbol.TARAWIH, Modifier.size(64.dp))
-                                    else Image(painterResource(art), null, Modifier.size(64.dp).clip(CircleShape), contentScale = ContentScale.Fit)
-                                    Text(shortcut.title, style = MaterialTheme.typography.titleMedium)
-                                }
-                            }
-                        }
-                        repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
-                    }
-                }
+        QuickAccessGrid(shortcuts) { id, modifier ->
+            val art = when (id) {
+                "prayer", "types" -> R.drawable.heritage_prayer
+                "wudu" -> R.drawable.heritage_wudu
+                "wudu-duas" -> R.drawable.heritage_dua
+                "qibla" -> R.drawable.heritage_qibla
+                else -> lessonArtwork(id)
             }
+            if (id == "ramadan") PrayerArtwork(PrayerSymbol.TARAWIH, modifier)
+            else Image(painterResource(art), null, modifier.clip(CircleShape), contentScale = ContentScale.Fit)
         }
         OutlinedButton(onLessons, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text(stringResource(R.string.ui_all_lessons)) }
         if (last != null) AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(settings.lastLessonId ?: last.id) }) {

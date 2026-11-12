@@ -20,3 +20,14 @@ val SalahDarkScheme = darkColorScheme(
     surface = Color(0xFF15231E), onSurface = Color(0xFFE1EAE1),
     surfaceVariant = Color(0xFF263B30), onSurfaceVariant = Color(0xFFB9CBBE), outlineVariant = Color(0xFF3A5145),
 )
+
+/** Existing home-photo palette moved intact out of composables. Both modes use a dark photo overlay. */
+object SalahPhotoTokens {
+    val support = Color(0xFFCCE9DB)
+    val date = Color(0xFFE9D3A7)
+    val countdown = Color(0xFFF5E3B8)
+    val location = Color(0xFFD2E8DF)
+    val onPhoto = Color.White
+    val overlayTop = Color(0x660B2725)
+    val overlayBottom = Color(0xDD0B2725)
+}

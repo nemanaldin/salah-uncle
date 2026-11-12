@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -12,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import com.androidhive.myapplication.ui.theme.SalahPhotoTokens
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -31,10 +30,10 @@ fun lessonArtwork(id: String): Int = when {
 
 @Composable
 fun PhotoPanel(modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
-    Box(modifier.fillMaxWidth().clip(RoundedCornerShape(26.dp))) {
+    Box(modifier.fillMaxWidth().clip(MaterialTheme.shapes.extraLarge)) {
         Image(painterResource(R.drawable.heritage_mosque), null,
             Modifier.matchParentSize(), contentScale = ContentScale.Crop, alignment = Alignment.CenterStart)
-        Box(Modifier.matchParentSize().background(Brush.verticalGradient(listOf(Color(0x660B2725), Color(0xDD0B2725)))))
+        Box(Modifier.matchParentSize().background(Brush.verticalGradient(listOf(SalahPhotoTokens.overlayTop, SalahPhotoTokens.overlayBottom))))
         Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
     }
 }
