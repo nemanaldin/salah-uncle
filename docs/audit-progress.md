@@ -67,3 +67,9 @@ Authorized by salah-app-prompt.docx: current branch work; local commits only, no
 | 11 | Compact adaptive quick access | done | 796e34af1e26e412a673400f3b2a66fe16cf82be | Build, 173 unit tests, lint 65 warnings/0 errors; 3 new grid policy tests and compiled click test; previews compile, device layout unverified |
 | 12 | Existing tayammum artwork and school-isolated entry | done | c8454fb90b9b6eab594fe918d8331bdd1622def3 | Build, 177 unit tests, lint 65 warnings/0 errors; 4 exact scope tests; original sheet intact, zero new image bytes; device rendering unverified |
 | 13 | Consistent draft step artwork | done | 204e0b1f7645397b6dd6220e9ebb349a7f062c6c | Build, 184 unit tests, lint 65 warnings/0 errors; 7 art mapping/alt/scope tests; 30 stages illustrated, 156174 WebP bytes; poses/gender variants pending owner review |
+
+### Continuation final review
+
+Final corrections: 5f8285f575346279b87beae2dc26573db604f54f. The complete continuation diff and subsequent fixes were re-read. An additive preference migration now preserves raw unrelated settings and records the prior school/language scope before visibility recovery. Reading-entry resume targets remain stable during progress updates. Long notices scroll inside guide pages and variant readiness is honored there. Missing overview dhikr sources and blank video titles are handled explicitly.
+
+Final checks: assembleDebug, 190/190 unit tests (54 more than baseline), lint 65 warnings/0 errors, Android test compilation and content validation passed. Original 92 protected files unchanged. No phone/emulator is connected; connectedDebugAndroidTest failed with No connected devices. Phase implementation statuses above are done; phase 10 device QA and phase 13 owner/scholarly artwork approval remain blocked/pending, as reflected by partly in audit-fixes-review-2.md. Existing legacy UI assumptions were preserved unchanged and are not certified compatible. No push, main or PR #1 mutation was performed.
