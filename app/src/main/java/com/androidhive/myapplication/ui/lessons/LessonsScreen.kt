@@ -17,6 +17,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
+import com.androidhive.myapplication.core.model.ActiveContent
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -62,7 +65,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         }
     }
     val currentHits = hits.takeIf { searchedFor == Triple(query, settings.school, settings.language) }.orEmpty()
-    val savedSections = settings.sectionBookmarks.filter { it.school == settings.school && it.language == settings.language }
+    val savedSections = settings.sectionBookmarks.filter { ActiveContent.policy.allows(settings) && it.school == settings.school && it.language == settings.language }
     LazyColumn(Modifier.fillMaxSize().testTag("lesson_list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item { IllustratedHeading(stringResource(R.string.ui_lessons), R.drawable.heritage_prayer) }
         item {
@@ -102,7 +105,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
                     TopicArtwork(lesson.id, Modifier.size(64.dp))
                     Text(lesson.title(settings.language), Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
                     val saved = topicBookmarkIds(lesson.id, settings.school).any { it in settings.bookmarks }
-                    IconButton({ onBookmark(lesson.id) }, Modifier.testTag("bookmark_${lesson.id}")) {
+                    IconButton({ onBookmark(lesson.id) }, Modifier.testTag("bookmark_${lesson.id}").semantics { selected = saved }) {
                         Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),
                             tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
                     }

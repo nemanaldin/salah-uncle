@@ -231,4 +231,7 @@
     <string name="ui_slide_next">بعدی</string>
     <string name="ui_arrangement_draft">پیش‌نویس — در انتظار بازبینی</string>
     <string name="ui_needs_source">نیاز به منبع</string>
+    <string name="ui_compass_valid">جهت حسگر معتبر است</string>
+    <string name="ui_contents_expanded">فهرست باز است</string>
+    <string name="ui_contents_collapsed">فهرست بسته است</string>
 </resources>

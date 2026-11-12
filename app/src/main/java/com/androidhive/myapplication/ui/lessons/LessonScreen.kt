@@ -27,6 +27,12 @@ import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -124,7 +130,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
         ArticleContents(variant.steps, jump)
         if (eligible) TextButton({ textMode = !textMode }, Modifier.testTag("reader_mode")) { Text(stringResource(if (textMode) R.string.ui_show_slides else R.string.ui_show_text)) }
-        IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
+        IconButton({ shareText(context, (if (variant.steps.any { it.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW }) context.getString(R.string.ui_arrangement_draft) + "\n\n" else "") + lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
     }
     if (textMode) LazyColumn(Modifier.fillMaxSize().testTag("lesson_reader"), state = scroll,
         contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
@@ -138,7 +144,8 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         LanguageReadinessNotice(settings.language)
         if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
         ArticleContents(variant.steps, jump)
-        HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth().testTag("guide_pager"), key = { slides[it].key }) { index ->
+        val positionLabel = stringResource(R.string.ui_step_of, pager.currentPage + 1, slides.size)
+        HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth().testTag("guide_pager").semantics { stateDescription = positionLabel }, key = { slides[it].key }) { index ->
             val slide = slides[index]
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 8.dp)) {
                 ReaderSection(lesson.id, slide.step, slide.text, direction, variant.language, settings, playback,
@@ -148,7 +155,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         }
         Row(Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } }, Modifier.weight(1f).testTag("slide_previous"), enabled = pager.currentPage > 0) { Text(stringResource(R.string.ui_previous_step)) }
-            Text(stringResource(R.string.ui_step_of, pager.currentPage + 1, slides.size), Modifier.weight(1f).testTag("slide_position"))
+            Text(positionLabel, Modifier.weight(1f).testTag("slide_position").semantics { liveRegion = LiveRegionMode.Polite })
             Button({ scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } }, Modifier.weight(1f).testTag("slide_next"), enabled = pager.currentPage < slides.lastIndex) { Text(stringResource(R.string.ui_slide_next)) }
         }
     }
@@ -160,9 +167,13 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
     AppCard(Modifier.testTag("topic_section_${step.id}")) {
         val value = SectionBookmark(step.originLessonId ?: lessonId, step.id, settings.school, settings.language)
         val saved = settings.sectionBookmarks.any { it.sameSection(value) }
-        IconButton(onBookmark, Modifier.testTag("section_bookmark_${step.id}")) {
+        val bookmarkState = stringResource(if (saved) R.string.ui_bookmarks else R.string.ui_section_bookmark)
+        IconButton(onBookmark, Modifier.testTag("section_bookmark_${step.id}").semantics {
+            selected = saved; stateDescription = bookmarkState; role = Role.Button
+        }) {
             Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark), tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
         }
+        if (saved) SupportingText(bookmarkState)
         if (step.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
                 Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
@@ -185,7 +196,7 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
             val repeatLabel = stringResource(R.string.ui_repeat_audio)
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(repeatLabel, Modifier.weight(1f).padding(top = 11.dp))
-                Switch(playback.repeat, { audio?.repeat(it) }, Modifier.semantics { contentDescription = repeatLabel })
+                Switch(playback.repeat, { audio?.repeat(it) }, Modifier.testTag("repeat_${step.id}").semantics { contentDescription = repeatLabel + " · " + sectionHeading(step) })
             }
         } }
     }

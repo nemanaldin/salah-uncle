@@ -17,6 +17,11 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -48,10 +53,16 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
     val primary = MaterialTheme.colorScheme.primary
     val outline = MaterialTheme.colorScheme.outlineVariant
     val description = stringResource(R.string.ui_compass_description)
+    val statusLabel = stringResource(when (heading.status) {
+        HeadingStatus.WAITING -> R.string.ui_compass_waiting
+        HeadingStatus.INVALID -> R.string.ui_compass_invalid
+        HeadingStatus.NEEDS_CALIBRATION -> R.string.ui_qibla_calibration
+        HeadingStatus.VALID -> R.string.ui_compass_valid
+    })
     PageColumn(Modifier.testTag("qibla_screen")) {
         IllustratedHeading(stringResource(R.string.ui_qibla), R.drawable.heritage_qibla, stringResource(R.string.ui_qibla_body))
         AppCard {
-            Box(Modifier.fillMaxWidth().aspectRatio(1f).semantics { contentDescription = description }, contentAlignment = Alignment.Center) {
+            Box(Modifier.fillMaxWidth().aspectRatio(1f).semantics { contentDescription = description; role = Role.Image }, contentAlignment = Alignment.Center) {
                 Box(Modifier.fillMaxSize().graphicsLayer { rotationZ = -trueHeading }, contentAlignment = Alignment.TopCenter) {
                     Canvas(Modifier.fillMaxSize().padding(20.dp)) {
                         val radius = size.minDimension / 2
@@ -80,12 +91,9 @@ fun QiblaScreen(settings: AppSettings, headings: HeadingRepository, onLocation: 
                 }
             }
             Text(stringResource(R.string.ui_qibla_bearing, String.format(Locale.forLanguageTag(settings.language.tag), "%.1f", bearing)), style = MaterialTheme.typography.titleMedium)
-            when (heading.status) {
-                HeadingStatus.WAITING -> SupportingText(stringResource(R.string.ui_compass_waiting))
-                HeadingStatus.INVALID -> InfoCard(stringResource(R.string.ui_compass_invalid))
-                HeadingStatus.NEEDS_CALIBRATION -> SupportingText(stringResource(R.string.ui_qibla_calibration))
-                HeadingStatus.VALID -> Unit
-            }
+            SupportingText(statusLabel, Modifier.testTag("qibla_status").semantics {
+                liveRegion = LiveRegionMode.Polite; stateDescription = statusLabel
+            })
         }
         SupportingText(location.labelFor(settings.language).ifBlank { stringResource(R.string.ui_device_location) })
         TextButton(onLocation) { Text(stringResource(R.string.ui_set_location)) }

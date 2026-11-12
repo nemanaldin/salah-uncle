@@ -51,7 +51,7 @@ fun InfoCard(text: String) {
 fun ChoiceRow(title: String, selectedLabel: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
     ListItem(headlineContent = { Text(title) }, supportingContent = { Text(selectedLabel) },
         trailingContent = { Icon(Icons.Default.ArrowDropDown, null) },
-        modifier = modifier.fillMaxWidth().clickable(onClick = onClick).heightIn(min = 64.dp),
+        modifier = modifier.fillMaxWidth().clickable(role = Role.Button, onClick = onClick).heightIn(min = 64.dp),
         colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surface))
 }
 

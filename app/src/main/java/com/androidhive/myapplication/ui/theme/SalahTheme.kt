@@ -1,10 +1,11 @@
 package com.androidhive.myapplication.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.unit.dp
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextStyle
@@ -22,22 +23,8 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.core.model.ThemeMode
 
-private val Light = lightColorScheme(
-    primary = Color(0xFF16685D), onPrimary = Color.White,
-    primaryContainer = Color(0xFFD6ECE4), onPrimaryContainer = Color(0xFF123E36),
-    secondary = Color(0xFF876335), secondaryContainer = Color(0xFFF5E8D6), onSecondaryContainer = Color(0xFF503918),
-    background = Color(0xFFF5F7F3), onBackground = Color(0xFF20332E),
-    surface = Color(0xFFFCFDF9), onSurface = Color(0xFF20332E),
-    surfaceVariant = Color(0xFFEAF0E9), onSurfaceVariant = Color(0xFF52645C), outlineVariant = Color(0xFFD8E2D9),
-)
-private val Dark = darkColorScheme(
-    primary = Color(0xFF8BD3BF), onPrimary = Color(0xFF07382E),
-    primaryContainer = Color(0xFF234F43), onPrimaryContainer = Color(0xFFB9EFDC),
-    secondary = Color(0xFFE0BE86), secondaryContainer = Color(0xFF59452B), onSecondaryContainer = Color(0xFFFFE6BD),
-    background = Color(0xFF101C18), onBackground = Color(0xFFE1EAE1),
-    surface = Color(0xFF15231E), onSurface = Color(0xFFE1EAE1),
-    surfaceVariant = Color(0xFF263B30), onSurfaceVariant = Color(0xFFB9CBBE), outlineVariant = Color(0xFF3A5145),
-)
+private val SalahShapes = Shapes(medium = RoundedCornerShape(16.dp), large = RoundedCornerShape(23.dp), extraLarge = RoundedCornerShape(26.dp))
+
 private val Vazir = FontFamily(Font(R.font.vazirmatn_regular), Font(R.font.vazirmatn_medium, FontWeight.Medium), Font(R.font.vazirmatn_bold, FontWeight.Bold))
 private val Typography = Typography(
     headlineLarge = TextStyle(fontFamily = Vazir, fontSize = 31.sp, lineHeight = 45.sp, fontWeight = FontWeight.Bold),
@@ -85,6 +72,6 @@ fun SalahTheme(settings: AppSettings = AppSettings(), content: @Composable () ->
         LocalDensity provides Density(density.density, density.fontScale * settings.textScale),
         LocalLayoutDirection provides if (settings.language.isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
     ) { com.androidhive.myapplication.ui.components.PrayerArtworkProvider {
-        MaterialTheme(colorScheme = if (dark) Dark else Light, typography = typography, content = content)
+        MaterialTheme(colorScheme = if (dark) SalahDarkScheme else SalahLightScheme, typography = typography, shapes = SalahShapes, content = content)
     } }
 }

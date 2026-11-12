@@ -231,4 +231,7 @@
     <string name="ui_slide_next">اگلا</string>
     <string name="ui_arrangement_draft">مسودہ — نظرثانی کا منتظر</string>
     <string name="ui_needs_source">ماخذ درکار ہے</string>
+    <string name="ui_compass_valid">حسّاس کی سمت معتبر ہے</string>
+    <string name="ui_contents_expanded">فہرست کھلی ہے</string>
+    <string name="ui_contents_collapsed">فہرست بند ہے</string>
 </resources>

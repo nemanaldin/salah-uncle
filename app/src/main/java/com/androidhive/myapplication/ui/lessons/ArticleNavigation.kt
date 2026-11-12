@@ -7,6 +7,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.androidhive.myapplication.R
@@ -17,7 +19,8 @@ import com.androidhive.myapplication.data.content.*
 fun ArticleContents(steps: List<LessonStep>, onSection: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column {
-        TextButton({ expanded = !expanded }, Modifier.testTag("article_contents")) { Text(stringResource(R.string.ui_article_contents)) }
+        val stateLabel = stringResource(if (expanded) R.string.ui_contents_expanded else R.string.ui_contents_collapsed)
+        TextButton({ expanded = !expanded }, Modifier.testTag("article_contents").semantics { stateDescription = stateLabel }) { Text(stringResource(R.string.ui_article_contents)) }
         if (expanded) Column(Modifier.heightIn(max = 240.dp).verticalScroll(rememberScrollState())) { steps.forEachIndexed { index, step ->
             TextButton({ expanded = false; onSection(step.id) }, Modifier.fillMaxWidth().testTag("contents_${step.id}")) {
                 Text("${index + 1}. ${sectionHeading(step)}")

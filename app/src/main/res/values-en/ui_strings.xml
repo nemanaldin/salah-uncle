@@ -231,4 +231,7 @@
     <string name="ui_slide_next">Next</string>
     <string name="ui_arrangement_draft">Draft — pending review</string>
     <string name="ui_needs_source">Source needed</string>
+    <string name="ui_compass_valid">Sensor heading is valid</string>
+    <string name="ui_contents_expanded">Contents expanded</string>
+    <string name="ui_contents_collapsed">Contents collapsed</string>
 </resources>
