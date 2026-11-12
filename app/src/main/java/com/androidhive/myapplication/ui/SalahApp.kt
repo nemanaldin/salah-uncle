@@ -100,7 +100,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         "ramadan" -> stringResource(R.string.ui_ramadan)
         "training" -> stringResource(R.string.ui_training)
         "about" -> stringResource(R.string.ui_about)
-        "lesson/{id}?section={section}" -> state.content.lessons.firstOrNull { it.id == lessonId }?.title(settings.language).orEmpty()
+        "lesson/{id}?section={section}&offset={offset}" -> state.content.lessons.firstOrNull { it.id == lessonId }?.title(settings.language).orEmpty()
         "prayer-types" -> stringResource(R.string.ui_prayer_types)
         "voices" -> stringResource(R.string.ui_adhan_voice)
         else -> stringResource(destinations.firstOrNull { it.route == route }?.title ?: R.string.ui_app_name)
@@ -144,9 +144,13 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().weight(1f),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
                     composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }, model::retrySavedSettings) }
-                    composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, onSection = { id, section -> navigate("lesson/$id?section=${android.net.Uri.encode(section)}") }) }
+                    composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, onSection = { id, section -> navigate("lesson/$id?section=${android.net.Uri.encode(section)}") },
+                        onSearchHit = { navigate("lesson/${it.lessonId}?section=${android.net.Uri.encode(it.sectionId)}&offset=${it.offset}") },
+                        onSavedSection = { navigate("lesson/${it.lessonId}?section=${android.net.Uri.encode(it.sectionId)}&offset=${it.offset}") }) }
                     composable("tools") { ToolsScreen(settings.school, navigate) }
-                    composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, "prayers", { id, section -> navigate("lesson/$id?section=${android.net.Uri.encode(section)}") }) }
+                    composable("prayer-types") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, "prayers", { id, section -> navigate("lesson/$id?section=${android.net.Uri.encode(section)}") },
+                        onSearchHit = { navigate("lesson/${it.lessonId}?section=${android.net.Uri.encode(it.sectionId)}&offset=${it.offset}") },
+                        onSavedSection = { navigate("lesson/${it.lessonId}?section=${android.net.Uri.encode(it.sectionId)}&offset=${it.offset}") }) }
                     composable("voices") { com.androidhive.myapplication.ui.settings.AdhanVoicesScreen(state, model::update, model::importAdhanVoice, model::removeAdhanVoice, model::message) }
                     composable("settings") { SettingsScreen(state, model::update, { mode ->
                         model.update { it.copy(alertMode = mode) }
@@ -161,12 +165,12 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                     }
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
                     composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message, state.content.videosLoading, state.content.videosError, model::retryVideos) }
-                    composable("lesson/{id}?section={section}", arguments = listOf(navArgument("section") { defaultValue = "" })) { entry ->
+                    composable("lesson/{id}?section={section}&offset={offset}", arguments = listOf(navArgument("section") { defaultValue = "" }, navArgument("offset") { type = androidx.navigation.NavType.IntType; defaultValue = 0 })) { entry ->
                         val lesson = state.content.lessons.firstOrNull { it.id == entry.arguments?.getString("id") }
                         if (lesson != null) LessonScreen(lesson, settings, model::recordReading,
                             { navigation.popBackStack() }, model::message, entry.arguments?.getString("section")?.takeIf { it.isNotBlank() },
                             { bookmark -> model.update { it.withSectionBookmark(bookmark) } },
-                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } })
+                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } }, initialOffset = entry.arguments?.getInt("offset") ?: 0)
                         else PageColumn {
                             if (state.content.lessonsLoading) CircularProgressIndicator()
                             else {

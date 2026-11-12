@@ -1,6 +1,9 @@
 package com.androidhive.myapplication.ui.lessons
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.ui.unit.dp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -15,11 +18,11 @@ fun ArticleContents(steps: List<LessonStep>, onSection: (String) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     Column {
         TextButton({ expanded = !expanded }, Modifier.testTag("article_contents")) { Text(stringResource(R.string.ui_article_contents)) }
-        if (expanded) steps.forEachIndexed { index, step ->
+        if (expanded) Column(Modifier.heightIn(max = 240.dp).verticalScroll(rememberScrollState())) { steps.forEachIndexed { index, step ->
             TextButton({ expanded = false; onSection(step.id) }, Modifier.fillMaxWidth().testTag("contents_${step.id}")) {
                 Text("${index + 1}. ${sectionHeading(step)}")
             }
-        }
+        } }
     }
 }
 

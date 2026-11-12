@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">এই অংশ সংরক্ষণ করুন</string>
     <string name="ui_section_note">ঐচ্ছিক নোট</string>
     <string name="ui_remove_section_bookmark">অংশের বুকমার্ক সরান</string>
+    <string name="ui_show_text">পাঠ্য হিসেবে দেখুন</string>
+    <string name="ui_show_slides">স্লাইড দেখুন</string>
+    <string name="ui_slide_next">পরবর্তী</string>
 </resources>

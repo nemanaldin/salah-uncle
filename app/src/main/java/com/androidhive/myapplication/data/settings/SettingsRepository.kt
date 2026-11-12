@@ -140,7 +140,7 @@ class SettingsRepository(context: Context) {
                 val array = JSONArray(p[Keys.sectionBookmarks] ?: "[]")
                 (0 until array.length()).map { index -> array.getJSONObject(index).let { item ->
                     SectionBookmark(item.getString("lesson"), item.getString("section"), School.valueOf(item.getString("school")),
-                        AppLanguage.valueOf(item.getString("language")), item.optString("note"))
+                        AppLanguage.valueOf(item.getString("language")), item.optString("note"), item.optInt("offset", 0).coerceAtLeast(0))
                 } }
             }.getOrElse { throw java.io.IOException("Section bookmarks could not be read", it) }
             return AppSettings(
@@ -188,7 +188,7 @@ class SettingsRepository(context: Context) {
             p[Keys.overrides] = s.prayerAlerts.map { "${it.key.name}=${it.value.name}" }.toSet()
             p[Keys.sectionBookmarks] = JSONArray().apply { s.sectionBookmarks.forEach { bookmark -> put(JSONObject().apply {
                 put("lesson", bookmark.lessonId); put("section", bookmark.sectionId); put("school", bookmark.school.name)
-                put("language", bookmark.language.name); put("note", bookmark.note)
+                put("language", bookmark.language.name); put("note", bookmark.note); put("offset", bookmark.offset)
             }) } }.toString()
             p[Keys.bookmarks] = s.bookmarks; p[Keys.completed] = s.completedSteps
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)

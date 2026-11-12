@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">Save this section</string>
     <string name="ui_section_note">Optional note</string>
     <string name="ui_remove_section_bookmark">Remove section bookmark</string>
+    <string name="ui_show_text">Show as text</string>
+    <string name="ui_show_slides">Show slides</string>
+    <string name="ui_slide_next">Next</string>
 </resources>

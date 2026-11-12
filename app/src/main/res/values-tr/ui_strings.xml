@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">Bu bölümü kaydet</string>
     <string name="ui_section_note">İsteğe bağlı not</string>
     <string name="ui_remove_section_bookmark">Bölüm yer imini kaldır</string>
+    <string name="ui_show_text">Metin olarak göster</string>
+    <string name="ui_show_slides">Slaytları göster</string>
+    <string name="ui_slide_next">Sonraki</string>
 </resources>

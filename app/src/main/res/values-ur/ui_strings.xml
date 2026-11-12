@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">یہ حصہ محفوظ کریں</string>
     <string name="ui_section_note">اختیاری نوٹ</string>
     <string name="ui_remove_section_bookmark">حصے کا نشان ہٹائیں</string>
+    <string name="ui_show_text">متن کی صورت دکھائیں</string>
+    <string name="ui_show_slides">سلائیڈیں دکھائیں</string>
+    <string name="ui_slide_next">اگلا</string>
 </resources>

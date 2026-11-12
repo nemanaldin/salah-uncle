@@ -33,7 +33,9 @@ import com.androidhive.myapplication.ui.components.*
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit, initialCategory: String = "all", onSection: (String, String) -> Unit = { id, _ -> onLesson(id) }) {
+fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (String) -> Unit, onTraining: () -> Unit, onRetry: () -> Unit, initialCategory: String = "all", onSection: (String, String) -> Unit = { id, _ -> onLesson(id) },
+    onSearchHit: (LessonSearchHit) -> Unit = { onSection(it.lessonId, it.sectionId) },
+    onSavedSection: (com.androidhive.myapplication.core.model.SectionBookmark) -> Unit = { onSection(it.lessonId, it.sectionId) }) {
     val settings = state.settings ?: return
     var query by rememberSaveable { mutableStateOf("") }
     var category by rememberSaveable(initialCategory) { mutableStateOf(initialCategory) }
@@ -78,14 +80,14 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         if (state.content.lessonsLoading) item { CircularProgressIndicator() }
         if (!state.content.lessonsLoading && state.content.lessonsError == null && filtered.isEmpty() && (query.isBlank() || currentHits.isEmpty()) && (category != "saved" || savedSections.isEmpty())) item { SupportingText(stringResource(if (category == "saved") R.string.ui_empty_bookmarks else R.string.ui_empty_lessons)) }
         if (query.isNotBlank()) items(currentHits, key = { "hit:${it.lessonId}:${it.sectionId}" }) { hit ->
-            AppCard(modifier = Modifier.testTag("search_${hit.lessonId}_${hit.sectionId}"), onClick = { onSection(hit.lessonId, hit.sectionId) }) {
+            AppCard(modifier = Modifier.testTag("search_${hit.lessonId}_${hit.sectionId}"), onClick = { onSearchHit(hit) }) {
                 SectionTitle(hit.lessonTitle); SupportingText(hit.sectionTitle); Text(hit.excerpt)
             }
         }
         if (query.isBlank() && category == "saved") items(savedSections, key = { "saved:${it.lessonId}:${it.sectionId}" }) { bookmark ->
             val lesson = state.content.lessons.firstOrNull { it.id == bookmark.lessonId }
             val step = lesson?.variant(settings.school, settings.language)?.steps?.firstOrNull { it.id == bookmark.sectionId }
-            if (lesson != null && step != null) AppCard(onClick = { onSection(lesson.id, step.id) }) {
+            if (lesson != null && step != null) AppCard(onClick = { onSavedSection(bookmark) }) {
                 SectionTitle(lesson.title(settings.language)); SupportingText(sectionHeading(step))
                 if (bookmark.note.isNotBlank()) Text(bookmark.note)
             }

@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">حفظ هذا القسم</string>
     <string name="ui_section_note">ملاحظة اختيارية</string>
     <string name="ui_remove_section_bookmark">إزالة علامة القسم</string>
+    <string name="ui_show_text">عرض كنص</string>
+    <string name="ui_show_slides">عرض الشرائح</string>
+    <string name="ui_slide_next">التالي</string>
 </resources>

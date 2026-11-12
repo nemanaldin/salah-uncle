@@ -5,6 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -29,12 +33,8 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.androidhive.myapplication.R
-import com.androidhive.myapplication.core.model.AppLanguage
-import com.androidhive.myapplication.core.model.AppSettings
-import com.androidhive.myapplication.core.model.ReviewStatus
-import com.androidhive.myapplication.core.model.SectionBookmark
-import com.androidhive.myapplication.data.content.Lesson
-import com.androidhive.myapplication.data.content.MediaResources
+import com.androidhive.myapplication.core.model.*
+import com.androidhive.myapplication.data.content.*
 import com.androidhive.myapplication.platform.audio.LessonAudioController
 import com.androidhive.myapplication.platform.audio.LessonAudioState
 import com.androidhive.myapplication.platform.openUrl
@@ -43,42 +43,43 @@ import com.androidhive.myapplication.ui.components.*
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
-/** One continuous reference article. Source sections and media retain their IDs;
- * there is no completion gate, lesson sequence or course-progress UI. */
+/** Direct reference articles; only the three guides offer an optional standard RTL-aware pager. */
 @Composable
 fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
     onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
-    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}) {
+    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0) {
     var showOriginal by rememberSaveable(lesson.id, settings.school, settings.language) { mutableStateOf(false) }
     val translated = lesson.variant(settings.school, settings.language)
     val original = lesson.variant(settings.school)
     val variant = translated ?: original.takeIf { showOriginal }
-    if (variant == null) {
+    if (variant == null || !ActiveContent.policy.allows(settings)) {
         PageColumn(Modifier.testTag("translation_unavailable")) {
             SectionTitle(stringResource(R.string.ui_translation_unavailable))
             SupportingText(stringResource(if (original == null) R.string.ui_school_unavailable else R.string.ui_translation_body))
-            if (original != null) OutlinedButton({ showOriginal = true }, Modifier.testTag("read_original")) {
+            if (original != null && ActiveContent.policy.allows(settings)) OutlinedButton({ showOriginal = true }, Modifier.testTag("read_original")) {
                 Text(stringResource(R.string.ui_read_original, AppLanguage.entries.firstOrNull { it.tag == original.language }?.nativeName ?: original.language))
             }
             TextButton(onBack) { Text(stringResource(R.string.ui_back)) }
         }
         return
     }
-    val requested = variant.steps.indexOfFirst { it.id == initialSection }
-    val initial = if (requested >= 0) requested else if (settings.lastLessonId == lesson.id) variant.steps.indexOfFirst { it.id == settings.lastStepId }.coerceAtLeast(0) else 0
-    val scroll = rememberLazyListState(initialFirstVisibleItemIndex = if (initial > 0) initial + 1 else 0)
+    val slides = remember(variant) { readingSlides(variant.steps) }
+    val eligible = isSlideGuide(lesson.id, settings.school)
+    var textMode by rememberSaveable(lesson.id, variant.language) { mutableStateOf(!eligible) }
+    var cursor by rememberSaveable(lesson.id, variant.language) { mutableStateOf(initialSection ?: settings.lastStepId.takeIf { settings.lastLessonId == lesson.id } ?: variant.steps.first().id) }
+    var cursorOffset by rememberSaveable(lesson.id, variant.language) { mutableIntStateOf(initialOffset.coerceAtLeast(0)) }
+    val scroll = rememberLazyListState()
+    val pager = rememberPagerState(initialPage = targetSlide(slides, cursor, cursorOffset), pageCount = { slides.size })
     val scope = rememberCoroutineScope()
-    var editing by remember { mutableStateOf<SectionBookmark?>(null) }
-    editing?.let { bookmark -> SectionBookmarkDialog(bookmark, settings.sectionBookmarks.firstOrNull { it.sameSection(bookmark) },
-        onSaveSection, onRemoveSection, { editing = null }) }
-    LaunchedEffect(initialSection) { if (requested >= 0) scroll.scrollToItem(requested + 1) }
     val context = LocalContext.current
     val lifecycle = LocalLifecycleOwner.current
     val currentError by rememberUpdatedState(onError)
     val currentRead by rememberUpdatedState(onRead)
-    val hasAudio = variant.steps.any { it.audio in MediaResources.audio }
-    val audio = remember(lesson.id, variant.language, hasAudio) {
-        if (hasAudio) LessonAudioController(context) { currentError(R.string.ui_error_audio) } else null
+    var editing by remember { mutableStateOf<SectionBookmark?>(null) }
+    editing?.let { bookmark -> SectionBookmarkDialog(bookmark, settings.sectionBookmarks.firstOrNull { it.sameSection(bookmark) },
+        onSaveSection, onRemoveSection, { editing = null }) }
+    val audio = remember(lesson.id, variant.language, variant.steps) {
+        if (variant.steps.any { it.audio in MediaResources.audio }) LessonAudioController(context) { currentError(R.string.ui_error_audio) } else null
     }
     val playback = audio?.state?.collectAsStateWithLifecycle()?.value ?: LessonAudioState()
     DisposableEffect(audio, lifecycle) {
@@ -86,71 +87,108 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         lifecycle.lifecycle.addObserver(observer)
         onDispose { lifecycle.lifecycle.removeObserver(observer); audio?.release() }
     }
-    LaunchedEffect(lesson.id, variant.language) {
-        snapshotFlow { scroll.firstVisibleItemIndex }.distinctUntilChanged().collect { index ->
-            currentRead(lesson.id, variant.steps[(index - 1).coerceIn(variant.steps.indices)].id)
+    LaunchedEffect(initialSection, initialOffset, variant.language) {
+        initialSection?.let { cursor = it; cursorOffset = initialOffset.coerceAtLeast(0) }
+        if (textMode) scroll.scrollToItem(variant.steps.indexOfFirst { it.id == cursor }.coerceAtLeast(0).let { if (initialSection == null && it == 0) 0 else it + 1 })
+        else pager.scrollToPage(targetSlide(slides, cursor, cursorOffset))
+    }
+    var modeInitialized by remember { mutableStateOf(false) }
+    LaunchedEffect(textMode) {
+        if (!modeInitialized) { modeInitialized = true; return@LaunchedEffect }
+        if (textMode) scroll.scrollToItem(variant.steps.indexOfFirst { it.id == cursor }.coerceAtLeast(0) + 1)
+        else pager.scrollToPage(targetSlide(slides, cursor, cursorOffset))
+    }
+    LaunchedEffect(textMode, lesson.id, variant.language) {
+        if (textMode) snapshotFlow { scroll.firstVisibleItemIndex }.distinctUntilChanged().collect { index ->
+            val step = variant.steps[(index - 1).coerceIn(variant.steps.indices)]
+            cursor = step.id; cursorOffset = 0; currentRead(lesson.id, step.id)
+        } else snapshotFlow { pager.currentPage }.distinctUntilChanged().collect { index ->
+            val slide = slides[index]
+            cursor = slide.step.id; cursorOffset = slide.offset; currentRead(lesson.id, slide.step.id)
         }
     }
+    val direction = if (AppLanguage.entries.firstOrNull { it.tag == variant.language }?.isRtl == true) LayoutDirection.Rtl else LayoutDirection.Ltr
     val externalError = { onError(R.string.ui_error_external_app) }
     val shareLabel = stringResource(R.string.ui_share_lesson)
-    val direction = if (AppLanguage.entries.firstOrNull { it.tag == variant.language }?.isRtl == true) LayoutDirection.Rtl else LayoutDirection.Ltr
-    LazyColumn(Modifier.fillMaxSize().testTag("lesson_reader"), state = scroll,
+    val jump: (String) -> Unit = { id -> scope.launch {
+        cursor = id; cursorOffset = 0
+        if (textMode) scroll.animateScrollToItem(variant.steps.indexOfFirst { it.id == id }.coerceAtLeast(0) + 1)
+        else pager.animateScrollToPage(targetSlide(slides, id))
+    } }
+    val bookmark: (LessonStep, Int) -> Unit = { step, offset -> editing = SectionBookmark(lesson.id, step.id, settings.school, settings.language, offset = offset) }
+    val header: @Composable () -> Unit = {
+        TopicHeading(lesson.title(settings.language), lesson.id)
+        if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL)
+            Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, settings.language.nativeName)) }
+        if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language, variant.language))
+        if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
+        ArticleContents(variant.steps, jump)
+        if (eligible) TextButton({ textMode = !textMode }, Modifier.testTag("reader_mode")) { Text(stringResource(if (textMode) R.string.ui_show_slides else R.string.ui_show_text)) }
+        IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { it.body }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
+    }
+    if (textMode) LazyColumn(Modifier.fillMaxSize().testTag("lesson_reader"), state = scroll,
         contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
-        item(key = "heading") {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { it.body }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
-                }
-                TopicHeading(lesson.title(settings.language), lesson.id)
-                ArticleContents(variant.steps) { id -> scope.launch { scroll.animateScrollToItem(variant.steps.indexOfFirst { it.id == id } + 1) } }
-                if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) {
-                    val language = if (settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL) settings.language.nativeName
-                        else AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language
-                    Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, language)) }
-                }
-                if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language,
-                    AppLanguage.entries.firstOrNull { it.tag == variant.language }?.nativeName ?: variant.language))
-                if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
+        item("heading") { Column(verticalArrangement = Arrangement.spacedBy(12.dp)) { header() } }
+        items(variant.steps, key = { it.id }) { step ->
+            ReaderSection(lesson.id, step, step.body, direction, variant.language, settings, playback, { bookmark(step, 0) }, audio, step.id == variant.steps.first().id)
+        }
+        item("sources") { ReaderSources(lesson, variant, externalError) }
+    } else Column(Modifier.fillMaxSize().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        TextButton({ textMode = true }, Modifier.testTag("reader_mode")) { Text(stringResource(R.string.ui_show_text)) }
+        LanguageReadinessNotice(settings.language)
+        if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
+        ArticleContents(variant.steps, jump)
+        HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth().testTag("guide_pager"), key = { slides[it].key }) { index ->
+            val slide = slides[index]
+            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 8.dp)) {
+                ReaderSection(lesson.id, slide.step, slide.text, direction, variant.language, settings, playback,
+                    { bookmark(slide.step, slide.offset) }, audio, index == 0)
+                if (index == slides.lastIndex) ReaderSources(lesson, variant, externalError)
             }
         }
-        items(variant.steps, key = { it.id }) { section ->
-            AppCard(modifier = Modifier.testTag("topic_section_${section.id}")) {
-                val bookmark = SectionBookmark(lesson.id, section.id, settings.school, settings.language)
-                val saved = settings.sectionBookmarks.any { it.sameSection(bookmark) }
-                IconButton({ editing = bookmark }, Modifier.testTag("section_bookmark_${section.id}")) {
-                    Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark),
-                        tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
-                }
-                if (section.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    section.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
-                        Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
-                    } }
-                }
-                CompositionLocalProvider(LocalLayoutDirection provides direction) {
-                    SelectionContainer {
-                        Text(section.body, Modifier.testTag(if (section.id == variant.steps.first().id) "lesson_body" else "topic_body_${section.id}"),
-                            style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(variant.language)))
-                    }
-                }
-                section.audio?.let { name -> MediaResources.audio[name]?.let { resource ->
-                    SupportingText(stringResource(R.string.ui_recitation_language))
-                    Button({ audio?.toggle(resource) }, Modifier.fillMaxWidth().testTag("topic_audio_${section.id}")) {
-                        Icon(Icons.Default.PlayArrow, null); Spacer(Modifier.width(8.dp))
-                        Text(stringResource(if (playback.playing && playback.resource == resource) R.string.ui_pause_audio else R.string.ui_play_audio))
-                    }
-                    val repeatLabel = stringResource(R.string.ui_repeat_audio)
-                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text(repeatLabel, Modifier.weight(1f).padding(top = 11.dp))
-                        Switch(playback.repeat, { audio?.repeat(it) }, Modifier.testTag("repeat_${section.id}").semantics { contentDescription = repeatLabel })
-                    }
-                } }
-            }
-        }
-        item(key = "sources") {
-            Column {
-                if (variant.sources.isEmpty()) TextButton({ openUrl(context, lesson.source, externalError) }) { Text(stringResource(R.string.ui_lesson_source)) }
-                else variant.sources.forEach { source -> TextButton({ openUrl(context, source.url, externalError) }) { Text(source.title) } }
-            }
+        Row(Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } }, Modifier.weight(1f).testTag("slide_previous"), enabled = pager.currentPage > 0) { Text(stringResource(R.string.ui_previous_step)) }
+            Text(stringResource(R.string.ui_step_of, pager.currentPage + 1, slides.size), Modifier.weight(1f).testTag("slide_position"))
+            Button({ scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } }, Modifier.weight(1f).testTag("slide_next"), enabled = pager.currentPage < slides.lastIndex) { Text(stringResource(R.string.ui_slide_next)) }
         }
     }
+}
+
+@Composable
+private fun ReaderSection(lessonId: String, step: LessonStep, body: String, direction: LayoutDirection, language: String,
+    settings: AppSettings, playback: LessonAudioState, onBookmark: () -> Unit, audio: LessonAudioController?, isFirst: Boolean) {
+    AppCard(Modifier.testTag("topic_section_${step.id}")) {
+        val value = SectionBookmark(lessonId, step.id, settings.school, settings.language)
+        val saved = settings.sectionBookmarks.any { it.sameSection(value) }
+        IconButton(onBookmark, Modifier.testTag("section_bookmark_${step.id}")) {
+            Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark), tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
+        }
+        if (step.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
+                Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
+            } }
+        } else if (isSlideGuide(lessonId, settings.school)) TopicArtwork(lessonId, Modifier.size(80.dp))
+        CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
+            Text(body, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"), style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(language)))
+        } }
+        step.audio?.let { name -> MediaResources.audio[name]?.let { resource ->
+            SupportingText(stringResource(R.string.ui_recitation_language))
+            Button({ audio?.toggle(resource) }, Modifier.fillMaxWidth().testTag("topic_audio_${step.id}")) {
+                Icon(Icons.Default.PlayArrow, null); Spacer(Modifier.width(8.dp))
+                Text(stringResource(if (playback.playing && playback.resource == resource) R.string.ui_pause_audio else R.string.ui_play_audio))
+            }
+            val repeatLabel = stringResource(R.string.ui_repeat_audio)
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(repeatLabel, Modifier.weight(1f).padding(top = 11.dp))
+                Switch(playback.repeat, { audio?.repeat(it) }, Modifier.semantics { contentDescription = repeatLabel })
+            }
+        } }
+    }
+}
+
+@Composable
+private fun ReaderSources(lesson: Lesson, variant: LessonVariant, onError: () -> Unit) {
+    val context = LocalContext.current
+    if (variant.sources.isEmpty()) TextButton({ openUrl(context, lesson.source, onError) }) { Text(stringResource(R.string.ui_lesson_source)) }
+    else variant.sources.forEach { source -> TextButton({ openUrl(context, source.url, onError) }) { Text(source.title) } }
 }

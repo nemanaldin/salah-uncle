@@ -226,4 +226,7 @@
     <string name="ui_section_bookmark">نشانک این بخش</string>
     <string name="ui_section_note">یادداشت اختیاری</string>
     <string name="ui_remove_section_bookmark">حذف نشانک بخش</string>
+    <string name="ui_show_text">نمایش به‌صورت متن</string>
+    <string name="ui_show_slides">نمایش اسلایدی</string>
+    <string name="ui_slide_next">بعدی</string>
 </resources>
