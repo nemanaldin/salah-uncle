@@ -26,6 +26,7 @@ import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.data.content.visibleFor
+import com.androidhive.myapplication.data.content.readingTarget
 import com.androidhive.myapplication.domain.prayer.HomePrayerState
 import com.androidhive.myapplication.domain.prayer.homePrayerState
 import com.androidhive.myapplication.ui.components.*
@@ -50,7 +51,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
     onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit, onRetrySettings: () -> Unit = {}) {
     val settings = state.settings ?: return
     val available = state.content.lessons.filter { it.visibleFor(settings) }
-    val last = available.firstOrNull { it.id == settings.lastLessonId }
+    val last = available.firstOrNull { it.id == settings.lastLessonId?.let { id -> readingTarget(id, settings.lastStepId, settings.school).lessonId } }
     PageColumn(Modifier.testTag("home_screen")) {
         PhotoPanel(Modifier.testTag("home_hero")) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -148,7 +149,7 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             }
         }
         OutlinedButton(onLessons, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text(stringResource(R.string.ui_all_lessons)) }
-        if (last != null) AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(last.id) }) {
+        if (last != null) AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(settings.lastLessonId ?: last.id) }) {
             Text(stringResource(R.string.ui_resume_lesson), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
             Text(last.title(settings.language), style = MaterialTheme.typography.titleMedium)
         }

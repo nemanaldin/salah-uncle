@@ -10,7 +10,10 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
-data class LessonStep(val id: String, val body: String, val audio: String?, val illustrations: List<String>)
+enum class ArrangementStatus { ORIGINAL, DRAFT_PENDING_REVIEW }
+data class LessonStep(val id: String, val body: String, val audio: String?, val illustrations: List<String>,
+    val originLessonId: String? = null, val arrangement: ArrangementStatus = ArrangementStatus.ORIGINAL,
+    val needsDhikrSource: Boolean = false, val related: List<LessonStep> = emptyList())
 data class LessonSource(val title: String, val url: String)
 data class LessonVariant(val school: School, val language: String, val steps: List<LessonStep>, val sources: List<LessonSource> = emptyList(), val reviewStatus: ReviewStatus = ReviewStatus.EXPERIMENTAL)
 data class Lesson(

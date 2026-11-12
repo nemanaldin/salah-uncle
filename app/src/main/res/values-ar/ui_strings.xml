@@ -229,4 +229,6 @@
     <string name="ui_show_text">عرض كنص</string>
     <string name="ui_show_slides">عرض الشرائح</string>
     <string name="ui_slide_next">التالي</string>
+    <string name="ui_arrangement_draft">مسودة — بانتظار المراجعة</string>
+    <string name="ui_needs_source">بحاجة إلى مصدر</string>
 </resources>

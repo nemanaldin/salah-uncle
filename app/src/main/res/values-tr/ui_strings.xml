@@ -229,4 +229,6 @@
     <string name="ui_show_text">Metin olarak göster</string>
     <string name="ui_show_slides">Slaytları göster</string>
     <string name="ui_slide_next">Sonraki</string>
+    <string name="ui_arrangement_draft">Taslak — inceleme bekliyor</string>
+    <string name="ui_needs_source">Kaynak gerekli</string>
 </resources>

@@ -61,8 +61,8 @@ Authorized by salah-app-prompt.docx: current branch work; local commits only, no
 | 5 | Active languages/school and safe settings recovery | done | e5a1d130572bc4a8539514591d86b052c20943dc | Build, 142 unit tests, lint 67 warnings/0 errors; existing assets/audio/tests preserved; font cmap checked; device shaping unverified |
 | 6 | Article contents, scoped full-text search and section bookmarks | done | 929e41287ae6cecd67525ded9176b4b1a62ff0b0 | Build, 149 unit tests, lint 67 warnings/0 errors; 7 new navigation/bookmark tests; no device persistence/old UI-suite certification |
 | 7 | School/language-scoped video metadata | done | 9909b0b0284492e9800ccd533469e6379dfa1ad8 | Build, 155 unit tests, lint 67 warnings/0 errors; 6 video isolation/fallback tests; no video files added or playback certified |
-| 8 | Optional prayer/wudu/ghusl slides and text view | done | this commit; resolved after creation | Build, 161 unit tests, lint 65 warnings/0 errors; 6 exact-text/navigation tests; actual swipes unverified |
-| 9 | Draft dhikr arrangement and post-wudu integration | not started | — | — |
+| 8 | Optional prayer/wudu/ghusl slides and text view | done | 3fc5c823df584123b52ff8b1e4717908566c76ff | Build, 161 unit tests, lint 65 warnings/0 errors; 6 exact-text/navigation tests; actual swipes unverified |
+| 9 | Draft dhikr arrangement and post-wudu integration | done | this commit; resolved after creation | Build, 168 unit tests, lint 65 warnings/0 errors; 7 source/order/school/migration tests; all source wording unchanged; scholarly/device review pending |
 | 10 | Accessibility and large-text/dark/RTL quality | not started | — | — |
 | 11 | Compact adaptive quick access | not started | — | — |
 | 12 | Existing tayammum artwork and school-isolated entry | not started | — | — |

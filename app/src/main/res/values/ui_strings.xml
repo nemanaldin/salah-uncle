@@ -229,4 +229,6 @@
     <string name="ui_show_text">نمایش به‌صورت متن</string>
     <string name="ui_show_slides">نمایش اسلایدی</string>
     <string name="ui_slide_next">بعدی</string>
+    <string name="ui_arrangement_draft">پیش‌نویس — در انتظار بازبینی</string>
+    <string name="ui_needs_source">نیاز به منبع</string>
 </resources>

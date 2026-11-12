@@ -22,10 +22,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
+import com.androidhive.myapplication.core.model.topicBookmarkIds
 import com.androidhive.myapplication.data.content.visibleFor
 import com.androidhive.myapplication.data.content.searchLessons
 import com.androidhive.myapplication.data.content.LessonSearchHit
 import com.androidhive.myapplication.data.content.sectionHeading
+import com.androidhive.myapplication.data.content.readingTarget
+import com.androidhive.myapplication.data.content.readingStep
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.delay
@@ -44,7 +47,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
     val filtered = remember(state.content.lessons, settings.school, settings.language, settings.bookmarks, query, category) {
         state.content.lessons.filter { lesson ->
             lesson.visibleFor(settings) &&
-                (category == "all" || category == lesson.category || category == "saved" && lesson.id in settings.bookmarks) &&
+                (category == "all" || category == lesson.category || category == "saved" && topicBookmarkIds(lesson.id, settings.school).any { it in settings.bookmarks }) &&
                 (query.isBlank() || lesson.title(settings.language).contains(query, true) || lesson.titleFa.contains(query, true) || lesson.titleEn.contains(query, true))
         }
     }
@@ -85,8 +88,9 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
             }
         }
         if (query.isBlank() && category == "saved") items(savedSections, key = { "saved:${it.lessonId}:${it.sectionId}" }) { bookmark ->
-            val lesson = state.content.lessons.firstOrNull { it.id == bookmark.lessonId }
-            val step = lesson?.variant(settings.school, settings.language)?.steps?.firstOrNull { it.id == bookmark.sectionId }
+            val target = readingTarget(bookmark.lessonId, bookmark.sectionId, settings.school, bookmark.offset)
+            val lesson = state.content.lessons.firstOrNull { it.id == target.lessonId }
+            val step = lesson?.variant(settings.school, settings.language)?.steps?.let { readingStep(it, target.sectionId) }
             if (lesson != null && step != null) AppCard(onClick = { onSavedSection(bookmark) }) {
                 SectionTitle(lesson.title(settings.language)); SupportingText(sectionHeading(step))
                 if (bookmark.note.isNotBlank()) Text(bookmark.note)
@@ -97,7 +101,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     TopicArtwork(lesson.id, Modifier.size(64.dp))
                     Text(lesson.title(settings.language), Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
-                    val saved = lesson.id in settings.bookmarks
+                    val saved = topicBookmarkIds(lesson.id, settings.school).any { it in settings.bookmarks }
                     IconButton({ onBookmark(lesson.id) }, Modifier.testTag("bookmark_${lesson.id}")) {
                         Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),
                             tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)

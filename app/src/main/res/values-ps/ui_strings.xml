@@ -229,4 +229,6 @@
     <string name="ui_show_text">د متن په بڼه وښایئ</string>
     <string name="ui_show_slides">سلایډونه وښایئ</string>
     <string name="ui_slide_next">بل</string>
+    <string name="ui_arrangement_draft">مسوده — د بیاکتنې په تمه</string>
+    <string name="ui_needs_source">سرچینې ته اړتیا</string>
 </resources>

@@ -115,16 +115,16 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
         if (textMode) scroll.animateScrollToItem(variant.steps.indexOfFirst { it.id == id }.coerceAtLeast(0) + 1)
         else pager.animateScrollToPage(targetSlide(slides, id))
     } }
-    val bookmark: (LessonStep, Int) -> Unit = { step, offset -> editing = SectionBookmark(lesson.id, step.id, settings.school, settings.language, offset = offset) }
+    val bookmark: (LessonStep, Int) -> Unit = { step, offset -> editing = SectionBookmark(step.originLessonId ?: lesson.id, step.id, settings.school, settings.language, offset = offset) }
     val header: @Composable () -> Unit = {
         TopicHeading(lesson.title(settings.language), lesson.id)
         if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL)
             Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, settings.language.nativeName)) }
         if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language, variant.language))
-        if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
+        if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
         ArticleContents(variant.steps, jump)
         if (eligible) TextButton({ textMode = !textMode }, Modifier.testTag("reader_mode")) { Text(stringResource(if (textMode) R.string.ui_show_slides else R.string.ui_show_text)) }
-        IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { it.body }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
+        IconButton({ shareText(context, lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
     }
     if (textMode) LazyColumn(Modifier.fillMaxSize().testTag("lesson_reader"), state = scroll,
         contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
@@ -136,7 +136,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
     } else Column(Modifier.fillMaxSize().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         TextButton({ textMode = true }, Modifier.testTag("reader_mode")) { Text(stringResource(R.string.ui_show_text)) }
         LanguageReadinessNotice(settings.language)
-        if (lesson.id == "wudu") InfoCard(stringResource(R.string.ui_wudu_review))
+        if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
         ArticleContents(variant.steps, jump)
         HorizontalPager(pager, Modifier.weight(1f).fillMaxWidth().testTag("guide_pager"), key = { slides[it].key }) { index ->
             val slide = slides[index]
@@ -158,7 +158,7 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
 private fun ReaderSection(lessonId: String, step: LessonStep, body: String, direction: LayoutDirection, language: String,
     settings: AppSettings, playback: LessonAudioState, onBookmark: () -> Unit, audio: LessonAudioController?, isFirst: Boolean) {
     AppCard(Modifier.testTag("topic_section_${step.id}")) {
-        val value = SectionBookmark(lessonId, step.id, settings.school, settings.language)
+        val value = SectionBookmark(step.originLessonId ?: lessonId, step.id, settings.school, settings.language)
         val saved = settings.sectionBookmarks.any { it.sameSection(value) }
         IconButton(onBookmark, Modifier.testTag("section_bookmark_${step.id}")) {
             Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark), tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
@@ -168,9 +168,14 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
                 Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
             } }
         } else if (isSlideGuide(lessonId, settings.school)) TopicArtwork(lessonId, Modifier.size(80.dp))
+        if (step.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW) SupportingText(stringResource(R.string.ui_arrangement_draft))
+        if (step.needsDhikrSource) SupportingText(stringResource(R.string.ui_needs_source))
         CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
             Text(body, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"), style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(language)))
         } }
+        step.related.forEach { source ->
+            Box(Modifier.testTag("topic_source_${source.id}")) { InfoCard(source.body) }
+        }
         step.audio?.let { name -> MediaResources.audio[name]?.let { resource ->
             SupportingText(stringResource(R.string.ui_recitation_language))
             Button({ audio?.toggle(resource) }, Modifier.fillMaxWidth().testTag("topic_audio_${step.id}")) {

@@ -18,7 +18,7 @@ import org.json.JSONObject
 class SettingsRepository(context: Context) {
     private val app = context.applicationContext
     private val store = PreferenceDataStoreFactory.create(
-        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app), VisibilityMigration()),
+        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app), VisibilityMigration(), WuduBookmarkMigration()),
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
         produceFile = { app.preferencesDataStoreFile("salah_settings") },
     )
@@ -77,7 +77,17 @@ class SettingsRepository(context: Context) {
         override suspend fun cleanUp() = Unit
     }
 
+    private class WuduBookmarkMigration : DataMigration<Preferences> {
+        override suspend fun shouldMigrate(currentData: Preferences) = currentData[Keys.wuduBookmarks] != true
+        override suspend fun migrate(currentData: Preferences): Preferences = currentData.toMutablePreferences().apply {
+            encode(decode(currentData).migratePostWuduBookmark(), this)
+            this[Keys.wuduBookmarks] = true
+        }
+        override suspend fun cleanUp() = Unit
+    }
+
     private object Keys {
+        val wuduBookmarks = booleanPreferencesKey("post_wudu_bookmarks_v1")
         val visibility = stringPreferencesKey("visibility_policy_v1")
         val languageInitialized = booleanPreferencesKey("language_initialized_v1")
         val migrated = booleanPreferencesKey("legacy_migrated_v1")

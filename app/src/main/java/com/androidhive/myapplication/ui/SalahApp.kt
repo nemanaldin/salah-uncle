@@ -25,10 +25,13 @@ import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AlertMode
 import com.androidhive.myapplication.core.model.School
 import com.androidhive.myapplication.core.model.ActiveContent
+import com.androidhive.myapplication.core.model.topicBookmarkIds
 import com.androidhive.myapplication.core.model.withSectionBookmark
 import com.androidhive.myapplication.core.model.withoutSectionBookmark
 import com.androidhive.myapplication.core.model.confirmCalculation
 import com.androidhive.myapplication.data.content.Lesson
+import com.androidhive.myapplication.data.content.readingTarget
+import com.androidhive.myapplication.data.content.readingStep
 import com.androidhive.myapplication.platform.openExternal
 import com.androidhive.myapplication.platform.openUrl
 import com.androidhive.myapplication.platform.shareText
@@ -100,7 +103,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         "ramadan" -> stringResource(R.string.ui_ramadan)
         "training" -> stringResource(R.string.ui_training)
         "about" -> stringResource(R.string.ui_about)
-        "lesson/{id}?section={section}&offset={offset}" -> state.content.lessons.firstOrNull { it.id == lessonId }?.title(settings.language).orEmpty()
+        "lesson/{id}?section={section}&offset={offset}" -> state.content.lessons.firstOrNull { it.id == lessonId?.let { id -> readingTarget(id, null, settings.school).lessonId } }?.title(settings.language).orEmpty()
         "prayer-types" -> stringResource(R.string.ui_prayer_types)
         "voices" -> stringResource(R.string.ui_adhan_voice)
         else -> stringResource(destinations.firstOrNull { it.route == route }?.title ?: R.string.ui_app_name)
@@ -116,7 +119,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                 Text(stringResource(settings.school.labelRes()), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
                 if (route != "settings") IconButton({ selectMain("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Default.Settings, stringResource(R.string.ui_settings)) }
             } else if (route.startsWith("lesson/") && lessonId != null) {
-                val saved = lessonId in settings.bookmarks
+                val saved = topicBookmarkIds(lessonId, settings.school).any { it in settings.bookmarks } || lessonId == "wudu-remembrance" && settings.sectionBookmarks.any { it.lessonId == lessonId && it.school == settings.school && it.language == settings.language }
                 IconButton({ model.bookmark(lessonId) }, Modifier.testTag("reader_bookmark")) {
                     Icon(Icons.Default.Star, stringResource(if (saved) R.string.ui_bookmark_remove else R.string.ui_bookmark_add),
                         tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
@@ -166,11 +169,16 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                     composable("qibla") { QiblaScreen(settings, container.headings, { navigate("times") }) }
                     composable("training") { TrainingScreen(state.content.videos, settings, { navigate("lesson/${settings.school.guideId}") }, model::message, state.content.videosLoading, state.content.videosError, model::retryVideos) }
                     composable("lesson/{id}?section={section}&offset={offset}", arguments = listOf(navArgument("section") { defaultValue = "" }, navArgument("offset") { type = androidx.navigation.NavType.IntType; defaultValue = 0 })) { entry ->
-                        val lesson = state.content.lessons.firstOrNull { it.id == entry.arguments?.getString("id") }
+                        val requestedId = entry.arguments?.getString("id").orEmpty()
+                        val requestedSection = entry.arguments?.getString("section")?.takeIf { it.isNotBlank() }
+                            ?: settings.lastStepId.takeIf { settings.lastLessonId == requestedId }
+                        val target = readingTarget(requestedId, requestedSection, settings.school, entry.arguments?.getInt("offset") ?: 0)
+                        val lesson = state.content.lessons.firstOrNull { it.id == target.lessonId }
+                        val targetStep = lesson?.variant(settings.school, settings.language)?.steps?.let { readingStep(it, target.sectionId) }
                         if (lesson != null) LessonScreen(lesson, settings, model::recordReading,
-                            { navigation.popBackStack() }, model::message, entry.arguments?.getString("section")?.takeIf { it.isNotBlank() },
+                            { navigation.popBackStack() }, model::message, targetStep?.id ?: target.sectionId,
                             { bookmark -> model.update { it.withSectionBookmark(bookmark) } },
-                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } }, initialOffset = entry.arguments?.getInt("offset") ?: 0)
+                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } }, initialOffset = if (targetStep?.id == target.sectionId) target.offset else 0)
                         else PageColumn {
                             if (state.content.lessonsLoading) CircularProgressIndicator()
                             else {

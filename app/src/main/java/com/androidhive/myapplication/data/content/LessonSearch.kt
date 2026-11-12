@@ -14,7 +14,7 @@ fun searchLessons(lessons: List<Lesson>, settings: AppSettings, query: String, p
         val variant = lesson.variant(settings.school, settings.language) ?: continue
         val title = lesson.title(settings.language)
         var found = false
-        for (step in variant.steps) {
+        for (parent in variant.steps) for (step in listOf(parent) + parent.related) {
             val index = step.body.indexOf(needle, ignoreCase = true)
             if (index >= 0) {
                 val start = (index - 45).coerceAtLeast(0)

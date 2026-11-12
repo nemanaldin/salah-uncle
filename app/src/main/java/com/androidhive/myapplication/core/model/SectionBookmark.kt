@@ -8,3 +8,13 @@ fun boundedNote(text: String): String = text.substring(0, text.offsetByCodePoint
 fun AppSettings.withSectionBookmark(value: SectionBookmark): AppSettings = copy(
     sectionBookmarks = sectionBookmarks.filterNot { it.sameSection(value) } + value.copy(note = boundedNote(value.note)))
 fun AppSettings.withoutSectionBookmark(value: SectionBookmark) = copy(sectionBookmarks = sectionBookmarks.filterNot { it.sameSection(value) })
+
+/** The old topic key stays intact; only a scoped section reference is added. */
+fun AppSettings.migratePostWuduBookmark(): AppSettings {
+    if ("wudu-remembrance" !in bookmarks) return this
+    val value = SectionBookmark("wudu-remembrance", "after-wudu", school, language)
+    return if (sectionBookmarks.any { it.sameSection(value) }) this else withSectionBookmark(value)
+}
+
+fun topicBookmarkIds(id: String, school: School): Set<String> =
+    if (school == School.HANAFI && id in setOf("wudu", "purification-hanafi")) setOf("wudu", "purification-hanafi") else setOf(id)

@@ -229,4 +229,6 @@
     <string name="ui_show_text">Show as text</string>
     <string name="ui_show_slides">Show slides</string>
     <string name="ui_slide_next">Next</string>
+    <string name="ui_arrangement_draft">Draft — pending review</string>
+    <string name="ui_needs_source">Source needed</string>
 </resources>

@@ -229,4 +229,6 @@
     <string name="ui_show_text">পাঠ্য হিসেবে দেখুন</string>
     <string name="ui_show_slides">স্লাইড দেখুন</string>
     <string name="ui_slide_next">পরবর্তী</string>
+    <string name="ui_arrangement_draft">খসড়া — পর্যালোচনার অপেক্ষায়</string>
+    <string name="ui_needs_source">উৎস প্রয়োজন</string>
 </resources>

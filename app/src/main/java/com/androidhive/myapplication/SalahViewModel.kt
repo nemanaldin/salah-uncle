@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.androidhive.myapplication.core.model.*
 import com.androidhive.myapplication.core.RetryingReader
 import com.androidhive.myapplication.core.LoadSlot
+import com.androidhive.myapplication.data.content.readingCatalogue
 import com.androidhive.myapplication.data.content.visibleFor
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.TrainingVideo
@@ -59,6 +60,11 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             R.string.ui_error_content.takeIf { lessons.failed }, R.string.ui_error_content.takeIf { cities.failed },
             R.string.ui_error_content.takeIf { videos.failed })
     }.stateIn(viewModelScope, SharingStarted.Eagerly, ContentState())
+    private val visibleContent = combine(settingsState.map { it?.let { saved -> saved.school to saved.language } }.distinctUntilChanged(), content) { chosen, loaded ->
+        val scope = chosen?.let { AppSettings(school = it.first, language = it.second) }
+        loaded.copy(lessons = scope?.let { selected -> readingCatalogue(loaded.lessons, selected).filter { it.visibleFor(selected) } }.orEmpty(),
+            videos = loaded.videos.filter { scope != null && it.visibleFor(scope) })
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, ContentState())
     private val importingAudio = MutableStateFlow(false)
     private val locating = MutableStateFlow(false)
     private val capabilities = MutableStateFlow(DeviceCapabilities())
@@ -68,7 +74,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             while (currentCoroutineContext().isActive) { emit(Instant.now()); delay(1_000) }
         }
     }
-    val state = combine(settingsState, content, ticks, locating) { settings, loaded, now, busy ->
+    val state = combine(settingsState, visibleContent, ticks, locating) { settings, loaded, now, busy ->
         val today = settings?.location?.let { location -> runCatching {
             container.prayerEngine.day(location, settings.calculationPreset, settings.asrConvention, now.atZone(location.zone).toLocalDate())
         } }
@@ -78,9 +84,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         val displayDay = today?.getOrNull() ?: settings?.location?.let {
             DailyPrayers(now.atZone(it.zone).toLocalDate(), emptyList())
         }
-        val visible = loaded.copy(lessons = loaded.lessons.filter { settings != null && it.visibleFor(settings) },
-            videos = loaded.videos.filter { settings != null && it.visibleFor(settings) })
-        SalahUiState(settings, visible, now, displayDay, next?.getOrNull(), locationBusy = busy,
+        SalahUiState(settings, loaded, now, displayDay, next?.getOrNull(), locationBusy = busy,
             error = if (failed) R.string.ui_error_calculation else null, calculationFailed = failed)
 
     }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
@@ -215,7 +219,12 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         }
     }
     fun bookmark(id: String) = update { current ->
-        current.copy(bookmarks = if (id in current.bookmarks) current.bookmarks - id else current.bookmarks + id)
+        if (id == "wudu-remembrance") {
+            val value = SectionBookmark(id, "after-wudu", current.school, current.language)
+            if (id in current.bookmarks || current.sectionBookmarks.any { it.sameSection(value) })
+                current.withoutSectionBookmark(value).copy(bookmarks = current.bookmarks - id)
+            else current.withSectionBookmark(value)
+        } else current.copy(bookmarks = if (topicBookmarkIds(id, current.school).any { it in current.bookmarks }) current.bookmarks - topicBookmarkIds(id, current.school) else current.bookmarks + id)
     }
     fun recordReading(lesson: String, step: String) = update { it.copy(lastLessonId = lesson, lastStepId = step) }
     fun completeStep(lesson: String, step: String) = update { it.copy(completedSteps = it.completedSteps + "$lesson:$step") }

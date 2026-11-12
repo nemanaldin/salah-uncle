@@ -229,4 +229,6 @@
     <string name="ui_show_text">متن کی صورت دکھائیں</string>
     <string name="ui_show_slides">سلائیڈیں دکھائیں</string>
     <string name="ui_slide_next">اگلا</string>
+    <string name="ui_arrangement_draft">مسودہ — نظرثانی کا منتظر</string>
+    <string name="ui_needs_source">ماخذ درکار ہے</string>
 </resources>
