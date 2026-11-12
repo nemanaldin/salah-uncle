@@ -1,4 +1,4 @@
-name: Download audit APK
+name: Download current test APK
 
 on:
   push:
@@ -40,13 +40,14 @@ jobs:
       - name: Prepare installable download
         run: |
           mkdir -p download
-          cp app/build/outputs/apk/debug/app-debug.apk download/Salah-2.7.0-audit-debug.apk
+          cp app/build/outputs/apk/debug/app-debug.apk download/Salah-2.7.0-continuation-debug.apk
+          cp docs/reports/2026-11-12/Salah-Continuation-Review.pdf download/Salah-Continuation-Review.pdf
           cd download
-          sha256sum Salah-2.7.0-audit-debug.apk > SHA256SUMS.txt
+          sha256sum Salah-2.7.0-continuation-debug.apk Salah-Continuation-Review.pdf > SHA256SUMS.txt
       - name: Save APK and test reports
         uses: actions/upload-artifact@v4
         with:
-          name: salah-audit-apk-${{ github.sha }}
+          name: salah-continuation-apk-${{ github.sha }}
           retention-days: 90
           path: |
             download/
@@ -57,18 +58,20 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          release_tag="audit-apk-${GITHUB_SHA:0:12}"
+          release_tag="continuation-apk-${GITHUB_SHA:0:12}"
           cat > download-notes.md <<'NOTES'
-          Installable debug/test APK for the audit fixes on the work branch.
+          Installable debug/test APK for continuation phases 5–13 on the work branch.
           This is a prerelease, not a production or store release.
-          Educational/fiqh wording is unchanged. Content review remains pending qualified scholars.
+          Includes scoped languages, section bookmarks, direct articles with optional guide slides, compact quick access and draft stage illustrations.
+          Educational/fiqh wording is unchanged. Content review remains pending qualified scholars; artwork remains pending owner/posture review.
           Unit tests and the build are verified in this workflow; phone sensors, GPS and real audio are not verified here.
+          Debug signing keys can differ between builds. If Android reports an incompatible signature, do not uninstall an existing app with saved data just to install this test.
           NOTES
           if gh release view "$release_tag" >/dev/null 2>&1; then
             echo "The existing download is preserved: $release_tag"
           else
-            gh release create "$release_tag" download/Salah-2.7.0-audit-debug.apk download/SHA256SUMS.txt \
+            gh release create "$release_tag" download/Salah-2.7.0-continuation-debug.apk download/Salah-Continuation-Review.pdf download/SHA256SUMS.txt \
               --target "$GITHUB_SHA" --prerelease --latest=false \
-              --title 'Salah 2.7.0 — audit test APK' --notes-file download-notes.md
+              --title 'Salah 2.7.0 — continuation test APK' --notes-file download-notes.md
           fi
           gh release view "$release_tag" --json url --jq .url >> "$GITHUB_STEP_SUMMARY"
