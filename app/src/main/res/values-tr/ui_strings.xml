@@ -237,4 +237,6 @@
     <string name="ui_teach_ghusl">Gusül</string>
     <string name="ui_teach_tayammum">Teyemmüm</string>
     <string name="ui_teach_sujud">Sehiv secdesi</string>
+    <string name="ui_art_draft">Taslak görsel; proje sahibinin incelemesi bekleniyor</string>
+    <string name="ui_art_placeholder">Görsel yer tutucusu; bu aşamanın duruşu inceleme bekliyor</string>
 </resources>

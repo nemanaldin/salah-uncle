@@ -237,4 +237,6 @@
     <string name="ui_teach_ghusl">غسل</string>
     <string name="ui_teach_tayammum">تیمم</string>
     <string name="ui_teach_sujud">سجدهٔ سهو</string>
+    <string name="ui_art_draft">پیش‌نویس هنری؛ در انتظار بازبینی صاحب پروژه</string>
+    <string name="ui_art_placeholder">جای‌نگهدار تصویر؛ حالت این مرحله نیازمند بازبینی است</string>
 </resources>

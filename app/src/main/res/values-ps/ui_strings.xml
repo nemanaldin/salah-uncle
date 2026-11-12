@@ -237,4 +237,6 @@
     <string name="ui_teach_ghusl">غسل</string>
     <string name="ui_teach_tayammum">تیمم</string>
     <string name="ui_teach_sujud">د سهوې سجده</string>
+    <string name="ui_art_draft">Draft artwork; pending project owner review</string>
+    <string name="ui_art_placeholder">Image placeholder; this stage needs posture review</string>
 </resources>

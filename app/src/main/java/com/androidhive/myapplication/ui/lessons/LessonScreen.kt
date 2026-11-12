@@ -49,9 +49,19 @@ import com.androidhive.myapplication.ui.components.*
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
-/** Direct reference articles; only the three guides offer an optional standard RTL-aware pager. */
+/** One lazy atlas holder per reader, never an image decode per slide. */
 @Composable
 fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
+    onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
+    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0) {
+    GuideArtworkProvider {
+        LessonScreenContent(lesson, settings, onRead, onBack, onError, initialSection, onSaveSection, onRemoveSection, initialOffset)
+    }
+}
+
+/** Direct reference articles; only the three guides offer an optional standard RTL-aware pager. */
+@Composable
+private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
     onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
     onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0) {
     var showOriginal by rememberSaveable(lesson.id, settings.school, settings.language) { mutableStateOf(false) }
@@ -174,11 +184,9 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
             Icon(Icons.Default.Star, stringResource(R.string.ui_section_bookmark), tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
         }
         if (saved) SupportingText(bookmarkState)
-        if (step.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
-                Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
-            } }
-        } else if (isSlideGuide(lessonId, settings.school)) TopicArtwork(lessonId, Modifier.size(80.dp))
+        val art = stageArtwork(lessonId, step, settings.school)
+        if (art != null) GuideStageIllustration(art, settings.language) { OriginalSectionArtwork(lessonId, step, settings.school) }
+        else OriginalSectionArtwork(lessonId, step, settings.school)
         if (step.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW) SupportingText(stringResource(R.string.ui_arrangement_draft))
         if (step.needsDhikrSource) SupportingText(stringResource(R.string.ui_needs_source))
         CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
@@ -207,4 +215,13 @@ private fun ReaderSources(lesson: Lesson, variant: LessonVariant, onError: () ->
     val context = LocalContext.current
     if (variant.sources.isEmpty()) TextButton({ openUrl(context, lesson.source, onError) }) { Text(stringResource(R.string.ui_lesson_source)) }
     else variant.sources.forEach { source -> TextButton({ openUrl(context, source.url, onError) }) { Text(source.title) } }
+}
+
+@Composable
+private fun OriginalSectionArtwork(lessonId: String, step: LessonStep, school: School) {
+    if (step.illustrations.isNotEmpty()) Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        step.illustrations.forEach { name -> MediaResources.illustrations[name]?.let { drawable ->
+            Image(painterResource(drawable), stringResource(R.string.ui_illustration), Modifier.weight(1f).heightIn(min = 140.dp, max = 250.dp).aspectRatio(.65f))
+        } }
+    } else if (isSlideGuide(lessonId, school)) TopicArtwork(lessonId, Modifier.size(80.dp))
 }
