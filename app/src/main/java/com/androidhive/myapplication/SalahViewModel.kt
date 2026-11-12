@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.androidhive.myapplication.core.model.*
 import com.androidhive.myapplication.core.RetryingReader
 import com.androidhive.myapplication.core.LoadSlot
+import com.androidhive.myapplication.data.content.visibleFor
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.data.content.TrainingVideo
 import com.androidhive.myapplication.data.location.City
@@ -77,7 +78,9 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         val displayDay = today?.getOrNull() ?: settings?.location?.let {
             DailyPrayers(now.atZone(it.zone).toLocalDate(), emptyList())
         }
-        SalahUiState(settings, loaded, now, displayDay, next?.getOrNull(), locationBusy = busy,
+        val visible = loaded.copy(lessons = loaded.lessons.filter { settings != null && it.visibleFor(settings) },
+            videos = loaded.videos.takeIf { settings != null && ActiveContent.policy.allows(settings) }.orEmpty())
+        SalahUiState(settings, visible, now, displayDay, next?.getOrNull(), locationBusy = busy,
             error = if (failed) R.string.ui_error_calculation else null, calculationFailed = failed)
 
     }.combine(importingAudio) { state, busy -> state.copy(audioImportBusy = busy) }.combine(capabilities) { state, caps -> state.copy(capabilities = caps) }
@@ -159,7 +162,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             message(R.string.ui_saved_data_unavailable); return
         }
         viewModelScope.launch {
-            try { container.settings.update(transform) }
+            try { container.settings.update { transform(it).recoverVisibility(emptyList()) } }
             catch (error: CancellationException) { throw error }
             catch (_: Exception) { message(R.string.ui_error_generic) }
         }

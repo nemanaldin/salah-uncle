@@ -51,3 +51,19 @@ The owner subsequently requested a GitHub push and an installable APK download. 
 A separate `Download audit APK` workflow builds and tests this branch and publishes a debug APK as a clearly labelled prerelease with a SHA-256 checksum. Its first run is pending at the time of this commit. The local APK and the preceding audit's test evidence remain available; no app source or educational wording changed in this publication follow-up. The earlier no-push statements describe the original audit hand-off before this new authorization.
 
 Publication completed: [workflow run](https://github.com/nemanaldin/salah-uncle/actions/runs/42687777533) succeeded, including unit tests, APK assembly and prerelease upload. [Download the test APK](https://github.com/nemanaldin/salah-uncle/releases/download/audit-apk-8b1f79a2a08b/Salah-2.7.0-audit-debug.apk) from the [release](https://github.com/nemanaldin/salah-uncle/releases/tag/audit-apk-8b1f79a2a08b). The published APK was downloaded again, its SHA-256 was verified (`91a922eaef4d799d5bd26ef9245a4d22f5641565c52ebcccede3520a599d7770`), and Android package metadata confirmed version 2.7.0/code 14, minSdk 21 and targetSdk 36. APK source commit: `8b1f79a2a08b32f29327628c45def88e85afecca`; subsequent publication documentation does not change app code. Physical-device checks remain pending.
+
+## Continuation — 2026-11-12
+
+Authorized by salah-app-prompt.docx: current branch work; local commits only, no push, no PR/main changes. Start 1bfe7a91749d1e513d39d7e18204dd7fef823190. Baseline: build, 136 unit tests, lint 66 warnings/0 errors passed. Existing instructional assets, audio and tests are preserved.
+
+| Phase | Work | Status | Commit | Evidence / limits |
+|---|---|---|---|---|
+| 5 | Active languages/school and safe settings recovery | done | this commit; resolved after creation | Build, 142 unit tests, lint 67 warnings/0 errors; existing assets/audio/tests preserved; font cmap checked; device shaping unverified |
+| 6 | Article contents, scoped full-text search and section bookmarks | not started | — | — |
+| 7 | School/language-scoped video metadata | not started | — | — |
+| 8 | Optional prayer/wudu/ghusl slides and text view | not started | — | — |
+| 9 | Draft dhikr arrangement and post-wudu integration | not started | — | — |
+| 10 | Accessibility and large-text/dark/RTL quality | not started | — | — |
+| 11 | Compact adaptive quick access | not started | — | — |
+| 12 | Existing tayammum artwork and school-isolated entry | not started | — | — |
+| 13 | Consistent draft step artwork | not started | — | — |

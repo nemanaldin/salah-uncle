@@ -8,6 +8,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.intl.LocaleList
+import com.androidhive.myapplication.core.model.AppLanguage
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -49,14 +53,38 @@ private val Typography = Typography(
     labelSmall = TextStyle(fontFamily = Vazir, fontSize = 11.sp, lineHeight = 19.sp),
 )
 
+private fun TextStyle.forLanguage(language: AppLanguage) = copy(
+    fontFamily = if (language == AppLanguage.BENGALI) FontFamily.Default else fontFamily,
+    localeList = LocaleList(language.tag),
+    platformStyle = PlatformTextStyle(includeFontPadding = true),
+    lineHeightStyle = LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.None),
+)
+
 @Composable
 fun SalahTheme(settings: AppSettings = AppSettings(), content: @Composable () -> Unit) {
     val dark = when (settings.theme) { ThemeMode.SYSTEM -> isSystemInDarkTheme(); ThemeMode.LIGHT -> false; ThemeMode.DARK -> true }
     val density = LocalDensity.current
+    val typography = Typography.copy(
+        displayLarge = Typography.displayLarge.forLanguage(settings.language),
+        displayMedium = Typography.displayMedium.forLanguage(settings.language),
+        displaySmall = Typography.displaySmall.forLanguage(settings.language),
+        headlineLarge = Typography.headlineLarge.forLanguage(settings.language),
+        headlineMedium = Typography.headlineMedium.forLanguage(settings.language),
+        headlineSmall = Typography.headlineSmall.forLanguage(settings.language),
+        titleLarge = Typography.titleLarge.forLanguage(settings.language),
+        titleMedium = Typography.titleMedium.forLanguage(settings.language),
+        titleSmall = Typography.titleSmall.forLanguage(settings.language),
+        bodyLarge = Typography.bodyLarge.forLanguage(settings.language),
+        bodyMedium = Typography.bodyMedium.forLanguage(settings.language),
+        bodySmall = Typography.bodySmall.forLanguage(settings.language),
+        labelLarge = Typography.labelLarge.forLanguage(settings.language),
+        labelMedium = Typography.labelMedium.forLanguage(settings.language),
+        labelSmall = Typography.labelSmall.forLanguage(settings.language),
+    )
     CompositionLocalProvider(
         LocalDensity provides Density(density.density, density.fontScale * settings.textScale),
         LocalLayoutDirection provides if (settings.language.isRtl) LayoutDirection.Rtl else LayoutDirection.Ltr,
     ) { com.androidhive.myapplication.ui.components.PrayerArtworkProvider {
-        MaterialTheme(colorScheme = if (dark) Dark else Light, typography = Typography, content = content)
+        MaterialTheme(colorScheme = if (dark) Dark else Light, typography = typography, content = content)
     } }
 }

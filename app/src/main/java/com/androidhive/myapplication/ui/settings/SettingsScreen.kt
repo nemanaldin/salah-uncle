@@ -29,8 +29,8 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
         AppCard {
             SectionTitle(stringResource(R.string.ui_choose_language))
             ChoiceRow(stringResource(R.string.ui_choose_language), languageChoiceLabel(settings.language), { dialog = "language" }, Modifier.testTag("setting_language"))
-            ChoiceRow(stringResource(R.string.ui_choose_school), stringResource(settings.school.labelRes()), { dialog = "school" }, Modifier.testTag("setting_school"))
-            SupportingText(stringResource(R.string.ui_school_note))
+            if (ActiveContent.policy.schools.size > 1) ChoiceRow(stringResource(R.string.ui_choose_school), stringResource(settings.school.labelRes()), { dialog = "school" }, Modifier.testTag("setting_school"))
+            if (ActiveContent.policy.schools.size > 1) SupportingText(stringResource(R.string.ui_school_note))
             LanguageReadinessNotice(settings.language)
         }
         AppCard {
@@ -80,9 +80,9 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
     }
     val dismiss = { dialog = null }
     when (val active = dialog) {
-        "language" -> ChoiceDialog(stringResource(R.string.ui_choose_language), AppLanguage.entries, settings.language,
+        "language" -> ChoiceDialog(stringResource(R.string.ui_choose_language), ActiveContent.policy.languages, settings.language,
             { languageChoiceLabel(it) }, { language -> onUpdate { it.copy(language = language) } }, dismiss)
-        "school" -> ChoiceDialog(stringResource(R.string.ui_choose_school), School.entries.filter { it.contentAvailable }, settings.school,
+        "school" -> ChoiceDialog(stringResource(R.string.ui_choose_school), ActiveContent.policy.schools, settings.school,
             { stringResource(it.labelRes()) }, { school -> onUpdate { it.withSchool(school) } }, dismiss)
         "theme" -> ChoiceDialog(stringResource(R.string.ui_theme), ThemeMode.entries, settings.theme,
             { stringResource(when (it) { ThemeMode.SYSTEM -> R.string.ui_theme_system; ThemeMode.LIGHT -> R.string.ui_theme_light; ThemeMode.DARK -> R.string.ui_theme_dark }) },

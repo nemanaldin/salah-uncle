@@ -23,6 +23,7 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AlertMode
 import com.androidhive.myapplication.core.model.School
+import com.androidhive.myapplication.core.model.ActiveContent
 import com.androidhive.myapplication.core.model.confirmCalculation
 import com.androidhive.myapplication.data.content.Lesson
 import com.androidhive.myapplication.platform.openExternal
@@ -195,7 +196,8 @@ private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) ->
     PageColumn {
         AppCard {
             SectionTitle(stringResource(R.string.ui_app_name))
-            SupportingText(stringResource(R.string.ui_about_body))
+            ActiveContent.policy.schools.forEach { SupportingText(stringResource(it.labelRes())) }
+            SupportingText(ActiveContent.policy.languages.joinToString(" · ") { it.nativeName })
             SupportingText(stringResource(R.string.ui_version, BuildConfig.VERSION_NAME))
         }
         val sources = lessons.mapNotNull { it.variant(school) }.flatMap { it.sources }.distinctBy { it.url }

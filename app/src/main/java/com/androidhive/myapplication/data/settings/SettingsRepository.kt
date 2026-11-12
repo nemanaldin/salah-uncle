@@ -18,7 +18,7 @@ import org.json.JSONObject
 class SettingsRepository(context: Context) {
     private val app = context.applicationContext
     private val store = PreferenceDataStoreFactory.create(
-        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app)),
+        migrations = listOf(LegacyMigration(app), InitialLanguageMigration(app), VisibilityMigration()),
         scope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
         produceFile = { app.preferencesDataStoreFile("salah_settings") },
     )
@@ -61,7 +61,24 @@ class SettingsRepository(context: Context) {
         override suspend fun cleanUp() = Unit
     }
 
+    private class VisibilityMigration : DataMigration<Preferences> {
+        override suspend fun shouldMigrate(currentData: Preferences) = currentData[Keys.visibility] != ActiveContent.policy.fingerprint
+        override suspend fun migrate(currentData: Preferences): Preferences {
+            val config = android.content.res.Resources.getSystem().configuration
+            val tags = if (android.os.Build.VERSION.SDK_INT >= 24) (0 until config.locales.size()).map { config.locales[it].toLanguageTag() }
+                else { @Suppress("DEPRECATION") listOf(config.locale.toLanguageTag()) }
+            val recovered = decode(currentData).recoverVisibility(tags)
+            return currentData.toMutablePreferences().apply {
+                this[Keys.school] = recovered.school.name
+                this[Keys.language] = recovered.language.name
+                this[Keys.visibility] = ActiveContent.policy.fingerprint
+            }
+        }
+        override suspend fun cleanUp() = Unit
+    }
+
     private object Keys {
+        val visibility = stringPreferencesKey("visibility_policy_v1")
         val languageInitialized = booleanPreferencesKey("language_initialized_v1")
         val migrated = booleanPreferencesKey("legacy_migrated_v1")
         val language = stringPreferencesKey("language")

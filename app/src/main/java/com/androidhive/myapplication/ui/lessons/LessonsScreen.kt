@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
+import com.androidhive.myapplication.data.content.visibleFor
 import com.androidhive.myapplication.ui.components.*
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -34,7 +35,7 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
         "prayers" to R.string.ui_prayers, "remembrance" to R.string.ui_remembrance, "saved" to R.string.ui_bookmarks)
     val filtered = remember(state.content.lessons, settings.school, settings.language, settings.bookmarks, query, category) {
         state.content.lessons.filter { lesson ->
-            lesson.variant(settings.school) != null &&
+            lesson.visibleFor(settings) &&
                 (category == "all" || category == lesson.category || category == "saved" && lesson.id in settings.bookmarks) &&
                 (query.isBlank() || lesson.title(settings.language).contains(query, true) || lesson.titleFa.contains(query, true) || lesson.titleEn.contains(query, true))
         }

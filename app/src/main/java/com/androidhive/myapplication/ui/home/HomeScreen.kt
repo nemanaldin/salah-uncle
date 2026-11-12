@@ -25,6 +25,7 @@ import com.androidhive.myapplication.R
 import com.androidhive.myapplication.SalahUiState
 import com.androidhive.myapplication.core.labelRes
 import com.androidhive.myapplication.core.model.AppSettings
+import com.androidhive.myapplication.data.content.visibleFor
 import com.androidhive.myapplication.domain.prayer.HomePrayerState
 import com.androidhive.myapplication.domain.prayer.homePrayerState
 import com.androidhive.myapplication.ui.components.*
@@ -48,7 +49,7 @@ private data class Shortcut(val id: String, val title: String, val action: () ->
 fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> Unit, onLessons: () -> Unit,
     onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit, onRetrySettings: () -> Unit = {}) {
     val settings = state.settings ?: return
-    val available = state.content.lessons.filter { it.variant(settings.school) != null }
+    val available = state.content.lessons.filter { it.visibleFor(settings) }
     val last = available.firstOrNull { it.id == settings.lastLessonId }
     PageColumn(Modifier.testTag("home_screen")) {
         PhotoPanel(Modifier.testTag("home_hero")) {

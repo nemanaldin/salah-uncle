@@ -22,7 +22,7 @@ fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, o
         AppCard {
             SectionTitle(stringResource(R.string.ui_choose_language))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                AppLanguage.entries.forEach { language ->
+                ActiveContent.policy.languages.forEach { language ->
                     FilterChip(selected = language == settings.language, onClick = { onLanguage(language) },
                         label = { Text(languageChoiceLabel(language)) },
                         modifier = Modifier.testTag("language_${language.tag}"))
@@ -30,10 +30,10 @@ fun OnboardingScreen(settings: AppSettings, onLanguage: (AppLanguage) -> Unit, o
             }
         }
         LanguageReadinessNotice(settings.language)
-        AppCard {
+        if (ActiveContent.policy.schools.size > 1) AppCard {
             SectionTitle(stringResource(R.string.ui_choose_school))
             FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                School.entries.forEach { school ->
+                ActiveContent.policy.schools.forEach { school ->
                     FilterChip(school == settings.school, onClick = { onSchool(school) }, enabled = school.contentAvailable,
                         label = { Text(stringResource(school.labelRes())) }, modifier = Modifier.testTag("school_${school.name}"))
                 }
