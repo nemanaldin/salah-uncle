@@ -79,7 +79,7 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
             DailyPrayers(now.atZone(it.zone).toLocalDate(), emptyList())
         }
         val visible = loaded.copy(lessons = loaded.lessons.filter { settings != null && it.visibleFor(settings) },
-            videos = loaded.videos.takeIf { settings != null && ActiveContent.policy.allows(settings) }.orEmpty())
+            videos = loaded.videos.filter { settings != null && it.visibleFor(settings) })
         SalahUiState(settings, visible, now, displayDay, next?.getOrNull(), locationBusy = busy,
             error = if (failed) R.string.ui_error_calculation else null, calculationFailed = failed)
 

@@ -28,12 +28,15 @@ import com.androidhive.myapplication.ui.components.*
 
 @Composable
 fun TrainingScreen(videos: List<TrainingVideo>, settings: AppSettings, onGuide: () -> Unit, onError: (Int) -> Unit, loading: Boolean = false, error: Int? = null, onRetry: () -> Unit = {}) {
+    val context = LocalContext.current
+    val matchingVideos = remember(videos, settings.school, settings.language) { videos.filter { it.visibleFor(settings) } }
     var selectedId by rememberSaveable { mutableStateOf<String?>(null) }
     PageColumn(Modifier.testTag("training_screen")) {
         SupportingText(stringResource(R.string.ui_training_description))
+        LanguageReadinessNotice(settings.language)
         if (loading) CircularProgressIndicator()
         error?.let { InfoCard(stringResource(it)); TextButton(onRetry) { Text(stringResource(R.string.ui_retry)) } }
-        if (videos.isEmpty() && !loading && error == null) {
+        if (matchingVideos.isEmpty() && !loading && error == null) {
             Surface(Modifier.fillMaxWidth().aspectRatio(16f / 9f), shape = RoundedCornerShape(26.dp), color = MaterialTheme.colorScheme.primaryContainer) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(Icons.Default.PlayArrow, null, Modifier.size(64.dp), tint = MaterialTheme.colorScheme.onPrimaryContainer)
@@ -42,11 +45,17 @@ fun TrainingScreen(videos: List<TrainingVideo>, settings: AppSettings, onGuide: 
             SectionTitle(stringResource(R.string.ui_training_placeholder))
             SupportingText(stringResource(R.string.ui_training_placeholder_body))
             Button(onGuide, Modifier.fillMaxWidth().heightIn(min = 52.dp)) { Text(stringResource(R.string.ui_open_prayer_guide)) }
-        } else if (videos.isNotEmpty()) {
-            val selected = videos.firstOrNull { it.id == selectedId } ?: videos.first()
+        } else if (matchingVideos.isNotEmpty()) {
+            val selected = matchingVideos.firstOrNull { it.id == selectedId } ?: matchingVideos.first()
             SectionTitle(selected.title(settings.language))
+            if (selected.status(settings.language) == com.androidhive.myapplication.core.model.ReviewStatus.EXPERIMENTAL)
+                InfoCard(stringResource(R.string.ui_experimental_status))
+            if (selected.version.isNotBlank()) SupportingText(selected.version)
+            if (selected.source.isNotBlank()) TextButton({ com.androidhive.myapplication.platform.openUrl(context, selected.source) { onError(R.string.ui_error_external_app) } }) {
+                Text(stringResource(R.string.ui_lesson_source))
+            }
             key(selected.id) { TrainingPlayer(selected, onError) }
-            videos.forEach { clip ->
+            matchingVideos.forEach { clip ->
                 OutlinedButton({ selectedId = clip.id }, Modifier.fillMaxWidth()) { Text(clip.title(settings.language)) }
             }
         }

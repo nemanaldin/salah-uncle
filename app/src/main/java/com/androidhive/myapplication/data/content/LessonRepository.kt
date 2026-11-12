@@ -22,8 +22,19 @@ data class Lesson(
     fun variant(school: School, language: AppLanguage? = null): LessonVariant? =
         variants.firstOrNull { it.school == school && (language == null || it.language == language.tag) }
 }
-data class TrainingVideo(val id: String, val titleFa: String, val titleEn: String, val assetPath: String) {
-    fun title(language: AppLanguage) = if (language == AppLanguage.PERSIAN) titleFa else titleEn
+data class TrainingVideo(
+    val id: String, val titleFa: String, val titleEn: String, val assetPath: String,
+    val school: School? = null, val languages: Set<AppLanguage> = emptySet(),
+    val reviewStatus: ReviewStatus = ReviewStatus.EXPERIMENTAL, val titles: Map<String, String> = emptyMap(),
+    val source: String = "", val version: String = "",
+) {
+    fun title(language: AppLanguage) = titles[language.tag] ?: titles["en"]
+        ?: if (titles.isEmpty() && language == AppLanguage.PERSIAN) titleFa else titleEn
+    fun matches(school: School, language: AppLanguage) = this.school == school && language in languages
+    fun status(language: AppLanguage) = if (language.reviewStatus == ReviewStatus.REVIEWED) reviewStatus else ReviewStatus.EXPERIMENTAL
+    fun visibleFor(settings: com.androidhive.myapplication.core.model.AppSettings,
+        policy: com.androidhive.myapplication.core.model.VisibilityPolicy = com.androidhive.myapplication.core.model.ActiveContent.policy) =
+        policy.allows(settings) && matches(settings.school, settings.language)
 }
 
 class LessonRepository(context: Context) {
@@ -92,9 +103,19 @@ class LessonRepository(context: Context) {
             val item = array.getJSONObject(index)
             val path = item.getString("assetPath")
             require(path.startsWith("training/") && !path.contains(".."))
-            TrainingVideo(item.getString("id"), item.getString("titleFa"), item.getString("titleEn"), path)
+            TrainingVideo(item.getString("id"), item.optString("titleFa"), item.optString("titleEn"), path,
+                item.optString("school").takeIf { it.isNotBlank() }?.let(School::valueOf),
+                item.optJSONArray("languages")?.let { values -> (0 until values.length()).map { index ->
+                    AppLanguage.entries.single { it.tag == values.getString(index) }
+                }.toSet() }.orEmpty(), ReviewStatus.fromStored(item.optString("reviewStatus")),
+                item.optJSONObject("titles")?.let { names -> names.keys().asSequence().associateWith { names.getString(it) } }.orEmpty(),
+                item.optString("source"), item.optString("version"))
         }.also { videos ->
             require(videos.map { it.id }.distinct().size == videos.size)
+            videos.filter { it.school != null && it.languages.isNotEmpty() }.forEach { video ->
+                require(video.id.isNotBlank() && video.version.isNotBlank() && video.source.startsWith("https://"))
+                require(video.titleEn.isNotBlank() || !video.titles["en"].isNullOrBlank())
+            }
         }
     }
 

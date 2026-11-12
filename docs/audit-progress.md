@@ -59,8 +59,8 @@ Authorized by salah-app-prompt.docx: current branch work; local commits only, no
 | Phase | Work | Status | Commit | Evidence / limits |
 |---|---|---|---|---|
 | 5 | Active languages/school and safe settings recovery | done | e5a1d130572bc4a8539514591d86b052c20943dc | Build, 142 unit tests, lint 67 warnings/0 errors; existing assets/audio/tests preserved; font cmap checked; device shaping unverified |
-| 6 | Article contents, scoped full-text search and section bookmarks | done | this commit; resolved after creation | Build, 149 unit tests, lint 67 warnings/0 errors; 7 new navigation/bookmark tests; no device persistence/old UI-suite certification |
-| 7 | School/language-scoped video metadata | not started | — | — |
+| 6 | Article contents, scoped full-text search and section bookmarks | done | 929e41287ae6cecd67525ded9176b4b1a62ff0b0 | Build, 149 unit tests, lint 67 warnings/0 errors; 7 new navigation/bookmark tests; no device persistence/old UI-suite certification |
+| 7 | School/language-scoped video metadata | done | this commit; resolved after creation | Build, 155 unit tests, lint 67 warnings/0 errors; 6 video isolation/fallback tests; no video files added or playback certified |
 | 8 | Optional prayer/wudu/ghusl slides and text view | not started | — | — |
 | 9 | Draft dhikr arrangement and post-wudu integration | not started | — | — |
 | 10 | Accessibility and large-text/dark/RTL quality | not started | — | — |
