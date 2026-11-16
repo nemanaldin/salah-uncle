@@ -57,7 +57,7 @@ class ContentCatalogTest {
                     assertEquals(language.tag, variant.language)
                     assertEquals(stepIds, variant.steps.map { it.id })
                     assertTrue(variant.steps.all { it.body.isNotBlank() })
-                    assertTrue(variant.sources.isNotEmpty())
+                    assertTrue(variant.sources.isNotEmpty() || lesson.sourceReviewRequired)
                     assertTrue(lesson.titles.containsKey(language.tag))
                 }
                 School.entries.filter { it != school }.forEach { assertNull(lesson.variant(it)) }

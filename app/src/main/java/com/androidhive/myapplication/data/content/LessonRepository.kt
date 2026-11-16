@@ -19,6 +19,7 @@ data class LessonVariant(val school: School, val language: String, val steps: Li
 data class Lesson(
     val id: String, val titleFa: String, val titleEn: String, val category: String,
     val source: String, val variants: List<LessonVariant>, val titles: Map<String, String> = emptyMap(),
+    val sourceReviewRequired: Boolean = false,
 ) {
     fun title(language: AppLanguage) = titles[language.tag] ?: if (language == AppLanguage.PERSIAN) titleFa else titleEn
     // Content language is explicit; a different school's content is never used as a fallback.
@@ -147,7 +148,8 @@ class LessonRepository(context: Context) {
                                 LessonSource(source.getString("title"), source.getString("url"))
                             }
                         }.orEmpty())
-                }, item.optJSONObject("titles")?.let { titles -> titles.keys().asSequence().associateWith { titles.getString(it) } }.orEmpty())
+                }, item.optJSONObject("titles")?.let { titles -> titles.keys().asSequence().associateWith { titles.getString(it) } }.orEmpty(),
+                sourceReviewRequired = item.optBoolean("sourceReviewRequired", false))
         }
         require(lessons.map { it.id }.distinct().size == lessons.size)
         return lessons

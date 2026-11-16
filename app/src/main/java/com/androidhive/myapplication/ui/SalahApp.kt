@@ -222,6 +222,7 @@ private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) ->
             SupportingText(stringResource(R.string.ui_version, BuildConfig.VERSION_NAME))
         }
         val sources = lessons.mapNotNull { it.variant(school) }.flatMap { it.sources }.distinctBy { it.url }
+        if (lessons.any { it.sourceReviewRequired && it.variant(school) != null }) SupportingText(stringResource(R.string.ui_source_review_required))
         sources.forEach { source ->
             OutlinedButton({ openUrl(context, source.url, error) }, Modifier.fillMaxWidth()) { Text(source.title) }
         }

@@ -37,7 +37,7 @@
         "fr": "La prière quotidienne, pas à pas · hanafite"
       },
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -45,7 +45,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "این راهنمای مقدماتی نمازهای روزانهٔ فردی بر پایهٔ مذهب حنفی است. منابع هر درس در پایین آن آمده‌اند. نماز جماعت، سفر و بیماری احکام تکمیلی دارند.\n\nاز رسیدن وقت نماز مطمئن شو. وضو بگیر و اگر غسل لازم است، غسل کن. بدن، لباس و محل نماز را از نجاست پاک کن، پوشش لازم را رعایت کن و رو به قبله بایست؛ اگر توان ایستادن نداری، حکم متناسب را از منبع بخوان.",
+              "body": "این راهنمای مقدماتی نمازهای روزانهٔ فردی بر پایهٔ مذهب حنفی است. نماز جماعت، سفر و بیماری احکام تکمیلی دارند.\n\nاز رسیدن وقت نماز مطمئن شو. وضو بگیر و اگر غسل لازم است، غسل کن. بدن، لباس و محل نماز را از نجاست پاک کن، پوشش لازم را رعایت کن و رو به قبله بایست؛ اگر توان ایستادن نداری، حکم متناسب را از منبع بخوان.",
               "audio": "",
               "illustrations": []
             },
@@ -104,12 +104,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -117,7 +112,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "This introduction covers daily prayer performed alone according to the Hanafi school. Sources are linked below. Congregational prayer, travel and illness have additional rules.\n\nMake sure the prayer time has begun. Perform wudu, and ghusl if needed. Remove impurity from your body, clothes and prayer place, cover the required body areas, and face the Qibla. If unable to stand, consult the relevant rule in the source.",
+              "body": "This introduction covers daily prayer performed alone according to the Hanafi school. Congregational prayer, travel and illness have additional rules.\n\nMake sure the prayer time has begun. Perform wudu, and ghusl if needed. Remove impurity from your body, clothes and prayer place, cover the required body areas, and face the Qibla. If unable to stand, consult the relevant rule in the source.",
               "audio": "",
               "illustrations": []
             },
@@ -176,12 +171,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -189,7 +179,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "هذا دليل تمهيدي للصلاة اليومية للمنفرد وفق المذهب الحنفي. المصادر مرتبطة أسفل الدرس. للجماعة والسفر والمرض أحكام إضافية.\n\nتأكد من دخول الوقت. توضأ واغتسل إن وجب الغسل. أزل النجاسة عن البدن والثوب والمكان، واستر العورة، واستقبل القبلة قائمًا. عند العجز عن القيام راجع حكم حالتك في المصدر.",
+              "body": "هذا دليل تمهيدي للصلاة اليومية للمنفرد وفق المذهب الحنفي. للجماعة والسفر والمرض أحكام إضافية.\n\nتأكد من دخول الوقت. توضأ واغتسل إن وجب الغسل. أزل النجاسة عن البدن والثوب والمكان، واستر العورة، واستقبل القبلة قائمًا. عند العجز عن القيام راجع حكم حالتك في المصدر.",
               "audio": "",
               "illustrations": []
             },
@@ -248,12 +238,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -261,7 +246,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "Bu başlangıç rehberi, Hanefî mezhebine göre tek başına kılınan günlük namazları anlatır. Kaynaklar aşağıdadır. Cemaat, yolculuk ve hastalık için ek hükümler vardır.\n\nVaktin girdiğinden emin olun. Abdest alın, gerekiyorsa gusledin. Beden, elbise ve namaz yerini necasetten temizleyin; gerekli örtünmeyi sağlayın ve kıbleye dönün. Ayakta duramıyorsanız kaynaktaki ilgili hükme bakın.",
+              "body": "Bu başlangıç rehberi, Hanefî mezhebine göre tek başına kılınan günlük namazları anlatır. Cemaat, yolculuk ve hastalık için ek hükümler vardır.\n\nVaktin girdiğinden emin olun. Abdest alın, gerekiyorsa gusledin. Beden, elbise ve namaz yerini necasetten temizleyin; gerekli örtünmeyi sağlayın ve kıbleye dönün. Ayakta duramıyorsanız kaynaktaki ilgili hükme bakın.",
               "audio": "",
               "illustrations": []
             },
@@ -320,12 +305,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -333,7 +313,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "یہ حنفی مسلک کے مطابق انفرادی روزانہ نماز کی ابتدائی رہنمائی ہے۔ ماخذ نیچے دیے گئے ہیں۔ جماعت، سفر اور بیماری کے اضافی احکام ہیں۔\n\nنماز کا وقت داخل ہونے کی تصدیق کریں۔ وضو کریں اور ضرورت ہو تو غسل کریں۔ بدن، کپڑے اور جگہ سے نجاست دور کریں، ستر ڈھانپیں اور قبلہ رخ کھڑے ہوں۔ کھڑے ہونے سے معذور ہوں تو متعلقہ حکم ماخذ میں دیکھیں۔",
+              "body": "یہ حنفی مسلک کے مطابق انفرادی روزانہ نماز کی ابتدائی رہنمائی ہے۔ جماعت، سفر اور بیماری کے اضافی احکام ہیں۔\n\nنماز کا وقت داخل ہونے کی تصدیق کریں۔ وضو کریں اور ضرورت ہو تو غسل کریں۔ بدن، کپڑے اور جگہ سے نجاست دور کریں، ستر ڈھانپیں اور قبلہ رخ کھڑے ہوں۔ کھڑے ہونے سے معذور ہوں تو متعلقہ حکم ماخذ میں دیکھیں۔",
               "audio": "",
               "illustrations": []
             },
@@ -392,12 +372,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -405,7 +380,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "Panduan dasar ini membahas salat harian sendirian menurut mazhab Hanafi. Sumber tercantum di bawah. Salat berjamaah, perjalanan, dan sakit memiliki aturan tambahan.\n\nPastikan waktu salat telah masuk. Berwudu dan mandi wajib jika diperlukan. Bersihkan najis dari tubuh, pakaian, dan tempat salat, tutup aurat, lalu menghadap kiblat. Jika tidak mampu berdiri, lihat ketentuan terkait pada sumber.",
+              "body": "Panduan dasar ini membahas salat harian sendirian menurut mazhab Hanafi. Salat berjamaah, perjalanan, dan sakit memiliki aturan tambahan.\n\nPastikan waktu salat telah masuk. Berwudu dan mandi wajib jika diperlukan. Bersihkan najis dari tubuh, pakaian, dan tempat salat, tutup aurat, lalu menghadap kiblat. Jika tidak mampu berdiri, lihat ketentuan terkait pada sumber.",
               "audio": "",
               "illustrations": []
             },
@@ -464,12 +439,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -477,7 +447,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "এটি হানাফি মাজহাব অনুযায়ী একা আদায় করা দৈনিক নামাজের প্রাথমিক নির্দেশিকা। উৎস নিচে দেওয়া আছে। জামাত, সফর ও অসুস্থতার অতিরিক্ত বিধান রয়েছে।\n\nনামাজের সময় হয়েছে নিশ্চিত হোন। ওজু করুন এবং দরকার হলে গোসল করুন। শরীর, কাপড় ও নামাজের স্থান নাপাকি থেকে পরিষ্কার করুন, সতর ঢাকুন এবং কিবলামুখী হন। দাঁড়াতে না পারলে উৎসে সংশ্লিষ্ট বিধান দেখুন।",
+              "body": "এটি হানাফি মাজহাব অনুযায়ী একা আদায় করা দৈনিক নামাজের প্রাথমিক নির্দেশিকা। জামাত, সফর ও অসুস্থতার অতিরিক্ত বিধান রয়েছে।\n\nনামাজের সময় হয়েছে নিশ্চিত হোন। ওজু করুন এবং দরকার হলে গোসল করুন। শরীর, কাপড় ও নামাজের স্থান নাপাকি থেকে পরিষ্কার করুন, সতর ঢাকুন এবং কিবলামুখী হন। দাঁড়াতে না পারলে উৎসে সংশ্লিষ্ট বিধান দেখুন।",
               "audio": "",
               "illustrations": []
             },
@@ -536,12 +506,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -549,7 +514,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "Panduan asas ini menerangkan solat harian bersendirian menurut mazhab Hanafi. Sumber dipautkan di bawah. Solat berjemaah, musafir dan sakit mempunyai hukum tambahan.\n\nPastikan waktu solat telah masuk. Berwuduk dan mandi wajib jika perlu. Bersihkan najis pada tubuh, pakaian dan tempat solat, tutup aurat dan hadap kiblat. Jika tidak mampu berdiri, rujuk hukum berkaitan dalam sumber.",
+              "body": "Panduan asas ini menerangkan solat harian bersendirian menurut mazhab Hanafi. Solat berjemaah, musafir dan sakit mempunyai hukum tambahan.\n\nPastikan waktu solat telah masuk. Berwuduk dan mandi wajib jika perlu. Bersihkan najis pada tubuh, pakaian dan tempat solat, tutup aurat dan hadap kiblat. Jika tidak mampu berdiri, rujuk hukum berkaitan dalam sumber.",
               "audio": "",
               "illustrations": []
             },
@@ -608,12 +573,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -621,7 +581,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "دا د حنفي مذهب له مخې د انفرادي ورځني لمانځه لومړنی لارښود دی. سرچینې لاندې تړل شوې دي. جماعت، سفر او ناروغي نور احکام لري.\n\nډاډه شئ چې وخت داخل شوی. اودس وکړئ او که غسل لازم وي، غسل وکړئ. بدن، کالي او ځای له نجاست پاک کړئ، اړین ستر پټ کړئ او قبلې ته ودرېږئ. که نه شئ درېدای، اړوند حکم په سرچینه کې ولولئ.",
+              "body": "دا د حنفي مذهب له مخې د انفرادي ورځني لمانځه لومړنی لارښود دی. جماعت، سفر او ناروغي نور احکام لري.\n\nډاډه شئ چې وخت داخل شوی. اودس وکړئ او که غسل لازم وي، غسل وکړئ. بدن، کالي او ځای له نجاست پاک کړئ، اړین ستر پټ کړئ او قبلې ته ودرېږئ. که نه شئ درېدای، اړوند حکم په سرچینه کې ولولئ.",
               "audio": "",
               "illustrations": []
             },
@@ -680,12 +640,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -693,7 +648,7 @@
           "steps": [
             {
               "id": "preparation",
-              "body": "Cette introduction explique la prière quotidienne individuelle selon l’école hanafite. Les sources sont accessibles en bas du cours. La prière collective, le voyage et la maladie ont des règles supplémentaires.\n\nVérifiez que l’heure est entrée. Faites les ablutions, et le bain rituel si nécessaire. Nettoyez les impuretés du corps, des vêtements et du lieu, couvrez la nudité requise et faites face à la Qibla. Si vous ne pouvez pas vous tenir debout, consultez le cas correspondant dans la source.",
+              "body": "Cette introduction explique la prière quotidienne individuelle selon l’école hanafite. La prière collective, le voyage et la maladie ont des règles supplémentaires.\n\nVérifiez que l’heure est entrée. Faites les ablutions, et le bain rituel si nécessaire. Nettoyez les impuretés du corps, des vêtements et du lieu, couvrez la nudité requise et faites face à la Qibla. Si vous ne pouvez pas vous tenir debout, consultez le cas correspondant dans la source.",
               "audio": "",
               "illustrations": []
             },
@@ -752,14 +707,10 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         }
-      ]
+      ],
+      "sourceReviewRequired": true
     },
     {
       "id": "purification-hanafi",
@@ -778,7 +729,7 @@
         "fr": "Les ablutions : guide court · hanafite"
       },
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -786,7 +737,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "این راهنمای مقدماتی نمازهای روزانهٔ فردی بر پایهٔ مذهب حنفی است. منابع هر درس در پایین آن آمده‌اند. نماز جماعت، سفر و بیماری احکام تکمیلی دارند.\n\nاز آب پاک استفاده کن و مانع رسیدن آب به پوست را برطرف کن. برای طهارت نیت کن، بسم الله بگو و هر دو دست را تا مچ سه بار بشوی. در وضو اسراف نکن.",
+              "body": "این راهنمای مقدماتی نمازهای روزانهٔ فردی بر پایهٔ مذهب حنفی است. نماز جماعت، سفر و بیماری احکام تکمیلی دارند.\n\nاز آب پاک استفاده کن و مانع رسیدن آب به پوست را برطرف کن. برای طهارت نیت کن، بسم الله بگو و هر دو دست را تا مچ سه بار بشوی. در وضو اسراف نکن.",
               "audio": "",
               "illustrations": []
             },
@@ -809,12 +760,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -822,7 +768,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "This introduction covers daily prayer performed alone according to the Hanafi school. Sources are linked below. Congregational prayer, travel and illness have additional rules.\n\nUse pure water and remove barriers preventing it from reaching the skin. Intend purification, say Bismillah and wash both hands to the wrists three times. Avoid wasting water.",
+              "body": "This introduction covers daily prayer performed alone according to the Hanafi school. Congregational prayer, travel and illness have additional rules.\n\nUse pure water and remove barriers preventing it from reaching the skin. Intend purification, say Bismillah and wash both hands to the wrists three times. Avoid wasting water.",
               "audio": "",
               "illustrations": []
             },
@@ -845,12 +791,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -858,7 +799,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "هذا دليل تمهيدي للصلاة اليومية للمنفرد وفق المذهب الحنفي. المصادر مرتبطة أسفل الدرس. للجماعة والسفر والمرض أحكام إضافية.\n\nاستعمل ماءً طهورًا وأزل ما يمنع وصوله للبشرة. انوِ الطهارة، وقل بسم الله، واغسل الكفين إلى الرسغين ثلاثًا بلا إسراف.",
+              "body": "هذا دليل تمهيدي للصلاة اليومية للمنفرد وفق المذهب الحنفي. للجماعة والسفر والمرض أحكام إضافية.\n\nاستعمل ماءً طهورًا وأزل ما يمنع وصوله للبشرة. انوِ الطهارة، وقل بسم الله، واغسل الكفين إلى الرسغين ثلاثًا بلا إسراف.",
               "audio": "",
               "illustrations": []
             },
@@ -881,12 +822,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -894,7 +830,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "Bu başlangıç rehberi, Hanefî mezhebine göre tek başına kılınan günlük namazları anlatır. Kaynaklar aşağıdadır. Cemaat, yolculuk ve hastalık için ek hükümler vardır.\n\nTemizleyici su kullanın ve suyun deriye ulaşmasını engelleyen maddeleri giderin. Temizlenmeye niyet edin, besmele çekin ve elleri bileklere kadar üç kez yıkayın. Suyu israf etmeyin.",
+              "body": "Bu başlangıç rehberi, Hanefî mezhebine göre tek başına kılınan günlük namazları anlatır. Cemaat, yolculuk ve hastalık için ek hükümler vardır.\n\nTemizleyici su kullanın ve suyun deriye ulaşmasını engelleyen maddeleri giderin. Temizlenmeye niyet edin, besmele çekin ve elleri bileklere kadar üç kez yıkayın. Suyu israf etmeyin.",
               "audio": "",
               "illustrations": []
             },
@@ -917,12 +853,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -930,7 +861,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "یہ حنفی مسلک کے مطابق انفرادی روزانہ نماز کی ابتدائی رہنمائی ہے۔ ماخذ نیچے دیے گئے ہیں۔ جماعت، سفر اور بیماری کے اضافی احکام ہیں۔\n\nپاک پانی استعمال کریں اور جلد تک پانی پہنچنے کی رکاوٹ دور کریں۔ طہارت کی نیت کریں، بسم اللہ کہیں اور دونوں ہاتھ کلائیوں تک تین بار دھوئیں۔ پانی ضائع نہ کریں۔",
+              "body": "یہ حنفی مسلک کے مطابق انفرادی روزانہ نماز کی ابتدائی رہنمائی ہے۔ جماعت، سفر اور بیماری کے اضافی احکام ہیں۔\n\nپاک پانی استعمال کریں اور جلد تک پانی پہنچنے کی رکاوٹ دور کریں۔ طہارت کی نیت کریں، بسم اللہ کہیں اور دونوں ہاتھ کلائیوں تک تین بار دھوئیں۔ پانی ضائع نہ کریں۔",
               "audio": "",
               "illustrations": []
             },
@@ -953,12 +884,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -966,7 +892,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "Panduan dasar ini membahas salat harian sendirian menurut mazhab Hanafi. Sumber tercantum di bawah. Salat berjamaah, perjalanan, dan sakit memiliki aturan tambahan.\n\nGunakan air suci yang menyucikan dan hilangkan penghalang air pada kulit. Niatkan bersuci, ucapkan Bismillah, dan cuci kedua tangan sampai pergelangan tiga kali. Jangan boros air.",
+              "body": "Panduan dasar ini membahas salat harian sendirian menurut mazhab Hanafi. Salat berjamaah, perjalanan, dan sakit memiliki aturan tambahan.\n\nGunakan air suci yang menyucikan dan hilangkan penghalang air pada kulit. Niatkan bersuci, ucapkan Bismillah, dan cuci kedua tangan sampai pergelangan tiga kali. Jangan boros air.",
               "audio": "",
               "illustrations": []
             },
@@ -989,12 +915,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -1002,7 +923,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "এটি হানাফি মাজহাব অনুযায়ী একা আদায় করা দৈনিক নামাজের প্রাথমিক নির্দেশিকা। উৎস নিচে দেওয়া আছে। জামাত, সফর ও অসুস্থতার অতিরিক্ত বিধান রয়েছে।\n\nপবিত্র পানি ব্যবহার করুন এবং চামড়ায় পানি পৌঁছানোর বাধা সরান। পবিত্রতার নিয়ত করুন, বিসমিল্লাহ বলুন এবং দুই হাত কবজি পর্যন্ত তিনবার ধুয়ে নিন। পানি অপচয় করবেন না।",
+              "body": "এটি হানাফি মাজহাব অনুযায়ী একা আদায় করা দৈনিক নামাজের প্রাথমিক নির্দেশিকা। জামাত, সফর ও অসুস্থতার অতিরিক্ত বিধান রয়েছে।\n\nপবিত্র পানি ব্যবহার করুন এবং চামড়ায় পানি পৌঁছানোর বাধা সরান। পবিত্রতার নিয়ত করুন, বিসমিল্লাহ বলুন এবং দুই হাত কবজি পর্যন্ত তিনবার ধুয়ে নিন। পানি অপচয় করবেন না।",
               "audio": "",
               "illustrations": []
             },
@@ -1025,12 +946,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -1038,7 +954,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "Panduan asas ini menerangkan solat harian bersendirian menurut mazhab Hanafi. Sumber dipautkan di bawah. Solat berjemaah, musafir dan sakit mempunyai hukum tambahan.\n\nGunakan air mutlak dan buang penghalang air pada kulit. Niat bersuci, sebut Bismillah dan basuh kedua-dua tangan hingga pergelangan tiga kali. Jangan membazir air.",
+              "body": "Panduan asas ini menerangkan solat harian bersendirian menurut mazhab Hanafi. Solat berjemaah, musafir dan sakit mempunyai hukum tambahan.\n\nGunakan air mutlak dan buang penghalang air pada kulit. Niat bersuci, sebut Bismillah dan basuh kedua-dua tangan hingga pergelangan tiga kali. Jangan membazir air.",
               "audio": "",
               "illustrations": []
             },
@@ -1061,12 +977,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -1074,7 +985,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "دا د حنفي مذهب له مخې د انفرادي ورځني لمانځه لومړنی لارښود دی. سرچینې لاندې تړل شوې دي. جماعت، سفر او ناروغي نور احکام لري.\n\nپاکې اوبه وکاروئ او پوستکي ته د اوبو د رسېدو خنډ لرې کړئ. د پاکۍ نیت وکړئ، بسم الله ووایئ او دواړه لاسونه تر مړوندونو درې ځله ومینځئ. اوبه مه ضایع کوئ.",
+              "body": "دا د حنفي مذهب له مخې د انفرادي ورځني لمانځه لومړنی لارښود دی. جماعت، سفر او ناروغي نور احکام لري.\n\nپاکې اوبه وکاروئ او پوستکي ته د اوبو د رسېدو خنډ لرې کړئ. د پاکۍ نیت وکړئ، بسم الله ووایئ او دواړه لاسونه تر مړوندونو درې ځله ومینځئ. اوبه مه ضایع کوئ.",
               "audio": "",
               "illustrations": []
             },
@@ -1097,12 +1008,7 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         },
         {
           "school": "HANAFI",
@@ -1110,7 +1016,7 @@
           "steps": [
             {
               "id": "intention-and-hands",
-              "body": "Cette introduction explique la prière quotidienne individuelle selon l’école hanafite. Les sources sont accessibles en bas du cours. La prière collective, le voyage et la maladie ont des règles supplémentaires.\n\nUtilisez de l’eau pure et purifiante et enlevez les obstacles au passage de l’eau sur la peau. Ayez l’intention de vous purifier, dites Bismillah et lavez les mains jusqu’aux poignets trois fois. Évitez le gaspillage.",
+              "body": "Cette introduction explique la prière quotidienne individuelle selon l’école hanafite. La prière collective, le voyage et la maladie ont des règles supplémentaires.\n\nUtilisez de l’eau pure et purifiante et enlevez les obstacles au passage de l’eau sur la peau. Ayez l’intention de vous purifier, dites Bismillah et lavez les mains jusqu’aux poignets trois fois. Évitez le gaspillage.",
               "audio": "",
               "illustrations": []
             },
@@ -1133,14 +1039,10 @@
               "illustrations": []
             }
           ],
-          "sources": [
-            {
-              "title": "عرفان‌آباد · آموزش حنفی / Original Hanafi lessons",
-              "url": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41"
-            }
-          ]
+          "sources": []
         }
-      ]
+      ],
+      "sourceReviewRequired": true
     },
     {
       "id": "prayer-shafii",

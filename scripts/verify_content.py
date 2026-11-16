@@ -15,6 +15,8 @@ LANGUAGES = {'fa', 'en', 'ar', 'tr', 'ur', 'id', 'bn', 'ms', 'ps', 'fr'}
 SCHOOLS = {'HANAFI', 'SHAFII', 'MALIKI', 'HANBALI'}
 
 def verify():
+    from verify_sources import verify as verify_sources
+    verify_sources()
     config = ET.parse(RES / 'xml/locales_config.xml').getroot()
     assert {x.get('{http://schemas.android.com/apk/res/android}name') for x in config} == LANGUAGES
     strings = {}
@@ -64,7 +66,8 @@ def verify():
             assert len(step_ids) == step_count
             for variant in variants:
                 assert [s['id'] for s in variant['steps']] == step_ids
-                assert variant['sources'] and all(s['url'].startswith(('https://', 'http://')) for s in variant['sources'])
+                assert variant['sources'] or lesson.get('sourceReviewRequired') is True, (lesson['id'], 'Missing provenance status')
+                assert all(s['url'].startswith(('https://', 'http://')) for s in variant['sources'])
     legacy = json.loads((ASSETS / 'content/hanafi-fa-v1.json').read_text())['lessons']
     original = {l['id']: [v for v in l['variants'] if v['language'] == 'fa'] for l in legacy}
     assert len(original) == 21

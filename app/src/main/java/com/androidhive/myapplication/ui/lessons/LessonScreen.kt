@@ -210,7 +210,8 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
 @Composable
 private fun ReaderSources(lesson: Lesson, variant: LessonVariant, onError: () -> Unit) {
     val context = LocalContext.current
-    if (variant.sources.isEmpty()) TextButton({ openUrl(context, lesson.source, onError) }) { Text(stringResource(R.string.ui_lesson_source)) }
+    if (lesson.sourceReviewRequired) SupportingText(stringResource(R.string.ui_source_review_required))
+    if (variant.sources.isEmpty() && lesson.source.isNotBlank()) TextButton({ openUrl(context, lesson.source, onError) }) { Text(stringResource(R.string.ui_lesson_source)) }
     else variant.sources.forEach { source -> TextButton({ openUrl(context, source.url, onError) }) { Text(source.title) } }
 }
 

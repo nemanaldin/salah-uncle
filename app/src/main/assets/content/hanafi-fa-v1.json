@@ -8,7 +8,7 @@
       "titleFa": "شیوهٔ نماز خواندن",
       "titleEn": "How to pray",
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -79,14 +79,15 @@
         "ms": "Cara solat",
         "ps": "د لمانځه طریقه",
         "fr": "Comment prier"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "wudu",
       "titleFa": "وضو",
       "titleEn": "Wudu",
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -190,14 +191,15 @@
         "ms": "Wuduk",
         "ps": "اودس",
         "fr": "Ablutions"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "ghusl",
       "titleFa": "غسل",
       "titleEn": "Ghusl",
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -223,14 +225,15 @@
         "ms": "Mandi wajib",
         "ps": "غسل",
         "fr": "Bain rituel"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "tayammum",
       "titleFa": "تیمم",
       "titleEn": "Tayammum",
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -262,14 +265,15 @@
         "ms": "Tayamum",
         "ps": "تیمم",
         "fr": "Ablutions sèches"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "dhikr",
       "titleFa": "اذکار و تسبیحات",
       "titleEn": "Dhikr and supplications",
       "category": "remembrance",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -433,14 +437,15 @@
         "ms": "Zikir dan doa",
         "ps": "ذکرونه او دعاوې",
         "fr": "Invocations et évocations"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "funeral",
       "titleFa": "نماز میت",
       "titleEn": "Funeral prayer",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -526,14 +531,15 @@
         "ms": "Solat jenazah",
         "ps": "د جنازې لمونځ",
         "fr": "Prière funéraire"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "sajdah-sahw",
       "titleFa": "سجدهٔ سهو",
       "titleEn": "Sujud al-sahw",
       "category": "basics",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -559,14 +565,15 @@
         "ms": "Sujud sahwi",
         "ps": "د سهوې سجده",
         "fr": "Prosternations de l’oubli"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "daily-prayers",
       "titleFa": "نمازهای یومیه",
       "titleEn": "Daily prayers",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -592,14 +599,15 @@
         "ms": "Solat harian",
         "ps": "ورځني لمونځونه",
         "fr": "Prières quotidiennes"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "friday",
       "titleFa": "نماز جمعه",
       "titleEn": "Friday prayer",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -625,14 +633,15 @@
         "ms": "Solat Jumaat",
         "ps": "د جمعې لمونځ",
         "fr": "Prière du vendredi"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "congregation",
       "titleFa": "نماز جماعت",
       "titleEn": "Congregational prayer",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -658,14 +667,15 @@
         "ms": "Solat berjemaah",
         "ps": "د جماعت لمونځ",
         "fr": "Prière collective"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "missed-prayers",
       "titleFa": "نماز قضا",
       "titleEn": "Making up missed prayers",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -691,14 +701,15 @@
         "ms": "Mengqada solat",
         "ps": "قضایي لمونځونه",
         "fr": "Rattraper les prières"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "eid",
       "titleFa": "نماز عید",
       "titleEn": "Eid prayer",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -724,14 +735,15 @@
         "ms": "Solat hari raya",
         "ps": "د اختر لمونځ",
         "fr": "Prière de l’Aïd"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "travel",
       "titleFa": "نماز مسافر",
       "titleEn": "Prayer while travelling",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -757,14 +769,15 @@
         "ms": "Solat musafir",
         "ps": "د مسافر لمونځ",
         "fr": "Prière en voyage"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "signs",
       "titleFa": "نماز آیات",
       "titleEn": "Prayer of signs",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -790,14 +803,15 @@
         "ms": "Solat tanda kebesaran Allah",
         "ps": "د آیتونو لمونځ",
         "fr": "Prière des signes"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "night-prayer",
       "titleFa": "نماز تهجد",
       "titleEn": "Tahajjud",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -823,14 +837,15 @@
         "ms": "Tahajud",
         "ps": "د تهجد لمونځ",
         "fr": "Prière de nuit"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "qadr",
       "titleFa": "نماز قدر",
       "titleEn": "Laylat al-Qadr",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -856,14 +871,15 @@
         "ms": "Lailatulqadar",
         "ps": "د قدر شپه",
         "fr": "Nuit du Destin"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "ishraq",
       "titleFa": "نماز اشراق",
       "titleEn": "Ishraq",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -889,14 +905,15 @@
         "ms": "Solat Isyraq",
         "ps": "د اشراق لمونځ",
         "fr": "Prière d’Ishraq"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "awwabin",
       "titleFa": "نماز اوابین",
       "titleEn": "Awwabin",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -922,14 +939,15 @@
         "ms": "Solat Awwabin",
         "ps": "د اوابین لمونځ",
         "fr": "Prière des Awwabin"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "tasbih-prayer",
       "titleFa": "نماز تسبیح",
       "titleEn": "Tasbih prayer",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -955,14 +973,15 @@
         "ms": "Solat Tasbih",
         "ps": "د تسبیح لمونځ",
         "fr": "Prière du Tasbih"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "tarawih",
       "titleFa": "نماز تراویح",
       "titleEn": "Tarawih",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -988,14 +1007,15 @@
         "ms": "Tarawih",
         "ps": "د تراویحو لمونځ",
         "fr": "Tarawih"
-      }
+      },
+      "sourceReviewRequired": true
     },
     {
       "id": "greeting-mosque",
       "titleFa": "تحیت مسجد",
       "titleEn": "Greeting the mosque",
       "category": "prayers",
-      "source": "http://www.erfanabad.org/fa/modules/news/article.php?storyid=41",
+      "source": "",
       "variants": [
         {
           "school": "HANAFI",
@@ -1021,7 +1041,8 @@
         "ms": "Tahiyatulmasjid",
         "ps": "تحیة المسجد",
         "fr": "Salutation de la mosquée"
-      }
+      },
+      "sourceReviewRequired": true
     }
   ]
 }

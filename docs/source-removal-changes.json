@@ -1,0 +1,443 @@
+[
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "prayer-basics",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "wudu",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "ghusl",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "tayammum",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "dhikr",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "funeral",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "sajdah-sahw",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "daily-prayers",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "friday",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "congregation",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "missed-prayers",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "eid",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "travel",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "signs",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "night-prayer",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "qadr",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "ishraq",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "awwabin",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "tasbih-prayer",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "tarawih",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/hanafi-fa-v1.json",
+    "lesson": "greeting-mosque",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "fa",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "fa",
+    "step": "preparation",
+    "removedSentence": "منابع هر درس در پایین آن آمده‌اند. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "en",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "en",
+    "step": "preparation",
+    "removedSentence": "Sources are linked below. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ar",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ar",
+    "step": "preparation",
+    "removedSentence": "المصادر مرتبطة أسفل الدرس. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "tr",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "tr",
+    "step": "preparation",
+    "removedSentence": "Kaynaklar aşağıdadır. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ur",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ur",
+    "step": "preparation",
+    "removedSentence": "ماخذ نیچے دیے گئے ہیں۔ "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "id",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "id",
+    "step": "preparation",
+    "removedSentence": "Sumber tercantum di bawah. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "bn",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "bn",
+    "step": "preparation",
+    "removedSentence": "উৎস নিচে দেওয়া আছে। "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ms",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ms",
+    "step": "preparation",
+    "removedSentence": "Sumber dipautkan di bawah. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ps",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "ps",
+    "step": "preparation",
+    "removedSentence": "سرچینې لاندې تړل شوې دي. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "fr",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "prayer-hanafi",
+    "language": "fr",
+    "step": "preparation",
+    "removedSentence": "Les sources sont accessibles en bas du cours. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "field": "source",
+    "new": "",
+    "removedValueSha256": "886248de1d91a8600ede25b93d025490a540b526d0fa3a2f8e4439b4ef03396e"
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "fa",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "fa",
+    "step": "intention-and-hands",
+    "removedSentence": "منابع هر درس در پایین آن آمده‌اند. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "en",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "en",
+    "step": "intention-and-hands",
+    "removedSentence": "Sources are linked below. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ar",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ar",
+    "step": "intention-and-hands",
+    "removedSentence": "المصادر مرتبطة أسفل الدرس. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "tr",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "tr",
+    "step": "intention-and-hands",
+    "removedSentence": "Kaynaklar aşağıdadır. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ur",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ur",
+    "step": "intention-and-hands",
+    "removedSentence": "ماخذ نیچے دیے گئے ہیں۔ "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "id",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "id",
+    "step": "intention-and-hands",
+    "removedSentence": "Sumber tercantum di bawah. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "bn",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "bn",
+    "step": "intention-and-hands",
+    "removedSentence": "উৎস নিচে দেওয়া আছে। "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ms",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ms",
+    "step": "intention-and-hands",
+    "removedSentence": "Sumber dipautkan di bawah. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ps",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "ps",
+    "step": "intention-and-hands",
+    "removedSentence": "سرچینې لاندې تړل شوې دي. "
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "fr",
+    "field": "sources",
+    "removedReferenceCount": 1
+  },
+  {
+    "file": "app/src/main/assets/content/sunni-guides-v1.json",
+    "lesson": "purification-hanafi",
+    "language": "fr",
+    "step": "intention-and-hands",
+    "removedSentence": "Les sources sont accessibles en bas du cours. "
+  }
+]
