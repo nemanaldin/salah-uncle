@@ -18,3 +18,9 @@ The existing dua catalog, source removal, offline OFL fonts, optional reminders 
 | Updated downloadable APK/report/source | done | 1a4b4db | local APK, PDF, ZIP and Git bundle; final APK signer matches previous local d8a69c2 APK; native and printed review blocked |
 
 Reference takes precedence over the previous layout: Settings moves from the fourth bottom tab to the header; Dua takes its tab; six pictured shortcuts replace the larger home grid; reading resume moves to Learn. Additional topics remain in Learn, and Tools retains prayer times, Qibla, Ramadan and the future Google Flow page. The full prayer-times page keeps its numeric seconds countdown.
+
+## Owner-authorized publication follow-up — 2026-11-16
+
+The owner subsequently requested updating GitHub and a downloadable PDF. Repository metadata confirms `nemanaldin/salah-uncle` is the authenticated owner's repository; the earlier transposed address returned 404. Remote `work` was `616535b12d17f8adda2d62767070156459ad46b3` and is an ancestor of the local history. Publication targets only `refs/heads/work`, with no force, main/other-branch change or PR #1 mutation.
+
+The exact 13-page PDF from the preceding local delivery is now included under `docs/reports/2026-11-16/`, with its checksum and a direct-download index. The prior no-push statements are historical; this follow-up records the later explicit authorization. Publication verification is separate from application tests; no app code or content changes are part of this step.
