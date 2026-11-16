@@ -8,8 +8,8 @@ The new message has no image attachment. The owner supplied the missing categori
 |---|---|---|---|
 | Baseline and current-state inspection | done | 616535b | Build, 190 unit tests, lint 65 warnings/0 errors, Android test compilation and content check passed |
 | Remove the rejected source from app data, sources, comments and translations | done | 7e4084a21dfcc3775a5512638e67f784d6d7370c | 63 data edits; source regression initially failed then passed; 190 tests; lint 65/0; 73 original legacy bodies preserved |
-| Bundle 3–5 OFL fonts and persistent reading-font controls | done | next local commit | 5 OFL families, 1,254,020 added font bytes; 197 tests; lint 65/0; preview/persistence instrumentation compiled only |
-| Hanafi-only dua data with explicit source/grading/review status | in progress | — | direct-source research; unknown Arabic/source fields remain empty |
+| Bundle 3–5 OFL fonts and persistent reading-font controls | done | 3f147d1 | 5 OFL families, 1,254,020 added font bytes; 197 tests; lint 65/0; preview/persistence instrumentation compiled only |
+| Hanafi-only dua data with explicit source/grading/review status | done with content gaps | next local commit | 66 topics, 46 source-compared Arabic payloads + 3 exact owner texts, 17 empty review entries; all pronunciation/new translations pending review; 204 tests and lint 65/0 |
 | Dua cards, subcategories, search, bookmarks/recent and scoped pager | not started | — | all seven categories received; reuse existing app components while reference-image redesign stays blocked |
 | Default-off prayer-reminder scheduling, permission, reboot and weighted no-repeat deck | not started | — | inexact alarms; never share timing logic or request codes with adhan |
 | Post-implementation printed-source comparison of pending fields | not started | — | owner suggested al-Adhkar and Yahya al-Mulla appendix to Wasilat al-Falah; verify actual editions/pages without fabricated citations |
