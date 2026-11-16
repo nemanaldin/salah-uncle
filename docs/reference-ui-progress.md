@@ -30,3 +30,5 @@ Publication verified: commit `285c94590a3c5bb644164ee321d08c58f06203e0` was push
 ## Public APK download follow-up — 2026-11-16
 
 The owner reported that the workspace-only APK link could not be downloaded or shared. The exact existing APK from code commit `1a4b4db` is now included under `downloads/Salah-2.7.0-reference-ui-debug.apk`, with a Persian download guide and checksum. This preserves its existing debug signing certificate and avoids delivering a newly signed CI build in its place. No app code, fiqh wording, branch policy, PR or existing releases are changed. Direct download is verified independently after pushing.
+
+Public APK delivery completed: commit `a2bdf54b7a18043d97f99c5fbc2bc4a07f1dc1e1` was pushed to the same `work` branch. The public URL was downloaded without supplying GitHub credentials and its 31,948,450 bytes matched the existing local APK SHA-256 `24330c7bac1ea1ffa8873400abd58f579f459148cea03af2b7ad2cbd8f7b43c7`. All other branch heads and app sources were checked unchanged. `downloads/reference-ui-download-verification.json` records the successful download check.
