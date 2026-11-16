@@ -1,10 +1,16 @@
 package com.androidhive.myapplication.ui
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Build
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -12,11 +18,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.navArgument
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.*
@@ -48,10 +58,10 @@ import com.androidhive.myapplication.ui.duas.*
 data class DeviceActions(val location: () -> Unit, val notifications: () -> Unit, val exactAlarms: () -> Unit, val fullScreen: () -> Unit, val ramadanNotifications: () -> Unit = notifications, val duaNotifications: () -> Unit = notifications)
 private data class Destination(val route: String, val title: Int, val icon: ImageVector)
 private val destinations = listOf(
-    Destination("home", R.string.ui_home, Icons.Default.Home),
-    Destination("lessons", R.string.ui_lessons, Icons.AutoMirrored.Filled.List),
-    Destination("tools", R.string.ui_tools, Icons.Default.DateRange),
-    Destination("settings", R.string.ui_settings, Icons.Default.Settings),
+    Destination("home", R.string.ui_home, Icons.Outlined.Home),
+    Destination("lessons", R.string.ui_nav_learn, ReferenceIcons.Learn),
+    Destination("tools", R.string.ui_tools, Icons.Outlined.Build),
+    Destination("duas", R.string.ui_nav_dua, Icons.Outlined.FavoriteBorder),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -87,7 +97,8 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     val topLevel = destinations.any { it.route == route }
     val selectedRoute = when {
         route.startsWith("lesson/") || route == "training" -> "lessons"
-        route == "times" || route == "qibla" || route == "ramadan" || route.startsWith("duas") -> "tools"
+        route.startsWith("duas") -> "duas"
+        route == "times" || route == "qibla" || route == "ramadan" -> "tools"
         route == "about" -> "settings"
         else -> route
     }
@@ -105,6 +116,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         "ramadan" -> stringResource(R.string.ui_ramadan)
         "training" -> stringResource(R.string.ui_training)
         "about" -> stringResource(R.string.ui_about)
+        "settings" -> stringResource(R.string.ui_settings)
         "lesson/{id}?section={section}&offset={offset}" -> state.content.lessons.firstOrNull { it.id == lessonId?.let { id -> readingTarget(id, null, settings.school).lessonId } }?.title(settings.language).orEmpty()
         "prayer-types" -> stringResource(R.string.ui_prayer_types)
         "voices" -> stringResource(R.string.ui_adhan_voice)
@@ -124,11 +136,16 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
     }
     val wide = LocalConfiguration.current.screenWidthDp >= 720
     Scaffold(
-        topBar = { TopAppBar(title = { Text(if (route == "home") stringResource(R.string.ui_app_name) else title, style = MaterialTheme.typography.titleLarge) },
+        topBar = { if (route == "home") {
+            Row(Modifier.fillMaxWidth().statusBarsPadding().heightIn(min = 56.dp).padding(start = 20.dp, end = 10.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+                Text(stringResource(R.string.ui_brand_name), Modifier.weight(1f), style = MaterialTheme.typography.titleLarge.copy(fontSize = 23.sp, fontWeight = FontWeight.Bold))
+                IconButton({ navigate("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Outlined.Settings, stringResource(R.string.ui_settings), Modifier.size(26.dp)) }
+            }
+        } else TopAppBar(title = { Text(title, style = MaterialTheme.typography.titleLarge) },
             navigationIcon = { if (!topLevel) IconButton({ navigation.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.ui_back)) } },
             actions = { if (topLevel) {
-                Text(stringResource(settings.school.labelRes()), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.primary)
-                if (route != "settings") IconButton({ selectMain("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Default.Settings, stringResource(R.string.ui_settings)) }
+                IconButton({ navigate("settings") }, Modifier.testTag("header_settings")) { Icon(Icons.Outlined.Settings, stringResource(R.string.ui_settings)) }
             } else if (route.startsWith("lesson/") && lessonId != null) {
                 val saved = topicBookmarkIds(lessonId, settings.school).any { it in settings.bookmarks } || lessonId == "wudu-remembrance" && settings.sectionBookmarks.any { it.lessonId == lessonId && it.school == settings.school && it.language == settings.language }
                 IconButton({ model.bookmark(lessonId) }, Modifier.testTag("reader_bookmark")) {
@@ -136,13 +153,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         tint = if (saved) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
                 }
             } }) },
-        bottomBar = { if (!wide && topLevel) NavigationBar {
-            destinations.forEach { destination ->
-                NavigationBarItem(selectedRoute == destination.route, { selectMain(destination.route) },
-                    icon = { Icon(destination.icon, null) }, label = { Text(stringResource(destination.title)) },
-                    modifier = Modifier.testTag("nav_${destination.route}"))
-            }
-        } }, snackbarHost = { SnackbarHost(snackbar) },
+        bottomBar = { if (!wide && topLevel) ReferenceBottomBar(selectedRoute, selectMain) }, snackbarHost = { SnackbarHost(snackbar) },
         containerColor = MaterialTheme.colorScheme.background,
     ) { padding ->
         Row(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).imePadding()) {
@@ -157,7 +168,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                 if (state.settingsReadFailed) SavedDataRecovery(model::retrySavedSettings)
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().weight(1f),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
-                    composable("home") { HomeScreen(state, { navigate("times") }, { navigate("lesson/$it") }, { selectMain("lessons") }, { navigate("training") }, { navigate("qibla") }, { navigate("prayer-types") }, { navigate("ramadan") }, model::retrySavedSettings, { navigate("duas") }) }
+                    composable("home") { HomeScreen(state, navigate, model::retrySavedSettings) }
                     composable("duas") { DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                         DuaLibraryScreen(catalog, settings, { navigate("duas/category/$it") }, { section, dua -> navigate("duas/read/$section/$dua") },
                             { navigate("duas/saved") }, { navigate("duas/recent") }, { navigate("duas/reminders") })
@@ -226,6 +237,28 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         }
                     }
                     composable("about") { AboutScreen(state.content.lessons, settings.school, model::message) }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ReferenceBottomBar(selectedRoute: String, onSelect: (String) -> Unit) {
+    Surface(shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp), color = MaterialTheme.colorScheme.surface,
+        shadowElevation = 8.dp) {
+        Row(Modifier.fillMaxWidth().navigationBarsPadding().padding(top = 8.dp, bottom = 6.dp)) {
+            destinations.forEach { destination ->
+                val selected = selectedRoute == destination.route
+                Column(Modifier.weight(1f).selectable(selected, role = Role.Tab) { onSelect(destination.route) }
+                    .testTag("nav_${destination.route}").padding(horizontal = 4.dp, vertical = 2.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(3.dp)) {
+                    Surface(shape = RoundedCornerShape(15.dp), color = if (selected) MaterialTheme.colorScheme.primaryContainer else Color.Transparent,
+                        modifier = Modifier.width(64.dp).height(36.dp)) {
+                        Box(contentAlignment = Alignment.Center) { Icon(destination.icon, null, Modifier.size(27.dp),
+                            tint = if (selected) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant) }
+                    }
+                    Text(stringResource(destination.title), style = MaterialTheme.typography.labelMedium.copy(fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium))
                 }
             }
         }

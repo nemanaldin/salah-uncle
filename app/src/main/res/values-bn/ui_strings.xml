@@ -295,4 +295,22 @@
     <string name="ui_dua_category_count">দোয়ার পাঠ: %1$d · বিষয়: %2$d</string>
     <string name="ui_dua_expanded">খোলা</string>
     <string name="ui_dua_collapsed">বন্ধ</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">শিখুন</string>
+    <string name="ui_home_ghusl">গোসল</string>
+    <string name="ui_home_sujud">সিজদায়ে সাহু</string>
+    <string name="ui_today_prayers">আজকের নামাজের সময়</string>
+    <string name="ui_all_times">সব সময়</string>
+    <string name="ui_prayer_in_duration">%1$s পরে</string>
+    <string name="ui_remaining_parts">%1$s %2$s</string>
+    <string name="ui_prayer_in_less_than_minute">এক মিনিটের কম সময়ে</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="one">%1$d ঘণ্টা</item>
+        <item quantity="other">%1$d ঘণ্টা</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="one">%1$d মিনিট</item>
+        <item quantity="other">%1$d মিনিট</item>
+    </plurals>
+    <string name="ui_nav_dua">দোয়া</string>
 </resources>

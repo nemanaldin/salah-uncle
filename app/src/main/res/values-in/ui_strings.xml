@@ -295,4 +295,20 @@
     <string name="ui_dua_category_count">Supplication texts: %1$d · Topics: %2$d</string>
     <string name="ui_dua_expanded">Expanded</string>
     <string name="ui_dua_collapsed">Collapsed</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">Belajar</string>
+    <string name="ui_home_ghusl">Mandi wajib</string>
+    <string name="ui_home_sujud">Sujud sahwi</string>
+    <string name="ui_today_prayers">Jadwal salat hari ini</string>
+    <string name="ui_all_times">Semua waktu</string>
+    <string name="ui_prayer_in_duration">Dalam %1$s</string>
+    <string name="ui_remaining_parts">%1$s %2$s</string>
+    <string name="ui_prayer_in_less_than_minute">Kurang dari satu menit</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="other">%1$d jam</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="other">%1$d menit</item>
+    </plurals>
+    <string name="ui_nav_dua">Doa</string>
 </resources>

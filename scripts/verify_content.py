@@ -24,18 +24,33 @@ def verify():
     config = ET.parse(RES / 'xml/locales_config.xml').getroot()
     assert {x.get('{http://schemas.android.com/apk/res/android}name') for x in config} == LANGUAGES
     strings = {}
+    plurals = {}
     for language in sorted(LANGUAGES):
         folder = 'values' if language == 'fa' else 'values-' + ('in' if language == 'id' else language)
         elements = list(ET.parse(RES / folder / 'ui_strings.xml').getroot())
-        values = {e.get('name'): e.text for e in elements}
-        assert len(elements) == len(values), f'Duplicate strings: {language}'
+        assert len({e.get('name') for e in elements}) == len(elements), f'Duplicate resources: {language}'
+        assert all(e.tag in {'string', 'plurals'} for e in elements), f'Unexpected UI resource: {language}'
+        values = {e.get('name'): e.text for e in elements if e.tag == 'string'}
         assert all(v and v.strip() for v in values.values()), f'Empty strings: {language}'
         strings[language] = values
+        quantities = {}
+        for element in [e for e in elements if e.tag == 'plurals']:
+            forms = {e.get('quantity'): e.text for e in element}
+            assert len(forms) == len(element) and 'other' in forms, (language, element.get('name'))
+            assert all(q in {'zero', 'one', 'two', 'few', 'many', 'other'} and text and text.strip() for q, text in forms.items()), (language, element.get('name'))
+            quantities[element.get('name')] = forms
+        plurals[language] = quantities
     reference = strings['en']
     for language, values in strings.items():
         assert values.keys() == reference.keys(), f'Incomplete translation: {language}'
         for key, text in values.items():
             assert sorted(re.findall(r'%\d+\$[dsf]', text)) == sorted(re.findall(r'%\d+\$[dsf]', reference[key])), (language, key)
+        assert plurals[language].keys() == plurals['en'].keys(), f'Incomplete plural resources: {language}'
+        for key, forms in plurals[language].items():
+            expected = set(re.findall(r'%\d+\$[dsf]', plurals['en'][key]['other']))
+            assert set(re.findall(r'%\d+\$[dsf]', forms['other'])) == expected, (language, key)
+            # Arabic singular/dual forms can name the quantity without interpolating a numeral.
+            assert all(set(re.findall(r'%\d+\$[dsf]', text)) <= expected for text in forms.values()), (language, key)
 
     lessons = []
     for path in sorted((ASSETS / 'content').glob('*.json')):

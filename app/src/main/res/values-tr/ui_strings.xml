@@ -295,4 +295,22 @@
     <string name="ui_dua_category_count">Dua metni: %1$d · Konu: %2$d</string>
     <string name="ui_dua_expanded">Açık</string>
     <string name="ui_dua_collapsed">Kapalı</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">Öğren</string>
+    <string name="ui_home_ghusl">Gusül</string>
+    <string name="ui_home_sujud">Sehiv secdesi</string>
+    <string name="ui_today_prayers">Bugünün namaz vakitleri</string>
+    <string name="ui_all_times">Tüm vakitler</string>
+    <string name="ui_prayer_in_duration">%1$s sonra</string>
+    <string name="ui_remaining_parts">%1$s %2$s</string>
+    <string name="ui_prayer_in_less_than_minute">Bir dakikadan az kaldı</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="one">%1$d saat</item>
+        <item quantity="other">%1$d saat</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="one">%1$d dakika</item>
+        <item quantity="other">%1$d dakika</item>
+    </plurals>
+    <string name="ui_nav_dua">Dua</string>
 </resources>

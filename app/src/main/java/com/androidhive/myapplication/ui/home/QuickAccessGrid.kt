@@ -1,7 +1,6 @@
 package com.androidhive.myapplication.ui.home
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -15,13 +14,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 
 /** Width is the available content width, after page padding. */
 fun quickAccessColumns(widthDp: Float, fontScale: Float): Int =
-    if (widthDp < 320f || fontScale > 1.3f) 2 else 3
+    if (widthDp >= 2 * 148f * fontScale.coerceAtLeast(1f) + 12f) 2 else 1
 
 data class QuickAccessItem(val id: String, val title: String, val onClick: () -> Unit)
 
@@ -32,26 +29,24 @@ fun QuickAccessGrid(items: List<QuickAccessItem>, modifier: Modifier = Modifier,
     val fontScale = LocalDensity.current.fontScale
     BoxWithConstraints(modifier.fillMaxWidth()) {
         val columns = quickAccessColumns(maxWidth.value, fontScale)
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             items.chunked(columns).forEach { row ->
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     row.forEach { item ->
-                        Card(onClick = item.onClick, modifier = Modifier.weight(1f).heightIn(min = 48.dp)
+                        Card(onClick = item.onClick, modifier = Modifier.weight(1f).heightIn(min = 82.dp)
                             .testTag("home_${item.id}").semantics(mergeDescendants = true) {
                                 contentDescription = item.title; role = Role.Button
                             }, shape = MaterialTheme.shapes.large,
                             border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
-                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                            Column(Modifier.fillMaxWidth().padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                Box(Modifier.size(60.dp).clip(CircleShape)
-                                    .border(1.dp, MaterialTheme.colorScheme.outlineVariant, CircleShape),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)) {
+                            Row(Modifier.fillMaxWidth().heightIn(min = 82.dp).padding(horizontal = 10.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                                Box(Modifier.size(48.dp).clip(CircleShape),
                                     contentAlignment = Alignment.Center) {
-                                    artwork(item.id, Modifier.size(56.dp))
+                                    artwork(item.id, Modifier.fillMaxSize())
                                 }
-                                Text(item.title, style = MaterialTheme.typography.labelMedium,
-                                    minLines = 2, maxLines = 2, overflow = TextOverflow.Ellipsis,
-                                    textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
+                                Text(item.title, style = MaterialTheme.typography.titleMedium,
+                                    modifier = Modifier.weight(1f))
                             }
                         }
                     }

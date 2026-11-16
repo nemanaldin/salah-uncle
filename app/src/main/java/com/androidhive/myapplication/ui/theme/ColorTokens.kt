@@ -5,12 +5,12 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.ui.graphics.Color
 
 val SalahLightScheme = lightColorScheme(
-    primary = Color(0xFF16685D), onPrimary = Color.White,
-    primaryContainer = Color(0xFFD6ECE4), onPrimaryContainer = Color(0xFF123E36),
+    primary = Color(0xFF256253), onPrimary = Color.White,
+    primaryContainer = Color(0xFFD3E8E1), onPrimaryContainer = Color(0xFF193E34),
     secondary = Color(0xFF876335), secondaryContainer = Color(0xFFF5E8D6), onSecondaryContainer = Color(0xFF503918),
-    background = Color(0xFFF5F7F3), onBackground = Color(0xFF20332E),
-    surface = Color(0xFFFCFDF9), onSurface = Color(0xFF20332E),
-    surfaceVariant = Color(0xFFEAF0E9), onSurfaceVariant = Color(0xFF52645C), outlineVariant = Color(0xFFD8E2D9),
+    background = Color(0xFFF3F6F2), onBackground = Color(0xFF1C3B32),
+    surface = Color.White, onSurface = Color(0xFF1C3B32),
+    surfaceVariant = Color(0xFFF8FAF7), onSurfaceVariant = Color(0xFF486057), outlineVariant = Color(0xFFDFE5DF),
 )
 val SalahDarkScheme = darkColorScheme(
     primary = Color(0xFF8BD3BF), onPrimary = Color(0xFF07382E),
@@ -21,13 +21,13 @@ val SalahDarkScheme = darkColorScheme(
     surfaceVariant = Color(0xFF263B30), onSurfaceVariant = Color(0xFFB9CBBE), outlineVariant = Color(0xFF3A5145),
 )
 
-/** Existing home-photo palette moved intact out of composables. Both modes use a dark photo overlay. */
+/** Reference-image tones. The same dark photo treatment remains legible in both themes. */
 object SalahPhotoTokens {
-    val support = Color(0xFFCCE9DB)
-    val date = Color(0xFFE9D3A7)
-    val countdown = Color(0xFFF5E3B8)
-    val location = Color(0xFFD2E8DF)
+    val support = Color(0xFFE5EAE5)
+    val date = Color(0xFFE5EAE5)
+    val countdown = Color(0xFFF0DFB0)
+    val location = Color(0xFFDEE8E2)
     val onPhoto = Color.White
-    val overlayTop = Color(0x660B2725)
-    val overlayBottom = Color(0xDD0B2725)
+    val overlayTop = Color(0xD10C2424)
+    val overlayBottom = Color(0xE80A251F)
 }

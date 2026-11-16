@@ -16,3 +16,7 @@ The new message has no image attachment. The owner supplied the missing categori
 | General UI matching reference image | blocked | — | no reference image was received |
 | Source refinements and final diff review | done | d8a69c2 | 70 topics; 52 source-compared dua texts, 4 guidance evidences, 3 owner texts; 11 empty Arabic fields; final build/test/lint: 218/218, 65 warnings/0 errors; instrumentation compiled only |
 | Final review/build/unit/lint and portable local outputs | done; device and printed review remain blocked | d8a69c2 | 218 tests; lint 65/0; signed debug APK, 13-page PDF, source ZIP and Git bundle; no push; signer differs from previous published APK |
+
+## Reference-image follow-up
+
+The owner supplied the reference image on 2026-11-16 in the next request. General visual work is now implemented and tracked in `docs/reference-ui-progress.md`; the earlier missing-image statement describes the preceding delivery. Current source: 226 unit tests passed and lint 65/0. No push.

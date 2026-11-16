@@ -295,4 +295,30 @@
     <string name="ui_dua_category_count">نصوص الأدعية: %1$d · المواضيع: %2$d</string>
     <string name="ui_dua_expanded">مفتوح</string>
     <string name="ui_dua_collapsed">مغلق</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">التعلم</string>
+    <string name="ui_home_ghusl">الغسل</string>
+    <string name="ui_home_sujud">سجود السهو</string>
+    <string name="ui_today_prayers">مواقيت الصلاة اليوم</string>
+    <string name="ui_all_times">كل المواقيت</string>
+    <string name="ui_prayer_in_duration">بعد %1$s</string>
+    <string name="ui_remaining_parts">%1$s و%2$s</string>
+    <string name="ui_prayer_in_less_than_minute">خلال أقل من دقيقة</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="zero">%1$d ساعة</item>
+        <item quantity="one">ساعة</item>
+        <item quantity="two">ساعتين</item>
+        <item quantity="few">%1$d ساعات</item>
+        <item quantity="many">%1$d ساعة</item>
+        <item quantity="other">%1$d ساعة</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="zero">%1$d دقيقة</item>
+        <item quantity="one">دقيقة</item>
+        <item quantity="two">دقيقتين</item>
+        <item quantity="few">%1$d دقائق</item>
+        <item quantity="many">%1$d دقيقة</item>
+        <item quantity="other">%1$d دقيقة</item>
+    </plurals>
+    <string name="ui_nav_dua">الأدعية</string>
 </resources>

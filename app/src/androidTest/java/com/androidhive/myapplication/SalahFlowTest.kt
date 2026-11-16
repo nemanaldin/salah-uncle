@@ -70,7 +70,7 @@ class SalahFlowTest {
         val first = runBlocking { container.recordings.import(android.net.Uri.parse("content://com.androidhive.myapplication.test.audio/first")) }
         val second = runBlocking { container.recordings.import(android.net.Uri.parse("content://com.androidhive.myapplication.test.audio/second")) }
         runBlocking { repository.update { it.copy(adhanVoices = listOf(first, second), selectedVoiceId = second.id) } }
-        compose.onNodeWithTag("nav_settings").performClick()
+        compose.onNodeWithTag("header_settings").performClick()
         compose.onNodeWithTag("setting_adhan_voice").performScrollTo().performClick()
         compose.onNodeWithTag("voice_" + first.id).performScrollTo().performClick()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.selectedVoiceId == first.id }
@@ -112,11 +112,12 @@ class SalahFlowTest {
     @Test fun choosingMalikiOpensMalikiGuideAndPreservesHanafiProgress() {
         ready()
         runBlocking { repository.update { it.copy(completedSteps = setOf("wudu:vuzu1"), bookmarks = setOf("wudu")) } }
-        compose.onNodeWithTag("nav_settings").performClick()
+        compose.onNodeWithTag("header_settings").performClick()
         compose.onNodeWithTag("setting_school").performScrollTo().performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.ui_school_maliki)).performClick()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.school == School.MALIKI }
-        compose.onNodeWithTag("nav_home").performClick()
+        compose.activity.runOnUiThread { compose.activity.onBackPressedDispatcher.onBackPressed() }
+        compose.waitUntil(10_000) { compose.onAllNodesWithTag("nav_home").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("home_prayer").performScrollTo().performClick()
         compose.onNodeWithTag("lesson_reader").assertExists()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.lastLessonId == "prayer-maliki" }
@@ -265,7 +266,7 @@ class SalahFlowTest {
 
     @Test fun dubaiSelectionPersistsDubaiRatherThanTheSpinnerPosition() {
         ready()
-        compose.onNodeWithTag("nav_settings").performClick()
+        compose.onNodeWithTag("header_settings").performClick()
         compose.onNodeWithTag("setting_calculation").performScrollTo().performClick()
         compose.onNodeWithText(compose.activity.getString(R.string.ui_calc_dubai)).performClick()
         compose.waitUntil(10_000) { runBlocking { repository.snapshot() }.calculationPreset == CalculationPreset.DUBAI }

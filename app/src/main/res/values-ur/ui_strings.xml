@@ -295,4 +295,22 @@
     <string name="ui_dua_category_count">دعا کے متن: %1$d · موضوعات: %2$d</string>
     <string name="ui_dua_expanded">کھلا</string>
     <string name="ui_dua_collapsed">بند</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">سیکھیں</string>
+    <string name="ui_home_ghusl">غسل</string>
+    <string name="ui_home_sujud">سجدۂ سہو</string>
+    <string name="ui_today_prayers">آج کے اوقات نماز</string>
+    <string name="ui_all_times">تمام اوقات</string>
+    <string name="ui_prayer_in_duration">%1$s بعد</string>
+    <string name="ui_remaining_parts">%1$s %2$s</string>
+    <string name="ui_prayer_in_less_than_minute">ایک منٹ سے کم میں</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="one">%1$d گھنٹہ</item>
+        <item quantity="other">%1$d گھنٹے</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="one">%1$d منٹ</item>
+        <item quantity="other">%1$d منٹ</item>
+    </plurals>
+    <string name="ui_nav_dua">دعائیں</string>
 </resources>

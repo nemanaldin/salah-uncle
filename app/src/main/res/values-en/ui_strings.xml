@@ -295,4 +295,22 @@
     <string name="ui_dua_category_count">Supplication texts: %1$d · Topics: %2$d</string>
     <string name="ui_dua_expanded">Expanded</string>
     <string name="ui_dua_collapsed">Collapsed</string>
+    <string name="ui_brand_name">Salah</string>
+    <string name="ui_nav_learn">Learn</string>
+    <string name="ui_home_ghusl">Ghusl</string>
+    <string name="ui_home_sujud">Sujud al-sahw</string>
+    <string name="ui_today_prayers">Today’s prayer times</string>
+    <string name="ui_all_times">All times</string>
+    <string name="ui_prayer_in_duration">In %1$s</string>
+    <string name="ui_remaining_parts">%1$s %2$s</string>
+    <string name="ui_prayer_in_less_than_minute">In less than a minute</string>
+    <plurals name="ui_remaining_hours">
+        <item quantity="one">%1$d hour</item>
+        <item quantity="other">%1$d hours</item>
+    </plurals>
+    <plurals name="ui_remaining_minutes">
+        <item quantity="one">%1$d minute</item>
+        <item quantity="other">%1$d minutes</item>
+    </plurals>
+    <string name="ui_nav_dua">Dua</string>
 </resources>

@@ -43,6 +43,9 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
     onSearchHit: (LessonSearchHit) -> Unit = { onSection(it.lessonId, it.sectionId) },
     onSavedSection: (com.androidhive.myapplication.core.model.SectionBookmark) -> Unit = { onSection(it.lessonId, it.sectionId) }) {
     val settings = state.settings ?: return
+    val lastReading = state.content.lessons.firstOrNull { lesson ->
+        lesson.visibleFor(settings) && lesson.id == settings.lastLessonId?.let { readingTarget(it, settings.lastStepId, settings.school).lessonId }
+    }
     var query by rememberSaveable { mutableStateOf("") }
     var category by rememberSaveable(initialCategory) { mutableStateOf(initialCategory) }
     val categories = listOf("all" to R.string.ui_all_lessons, "basics" to R.string.ui_basics,
@@ -68,6 +71,12 @@ fun LessonsScreen(state: SalahUiState, onLesson: (String) -> Unit, onBookmark: (
     val savedSections = settings.sectionBookmarks.filter { ActiveContent.policy.allows(settings) && it.school == settings.school && it.language == settings.language }
     LazyColumn(Modifier.fillMaxSize().testTag("lesson_list"), contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item { IllustratedHeading(stringResource(R.string.ui_lessons), R.drawable.heritage_prayer) }
+        if (lastReading != null) item {
+            AppCard(Modifier.testTag("learn_continue"), onClick = { onLesson(settings.lastLessonId ?: lastReading.id) }) {
+                SupportingText(stringResource(R.string.ui_resume_lesson))
+                Text(lastReading.title(settings.language), style = MaterialTheme.typography.titleMedium)
+            }
+        }
         item {
             OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth().testTag("lesson_search"),
                 label = { Text(stringResource(R.string.ui_search_lessons)) }, singleLine = true,
