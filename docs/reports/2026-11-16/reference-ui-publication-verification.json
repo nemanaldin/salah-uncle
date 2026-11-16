@@ -1,0 +1,13 @@
+{
+  "repository": "nemanaldin/salah-uncle",
+  "branch": "work",
+  "push": "success",
+  "otherBranchesUnchanged": true,
+  "prMutated": false,
+  "pdfURL": "https://raw.githubusercontent.com/nemanaldin/salah-uncle/work/docs/reports/2026-11-16/Salah-Reference-UI-Report-fa.pdf",
+  "downloadedBytes": 424421,
+  "downloadedSha256": "2670a171f264a1c6820c6162cf9d4b71178854dc21fdee8f751216de58a6c93d",
+  "matchesLocalPdf": true,
+  "pdfPages": 13,
+  "verifiedPublicationCommit": "285c94590a3c5bb644164ee321d08c58f06203e0"
+}
