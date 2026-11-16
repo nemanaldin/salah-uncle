@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">No supplication in these categories and language has the required text, source, grade and meaning. Change categories or language; incomplete content is not sent.</string>
     <string name="ui_dua_schedule_note">Scheduling is inexact and Android may delay delivery. Unverified text, sources or grades are excluded. Each supplication appears once per cycle; favorites are more likely to appear earlier.</string>
     <string name="ui_dua_invalid_window">The start must be before the end, and at least one category must be selected.</string>
+    <string name="ui_dua_hadith_evidence">Hadith evidence</string>
+    <string name="ui_dua_guidance_note">This text explains a practice; it is not a repeated dhikr formula.</string>
+    <string name="ui_dua_copy_evidence">Copy text</string>
+    <string name="ui_dua_share_evidence">Share text</string>
+    <string name="ui_dua_previous">Previous supplication</string>
+    <string name="ui_dua_next">Next supplication</string>
+    <string name="ui_dua_category_count">Supplication texts: %1$d · Topics: %2$d</string>
+    <string name="ui_dua_expanded">Expanded</string>
+    <string name="ui_dua_collapsed">Collapsed</string>
 </resources>

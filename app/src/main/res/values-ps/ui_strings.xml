@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">په دې برخو او ژبه کې د متن، سرچینې، درجې او مانا سره دعا نشته. برخه یا ژبه بدله کړئ؛ نیمګړې منځپانګه نه لېږل کېږي.</string>
     <string name="ui_dua_schedule_note">مهالوېش دقیق نه دی؛ اندروید خبرتیا ځنډولی شي. ناتایید شوی متن، سرچینه یا درجه نه لېږل کېږي. هره دعا په هر پړاو کې یو ځل راځي؛ نښه شوې دعاګانې د ژر راتلو زیات چانس لري.</string>
     <string name="ui_dua_invalid_window">پیل باید له پای مخکې وي او لږ تر لږه یوه برخه وټاکل شي.</string>
+    <string name="ui_dua_hadith_evidence">د حدیث دلیل</string>
+    <string name="ui_dua_guidance_note">دا متن د یوه عمل دلیل دی؛ د تکرار ذکر نه دی.</string>
+    <string name="ui_dua_copy_evidence">متن کاپي کړئ</string>
+    <string name="ui_dua_share_evidence">متن شریک کړئ</string>
+    <string name="ui_dua_previous">مخکینۍ دعا</string>
+    <string name="ui_dua_next">راتلونکې دعا</string>
+    <string name="ui_dua_category_count">د دعا متنونه: %1$d · موضوعګانې: %2$d</string>
+    <string name="ui_dua_expanded">پرانیستی</string>
+    <string name="ui_dua_collapsed">تړلی</string>
 </resources>

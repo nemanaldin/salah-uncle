@@ -232,7 +232,7 @@ class SettingsRepository(context: Context) {
                 put("start", s.duaReminders.startMinute); put("end", s.duaReminders.endMinute); put("categories", JSONArray(s.duaReminders.categoryIds.toList()))
             }.toString()
             p[Keys.duaSeen] = s.duaReminderHistory.seen
-            s.duaReminderHistory.lastDuaId?.let { p[Keys.duaPrevious] = it } ?: p.remove(Keys.duaPrevious)
+            s.duaReminderHistory.lastKey?.let { p[Keys.duaPrevious] = it } ?: p.remove(Keys.duaPrevious)
             p[Keys.duaLastSlot] = s.duaReminderHistory.lastSlot; p[Keys.duaScheduledSlot] = s.duaReminderHistory.scheduledSlot
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)
             s.lastStepId?.let { p[Keys.lastStep] = it } ?: p.remove(Keys.lastStep)

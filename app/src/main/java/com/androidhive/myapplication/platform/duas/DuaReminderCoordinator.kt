@@ -77,13 +77,13 @@ class DuaReminderCoordinator(context: Context, private val settings: SettingsRep
             val pool = catalog.reminderCandidates(saved.duaReminders.categoryIds, saved.language.tag, saved.duaBookmarks)
             val byKey = pool.associateBy { it.reminderKey }
             val favorites = pool.filter { it.id in saved.duaBookmarks }.map { it.reminderKey }.toSet()
-            val draw = drawDua(byKey.keys.toList(), favorites, history.seen, history.lastDuaId) ?: return@withLock
+            val draw = drawDua(byKey.keys.toList(), favorites, history.seen, history.lastKey) ?: return@withLock
             val dua = byKey.getValue(draw.id)
             val section = catalog.sectionFor(dua.id) ?: return@withLock
             val latest = settings.snapshot()
             if (latest.duaReminders != saved.duaReminders || latest.language != saved.language) return@withLock
             if (post(saved, dua, "duas/read/${section.id}/${dua.id}", slot)) settings.update { current ->
-                current.copy(duaReminderHistory = current.duaReminderHistory.copy(seen = draw.seen, lastDuaId = draw.id, lastSlot = slot, scheduledSlot = 0L))
+                current.copy(duaReminderHistory = current.duaReminderHistory.copy(seen = draw.seen, lastKey = draw.id, lastSlot = slot, scheduledSlot = 0L))
             }
         } finally {
             // A skipped/blocked delivery never consumes the deck; missed earlier slots are not replayed as a backlog.

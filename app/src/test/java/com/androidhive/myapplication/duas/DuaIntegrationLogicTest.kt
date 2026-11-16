@@ -32,7 +32,7 @@ class DuaIntegrationLogicTest {
     }
     @Test fun unavailableMeaningAndPendingEvidenceAreExcluded() {
         val data=catalog(listOf(item("ready"),item("untranslated").copy(translations=emptyMap()),
-            item("pending").copy(reviewFields=setOf("grade")),item("disabled").copy(reminder=false)))
+            item("pending").copy(reviewFields=setOf("grade")),item("disabled").copy(reminder=false), item("evidence").copy(guidance=true)))
         assertEquals(listOf("ready"),data.reminderCandidates(setOf("c"),"en",emptySet()).map{it.id})
         assertTrue(data.reminderCandidates(setOf("c"),"ur",emptySet()).isEmpty())
     }

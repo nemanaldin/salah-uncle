@@ -49,13 +49,13 @@ fun drawDua(pool: List<String>, favorites: Set<String>, seen: Set<String>, previ
 /** Select actual content, not page names. Missing meanings and unresolved source/grade/text fields are excluded. */
 fun DuaCatalog.reminderCandidates(categories: Set<String>, tag: String, favorites: Set<String>): List<DuaItem> {
     val ids = sections.filter { it.category in categories }.flatMap { it.duaIds }.toSet()
-    return items.filter { it.id in ids && it.reminder && it.hasVerifiedText && it.translation(tag).isNotBlank() }
+    return items.filter { it.id in ids && !it.guidance && it.reminder && it.hasVerifiedText && it.translation(tag).isNotBlank() }
         .groupBy { normalizeDuaSearch(it.arabic) }.values.map { sameText -> sameText.firstOrNull { it.id in favorites } ?: sameText.first() }
 }
 
 /** A bookmark on an alias must not make an already-seen Arabic payload repeat within its cycle. */
 val DuaItem.reminderKey: String get() = java.security.MessageDigest.getInstance("SHA-256")
-    .digest(normalizeDuaSearch(arabic).toByteArray(Charsets.UTF_8)).joinToString("") { "%02x".format(it) }
+    .digest(normalizeDuaSearch(arabic).toByteArray(Charsets.UTF_8)).joinToString("") { (it.toInt() and 255).toString(16).padStart(2, '0') }
 
 /** Receiver intents may request only known catalog IDs in their own real subcategory. */
 fun validatedDuaRoute(route: String, catalog: DuaCatalog): String? {

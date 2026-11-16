@@ -95,7 +95,10 @@
         "fa": "آغاز نماز",
         "en": "Opening prayer",
         "tr": "Namaza başlama",
-        "ar": "افتتاح الصلاة"
+        "ar": "افتتاح الصلاة",
+        "ur": "نماز کی ابتدا",
+        "bn": "নামাজের শুরু",
+        "ps": "د لمانځه پیل"
       },
       "duaIds": [
         "takbir",
@@ -110,7 +113,10 @@
         "fa": "رکوع، قیام و سجده",
         "en": "Bowing, standing and prostration",
         "tr": "Rükû, kıyam ve secde",
-        "ar": "الركوع والقيام والسجود"
+        "ar": "الركوع والقيام والسجود",
+        "ur": "رکوع، قیام اور سجدہ",
+        "bn": "রুকু, দাঁড়ানো ও সিজদা",
+        "ps": "رکوع، قیام او سجده"
       },
       "duaIds": [
         "ruku",
@@ -125,7 +131,10 @@
         "fa": "قعده و پایان نماز",
         "en": "Sitting and ending prayer",
         "tr": "Oturuş ve selam",
-        "ar": "القعود وختم الصلاة"
+        "ar": "القعود وختم الصلاة",
+        "ur": "قعدہ اور نماز کا اختتام",
+        "bn": "বৈঠক ও নামাজের সমাপ্তি",
+        "ps": "ناسته او د لمانځه پای"
       },
       "duaIds": [
         "tashahhud",
@@ -142,7 +151,10 @@
         "fa": "قنوت وتر",
         "en": "Witr qunut",
         "tr": "Vitir kunutu",
-        "ar": "قنوت الوتر"
+        "ar": "قنوت الوتر",
+        "ur": "وتر کی دعائے قنوت",
+        "bn": "বিতরের দোয়া কুনুত",
+        "ps": "د وتر قنوت دعا"
       },
       "duaIds": [
         "witr-qunut"
@@ -155,7 +167,10 @@
         "fa": "اذان",
         "en": "Adhan",
         "tr": "Ezan",
-        "ar": "الأذان"
+        "ar": "الأذان",
+        "ur": "اذان",
+        "bn": "আজান",
+        "ps": "اذان"
       },
       "duaIds": [
         "adhan-response",
@@ -169,7 +184,10 @@
         "fa": "وضو",
         "en": "Wudu",
         "tr": "Abdest",
-        "ar": "الوضوء"
+        "ar": "الوضوء",
+        "ur": "وضو",
+        "bn": "অজু",
+        "ps": "اودس"
       },
       "duaIds": [
         "start-wudu",
@@ -183,7 +201,10 @@
         "fa": "مسجد",
         "en": "Mosque",
         "tr": "Cami",
-        "ar": "المسجد"
+        "ar": "المسجد",
+        "ur": "مسجد",
+        "bn": "মসজিদ",
+        "ps": "جومات"
       },
       "duaIds": [
         "mosque-enter",
@@ -197,7 +218,10 @@
         "fa": "بعد از نماز",
         "en": "After prayer",
         "tr": "Namaz sonrası",
-        "ar": "بعد الصلاة"
+        "ar": "بعد الصلاة",
+        "ur": "نماز کے بعد",
+        "bn": "নামাজের পরে",
+        "ps": "له لمانځه وروسته"
       },
       "duaIds": [
         "anta-salam",
@@ -216,7 +240,10 @@
         "fa": "صبح و شام",
         "en": "Morning and evening",
         "tr": "Sabah ve akşam",
-        "ar": "الصباح والمساء"
+        "ar": "الصباح والمساء",
+        "ur": "صبح اور شام",
+        "bn": "সকাল ও সন্ধ্যা",
+        "ps": "سهار او ماښام"
       },
       "duaIds": [
         "morning",
@@ -230,7 +257,10 @@
         "fa": "خواب و بیداری",
         "en": "Sleep and waking",
         "tr": "Uyku ve uyanma",
-        "ar": "النوم والاستيقاظ"
+        "ar": "النوم والاستيقاظ",
+        "ur": "نیند اور بیداری",
+        "bn": "ঘুম ও জাগরণ",
+        "ps": "خوب او ویښېدل"
       },
       "duaIds": [
         "sleep-dua",
@@ -244,7 +274,10 @@
         "fa": "غذا و لباس",
         "en": "Food and clothing",
         "tr": "Yemek ve giyim",
-        "ar": "الطعام واللباس"
+        "ar": "الطعام واللباس",
+        "ur": "کھانا اور لباس",
+        "bn": "খাবার ও পোশাক",
+        "ps": "خواړه او جامې"
       },
       "duaIds": [
         "before-food",
@@ -260,7 +293,10 @@
         "fa": "خانه و دستشویی",
         "en": "Home and restroom",
         "tr": "Ev ve tuvalet",
-        "ar": "المنزل والخلاء"
+        "ar": "المنزل والخلاء",
+        "ur": "گھر اور بیت الخلا",
+        "bn": "ঘর ও শৌচাগার",
+        "ps": "کور او تشناب"
       },
       "duaIds": [
         "home-enter",
@@ -276,7 +312,10 @@
         "fa": "سفر و استخاره",
         "en": "Travel and istikhara",
         "tr": "Yolculuk ve istihare",
-        "ar": "السفر والاستخارة"
+        "ar": "السفر والاستخارة",
+        "ur": "سفر اور استخارہ",
+        "bn": "সফর ও ইস্তিখারা",
+        "ps": "سفر او استخاره"
       },
       "duaIds": [
         "vehicle",
@@ -291,7 +330,10 @@
         "fa": "غم، بیماری و خانواده",
         "en": "Distress, illness and family",
         "tr": "Üzüntü, hastalık ve aile",
-        "ar": "الهم والمرض والأسرة"
+        "ar": "الهم والمرض والأسرة",
+        "ur": "غم، بیماری اور خاندان",
+        "bn": "দুশ্চিন্তা, অসুস্থতা ও পরিবার",
+        "ps": "غم، ناروغي او کورنۍ"
       },
       "duaIds": [
         "distress",
@@ -306,7 +348,10 @@
         "fa": "باران و رعد",
         "en": "Rain and thunder",
         "tr": "Yağmur ve gök gürültüsü",
-        "ar": "المطر والرعد"
+        "ar": "المطر والرعد",
+        "ur": "بارش اور گرج",
+        "bn": "বৃষ্টি ও বজ্রধ্বনি",
+        "ps": "باران او تندر"
       },
       "duaIds": [
         "rain",
@@ -320,7 +365,10 @@
         "fa": "جمعه",
         "en": "Friday",
         "tr": "Cuma",
-        "ar": "الجمعة"
+        "ar": "الجمعة",
+        "ur": "جمعہ",
+        "bn": "জুমা",
+        "ps": "جمعه"
       },
       "duaIds": [
         "friday-adab",
@@ -343,7 +391,10 @@
         "fa": "دوشنبه و پنجشنبه",
         "en": "Monday and Thursday",
         "tr": "Pazartesi ve perşembe",
-        "ar": "الاثنين والخميس"
+        "ar": "الاثنين والخميس",
+        "ur": "پیر اور جمعرات",
+        "bn": "সোমবার ও বৃহস্পতিবার",
+        "ps": "دوشنبه او پنجشنبه"
       },
       "duaIds": [
         "monday-thursday",
@@ -357,7 +408,10 @@
         "fa": "اذکار روزانهٔ مشترک",
         "en": "Common daily remembrance",
         "tr": "Günlük ortak zikirler",
-        "ar": "الأذكار اليومية المشتركة"
+        "ar": "الأذكار اليومية المشتركة",
+        "ur": "روزانہ کے مشترک اذکار",
+        "bn": "প্রতিদিনের সাধারণ জিকির",
+        "ps": "ګډ ورځني ذکرونه"
       },
       "duaIds": [
         "morning",
@@ -371,7 +425,10 @@
         "fa": "اذکار مأثور",
         "en": "Transmitted remembrance",
         "tr": "Rivayet edilen zikirler",
-        "ar": "الأذكار المأثورة"
+        "ar": "الأذكار المأثورة",
+        "ur": "ماثور اذکار",
+        "bn": "বর্ণিত জিকির",
+        "ps": "مأثور ذکرونه"
       },
       "duaIds": [
         "subhan-bihamdihi",
@@ -390,10 +447,17 @@
         "fa": "دعاهای ربنا",
         "en": "Quranic Rabbana supplications",
         "tr": "Kur’an’daki Rabbena duaları",
-        "ar": "أدعية ربنا"
+        "ar": "أدعية ربنا",
+        "ur": "قرآنی ربنا دعائیں",
+        "bn": "কুরআনের রব্বানা দোয়া",
+        "ps": "د قرآن ربنا دعاګانې"
       },
       "duaIds": [
-        "rabbana-prayer"
+        "rabbana-prayer",
+        "rabbana-hearts",
+        "rabbana-repentance",
+        "rabbana-forgiveness",
+        "rabbana-family"
       ]
     },
     {
@@ -403,7 +467,10 @@
         "fa": "رمضان",
         "en": "Ramadan",
         "tr": "Ramazan",
-        "ar": "رمضان"
+        "ar": "رمضان",
+        "ur": "رمضان",
+        "bn": "রমজান",
+        "ps": "رمضان"
       },
       "duaIds": [
         "iftar",
@@ -417,7 +484,10 @@
         "fa": "هلال و عید",
         "en": "Crescent and Eid",
         "tr": "Hilal ve bayram",
-        "ar": "الهلال والعيد"
+        "ar": "الهلال والعيد",
+        "ur": "چاند اور عید",
+        "bn": "নতুন চাঁদ ও ঈদ",
+        "ps": "میاشت او اختر"
       },
       "duaIds": [
         "crescent",
@@ -431,7 +501,10 @@
         "fa": "دعاهای ارسالی شما",
         "en": "Your supplied supplications",
         "tr": "Gönderdiğiniz dualar",
-        "ar": "الأدعية المرسلة"
+        "ar": "الأدعية المرسلة",
+        "ur": "آپ کی بھیجی ہوئی دعائیں",
+        "bn": "আপনার দেওয়া দোয়া",
+        "ps": "ستاسو رالېږل شوې دعاګانې"
       },
       "duaIds": [
         "owner-assembly",
@@ -446,7 +519,10 @@
         "fa": "دعاهای معتبر دیگر",
         "en": "Other sourced supplications",
         "tr": "Diğer kaynaklı dualar",
-        "ar": "أدعية أخرى موثقة"
+        "ar": "أدعية أخرى موثقة",
+        "ur": "دیگر مستند دعائیں",
+        "bn": "অন্যান্য উৎসসহ দোয়া",
+        "ps": "نورې سرچینه لرونکې دعاګانې"
       },
       "duaIds": [
         "guidance"
@@ -461,7 +537,11 @@
       "titles": {
         "fa": "تکبیر تحریمه",
         "en": "Opening takbir",
-        "tr": "İftitah tekbiri"
+        "tr": "İftitah tekbiri",
+        "ar": "تكبيرة الإحرام",
+        "ur": "تکبیر تحریمہ",
+        "bn": "তাকবিরে তাহরিমা",
+        "ps": "تکبیر تحریمه"
       },
       "arabic": "اللَّهُ أَكْبَرُ",
       "pronunciations": {},
@@ -488,7 +568,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "thana",
@@ -497,7 +578,11 @@
       "titles": {
         "fa": "ثنا",
         "en": "Opening praise",
-        "tr": "Sübhaneke"
+        "tr": "Sübhaneke",
+        "ar": "الثناء",
+        "ur": "ثنا",
+        "bn": "সানা",
+        "ps": "ثنا"
       },
       "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلاَ إِلَهَ غَيْرُكَ",
       "pronunciations": {},
@@ -520,7 +605,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "taawwudh-basmala",
@@ -529,7 +615,11 @@
       "titles": {
         "fa": "تعوذ و بسمله",
         "en": "Seeking refuge and basmala",
-        "tr": "Eûzü ve besmele"
+        "tr": "Eûzü ve besmele",
+        "ar": "التعوذ والبسملة",
+        "ur": "تعوذ اور تسمیہ",
+        "bn": "আউজু ও বিসমিল্লাহ",
+        "ps": "تعوذ او بسم الله"
       },
       "arabic": "",
       "pronunciations": {},
@@ -546,7 +636,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "ruku",
@@ -555,7 +646,11 @@
       "titles": {
         "fa": "تسبیح رکوع",
         "en": "Remembrance in bowing",
-        "tr": "Rükû tesbihi"
+        "tr": "Rükû tesbihi",
+        "ar": "تسبيح الركوع",
+        "ur": "رکوع کی تسبیح",
+        "bn": "রুকুর তাসবিহ",
+        "ps": "د رکوع تسبیح"
       },
       "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
       "pronunciations": {},
@@ -582,7 +677,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "tasmi-tahmid",
@@ -591,7 +687,11 @@
       "titles": {
         "fa": "تسمیع و تحمید",
         "en": "Rising from bowing",
-        "tr": "Tesmi ve tahmid"
+        "tr": "Tesmi ve tahmid",
+        "ar": "التسميع والتحميد",
+        "ur": "تسمیع اور تحمید",
+        "bn": "তাসমি ও তাহমিদ",
+        "ps": "تسمیع او تحمید"
       },
       "arabic": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ رَبَّنَا لَكَ الْحَمْدُ",
       "pronunciations": {},
@@ -619,7 +719,8 @@
         "practice"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "sujud",
@@ -628,7 +729,11 @@
       "titles": {
         "fa": "تسبیح سجده",
         "en": "Remembrance in prostration",
-        "tr": "Secde tesbihi"
+        "tr": "Secde tesbihi",
+        "ar": "تسبيح السجود",
+        "ur": "سجدے کی تسبیح",
+        "bn": "সিজদার তাসবিহ",
+        "ps": "د سجدې تسبیح"
       },
       "arabic": "سُبْحَانَ رَبِّيَ الأَعْلَى",
       "pronunciations": {},
@@ -655,7 +760,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "tashahhud",
@@ -664,7 +770,11 @@
       "titles": {
         "fa": "تشهد ابن‌مسعود",
         "en": "Ibn Masud’s tashahhud",
-        "tr": "İbn Mesud teşehhüdü"
+        "tr": "İbn Mesud teşehhüdü",
+        "ar": "تشهد ابن مسعود",
+        "ur": "ابن مسعود کا تشہد",
+        "bn": "ইবনে মাসউদের তাশাহহুদ",
+        "ps": "د ابن مسعود تشهد"
       },
       "arabic": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلاَمُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلاَمُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "pronunciations": {},
@@ -692,7 +802,8 @@
         "practice"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "salawat",
@@ -701,7 +812,11 @@
       "titles": {
         "fa": "صلوات ابراهیمی",
         "en": "Ibrahimic salawat",
-        "tr": "Salli ve Bârik"
+        "tr": "Salli ve Bârik",
+        "ar": "الصلاة الإبراهيمية",
+        "ur": "درود ابراہیمی",
+        "bn": "দরুদে ইবরাহিম",
+        "ps": "درود ابراهیمي"
       },
       "arabic": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ، وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ، وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ، وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "pronunciations": {},
@@ -724,7 +839,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "rabbana-prayer",
@@ -733,7 +849,11 @@
       "titles": {
         "fa": "ربنا آتنا",
         "en": "Rabbana atina",
-        "tr": "Rabbena âtina"
+        "tr": "Rabbena âtina",
+        "ar": "ربنا آتنا",
+        "ur": "ربنا آتنا",
+        "bn": "রব্বানা আতিনা",
+        "ps": "ربنا آتنا"
       },
       "arabic": "رَبَّنَآ ءَاتِنَا فِي ٱلدُّنۡيَا حَسَنَةٗ وَفِي ٱلۡأٓخِرَةِ حَسَنَةٗ وَقِنَا عَذَابَ ٱلنَّارِ",
       "pronunciations": {},
@@ -760,7 +880,8 @@
         "pronunciation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "zalamtu",
@@ -769,7 +890,11 @@
       "titles": {
         "fa": "دعای آمرزش در نماز",
         "en": "Forgiveness in prayer",
-        "tr": "Namazda bağışlanma duası"
+        "tr": "Namazda bağışlanma duası",
+        "ar": "دعاء المغفرة في الصلاة",
+        "ur": "نماز میں مغفرت کی دعا",
+        "bn": "নামাজে ক্ষমার দোয়া",
+        "ps": "په لمانځه کې د بښنې دعا"
       },
       "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ، وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
       "pronunciations": {},
@@ -792,7 +917,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "salam",
@@ -801,7 +927,11 @@
       "titles": {
         "fa": "سلام نماز",
         "en": "Ending salams",
-        "tr": "Namazın selamı"
+        "tr": "Namazın selamı",
+        "ar": "التسليم في الصلاة",
+        "ur": "نماز کا سلام",
+        "bn": "নামাজের সালাম",
+        "ps": "د لمانځه سلام"
       },
       "arabic": "السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
       "pronunciations": {},
@@ -828,7 +958,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "witr-qunut",
@@ -837,7 +968,11 @@
       "titles": {
         "fa": "دعای قنوت وتر",
         "en": "Witr qunut",
-        "tr": "Vitir kunutu"
+        "tr": "Vitir kunutu",
+        "ar": "قنوت الوتر",
+        "ur": "وتر کی دعائے قنوت",
+        "bn": "বিতরের দোয়া কুনুত",
+        "ps": "د وتر قنوت دعا"
       },
       "arabic": "",
       "pronunciations": {},
@@ -858,7 +993,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "adhan-response",
@@ -867,24 +1003,43 @@
       "titles": {
         "fa": "پاسخ به اذان",
         "en": "Responding to adhan",
-        "tr": "Ezana karşılık"
+        "tr": "Ezana karşılık",
+        "ar": "إجابة المؤذن",
+        "ur": "اذان کا جواب",
+        "bn": "আজানের উত্তর",
+        "ps": "د اذان ځواب"
       },
-      "arabic": "",
+      "arabic": "لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
       "pronunciations": {},
-      "translations": {},
-      "notes": {},
-      "sources": [],
+      "translations": {
+        "fa": "هیچ توان و نیرویی جز به یاری خدا نیست.",
+        "en": "There is no power or strength except through Allah.",
+        "tr": "Güç ve kuvvet ancak Allah’ın yardımıyladır."
+      },
+      "notes": {
+        "fa": "طبق این روایت، جمله‌های مؤذن تکرار می‌شوند و هنگام «حیّ علی الصلاة» و «حیّ علی الفلاح» این ذکر گفته می‌شود.",
+        "en": "In this narration, repeat the adhan phrases; at the calls to prayer and success, say this remembrance.",
+        "tr": "Bu rivayette ezanın sözleri tekrarlanır; namaza ve kurtuluşa çağrıda bu zikir söylenir."
+      },
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "385",
+          "url": "https://sunnah.com/muslim:385",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "after-adhan",
@@ -893,7 +1048,11 @@
       "titles": {
         "fa": "دعای بعد از اذان",
         "en": "After adhan",
-        "tr": "Ezan sonrası dua"
+        "tr": "Ezan sonrası dua",
+        "ar": "الدعاء بعد الأذان",
+        "ur": "اذان کے بعد کی دعا",
+        "bn": "আজানের পরের দোয়া",
+        "ps": "له اذان وروسته دعا"
       },
       "arabic": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلاَةِ الْقَائِمَةِ آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
       "pronunciations": {},
@@ -916,7 +1075,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "start-wudu",
@@ -925,7 +1085,11 @@
       "titles": {
         "fa": "شروع وضو",
         "en": "Beginning wudu",
-        "tr": "Abdeste başlama"
+        "tr": "Abdeste başlama",
+        "ar": "بداية الوضوء",
+        "ur": "وضو کی ابتدا",
+        "bn": "অজুর শুরু",
+        "ps": "د اوداسه پیل"
       },
       "arabic": "",
       "pronunciations": {},
@@ -942,7 +1106,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "after-wudu",
@@ -951,7 +1116,11 @@
       "titles": {
         "fa": "ذکر بعد از وضو",
         "en": "After wudu",
-        "tr": "Abdest sonrası zikir"
+        "tr": "Abdest sonrası zikir",
+        "ar": "الذكر بعد الوضوء",
+        "ur": "وضو کے بعد کا ذکر",
+        "bn": "অজুর পরের জিকির",
+        "ps": "له اوداسه وروسته ذکر"
       },
       "arabic": "أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "pronunciations": {},
@@ -974,7 +1143,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "mosque-enter",
@@ -983,7 +1153,11 @@
       "titles": {
         "fa": "ورود به مسجد",
         "en": "Entering the mosque",
-        "tr": "Camiye giriş"
+        "tr": "Camiye giriş",
+        "ar": "دخول المسجد",
+        "ur": "مسجد میں داخل ہونا",
+        "bn": "মসজিদে প্রবেশ",
+        "ps": "جومات ته ننوتل"
       },
       "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
       "pronunciations": {},
@@ -1010,7 +1184,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "mosque-exit",
@@ -1019,7 +1194,11 @@
       "titles": {
         "fa": "خروج از مسجد",
         "en": "Leaving the mosque",
-        "tr": "Camiden çıkış"
+        "tr": "Camiden çıkış",
+        "ar": "الخروج من المسجد",
+        "ur": "مسجد سے نکلنا",
+        "bn": "মসজিদ থেকে বের হওয়া",
+        "ps": "له جوماته وتل"
       },
       "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
       "pronunciations": {},
@@ -1046,7 +1225,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "anta-salam",
@@ -1055,7 +1235,11 @@
       "titles": {
         "fa": "اللهم أنت السلام",
         "en": "Allahumma anta al-salam",
-        "tr": "Allahümme entesselâm"
+        "tr": "Allahümme entesselâm",
+        "ar": "اللهم أنت السلام",
+        "ur": "اللهم أنت السلام",
+        "bn": "আল্লাহুম্মা আনতাস সালাম",
+        "ps": "اللهم أنت السلام"
       },
       "arabic": "اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ تَبَارَكْتَ ذَا الْجَلاَلِ وَالإِكْرَامِ",
       "pronunciations": {},
@@ -1082,7 +1266,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "istighfar-three",
@@ -1091,7 +1276,11 @@
       "titles": {
         "fa": "استغفار سه‌بار",
         "en": "Seeking forgiveness three times",
-        "tr": "Üç kez istiğfar"
+        "tr": "Üç kez istiğfar",
+        "ar": "الاستغفار ثلاثاً",
+        "ur": "تین بار استغفار",
+        "bn": "তিনবার ইস্তিগফার",
+        "ps": "درې ځله استغفار"
       },
       "arabic": "أَسْتَغْفِرُ اللَّهَ",
       "pronunciations": {},
@@ -1123,7 +1312,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "ayat-kursi",
@@ -1132,7 +1322,11 @@
       "titles": {
         "fa": "آیة‌الکرسی",
         "en": "Ayat al-Kursi",
-        "tr": "Âyetel Kürsî"
+        "tr": "Âyetel Kürsî",
+        "ar": "آية الكرسي",
+        "ur": "آیت الکرسی",
+        "bn": "আয়াতুল কুরসি",
+        "ps": "آیت الکرسي"
       },
       "arabic": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلۡحَيُّ ٱلۡقَيُّومُۚ لَا تَأۡخُذُهُۥ سِنَةٞ وَلَا نَوۡمٞۚ لَّهُۥ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِۗ مَن ذَا ٱلَّذِي يَشۡفَعُ عِندَهُۥٓ إِلَّا بِإِذۡنِهِۦۚ يَعۡلَمُ مَا بَيۡنَ أَيۡدِيهِمۡ وَمَا خَلۡفَهُمۡۖ وَلَا يُحِيطُونَ بِشَيۡءٖ مِّنۡ عِلۡمِهِۦٓ إِلَّا بِمَا شَآءَۚ وَسِعَ كُرۡسِيُّهُ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَۖ وَلَا يَـُٔودُهُۥ حِفۡظُهُمَاۚ وَهُوَ ٱلۡعَلِيُّ ٱلۡعَظِيمُ",
       "pronunciations": {},
@@ -1156,7 +1350,8 @@
         "practice"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "tasbihat",
@@ -1165,7 +1360,11 @@
       "titles": {
         "fa": "تسبیحات ۳۳، ۳۳، ۳۴",
         "en": "Tasbih 33, 33, 34",
-        "tr": "33, 33, 34 tesbihat"
+        "tr": "33, 33, 34 tesbihat",
+        "ar": "التسبيح ٣٣، ٣٣، ٣٤",
+        "ur": "تسبیحات ۳۳، ۳۳، ۳۴",
+        "bn": "৩৩, ৩৩, ৩৪ তাসবিহ",
+        "ps": "۳۳، ۳۳، ۳۴ تسبیحات"
       },
       "arabic": "سُبْحَانَ اللَّهِ\nالْحَمْدُ لِلَّهِ\nاللَّهُ أَكْبَرُ",
       "pronunciations": {},
@@ -1201,7 +1400,8 @@
         "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "tahlil-after",
@@ -1210,7 +1410,11 @@
       "titles": {
         "fa": "تهلیل بعد از نماز",
         "en": "Tahlil after prayer",
-        "tr": "Namaz sonrası tehlil"
+        "tr": "Namaz sonrası tehlil",
+        "ar": "التهليل بعد الصلاة",
+        "ur": "نماز کے بعد تہلیل",
+        "bn": "নামাজের পর তাহলিল",
+        "ps": "له لمانځه وروسته تهلیل"
       },
       "arabic": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ اللَّهُمَّ لاَ مَانِعَ لِمَا أَعْطَيْتَ وَلاَ مُعْطِيَ لِمَا مَنَعْتَ وَلاَ يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
       "pronunciations": {},
@@ -1233,7 +1437,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "individual-dua",
@@ -1242,7 +1447,11 @@
       "titles": {
         "fa": "دعای فردی",
         "en": "Personal supplication",
-        "tr": "Kişisel dua"
+        "tr": "Kişisel dua",
+        "ar": "الدعاء الفردي",
+        "ur": "انفرادی دعا",
+        "bn": "ব্যক্তিগত দোয়া",
+        "ps": "شخصي دعا"
       },
       "arabic": "",
       "pronunciations": {},
@@ -1263,7 +1472,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "after-fard-order",
@@ -1272,7 +1482,11 @@
       "titles": {
         "fa": "ترتیب اذکار و سنت بعد از فرض",
         "en": "Dhikr and the following sunnah prayer",
-        "tr": "Farz sonrası zikir ve sünnet sırası"
+        "tr": "Farz sonrası zikir ve sünnet sırası",
+        "ar": "ترتيب الذكر والسنة بعد الفرض",
+        "ur": "فرض کے بعد ذکر اور سنت کی ترتیب",
+        "bn": "ফরজের পর জিকির ও সুন্নতের ক্রম",
+        "ps": "له فرض وروسته د ذکر او سنت ترتیب"
       },
       "arabic": "",
       "pronunciations": {},
@@ -1293,7 +1507,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "morning",
@@ -1302,7 +1517,11 @@
       "titles": {
         "fa": "اذکار صبح",
         "en": "Morning remembrance",
-        "tr": "Sabah zikirleri"
+        "tr": "Sabah zikirleri",
+        "ar": "أذكار الصباح",
+        "ur": "صبح کے اذکار",
+        "bn": "সকালের জিকির",
+        "ps": "د سهار ذکرونه"
       },
       "arabic": "اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
       "pronunciations": {},
@@ -1325,7 +1544,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "evening",
@@ -1334,7 +1554,11 @@
       "titles": {
         "fa": "اذکار شام",
         "en": "Evening remembrance",
-        "tr": "Akşam zikirleri"
+        "tr": "Akşam zikirleri",
+        "ar": "أذكار المساء",
+        "ur": "شام کے اذکار",
+        "bn": "সন্ধ্যার জিকির",
+        "ps": "د ماښام ذکرونه"
       },
       "arabic": "اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ",
       "pronunciations": {},
@@ -1357,7 +1581,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "sleep-dua",
@@ -1366,7 +1591,11 @@
       "titles": {
         "fa": "دعای خواب",
         "en": "Before sleep",
-        "tr": "Uyku duası"
+        "tr": "Uyku duası",
+        "ar": "دعاء النوم",
+        "ur": "سونے کی دعا",
+        "bn": "ঘুমানোর দোয়া",
+        "ps": "د خوب دعا"
       },
       "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
       "pronunciations": {},
@@ -1393,7 +1622,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "wake-dua",
@@ -1402,7 +1632,11 @@
       "titles": {
         "fa": "دعای بیداری",
         "en": "On waking",
-        "tr": "Uyanma duası"
+        "tr": "Uyanma duası",
+        "ar": "دعاء الاستيقاظ",
+        "ur": "بیدار ہونے کی دعا",
+        "bn": "ঘুম থেকে ওঠার দোয়া",
+        "ps": "د راویښېدو دعا"
       },
       "arabic": "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا، وَإِلَيْهِ النُّشُورُ",
       "pronunciations": {},
@@ -1429,7 +1663,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "before-food",
@@ -1438,7 +1673,11 @@
       "titles": {
         "fa": "قبل از غذا",
         "en": "Before eating",
-        "tr": "Yemekten önce"
+        "tr": "Yemekten önce",
+        "ar": "قبل الطعام",
+        "ur": "کھانے سے پہلے",
+        "bn": "খাবারের আগে",
+        "ps": "له خوړو مخکې"
       },
       "arabic": "بِسْمِ اللَّهِ",
       "pronunciations": {},
@@ -1465,7 +1704,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "after-food",
@@ -1474,7 +1714,11 @@
       "titles": {
         "fa": "بعد از غذا",
         "en": "After eating",
-        "tr": "Yemekten sonra"
+        "tr": "Yemekten sonra",
+        "ar": "بعد الطعام",
+        "ur": "کھانے کے بعد",
+        "bn": "খাবারের পরে",
+        "ps": "له خوړو وروسته"
       },
       "arabic": "الْحَمْدُ لِلَّهِ كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ، غَيْرَ مَكْفِيٍّ، وَلاَ مُوَدَّعٍ وَلاَ مُسْتَغْنًى عَنْهُ، رَبَّنَا",
       "pronunciations": {},
@@ -1497,7 +1741,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "clothes",
@@ -1506,7 +1751,11 @@
       "titles": {
         "fa": "پوشیدن لباس",
         "en": "Getting dressed",
-        "tr": "Giyinme"
+        "tr": "Giyinme",
+        "ar": "لبس الثوب",
+        "ur": "لباس پہننا",
+        "bn": "পোশাক পরা",
+        "ps": "جامې اغوستل"
       },
       "arabic": "الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا الثَّوْبَ وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلاَ قُوَّةٍ",
       "pronunciations": {},
@@ -1529,7 +1778,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "new-clothes",
@@ -1538,7 +1788,11 @@
       "titles": {
         "fa": "لباس نو",
         "en": "New clothing",
-        "tr": "Yeni elbise"
+        "tr": "Yeni elbise",
+        "ar": "الثوب الجديد",
+        "ur": "نیا لباس",
+        "bn": "নতুন পোশাক",
+        "ps": "نوې جامې"
       },
       "arabic": "اللَّهُمَّ لَكَ الْحَمْدُ أَنْتَ كَسَوْتَنِيهِ أَسْأَلُكَ مِنْ خَيْرِهِ وَخَيْرِ مَا صُنِعَ لَهُ وَأَعُوذُ بِكَ مِنْ شَرِّهِ وَشَرِّ مَا صُنِعَ لَهُ",
       "pronunciations": {},
@@ -1561,7 +1815,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "home-enter",
@@ -1570,7 +1825,11 @@
       "titles": {
         "fa": "ورود به خانه",
         "en": "Entering home",
-        "tr": "Eve giriş"
+        "tr": "Eve giriş",
+        "ar": "دخول المنزل",
+        "ur": "گھر میں داخل ہونا",
+        "bn": "ঘরে প্রবেশ",
+        "ps": "کور ته ننوتل"
       },
       "arabic": "",
       "pronunciations": {},
@@ -1587,7 +1846,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "home-exit",
@@ -1596,7 +1856,11 @@
       "titles": {
         "fa": "خروج از خانه",
         "en": "Leaving home",
-        "tr": "Evden çıkış"
+        "tr": "Evden çıkış",
+        "ar": "الخروج من المنزل",
+        "ur": "گھر سے نکلنا",
+        "bn": "ঘর থেকে বের হওয়া",
+        "ps": "له کوره وتل"
       },
       "arabic": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
       "pronunciations": {},
@@ -1619,7 +1883,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "toilet-enter",
@@ -1628,12 +1893,16 @@
       "titles": {
         "fa": "ورود به دستشویی",
         "en": "Before entering the restroom",
-        "tr": "Tuvalete giriş"
+        "tr": "Tuvalete giriş",
+        "ar": "دخول الخلاء",
+        "ur": "بیت الخلا میں داخل ہونا",
+        "bn": "শৌচাগারে প্রবেশ",
+        "ps": "تشناب ته ننوتل"
       },
       "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ",
       "pronunciations": {},
       "translations": {
-        "fa": "خدایا، از ناپاکی‌ها و شیاطین نر و ماده به تو پناه می‌برم.",
+        "fa": "خدایا، از شیاطین نر و ماده به تو پناه می‌برم.",
         "en": "O Allah, I seek refuge in You from male and female evil beings.",
         "tr": "Allah’ım, erkek ve dişi kötü varlıklardan Sana sığınırım."
       },
@@ -1655,7 +1924,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "toilet-exit",
@@ -1664,7 +1934,11 @@
       "titles": {
         "fa": "خروج از دستشویی",
         "en": "Leaving the restroom",
-        "tr": "Tuvaletten çıkış"
+        "tr": "Tuvaletten çıkış",
+        "ar": "الخروج من الخلاء",
+        "ur": "بیت الخلا سے نکلنا",
+        "bn": "শৌচাগার থেকে বের হওয়া",
+        "ps": "له تشنابه وتل"
       },
       "arabic": "غُفْرَانَكَ",
       "pronunciations": {},
@@ -1691,7 +1965,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "vehicle",
@@ -1700,7 +1975,11 @@
       "titles": {
         "fa": "سوار شدن",
         "en": "Boarding a vehicle",
-        "tr": "Araca binme"
+        "tr": "Araca binme",
+        "ar": "ركوب وسيلة النقل",
+        "ur": "سواری پر سوار ہونا",
+        "bn": "যানবাহনে ওঠা",
+        "ps": "په سپرلۍ سپرېدل"
       },
       "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
       "pronunciations": {},
@@ -1723,7 +2002,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "travel-dua",
@@ -1732,7 +2012,11 @@
       "titles": {
         "fa": "دعای سفر",
         "en": "Travel supplication",
-        "tr": "Yolculuk duası"
+        "tr": "Yolculuk duası",
+        "ar": "دعاء السفر",
+        "ur": "سفر کی دعا",
+        "bn": "সফরের দোয়া",
+        "ps": "د سفر دعا"
       },
       "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالأَهْلِ",
       "pronunciations": {},
@@ -1755,7 +2039,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "istikhara",
@@ -1764,24 +2049,39 @@
       "titles": {
         "fa": "دعای استخاره",
         "en": "Istikhara",
-        "tr": "İstihare"
+        "tr": "İstihare",
+        "ar": "دعاء الاستخارة",
+        "ur": "دعائے استخارہ",
+        "bn": "ইস্তিখারার দোয়া",
+        "ps": "د استخارې دعا"
       },
-      "arabic": "",
+      "arabic": "اللَّهُمَّ إِنِّي أَسْتَخِيرُكَ بِعِلْمِكَ وَأَسْتَقْدِرُكَ بِقُدْرَتِكَ، وَأَسْأَلُكَ مِنْ فَضْلِكَ الْعَظِيمِ، فَإِنَّكَ تَقْدِرُ وَلاَ أَقْدِرُ وَتَعْلَمُ وَلاَ أَعْلَمُ وَأَنْتَ عَلاَّمُ الْغُيُوبِ، اللَّهُمَّ إِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الأَمْرَ خَيْرٌ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي  فَاقْدُرْهُ لِي وَيَسِّرْهُ لِي ثُمَّ بَارِكْ لِي فِيهِ، وَإِنْ كُنْتَ تَعْلَمُ أَنَّ هَذَا الأَمْرَ شَرٌّ لِي فِي دِينِي وَمَعَاشِي وَعَاقِبَةِ أَمْرِي  فَاصْرِفْهُ عَنِّي وَاصْرِفْنِي عَنْهُ، وَاقْدُرْ لِي الْخَيْرَ حَيْثُ كَانَ ثُمَّ أَرْضِنِي بِهِ",
       "pronunciations": {},
       "translations": {},
-      "notes": {},
-      "sources": [],
+      "notes": {
+        "fa": "در روایت، پس از دو رکعت غیرِفرض دعا خوانده و حاجت نام برده می‌شود. یکی از دو ضبطِ خود روایت نمایش داده شده؛ عبارت توضیحی راوی دربارهٔ ضبط دیگر جزو متن دعا نیست.",
+        "en": "The narration teaches two non-obligatory rakahs, then this supplication and naming one’s need. One transmitted wording is shown; the narrator’s alternative-wording clauses are not recited as the dua.",
+        "tr": "Rivayette farz dışında iki rekâttan sonra bu dua okunur ve ihtiyaç belirtilir. Rivayetin bir lafzı gösterilir; râvinin alternatif lafız açıklaması dua metni değildir."
+      },
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "1166",
+          "url": "https://sunnah.com/bukhari:1166",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "distress",
@@ -1790,7 +2090,11 @@
       "titles": {
         "fa": "غم و اندوه",
         "en": "Distress and sorrow",
-        "tr": "Üzüntü ve keder"
+        "tr": "Üzüntü ve keder",
+        "ar": "الهم والحزن",
+        "ur": "غم اور پریشانی",
+        "bn": "দুশ্চিন্তা ও দুঃখ",
+        "ps": "غم او اندېښنه"
       },
       "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
       "pronunciations": {},
@@ -1817,7 +2121,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "sick-visit",
@@ -1826,7 +2131,11 @@
       "titles": {
         "fa": "عیادت بیمار",
         "en": "Visiting the sick",
-        "tr": "Hasta ziyareti"
+        "tr": "Hasta ziyareti",
+        "ar": "عيادة المريض",
+        "ur": "بیمار کی عیادت",
+        "bn": "রোগী দেখতে যাওয়া",
+        "ps": "د ناروغ پوښتنه"
       },
       "arabic": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا",
       "pronunciations": {},
@@ -1853,7 +2162,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "parents",
@@ -1862,7 +2172,11 @@
       "titles": {
         "fa": "دعا برای پدر و مادر",
         "en": "For parents",
-        "tr": "Anne baba için dua"
+        "tr": "Anne baba için dua",
+        "ar": "الدعاء للوالدين",
+        "ur": "والدین کے لیے دعا",
+        "bn": "মা-বাবার জন্য দোয়া",
+        "ps": "د مور او پلار دعا"
       },
       "arabic": "رَّبِّ ٱرۡحَمۡهُمَا كَمَا رَبَّيَانِي صَغِيرٗا",
       "pronunciations": {},
@@ -1889,7 +2203,8 @@
         "pronunciation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "rain",
@@ -1898,7 +2213,11 @@
       "titles": {
         "fa": "باران",
         "en": "Rain",
-        "tr": "Yağmur"
+        "tr": "Yağmur",
+        "ar": "المطر",
+        "ur": "بارش",
+        "bn": "বৃষ্টি",
+        "ps": "باران"
       },
       "arabic": "صَيِّبًا نَافِعًا",
       "pronunciations": {},
@@ -1925,7 +2244,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "thunder",
@@ -1934,7 +2254,11 @@
       "titles": {
         "fa": "رعد",
         "en": "Thunder",
-        "tr": "Gök gürültüsü"
+        "tr": "Gök gürültüsü",
+        "ar": "الرعد",
+        "ur": "گرج",
+        "bn": "বজ্রধ্বনি",
+        "ps": "تندر"
       },
       "arabic": "",
       "pronunciations": {},
@@ -1951,7 +2275,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "friday-adab",
@@ -1960,24 +2285,39 @@
       "titles": {
         "fa": "آداب جمعه و غسل",
         "en": "Friday manners and ghusl",
-        "tr": "Cuma adabı ve gusül"
+        "tr": "Cuma adabı ve gusül",
+        "ar": "آداب الجمعة والغسل",
+        "ur": "جمعہ کے آداب اور غسل",
+        "bn": "জুমার আদব ও গোসল",
+        "ps": "د جمعې آداب او غسل"
       },
-      "arabic": "",
+      "arabic": "إِذَا جَاءَ أَحَدُكُمُ الْجُمُعَةَ فَلْيَغْتَسِلْ",
       "pronunciations": {},
-      "translations": {},
+      "translations": {
+        "fa": "هرگاه یکی از شما به نماز جمعه می‌آید، غسل کند.",
+        "en": "When one of you comes to Friday prayer, let him perform ghusl.",
+        "tr": "Sizden biri cuma namazına geldiğinde gusletsin."
+      },
       "notes": {},
-      "sources": [],
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "877",
+          "url": "https://sunnah.com/bukhari:877",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": true
     },
     {
       "id": "friday-salawat",
@@ -1986,24 +2326,39 @@
       "titles": {
         "fa": "صلوات فراوان در جمعه",
         "en": "More salawat on Friday",
-        "tr": "Cuma günü çok salavat"
+        "tr": "Cuma günü çok salavat",
+        "ar": "كثرة الصلاة على النبي يوم الجمعة",
+        "ur": "جمعہ کو کثرت سے درود",
+        "bn": "জুমায় বেশি দরুদ",
+        "ps": "د جمعې په ورځ ډېر درود"
       },
-      "arabic": "",
+      "arabic": "فَأَكْثِرُوا عَلَىَّ مِنَ الصَّلاَةِ فِيهِ فَإِنَّ صَلاَتَكُمْ مَعْرُوضَةٌ عَلَىَّ",
       "pronunciations": {},
-      "translations": {},
+      "translations": {
+        "fa": "در آن روز بر من بسیار صلوات بفرستید؛ صلوات شما بر من عرضه می‌شود.",
+        "en": "Send abundant blessings upon me on that day; your blessings are presented to me.",
+        "tr": "O gün bana çok salavat getirin; salavatlarınız bana sunulur."
+      },
       "notes": {},
-      "sources": [],
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "1047",
+          "url": "https://sunnah.com/abudawud:1047",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": true
     },
     {
       "id": "kahf",
@@ -2012,7 +2367,11 @@
       "titles": {
         "fa": "سورهٔ کهف",
         "en": "Surah al-Kahf",
-        "tr": "Kehf suresi"
+        "tr": "Kehf suresi",
+        "ar": "سورة الكهف",
+        "ur": "سورۂ کہف",
+        "bn": "সুরা কাহফ",
+        "ps": "سورت کهف"
       },
       "arabic": "",
       "pronunciations": {},
@@ -2029,7 +2388,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "friday-hour",
@@ -2038,24 +2398,39 @@
       "titles": {
         "fa": "ساعت اجابت دعا",
         "en": "Friday’s hour of response",
-        "tr": "Cuma günü duanın kabul vakti"
+        "tr": "Cuma günü duanın kabul vakti",
+        "ar": "ساعة الإجابة يوم الجمعة",
+        "ur": "جمعہ کی قبولیت کی گھڑی",
+        "bn": "জুমায় দোয়া কবুলের সময়",
+        "ps": "د جمعې د دعا قبلېدو وخت"
       },
-      "arabic": "",
+      "arabic": "فِيهِ سَاعَةٌ لاَ يُوَافِقُهَا عَبْدٌ مُسْلِمٌ، وَهْوَ قَائِمٌ يُصَلِّي، يَسْأَلُ اللَّهَ تَعَالَى شَيْئًا إِلاَّ أَعْطَاهُ إِيَّاهُ",
       "pronunciations": {},
-      "translations": {},
+      "translations": {
+        "fa": "در جمعه زمانی است که اگر بندهٔ مسلمان در حال نماز از خدا چیزی بخواهد، خدا آن را به او عطا می‌کند.",
+        "en": "Friday contains a time when a Muslim servant praying and asking Allah for something is granted it.",
+        "tr": "Cuma günü, Müslüman kulun namazda Allah’tan istediğinin kendisine verildiği bir vakit vardır."
+      },
       "notes": {},
-      "sources": [],
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "935",
+          "url": "https://sunnah.com/bukhari:935",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": true
     },
     {
       "id": "friday-seven",
@@ -2064,7 +2439,11 @@
       "titles": {
         "fa": "اخلاص، فلق و ناس هفت‌بار؛ بازبینی سند",
         "en": "Ikhlas, Falaq and Nas seven times — isnad review",
-        "tr": "İhlâs, Felak, Nâs yedi kez — senet incelemesi"
+        "tr": "İhlâs, Felak, Nâs yedi kez — senet incelemesi",
+        "ar": "الإخلاص والفلق والناس سبعاً؛ مراجعة السند",
+        "ur": "جمعہ کے بعد تین سورتیں سات بار؛ سند کا جائزہ",
+        "bn": "জুমার পর তিন সুরা সাতবার; সনদ পর্যালোচনা",
+        "ps": "له جمعې وروسته درې سورتونه اووه ځله؛ د سند بیاکتنه"
       },
       "arabic": "",
       "pronunciations": {},
@@ -2085,7 +2464,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "monday-thursday",
@@ -2094,24 +2474,39 @@
       "titles": {
         "fa": "روزهٔ دوشنبه و پنجشنبه",
         "en": "Monday and Thursday fasting",
-        "tr": "Pazartesi ve perşembe orucu"
+        "tr": "Pazartesi ve perşembe orucu",
+        "ar": "صيام الاثنين والخميس",
+        "ur": "پیر اور جمعرات کا روزہ",
+        "bn": "সোমবার ও বৃহস্পতিবার রোজা",
+        "ps": "د دوشنبې او پنجشنبې روژه"
       },
-      "arabic": "",
+      "arabic": "تُعْرَضُ الأَعْمَالُ يَوْمَ الاِثْنَيْنِ وَالْخَمِيسِ فَأُحِبُّ أَنْ يُعْرَضَ عَمَلِي وَأَنَا صَائِمٌ",
       "pronunciations": {},
-      "translations": {},
+      "translations": {
+        "fa": "اعمال در دوشنبه و پنجشنبه عرضه می‌شوند؛ دوست دارم عمل من در حالی عرضه شود که روزه‌دارم.",
+        "en": "Deeds are presented on Mondays and Thursdays; I love my deeds to be presented while I am fasting.",
+        "tr": "Ameller pazartesi ve perşembe günleri arz edilir; amelimin oruçluyken arz edilmesini severim."
+      },
       "notes": {},
-      "sources": [],
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "747",
+          "url": "https://sunnah.com/tirmidhi:747",
+          "grade": "HASAN",
+          "grader": "Darussalam; Al-Tirmidhi: hasan gharib",
+          "checked": true
+        }
+      ],
       "repeats": [],
       "audio": "",
       "reviewFields": [
-        "arabic",
-        "source",
-        "grade",
-        "pronunciation",
-        "translation"
+        "translation",
+        "pronunciation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": true
     },
     {
       "id": "fasting-intention",
@@ -2120,7 +2515,11 @@
       "titles": {
         "fa": "نیت روزه",
         "en": "Intention to fast",
-        "tr": "Oruç niyeti"
+        "tr": "Oruç niyeti",
+        "ar": "نية الصيام",
+        "ur": "روزے کی نیت",
+        "bn": "রোজার নিয়ত",
+        "ps": "د روژې نیت"
       },
       "arabic": "",
       "pronunciations": {},
@@ -2141,7 +2540,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "subhan-bihamdihi",
@@ -2150,7 +2550,11 @@
       "titles": {
         "fa": "سبحان‌الله و بحمده",
         "en": "Subhanallahi wa bihamdihi",
-        "tr": "Sübhânallahi ve bihamdih"
+        "tr": "Sübhânallahi ve bihamdih",
+        "ar": "سبحان الله وبحمده",
+        "ur": "سبحان الله وبحمده",
+        "bn": "সুবহানাল্লাহি ওয়া বিহামদিহি",
+        "ps": "سبحان الله وبحمده"
       },
       "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
       "pronunciations": {},
@@ -2182,7 +2586,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "subhan-azim",
@@ -2191,7 +2596,11 @@
       "titles": {
         "fa": "سبحان‌الله العظیم",
         "en": "Subhanallah al-azim",
-        "tr": "Sübhânallâhil azîm"
+        "tr": "Sübhânallâhil azîm",
+        "ar": "سبحان الله العظيم",
+        "ur": "سبحان الله العظيم",
+        "bn": "সুবহানাল্লাহিল আজিম",
+        "ps": "سبحان الله العظيم"
       },
       "arabic": "سُبْحَانَ اللَّهِ الْعَظِيمِ",
       "pronunciations": {},
@@ -2218,7 +2627,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "hawqala",
@@ -2227,7 +2637,11 @@
       "titles": {
         "fa": "لا حول و لا قوة إلا بالله",
         "en": "La hawla wa la quwwata illa billah",
-        "tr": "Lâ havle"
+        "tr": "Lâ havle",
+        "ar": "لا حول ولا قوة إلا بالله",
+        "ur": "لا حول ولا قوة إلا بالله",
+        "bn": "লা হাওলা ওয়ালা কুওয়াতা ইল্লা বিল্লাহ",
+        "ps": "لا حول ولا قوة إلا بالله"
       },
       "arabic": "لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
       "pronunciations": {},
@@ -2254,7 +2668,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "kalima",
@@ -2263,7 +2678,11 @@
       "titles": {
         "fa": "کلمهٔ طیبه",
         "en": "The word of faith",
-        "tr": "Kelime-i tevhid"
+        "tr": "Kelime-i tevhid",
+        "ar": "كلمة التوحيد",
+        "ur": "کلمۂ طیبہ",
+        "bn": "কালেমা তাইয়েবা",
+        "ps": "کلمه طیبه"
       },
       "arabic": "لاَ إِلَهَ إِلاَّ اللَّهُ",
       "pronunciations": {},
@@ -2290,7 +2709,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "sayyid-istighfar",
@@ -2299,7 +2719,11 @@
       "titles": {
         "fa": "سیدالاستغفار",
         "en": "Sayyid al-istighfar",
-        "tr": "Seyyidül istiğfar"
+        "tr": "Seyyidül istiğfar",
+        "ar": "سيد الاستغفار",
+        "ur": "سید الاستغفار",
+        "bn": "সাইয়িদুল ইস্তিগফার",
+        "ps": "سید الاستغفار"
       },
       "arabic": "اللَّهُمَّ أَنْتَ رَبِّي، لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
       "pronunciations": {},
@@ -2322,7 +2746,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "istighfar",
@@ -2331,7 +2756,11 @@
       "titles": {
         "fa": "استغفار",
         "en": "Seeking forgiveness",
-        "tr": "İstiğfar"
+        "tr": "İstiğfar",
+        "ar": "الاستغفار",
+        "ur": "استغفار",
+        "bn": "ইস্তিগফার",
+        "ps": "استغفار"
       },
       "arabic": "أَسْتَغْفِرُ اللَّهَ",
       "pronunciations": {},
@@ -2358,7 +2787,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "iftar",
@@ -2367,7 +2797,11 @@
       "titles": {
         "fa": "دعای افطار",
         "en": "Breaking the fast",
-        "tr": "İftar duası"
+        "tr": "İftar duası",
+        "ar": "دعاء الإفطار",
+        "ur": "افطار کی دعا",
+        "bn": "ইফতারের দোয়া",
+        "ps": "د افطار دعا"
       },
       "arabic": "ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ",
       "pronunciations": {},
@@ -2394,7 +2828,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "qadr",
@@ -2403,12 +2838,16 @@
       "titles": {
         "fa": "دعای شب قدر",
         "en": "Laylat al-Qadr",
-        "tr": "Kadir gecesi duası"
+        "tr": "Kadir gecesi duası",
+        "ar": "دعاء ليلة القدر",
+        "ur": "شب قدر کی دعا",
+        "bn": "লাইলাতুল কদরের দোয়া",
+        "ps": "د قدر شپې دعا"
       },
       "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
       "pronunciations": {},
       "translations": {
-        "fa": "خدایا، تو بسیار بخشنده‌ای و گذشت را دوست داری؛ پس از من درگذر.",
+        "fa": "خدایا، تو بسیار درگذرنده‌ای و گذشت را دوست داری؛ پس از من درگذر.",
         "en": "O Allah, You are Pardoning and love to pardon, so pardon me.",
         "tr": "Allah’ım, Sen affedicisin, affetmeyi seversin; beni affet."
       },
@@ -2430,7 +2869,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
     },
     {
       "id": "crescent",
@@ -2439,7 +2879,11 @@
       "titles": {
         "fa": "دیدن هلال ماه",
         "en": "Sighting the crescent",
-        "tr": "Hilali görme"
+        "tr": "Hilali görme",
+        "ar": "رؤية الهلال",
+        "ur": "چاند دیکھنا",
+        "bn": "নতুন চাঁদ দেখা",
+        "ps": "د میاشتې لیدل"
       },
       "arabic": "اللَّهُمَّ أَهْلِلْهُ عَلَيْنَا بِالْيُمْنِ وَالإِيمَانِ وَالسَّلاَمَةِ وَالإِسْلاَمِ رَبِّي وَرَبُّكَ اللَّهُ",
       "pronunciations": {},
@@ -2462,7 +2906,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "eid",
@@ -2471,7 +2916,11 @@
       "titles": {
         "fa": "اذکار عید",
         "en": "Eid remembrance",
-        "tr": "Bayram zikirleri"
+        "tr": "Bayram zikirleri",
+        "ar": "أذكار العيد",
+        "ur": "عید کے اذکار",
+        "bn": "ঈদের জিকির",
+        "ps": "د اختر ذکرونه"
       },
       "arabic": "",
       "pronunciations": {},
@@ -2488,7 +2937,8 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "owner-assembly",
@@ -2497,7 +2947,11 @@
       "titles": {
         "fa": "دعای پایان مجلس",
         "en": "Supplication at the end of a gathering",
-        "tr": "Meclis sonu duası"
+        "tr": "Meclis sonu duası",
+        "ar": "دعاء ختام المجلس",
+        "ur": "مجلس کے اختتام کی دعا",
+        "bn": "মজলিস শেষে দোয়া",
+        "ps": "د مجلس پای دعا"
       },
       "arabic": "اللَّهُمَّ اقْسِمْ لَنَا مِنْ خَشْيَتِكَ مَا تَحُولُ بِهِ بَيْنَنَا وَبَيْنَ مَعَاصِيكَ، وَمِنْ طَاعَتِكَ مَا تُبَلِّغُنَا بِهِ جَنَّتَكَ، وَمِنَ الْيَقِينِ مَا تُهَوِّنُ بِهِ عَلَيْنَا مَصَائِبَ الدُّنْيَا، اللَّهُمَّ مَتِّعْنَا بِأَسْمَاعِنَا وَأَبْصَارِنَا وَقُوَّتِنَا مَا أَحْيَيْتَنَا، وَاجْعَلْهُ الْوَارِثَ مِنَّا، وَاجْعَلْ ثَأْرَنَا عَلَى مَنْ ظَلَمَنَا، وَانْصُرْنَا عَلَى مَنْ عَادَانَا، وَلَا تَجْعَلْ مُصِيبَتَنَا فِي دِينِنَا، وَلَا تَجْعَلِ الدُّنْيَا أَكْبَرَ هَمِّنَا، وَلَا مَبْلَغَ عِلْمِنَا، وَلَا تُسَلِّطْ عَلَيْنَا مَنْ لَا يَرْحَمُنَا.",
       "pronunciations": {},
@@ -2525,7 +2979,8 @@
         "arabic"
       ],
       "ownerText": true,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "owner-abu-umamah",
@@ -2534,7 +2989,11 @@
       "titles": {
         "fa": "ذکر روایت ابوامامه",
         "en": "Abu Umamah’s remembrance",
-        "tr": "Ebû Ümâme zikri"
+        "tr": "Ebû Ümâme zikri",
+        "ar": "ذكر أبي أمامة",
+        "ur": "ابو امامہ کا ذکر",
+        "bn": "আবু উমামার জিকির",
+        "ps": "د ابو امامه ذکر"
       },
       "arabic": "سُبحان الله عَدَدَ ما خَلَقَ سُبحان الله مِلءَ ما خَلَقَ سُبحان الله عَدَدَ ما في الأرضِ والسَّماءِ سُبحان الله مِلءَ ما في الأرضِ والسَّماءِ سُبحان الله عَدَدَ ما أحصى كتابُهُ سُبحان الله مِلءَ ما أحصى كتابُهُ سُبحان الله عَدَدَ كُلِّ شَيءٍ سُبحان الله مِلءَ كُلِّ شَيءٍ",
       "pronunciations": {},
@@ -2558,7 +3017,8 @@
         "grade"
       ],
       "ownerText": true,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "owner-prostration",
@@ -2567,7 +3027,11 @@
       "titles": {
         "fa": "دعای آمرزش در سجده",
         "en": "Forgiveness in prostration",
-        "tr": "Secdede bağışlanma duası"
+        "tr": "Secdede bağışlanma duası",
+        "ar": "دعاء المغفرة في السجود",
+        "ur": "سجدے میں مغفرت کی دعا",
+        "bn": "সিজদায় ক্ষমার দোয়া",
+        "ps": "په سجده کې د بښنې دعا"
       },
       "arabic": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، دِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّهُ.",
       "pronunciations": {},
@@ -2579,12 +3043,12 @@
       },
       "sources": [
         {
-          "book": "Sahih Muslim, prostration supplication",
-          "reference": "",
-          "url": "",
-          "grade": "UNVERIFIED",
-          "grader": "Owner supplied; comparison pending",
-          "checked": false
+          "book": "Sahih Muslim",
+          "reference": "483",
+          "url": "https://sunnah.com/muslim:483",
+          "grade": "SAHIH",
+          "grader": "Sahih collection; printed comparison pending",
+          "checked": true
         }
       ],
       "repeats": [],
@@ -2595,7 +3059,8 @@
         "source"
       ],
       "ownerText": true,
-      "reminder": false
+      "reminder": false,
+      "guidance": false
     },
     {
       "id": "guidance",
@@ -2604,7 +3069,11 @@
       "titles": {
         "fa": "هدایت، تقوا و بی‌نیازی",
         "en": "Guidance, piety and sufficiency",
-        "tr": "Hidayet, takva ve gönül zenginliği"
+        "tr": "Hidayet, takva ve gönül zenginliği",
+        "ar": "الهداية والتقى والعفاف والغنى",
+        "ur": "ہدایت، تقویٰ، پاکدامنی اور بے نیازی",
+        "bn": "হেদায়েত, তাকওয়া, পবিত্রতা ও অমুখাপেক্ষিতা",
+        "ps": "لارښوونه، تقوا، پاکلمني او بې نیازي"
       },
       "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
       "pronunciations": {},
@@ -2631,7 +3100,172 @@
         "translation"
       ],
       "ownerText": false,
-      "reminder": true
+      "reminder": true,
+      "guidance": false
+    },
+    {
+      "id": "rabbana-hearts",
+      "category": "occasions",
+      "section": "quran",
+      "titles": {
+        "fa": "ربنا لا تزغ قلوبنا",
+        "en": "Keep our hearts on guidance",
+        "tr": "Kalplerimizi hidayette tut",
+        "ar": "ربنا لا تزغ قلوبنا",
+        "ur": "ربنا لا تزغ قلوبنا",
+        "bn": "হৃদয়কে হেদায়েতে রাখা",
+        "ps": "زړونه مو پر هدایت وساته"
+      },
+      "arabic": "رَبَّنَا لَا تُزِغۡ قُلُوبَنَا بَعۡدَ إِذۡ هَدَيۡتَنَا وَهَبۡ لَنَا مِن لَّدُنكَ رَحۡمَةًۚ إِنَّكَ أَنتَ ٱلۡوَهَّابُ",
+      "pronunciations": {},
+      "translations": {
+        "fa": "پروردگارا، پس از آنکه هدایتمان کردی، دل‌هایمان را منحرف مکن و از سوی خود رحمتی به ما ببخش؛ تو بسیار بخشنده‌ای.",
+        "en": "Our Lord, do not let our hearts turn away after You have guided us. Grant us mercy from Yourself; You are the Bestower.",
+        "tr": "Rabbimiz, bizi hidayete erdirdikten sonra kalplerimizi saptırma. Katından bize rahmet bağışla; çok bağışlayan Sensin."
+      },
+      "notes": {},
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "3/8",
+          "url": "https://quran.com/3/8",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ],
+      "repeats": [],
+      "audio": "",
+      "reviewFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "ownerText": false,
+      "reminder": true,
+      "guidance": false
+    },
+    {
+      "id": "rabbana-repentance",
+      "category": "occasions",
+      "section": "quran",
+      "titles": {
+        "fa": "ربنا ظلمنا أنفسنا",
+        "en": "Repentance and mercy",
+        "tr": "Tövbe ve rahmet",
+        "ar": "ربنا ظلمنا أنفسنا",
+        "ur": "ربنا ظلمنا أنفسنا",
+        "bn": "তওবা ও রহমত",
+        "ps": "توبه او رحمت"
+      },
+      "arabic": "رَبَّنَا ظَلَمۡنَآ أَنفُسَنَا وَإِن لَّمۡ تَغۡفِرۡ لَنَا وَتَرۡحَمۡنَا لَنَكُونَنَّ مِنَ ٱلۡخَٰسِرِينَ",
+      "pronunciations": {},
+      "translations": {
+        "fa": "پروردگارا، به خود ستم کردیم؛ اگر ما را نیامرزی و بر ما رحم نکنی، از زیانکاران خواهیم بود.",
+        "en": "Our Lord, we have wronged ourselves. Unless You forgive us and have mercy on us, we will be among the losers.",
+        "tr": "Rabbimiz, kendimize zulmettik. Bizi bağışlamaz ve bize merhamet etmezsen kaybedenlerden oluruz."
+      },
+      "notes": {},
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "7/23",
+          "url": "https://quran.com/7/23",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ],
+      "repeats": [],
+      "audio": "",
+      "reviewFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "ownerText": false,
+      "reminder": true,
+      "guidance": false
+    },
+    {
+      "id": "rabbana-forgiveness",
+      "category": "occasions",
+      "section": "quran",
+      "titles": {
+        "fa": "آمرزش برای خود، والدین و مؤمنان",
+        "en": "Forgiveness for us, parents and believers",
+        "tr": "Biz, anne babamız ve müminler için bağışlanma",
+        "ar": "المغفرة لنا ولوالدينا وللمؤمنين",
+        "ur": "اپنے لیے، والدین اور مومنوں کے لیے مغفرت",
+        "bn": "নিজেদের, মা-বাবা ও মুমিনদের জন্য ক্ষমা",
+        "ps": "زموږ، مور او پلار او مؤمنانو بښنه"
+      },
+      "arabic": "رَبَّنَا ٱغۡفِرۡ لِي وَلِوَٰلِدَيَّ وَلِلۡمُؤۡمِنِينَ يَوۡمَ يَقُومُ ٱلۡحِسَابُ",
+      "pronunciations": {},
+      "translations": {
+        "fa": "پروردگارا، روزی که حساب برپا می‌شود، من و پدر و مادرم و مؤمنان را بیامرز.",
+        "en": "Our Lord, forgive me, my parents and the believers on the day when the reckoning takes place.",
+        "tr": "Rabbimiz, hesabın görüleceği gün beni, anne babamı ve müminleri bağışla."
+      },
+      "notes": {},
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "14/41",
+          "url": "https://quran.com/14/41",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ],
+      "repeats": [],
+      "audio": "",
+      "reviewFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "ownerText": false,
+      "reminder": true,
+      "guidance": false
+    },
+    {
+      "id": "rabbana-family",
+      "category": "occasions",
+      "section": "quran",
+      "titles": {
+        "fa": "ربنا هب لنا من أزواجنا",
+        "en": "Righteous families",
+        "tr": "Salih aileler",
+        "ar": "ربنا هب لنا من أزواجنا",
+        "ur": "نیک خاندان کے لیے دعا",
+        "bn": "নেক পরিবারের দোয়া",
+        "ps": "د نېکې کورنۍ دعا"
+      },
+      "arabic": "رَبَّنَا هَبۡ لَنَا مِنۡ أَزۡوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعۡيُنٖ وَٱجۡعَلۡنَا لِلۡمُتَّقِينَ إِمَامًا",
+      "pronunciations": {},
+      "translations": {
+        "fa": "پروردگارا، از همسران و فرزندانمان روشنی چشم به ما ببخش و ما را برای پرهیزگاران پیشوا قرار ده.",
+        "en": "Our Lord, grant us comfort in our spouses and offspring, and make us examples for the mindful of You.",
+        "tr": "Rabbimiz, eşlerimiz ve çocuklarımızdan bize göz aydınlığı ver ve bizi takva sahiplerine önder kıl."
+      },
+      "notes": {},
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "25/74",
+          "url": "https://quran.com/25/74",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ],
+      "repeats": [],
+      "audio": "",
+      "reviewFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "ownerText": false,
+      "reminder": true,
+      "guidance": false
     }
   ]
 }

@@ -6,323 +6,393 @@
       "id": "takbir",
       "url": "https://sunnah.com/muslim:385",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "0f55d2e0475912f34c3a5198ed454c3525e63b40cbc2dddd9ca3d6eda3f69b68"
     },
     {
       "id": "thana",
       "url": "https://sunnah.com/abudawud:775",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "837909547601660a409d90f84fbe71a9dfbdb7131b9742e0778d197e10baf1af"
     },
     {
       "id": "ruku",
       "url": "https://sunnah.com/muslim:772",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "b26e15b6991d0a647fda3ec0e7aa86db7052369b0655014eaa159f989e8a09cc"
     },
     {
       "id": "tasmi-tahmid",
       "url": "https://sunnah.com/muslim:772",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "3bf72d11c95e16f536128215cc089e946accb241383f28e3b964818e48476a06"
     },
     {
       "id": "sujud",
       "url": "https://sunnah.com/muslim:772",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "37d951dbf51ddade019d1d519db4c684f77bc80aac2e1db39fdb8cbb33e56977"
     },
     {
       "id": "tashahhud",
       "url": "https://sunnah.com/bukhari:6265",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "d8642d97c10ff3500204780f785a63558407779937dc48e7a35233170b344d44"
     },
     {
       "id": "salawat",
       "url": "https://sunnah.com/bukhari:3370",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "499709129ae8bb0306fc18d682451a4916a705afd56a8e456365a76b015ca5d5"
     },
     {
       "id": "rabbana-prayer",
       "url": "https://quran.com/2/201",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "fb86d2f7524554ea442f09e313ac103aa5b2636a9f22f2d3b866d069573631fa"
     },
     {
       "id": "zalamtu",
       "url": "https://sunnah.com/bukhari:834",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "d3b026d401979d5920a7eae816f033da87a97db13270e2b3b94454111cd424af"
     },
     {
       "id": "salam",
       "url": "https://sunnah.com/abudawud:996",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "840a49e62d168fa39b19e3fa3271c053fd700a2b34b276bad8e01c3ae63b6871"
+    },
+    {
+      "id": "adhan-response",
+      "url": "https://sunnah.com/muslim:385",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "a8e6d5234a3ff1db28da4a622387cc84be1ad574b3d3c30cfc83d5deeee88982"
     },
     {
       "id": "after-adhan",
       "url": "https://sunnah.com/bukhari:614",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "4d25c400db93f8946fc9c97fe64ac400cdf3f888af9ecde9a9a04cd973f3fbc1"
     },
     {
       "id": "after-wudu",
       "url": "https://sunnah.com/muslim:234b",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "e9c40909b3c1a7e92a7c29adcef67c672af4872297a9bacd4b1b06ca49d6c0cd"
     },
     {
       "id": "mosque-enter",
       "url": "https://sunnah.com/muslim:713a",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "ba5d9d688cc88dfd23eb9d17f413355f889801ddceb508c4adf94b44c51bc069"
     },
     {
       "id": "mosque-exit",
       "url": "https://sunnah.com/muslim:713a",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "08cc07bfe5d00b020184279df823c77bf15f2dd4d154e4cc0ae155ea940ca788"
     },
     {
       "id": "anta-salam",
       "url": "https://sunnah.com/muslim:591",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "3840c67e4e5a5e049559fab53d9d6c6f134a9da0104eefb5b918eb48ee2f030d"
     },
     {
       "id": "istighfar-three",
       "url": "https://sunnah.com/muslim:591",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "9ef913a347672f03b6c0b851c3a052ebd52c61a9ff40c76f1e76d932d031117f"
     },
     {
       "id": "ayat-kursi",
       "url": "https://quran.com/2/255",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "cbf4c2fa9d4a8d2cdb3c56828949d1a36b5fceb218c06ab04f9401cb4e4636f6"
     },
     {
       "id": "tasbihat",
       "url": "https://sunnah.com/muslim:596a",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "561d2b042edc12b83c9b8283206a28a1b31667428f95b155d276334ce3c4cfaf"
     },
     {
       "id": "tahlil-after",
       "url": "https://sunnah.com/muslim:593a",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "015d66a71aededd88c9bd336dbfb891add93767b4937cbd8f7166a2ef84b1e4d"
     },
     {
       "id": "morning",
       "url": "https://sunnah.com/abudawud:5068",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "7d1989ae0e6abfb6abd6327b180098a7ba6bff63b2ab42fba5be6c1a8b28db78"
     },
     {
       "id": "evening",
       "url": "https://sunnah.com/abudawud:5068",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "72a8ac6224d8607009fa64e6a655e41c04cc1e7f5b2f55065b5f6cb5e1d6aa0d"
     },
     {
       "id": "sleep-dua",
       "url": "https://sunnah.com/bukhari:6324",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "654f5adca985550602b79feb72ef6a211bf49c6aab78afca71b29679388b8522"
     },
     {
       "id": "wake-dua",
       "url": "https://sunnah.com/bukhari:6324",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "af74f57d89cd4062d918b4aee7b1ef6917848fdc27492fdfebe520e870622c6b"
     },
     {
       "id": "before-food",
       "url": "https://sunnah.com/tirmidhi:1858",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "e04227e76e93073d4986e666c2d93df8cb9ee56e50fc400f6a93cee30b7f3513"
     },
     {
       "id": "after-food",
       "url": "https://sunnah.com/bukhari:5458",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "d63e5f132464c02fa79151156bc42a6ee30e90fd4d78b8fb0c125cc32222cc7c"
     },
     {
       "id": "clothes",
       "url": "https://sunnah.com/abudawud:4023",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "315d20f07bccbe85d17f0b39fd4379322d6fcd18c521b9a03f9a283c334df758"
     },
     {
       "id": "new-clothes",
       "url": "https://sunnah.com/abudawud:4020",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "2caa5b97e97b18943151bf6a02945ccd2dc842b2bf33f3fab10a24b510cbfde1"
     },
     {
       "id": "home-exit",
       "url": "https://sunnah.com/abudawud:5095",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "33e98e886d67e66657f1471e5cc0444be8b7153efffdae7a087b2e9a8977e351"
     },
     {
       "id": "toilet-enter",
       "url": "https://sunnah.com/bukhari:142",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "6271ced14d2f1a8bef97eaeade0cbefce39669f7249301c3a85f91684c1987af"
     },
     {
       "id": "toilet-exit",
       "url": "https://sunnah.com/tirmidhi:7",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "b9c094071a52749920a3e0624d2f980951915db284649c3ae052a6e4c8841468"
     },
     {
       "id": "vehicle",
       "url": "https://sunnah.com/muslim:1342",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "fa69cb231847556b28c97a1fa6d67c8ee6b06e7594b49a08f2c122aca10e0d53"
     },
     {
       "id": "travel-dua",
       "url": "https://sunnah.com/muslim:1342",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "39fe3252389defd072a19804c13191c51a63f11f4f2dcde7f9f47f926034163a"
+    },
+    {
+      "id": "istikhara",
+      "url": "https://sunnah.com/bukhari:1166",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "8151aabe5cf70de6008411aff23d0cc42c95b7c2baec05cbf6abe3de796df8d9"
     },
     {
       "id": "distress",
       "url": "https://sunnah.com/bukhari:6369",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "1c1250d440751ce835e6c40ed3f6c1dc1accd3b2f10486d94f8a3f9fa2903c3c"
     },
     {
       "id": "sick-visit",
       "url": "https://sunnah.com/bukhari:5743",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "dbd251a88f2560635eec63add3143213c98408d64b1c1243f077c642bfb6158a"
     },
     {
       "id": "parents",
       "url": "https://quran.com/17/24",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "20da9f444e77e11a8a3cb31b1644042bb0a2d04b2e29ddbc0a6b536bf79fa382"
     },
     {
       "id": "rain",
       "url": "https://sunnah.com/bukhari:1032",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "f26e54b431c728a729f99b1d717e4184c4e6d9cd9beafb29249624cdbd3e3b37"
+    },
+    {
+      "id": "friday-adab",
+      "url": "https://sunnah.com/bukhari:877",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic evidence excerpt",
+      "sha256": "9758c4e180f7a0415b78e03927e00c6b9c049ac79f773adba001d92404b239a8"
+    },
+    {
+      "id": "friday-salawat",
+      "url": "https://sunnah.com/abudawud:1047",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic evidence excerpt",
+      "sha256": "a296e03f2ccb0bbff361e5abb1857dc881688cfe016d73f0b5e0528a36f12236"
+    },
+    {
+      "id": "friday-hour",
+      "url": "https://sunnah.com/bukhari:935",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic evidence excerpt",
+      "sha256": "1ce858819a4918f17f72cf14ce5e84023656f0856ec11fc7c5727f598510a17a"
+    },
+    {
+      "id": "monday-thursday",
+      "url": "https://sunnah.com/tirmidhi:747",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic evidence excerpt",
+      "sha256": "a01dace6419591ea5b850b76af2f745a1e5b444a612aaceb135944d837fd2a66"
     },
     {
       "id": "subhan-bihamdihi",
       "url": "https://sunnah.com/bukhari:6405",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "01807d3530700f42c32b3ff195ad57564229b251c00887fddd6f1b2cfe19f45f"
     },
     {
       "id": "subhan-azim",
       "url": "https://sunnah.com/muslim:2694",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "fea841be18be305891b09635d0a45190df9e4b5199ef3a574fd7dc8911d5a73f"
     },
     {
       "id": "hawqala",
       "url": "https://sunnah.com/bukhari:6384",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "a8e6d5234a3ff1db28da4a622387cc84be1ad574b3d3c30cfc83d5deeee88982"
     },
     {
       "id": "kalima",
       "url": "https://sunnah.com/muslim:385",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "aa59a15baeee44547daf5bb3a0c1052eaaa3beda6752fdc72e44bf20ecd1c498"
     },
     {
       "id": "sayyid-istighfar",
       "url": "https://sunnah.com/bukhari:6306",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "6ce7fa31440bfc23c2fe69c534c664fc6c10f56a5b689c1e42f52f38f239260f"
     },
     {
       "id": "istighfar",
       "url": "https://sunnah.com/muslim:591",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "9ef913a347672f03b6c0b851c3a052ebd52c61a9ff40c76f1e76d932d031117f"
     },
     {
       "id": "iftar",
       "url": "https://sunnah.com/abudawud:2357",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "f9612b53e6e9896add24e019bcdd1be69141a4405b799c1d327c8b6a24b8200d"
     },
     {
       "id": "qadr",
       "url": "https://sunnah.com/ibnmajah:3850",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "f8b8f765386d060fe6a207ac05d5f94b9a721c41745ad65a5ba906a12c5ac573"
     },
     {
       "id": "crescent",
       "url": "https://sunnah.com/tirmidhi:3451",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "dfacda3002f82dd4636a26f12a9e2eb9f9eaa605edba7e3839b4ff4d45b2723f"
     },
     {
       "id": "guidance",
       "url": "https://sunnah.com/muslim:2721a",
       "accessed": "2026-11-16",
-      "kind": "Direct Arabic excerpt comparison",
+      "kind": "Direct Arabic formula excerpt",
       "sha256": "64b13693f36e4cf50f626b68d7bc11b89ac2f11ddfb8b9d4eefc2fe47586d4cb"
+    },
+    {
+      "id": "rabbana-hearts",
+      "url": "https://quran.com/3/8",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "c5101b0b7610744630fe81ce5277ba5e08f04ee6599a8a2ab870d96f52d53566"
+    },
+    {
+      "id": "rabbana-repentance",
+      "url": "https://quran.com/7/23",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "c383eb7451b7508ab8ff734a38e62ee096860a3ea116a7a010fe5933316c029d"
+    },
+    {
+      "id": "rabbana-forgiveness",
+      "url": "https://quran.com/14/41",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "3becb923e3d073e0b195fdd5ecc5f9e5d36b01c5ac312ffff72d05db0ed3be85"
+    },
+    {
+      "id": "rabbana-family",
+      "url": "https://quran.com/25/74",
+      "accessed": "2026-11-16",
+      "kind": "Direct Arabic formula excerpt",
+      "sha256": "a8e75968467fffc8da8c37abb731487c7484515bfafc03c626552d735ec8381f"
     }
   ]
 }

@@ -13,6 +13,6 @@ data class DuaReminderOptions(
     val canSchedule get() = enabled && consent && valid
 }
 data class DuaReminderHistory(
-    val seen: Set<String> = emptySet(), val lastDuaId: String? = null,
+    val seen: Set<String> = emptySet(), val lastKey: String? = null,
     val lastSlot: Long = 0L, val scheduledSlot: Long = 0L,
 )

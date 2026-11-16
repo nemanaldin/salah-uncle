@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">در این دسته‌ها و زبان، دعای دارای متن، منبع، درجه و ترجمهٔ آماده وجود ندارد. دسته یا زبان را تغییر دهید؛ متن ناقص ارسال نمی‌شود.</string>
     <string name="ui_dua_schedule_note">زمان‌بندی غیردقیق است و اندروید ممکن است اعلان را دیرتر برساند. متن‌های بی‌منبع یا علامت‌دار از یادآور حذف‌اند. هر دعا در هر دور یک‌بار می‌آید؛ نشان‌شده‌ها احتمال بیشتری دارند زودتر دیده شوند.</string>
     <string name="ui_dua_invalid_window">شروع بازه باید پیش از پایان آن باشد و حداقل یک دسته انتخاب شود.</string>
+    <string name="ui_dua_hadith_evidence">دلیل حدیثی</string>
+    <string name="ui_dua_guidance_note">این متن، دلیلِ یک عمل است؛ عبارتِ ذکر برای تکرار نیست.</string>
+    <string name="ui_dua_copy_evidence">کپی متن</string>
+    <string name="ui_dua_share_evidence">اشتراک متن</string>
+    <string name="ui_dua_previous">دعای قبلی</string>
+    <string name="ui_dua_next">دعای بعدی</string>
+    <string name="ui_dua_category_count">متن دعا: %1$d · موضوع: %2$d</string>
+    <string name="ui_dua_expanded">باز</string>
+    <string name="ui_dua_collapsed">بسته</string>
 </resources>

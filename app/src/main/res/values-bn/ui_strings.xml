@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">এই বিভাগ ও ভাষায় পাঠ, উৎস, মান ও অর্থসহ দোয়া নেই। বিভাগ বা ভাষা বদলান; অসম্পূর্ণ বিষয়বস্তু পাঠানো হয় না।</string>
     <string name="ui_dua_schedule_note">সময় নির্ভুল নয়; অ্যান্ড্রয়েড দেরি করতে পারে। অযাচাইকৃত পাঠ, উৎস বা মান বাদ থাকে। প্রতি চক্রে দোয়া একবার আসে; পছন্দের দোয়া আগে আসার সম্ভাবনা বেশি।</string>
     <string name="ui_dua_invalid_window">শুরু শেষের আগে হতে হবে এবং অন্তত একটি বিভাগ বেছে নিতে হবে।</string>
+    <string name="ui_dua_hadith_evidence">হাদিসের দলিল</string>
+    <string name="ui_dua_guidance_note">এই পাঠ একটি আমলের দলিল; বারবার পড়ার জিকির নয়।</string>
+    <string name="ui_dua_copy_evidence">পাঠ কপি করুন</string>
+    <string name="ui_dua_share_evidence">পাঠ শেয়ার করুন</string>
+    <string name="ui_dua_previous">আগের দোয়া</string>
+    <string name="ui_dua_next">পরের দোয়া</string>
+    <string name="ui_dua_category_count">দোয়ার পাঠ: %1$d · বিষয়: %2$d</string>
+    <string name="ui_dua_expanded">খোলা</string>
+    <string name="ui_dua_collapsed">বন্ধ</string>
 </resources>

@@ -8,14 +8,13 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -73,6 +72,7 @@ fun DuaLibraryScreen(catalog: DuaCatalog, settings: AppSettings, onCategory: (St
             if (query.isBlank()) {
                 items(catalog.categories, key = { it.id }) { category ->
                     val ids = catalog.sections.filter { it.category == category.id }.flatMap { it.duaIds }.distinct()
+                    val textCount = ids.mapNotNull(catalog::item).count { it.arabic.isNotBlank() && !it.guidance }
                     AppCard(Modifier.testTag("dua_category_${category.id}"), { onCategory(category.id) }) {
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             Surface(shape = CircleShape, color = MaterialTheme.colorScheme.primaryContainer, modifier = Modifier.size(52.dp)) {
@@ -83,7 +83,7 @@ fun DuaLibraryScreen(catalog: DuaCatalog, settings: AppSettings, onCategory: (St
                                 }, null) }
                             }
                             Column(Modifier.weight(1f)) { Text(category.title(tag), style = MaterialTheme.typography.titleMedium)
-                                SupportingText(NumberFormat.getIntegerInstance(Locale.forLanguageTag(tag)).format(ids.size)) }
+                                SupportingText(stringResource(R.string.ui_dua_category_count, textCount, ids.size)) }
                         }
                     }
                 }
@@ -111,24 +111,34 @@ fun DuaCategoryScreen(catalog: DuaCatalog, categoryId: String, settings: AppSett
     val category = catalog.categories.firstOrNull { it.id == categoryId } ?: return
     val sections = catalog.sections.filter { it.category == categoryId }
     var expanded by rememberSaveable(categoryId) { mutableStateOf("") }
+    val scroll = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+    val missingTitles = sections.any { tag !in it.titles }
+    val todayDate by produceState(LocalDate.now(), categoryId) {
+        if (categoryId == "week") while (true) { kotlinx.coroutines.delay(60_000); value = LocalDate.now() }
+    }
     LazyColumn(Modifier.fillMaxSize().padding(horizontal = 20.dp).testTag("dua_category_screen"),
-        verticalArrangement = Arrangement.spacedBy(12.dp), contentPadding = PaddingValues(bottom = 20.dp)) {
+        state = scroll, verticalArrangement = Arrangement.spacedBy(12.dp), contentPadding = PaddingValues(bottom = 20.dp)) {
         item { TextButton(onBack) { Text("${stringResource(R.string.ui_duas)} > ${category.title(tag)}") } }
         item { LanguageReadinessNotice(settings.language) }
-        if (sections.any { tag !in it.titles }) item { InfoCard(stringResource(R.string.ui_dua_title_fallback)) }
+        if (missingTitles) item { InfoCard(stringResource(R.string.ui_dua_title_fallback)) }
         if (categoryId == "week") item {
             // Civil date in the device zone; not a made-up special formula for each day.
-            val today = catalog.section(todayDuaSection(LocalDate.now().dayOfWeek))!!
-            AppCard(Modifier.testTag("duas_today"), { expanded = today.id }) {
+            val today = catalog.section(todayDuaSection(todayDate.dayOfWeek))!!
+            AppCard(Modifier.testTag("duas_today"), {
+                expanded = today.id
+                scope.launch { scroll.animateScrollToItem(3 + (if (missingTitles) 1 else 0) + sections.indexOfFirst { it.id == today.id }) }
+            }) {
                 SectionTitle(stringResource(R.string.ui_dua_today)); SupportingText(today.title(tag))
             }
         }
         sections.forEach { section ->
             item(section.id) { AppCard {
                 val open = expanded == section.id
+                val expandedLabel = stringResource(if (open) R.string.ui_dua_expanded else R.string.ui_dua_collapsed)
                 ListItem(headlineContent = { Text(section.title(tag)) }, trailingContent = { Icon(if (open) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown, null) },
                     modifier = Modifier.fillMaxWidth().testTag("dua_section_${section.id}").clickable(role = Role.Button) { expanded = if (open) "" else section.id }
-                        .semantics { stateDescription = if (open) "−" else "+" },
+                        .semantics { stateDescription = expandedLabel },
                     colors = ListItemDefaults.colors(containerColor = MaterialTheme.colorScheme.surface))
                 if (open) catalog.itemsIn(section.id).forEach { dua -> DuaTitleRow(dua, tag) { onRead(section.id, dua.id) } }
             } }
@@ -142,6 +152,8 @@ fun DuaSavedScreen(catalog: DuaCatalog, settings: AppSettings, recent: Boolean, 
     val items = ids.mapNotNull(catalog::item)
     LazyColumn(Modifier.fillMaxSize().padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         item { SectionTitle(stringResource(if (recent) R.string.ui_dua_recent else R.string.ui_bookmarks)) }
+        item { LanguageReadinessNotice(settings.language) }
+        if (items.any { settings.language.tag !in it.titles }) item { InfoCard(stringResource(R.string.ui_dua_title_fallback)) }
         if (items.isEmpty()) item { InfoCard(stringResource(R.string.ui_dua_empty)) }
         items(items, key = { it.id }) { dua -> DuaTitleRow(dua, settings.language.tag) { onRead(dua.section, dua.id) } }
     }
@@ -171,9 +183,9 @@ fun DuaReaderScreen(catalog: DuaCatalog, sectionId: String, initialDuaId: String
                 active = pager.settledPage == index)
         }
         Row(Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } }, Modifier.weight(1f).testTag("dua_previous"), enabled = pager.currentPage > 0) { Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(R.string.ui_back)) }
+            OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } }, Modifier.weight(1f).testTag("dua_previous"), enabled = pager.currentPage > 0) { Text(stringResource(R.string.ui_dua_previous)) }
             Text(NumberFormat.getIntegerInstance(Locale.forLanguageTag(settings.language.tag)).let { "${it.format(pager.currentPage + 1)} / ${it.format(entries.size)}" }, Modifier.testTag("dua_position"))
-            OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } }, Modifier.weight(1f).testTag("dua_next"), enabled = pager.currentPage < entries.lastIndex) { Text(stringResource(R.string.ui_slide_next)) }
+            OutlinedButton({ scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } }, Modifier.weight(1f).testTag("dua_next"), enabled = pager.currentPage < entries.lastIndex) { Text(stringResource(R.string.ui_dua_next)) }
         }
     }
 }
@@ -186,9 +198,9 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
     val meaning = item.translation(tag)
     val sourceLabel = stringResource(R.string.ui_dua_source)
     val review = stringResource(R.string.ui_dua_review)
-    val shareLabel = stringResource(R.string.ui_dua_share)
+    val shareLabel = stringResource(if (item.guidance) R.string.ui_dua_share_evidence else R.string.ui_dua_share)
     val export = remember(item, tag, review) { listOf(item.title(tag), item.arabic, meaning,
-        item.sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" }, review).filter { it.isNotBlank() }.joinToString("\n\n") }
+        item.sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" }, review.takeIf { item.reviewFields.isNotEmpty() }.orEmpty()).filter { it.isNotBlank() }.joinToString("\n\n") }
     var scale by remember(settings.arabicTextScale) { mutableFloatStateOf(settings.arabicTextScale) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 10.dp).testTag("dua_detail_${item.id}"), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -200,21 +212,23 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
         LanguageReadinessNotice(settings.language)
         if (tag !in item.titles) SupportingText(stringResource(R.string.ui_dua_title_fallback))
         if (item.reviewFields.isNotEmpty()) InfoCard(review)
+        if (item.guidance) InfoCard(stringResource(R.string.ui_dua_guidance_note))
         AppCard {
-            SectionTitle(stringResource(R.string.ui_dua_arabic))
+            SectionTitle(stringResource(if (item.guidance) R.string.ui_dua_hadith_evidence else R.string.ui_dua_arabic))
             if (item.arabic.isBlank()) SupportingText(stringResource(R.string.ui_dua_missing))
             else {
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) { SelectionContainer {
                     Text(item.arabic, Modifier.fillMaxWidth().testTag("dua_arabic_${item.id}"),
-                        style = readingTextStyle(settings, AppLanguage.ARABIC).copy(fontSize = (28 * scale * settings.textScale).sp,
-                            lineHeight = (48 * scale * settings.textScale).sp, textDirection = TextDirection.Rtl))
+                        // SalahTheme already applies the global text scale through LocalDensity.
+                        style = readingTextStyle(settings, AppLanguage.ARABIC).copy(fontSize = (28 * scale).sp,
+                            lineHeight = (48 * scale).sp, textDirection = TextDirection.Rtl))
                 } }
                 val sizeLabel = stringResource(R.string.ui_arabic_text_size)
                 Text(sizeLabel)
                 Slider(scale, { scale = it }, valueRange = .85f..2f, onValueChangeFinished = { onSize(readingArabicScale(scale)) },
                     modifier = Modifier.testTag("dua_arabic_size").semantics { contentDescription = sizeLabel })
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton({ (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newPlainText(item.title(tag), item.arabic)) }, Modifier.weight(1f).testTag("dua_copy")) { Text(stringResource(R.string.ui_dua_copy)) }
+                    OutlinedButton({ (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newPlainText(item.title(tag), item.arabic)) }, Modifier.weight(1f).testTag("dua_copy")) { Text(stringResource(if (item.guidance) R.string.ui_dua_copy_evidence else R.string.ui_dua_copy)) }
                     OutlinedButton({ shareText(context, export, shareLabel) { onError(R.string.ui_error_external_app) } }, Modifier.weight(1f).testTag("dua_share")) { Text(shareLabel) }
                 }
             }
@@ -262,7 +276,7 @@ private fun DuaCounter(id: String, index: Int, repeat: DuaRepeat, settings: AppS
         SectionTitle(stringResource(R.string.ui_dua_counter))
         Text(repeat.arabic, style = readingTextStyle(settings, AppLanguage.ARABIC))
         Text("${number.format(count)} / ${number.format(repeat.count)}", Modifier.semantics { liveRegion = LiveRegionMode.Polite })
-        Button({ count = advanceDuaCounter(count, repeat.count) }, Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag("dua_count_${id}_$index"), enabled = count < repeat.count) { Text("+1") }
+        Button({ count = advanceDuaCounter(count, repeat.count) }, Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag("dua_count_${id}_$index"), enabled = count < repeat.count) { Text("+${number.format(1)}") }
         TextButton({ count = 0 }) { Text(stringResource(R.string.ui_dua_reset_counter)) }
     }
 }

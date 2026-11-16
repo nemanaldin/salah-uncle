@@ -1,0 +1,3919 @@
+{
+  "date": "2026-11-16",
+  "scope": "AI-assisted inventory; no scholarly approval; printed comparison remains pending",
+  "records": [
+    {
+      "id": "takbir",
+      "title": "تکبیر تحریمه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "385",
+          "url": "https://sunnah.com/muslim:385",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "thana",
+      "title": "ثنا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "775",
+          "url": "https://sunnah.com/abudawud:775",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "taawwudh-basmala",
+      "title": "تعوذ و بسمله",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "ruku",
+      "title": "تسبیح رکوع",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "772",
+          "url": "https://sunnah.com/muslim:772",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "tasmi-tahmid",
+      "title": "تسمیع و تحمید",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation",
+        "practice"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "772",
+          "url": "https://sunnah.com/muslim:772",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "sujud",
+      "title": "تسبیح سجده",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "772",
+          "url": "https://sunnah.com/muslim:772",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "tashahhud",
+      "title": "تشهد ابن‌مسعود",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation",
+        "practice"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6265",
+          "url": "https://sunnah.com/bukhari:6265",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "salawat",
+      "title": "صلوات ابراهیمی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "3370",
+          "url": "https://sunnah.com/bukhari:3370",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rabbana-prayer",
+      "title": "ربنا آتنا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "2/201",
+          "url": "https://quran.com/2/201",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "zalamtu",
+      "title": "دعای آمرزش در نماز",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "834",
+          "url": "https://sunnah.com/bukhari:834",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "salam",
+      "title": "سلام نماز",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "996",
+          "url": "https://sunnah.com/abudawud:996",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "witr-qunut",
+      "title": "دعای قنوت وتر",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "adhan-response",
+      "title": "پاسخ به اذان",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "385",
+          "url": "https://sunnah.com/muslim:385",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "after-adhan",
+      "title": "دعای بعد از اذان",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "614",
+          "url": "https://sunnah.com/bukhari:614",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "start-wudu",
+      "title": "شروع وضو",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "after-wudu",
+      "title": "ذکر بعد از وضو",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "234b",
+          "url": "https://sunnah.com/muslim:234b",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "mosque-enter",
+      "title": "ورود به مسجد",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "713a",
+          "url": "https://sunnah.com/muslim:713a",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "mosque-exit",
+      "title": "خروج از مسجد",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "713a",
+          "url": "https://sunnah.com/muslim:713a",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "anta-salam",
+      "title": "اللهم أنت السلام",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "591",
+          "url": "https://sunnah.com/muslim:591",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "istighfar-three",
+      "title": "استغفار سه‌بار",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "591",
+          "url": "https://sunnah.com/muslim:591",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "ayat-kursi",
+      "title": "آیة‌الکرسی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation",
+        "practice"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "2/255",
+          "url": "https://quran.com/2/255",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "tasbihat",
+      "title": "تسبیحات ۳۳، ۳۳، ۳۴",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "596a",
+          "url": "https://sunnah.com/muslim:596a",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "tahlil-after",
+      "title": "تهلیل بعد از نماز",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "593a",
+          "url": "https://sunnah.com/muslim:593a",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "individual-dua",
+      "title": "دعای فردی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "after-fard-order",
+      "title": "ترتیب اذکار و سنت بعد از فرض",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "morning",
+      "title": "اذکار صبح",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "5068",
+          "url": "https://sunnah.com/abudawud:5068",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "evening",
+      "title": "اذکار شام",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "5068",
+          "url": "https://sunnah.com/abudawud:5068",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "sleep-dua",
+      "title": "دعای خواب",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6324",
+          "url": "https://sunnah.com/bukhari:6324",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "wake-dua",
+      "title": "دعای بیداری",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6324",
+          "url": "https://sunnah.com/bukhari:6324",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "before-food",
+      "title": "قبل از غذا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "1858",
+          "url": "https://sunnah.com/tirmidhi:1858",
+          "grade": "SAHIH",
+          "grader": "Darussalam",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "after-food",
+      "title": "بعد از غذا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "5458",
+          "url": "https://sunnah.com/bukhari:5458",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "clothes",
+      "title": "پوشیدن لباس",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "4023",
+          "url": "https://sunnah.com/abudawud:4023",
+          "grade": "HASAN",
+          "grader": "Al-Albani: hasan excluding the addition about later sins",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "new-clothes",
+      "title": "لباس نو",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "4020",
+          "url": "https://sunnah.com/abudawud:4020",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "home-enter",
+      "title": "ورود به خانه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "home-exit",
+      "title": "خروج از خانه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "5095",
+          "url": "https://sunnah.com/abudawud:5095",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "toilet-enter",
+      "title": "ورود به دستشویی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "142",
+          "url": "https://sunnah.com/bukhari:142",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "toilet-exit",
+      "title": "خروج از دستشویی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "7",
+          "url": "https://sunnah.com/tirmidhi:7",
+          "grade": "HASAN",
+          "grader": "Al-Tirmidhi: hasan gharib",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "vehicle",
+      "title": "سوار شدن",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "1342",
+          "url": "https://sunnah.com/muslim:1342",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "travel-dua",
+      "title": "دعای سفر",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "1342",
+          "url": "https://sunnah.com/muslim:1342",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "istikhara",
+      "title": "دعای استخاره",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "1166",
+          "url": "https://sunnah.com/bukhari:1166",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "distress",
+      "title": "غم و اندوه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6369",
+          "url": "https://sunnah.com/bukhari:6369",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "sick-visit",
+      "title": "عیادت بیمار",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "5743",
+          "url": "https://sunnah.com/bukhari:5743",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "parents",
+      "title": "دعا برای پدر و مادر",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "17/24",
+          "url": "https://quran.com/17/24",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rain",
+      "title": "باران",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "1032",
+          "url": "https://sunnah.com/bukhari:1032",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "thunder",
+      "title": "رعد",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "friday-adab",
+      "title": "آداب جمعه و غسل",
+      "guidance": true,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "877",
+          "url": "https://sunnah.com/bukhari:877",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "friday-salawat",
+      "title": "صلوات فراوان در جمعه",
+      "guidance": true,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "1047",
+          "url": "https://sunnah.com/abudawud:1047",
+          "grade": "SAHIH",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "kahf",
+      "title": "سورهٔ کهف",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "friday-hour",
+      "title": "ساعت اجابت دعا",
+      "guidance": true,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "935",
+          "url": "https://sunnah.com/bukhari:935",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "friday-seven",
+      "title": "اخلاص، فلق و ناس هفت‌بار؛ بازبینی سند",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "monday-thursday",
+      "title": "روزهٔ دوشنبه و پنجشنبه",
+      "guidance": true,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "747",
+          "url": "https://sunnah.com/tirmidhi:747",
+          "grade": "HASAN",
+          "grader": "Darussalam; Al-Tirmidhi: hasan gharib",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "fasting-intention",
+      "title": "نیت روزه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "subhan-bihamdihi",
+      "title": "سبحان‌الله و بحمده",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6405",
+          "url": "https://sunnah.com/bukhari:6405",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "subhan-azim",
+      "title": "سبحان‌الله العظیم",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "2694",
+          "url": "https://sunnah.com/muslim:2694",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "hawqala",
+      "title": "لا حول و لا قوة إلا بالله",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6384",
+          "url": "https://sunnah.com/bukhari:6384",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "kalima",
+      "title": "کلمهٔ طیبه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "385",
+          "url": "https://sunnah.com/muslim:385",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "sayyid-istighfar",
+      "title": "سیدالاستغفار",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih al-Bukhari",
+          "reference": "6306",
+          "url": "https://sunnah.com/bukhari:6306",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "istighfar",
+      "title": "استغفار",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "591",
+          "url": "https://sunnah.com/muslim:591",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "iftar",
+      "title": "دعای افطار",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Abi Dawud",
+          "reference": "2357",
+          "url": "https://sunnah.com/abudawud:2357",
+          "grade": "HASAN",
+          "grader": "Al-Albani",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "qadr",
+      "title": "دعای شب قدر",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan Ibn Majah",
+          "reference": "3850",
+          "url": "https://sunnah.com/ibnmajah:3850",
+          "grade": "SAHIH",
+          "grader": "Darussalam",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "crescent",
+      "title": "دیدن هلال ماه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "3451",
+          "url": "https://sunnah.com/tirmidhi:3451",
+          "grade": "HASAN",
+          "grader": "Al-Tirmidhi: hasan gharib",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "eid",
+      "title": "اذکار عید",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "arabic",
+        "source",
+        "grade",
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": true,
+      "sourceEmpty": true,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": []
+    },
+    {
+      "id": "owner-assembly",
+      "title": "دعای پایان مجلس",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation",
+        "arabic"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Jami at-Tirmidhi",
+          "reference": "3502",
+          "url": "https://sunnah.com/tirmidhi:3502",
+          "grade": "HASAN",
+          "grader": "Al-Tirmidhi: hasan gharib",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "owner-abu-umamah",
+      "title": "ذکر روایت ابوامامه",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation",
+        "grade"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sunan al-Kubra (al-Nasai); Ibn Khuzaymah; Ibn Hibban",
+          "reference": "",
+          "url": "",
+          "grade": "UNVERIFIED",
+          "grader": "Owner supplied; comparison pending",
+          "checked": false
+        }
+      ]
+    },
+    {
+      "id": "owner-prostration",
+      "title": "دعای آمرزش در سجده",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation",
+        "source"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": true,
+      "translationsPresent": [],
+      "translationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "483",
+          "url": "https://sunnah.com/muslim:483",
+          "grade": "SAHIH",
+          "grader": "Sahih collection; printed comparison pending",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "guidance",
+      "title": "هدایت، تقوا و بی‌نیازی",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "pronunciation",
+        "translation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Sahih Muslim",
+          "reference": "2721a",
+          "url": "https://sunnah.com/muslim:2721a",
+          "grade": "SAHIH",
+          "grader": "Sahih collection",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rabbana-hearts",
+      "title": "ربنا لا تزغ قلوبنا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "3/8",
+          "url": "https://quran.com/3/8",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rabbana-repentance",
+      "title": "ربنا ظلمنا أنفسنا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "7/23",
+          "url": "https://quran.com/7/23",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rabbana-forgiveness",
+      "title": "آمرزش برای خود، والدین و مؤمنان",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "14/41",
+          "url": "https://quran.com/14/41",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    },
+    {
+      "id": "rabbana-family",
+      "title": "ربنا هب لنا من أزواجنا",
+      "guidance": false,
+      "reviewStatus": "needs_review",
+      "flaggedFields": [
+        "translation",
+        "pronunciation"
+      ],
+      "arabicEmpty": false,
+      "sourceEmpty": false,
+      "sourceOrGradePending": false,
+      "translationsPresent": [
+        "fa",
+        "en",
+        "tr"
+      ],
+      "translationsMissing": [
+        "ar",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "pronunciationsMissing": [
+        "fa",
+        "en",
+        "ar",
+        "tr",
+        "ur",
+        "id",
+        "bn",
+        "ms",
+        "ps",
+        "fr"
+      ],
+      "titlesMissing": [
+        "id",
+        "ms",
+        "fr"
+      ],
+      "notesMissing": [],
+      "audioEmpty": true,
+      "sources": [
+        {
+          "book": "Quran",
+          "reference": "25/74",
+          "url": "https://quran.com/25/74",
+          "grade": "QURAN",
+          "grader": "Quranic verse; hadith grading does not apply",
+          "checked": true
+        }
+      ]
+    }
+  ]
+}

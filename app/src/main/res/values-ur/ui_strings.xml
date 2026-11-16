@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">ان زمروں اور زبان میں متن، ماخذ، درجے اور ترجمے کے ساتھ دعا دستیاب نہیں۔ زمرہ یا زبان بدلیں؛ نامکمل مواد نہیں بھیجا جائے گا۔</string>
     <string name="ui_dua_schedule_note">اوقات قطعی نہیں؛ اینڈرائیڈ اطلاع میں تاخیر کر سکتا ہے۔ غیر مصدقہ متن، ماخذ یا درجے والی دعائیں شامل نہیں۔ ہر دور میں دعا ایک بار آئے گی؛ نشان زد دعائیں پہلے آ سکتی ہیں۔</string>
     <string name="ui_dua_invalid_window">آغاز اختتام سے پہلے ہونا چاہیے اور کم از کم ایک زمرہ منتخب ہو۔</string>
+    <string name="ui_dua_hadith_evidence">حدیث کی دلیل</string>
+    <string name="ui_dua_guidance_note">یہ متن ایک عمل کی دلیل ہے؛ دہرانے کے لیے ذکر کا صیغہ نہیں۔</string>
+    <string name="ui_dua_copy_evidence">متن کاپی کریں</string>
+    <string name="ui_dua_share_evidence">متن شیئر کریں</string>
+    <string name="ui_dua_previous">پچھلی دعا</string>
+    <string name="ui_dua_next">اگلی دعا</string>
+    <string name="ui_dua_category_count">دعا کے متن: %1$d · موضوعات: %2$d</string>
+    <string name="ui_dua_expanded">کھلا</string>
+    <string name="ui_dua_collapsed">بند</string>
 </resources>

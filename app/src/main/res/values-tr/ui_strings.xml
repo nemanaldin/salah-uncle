@@ -286,4 +286,13 @@
     <string name="ui_dua_none_eligible">Bu kategorilerde ve dilde metni, kaynağı, derecesi ve anlamı hazır dua yok. Kategori veya dili değiştirin; eksik içerik gönderilmez.</string>
     <string name="ui_dua_schedule_note">Zamanlama kesin değildir; Android bildirimi geciktirebilir. Metni, kaynağı veya derecesi doğrulanmayanlar dışlanır. Her dua tur başına bir kez gelir; favorilerin daha erken gelme olasılığı yüksektir.</string>
     <string name="ui_dua_invalid_window">Başlangıç bitişten önce olmalı ve en az bir kategori seçilmelidir.</string>
+    <string name="ui_dua_hadith_evidence">Hadis delili</string>
+    <string name="ui_dua_guidance_note">Bu metin bir uygulamanın delilidir; tekrarlanacak zikir metni değildir.</string>
+    <string name="ui_dua_copy_evidence">Metni kopyala</string>
+    <string name="ui_dua_share_evidence">Metni paylaş</string>
+    <string name="ui_dua_previous">Önceki dua</string>
+    <string name="ui_dua_next">Sonraki dua</string>
+    <string name="ui_dua_category_count">Dua metni: %1$d · Konu: %2$d</string>
+    <string name="ui_dua_expanded">Açık</string>
+    <string name="ui_dua_collapsed">Kapalı</string>
 </resources>

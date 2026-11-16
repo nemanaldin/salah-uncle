@@ -1,7 +1,7 @@
 package com.androidhive.myapplication.ui.duas
 
 import android.app.TimePickerDialog
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -64,24 +64,24 @@ fun DuaReminderSettings(catalog: DuaCatalog, settings: AppSettings, notification
                     val value = hour * 60 + minute
                     if (value >= options.endMinute) onError(R.string.ui_dua_invalid_window)
                     else onUpdate { it.copy(duaReminders = it.duaReminders.copy(startMinute = value)) }
-                }, options.startMinute / 60, options.startMinute % 60, true).show()
+                }, options.startMinute.coerceIn(0,1439) / 60, options.startMinute.coerceIn(0,1439) % 60, true).show()
             }, Modifier.testTag("dua_reminder_start"))
             ChoiceRow(stringResource(R.string.ui_dua_window_end), clock(options.endMinute), {
                 TimePickerDialog(context, { _, hour, minute ->
                     val value = hour * 60 + minute
                     if (value <= options.startMinute) onError(R.string.ui_dua_invalid_window)
                     else onUpdate { it.copy(duaReminders = it.duaReminders.copy(endMinute = value)) }
-                }, options.endMinute.coerceAtMost(1439) / 60, options.endMinute.coerceAtMost(1439) % 60, true).show()
+                }, options.endMinute.coerceIn(0,1439) / 60, options.endMinute.coerceIn(0,1439) % 60, true).show()
             }, Modifier.testTag("dua_reminder_end"))
         }
         AppCard {
             SectionTitle(stringResource(R.string.ui_dua_categories_select))
             catalog.categories.forEach { category ->
                 val checked = category.id in options.categoryIds
-                Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(role = Role.Checkbox) {
+                Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).toggleable(checked, role = Role.Checkbox) { _ ->
                     onUpdate { saved -> saved.copy(duaReminders = saved.duaReminders.copy(categoryIds =
                         if (category.id in saved.duaReminders.categoryIds) saved.duaReminders.categoryIds - category.id else saved.duaReminders.categoryIds + category.id)) }
-                }.semantics { selected = checked }, verticalAlignment = Alignment.CenterVertically) {
+                }, verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(checked, null)
                     Text(category.title(settings.language.tag), Modifier.weight(1f))
                 }

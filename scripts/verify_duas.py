@@ -14,6 +14,8 @@ def validate():
     for item in items.values():
         assert item['category'] in cats and item['id'] in sections[item['section']]['duaIds']
         assert all(k in item for k in ['titles','arabic','pronunciations','translations','sources','repeats','audio','reviewFields'])
+        assert isinstance(item.get('guidance',False),bool)
+        if item.get('guidance'):assert item['reminder'] is False
         assert item['audio']=='' # No fabricated recordings or licensed audio was supplied.
         assert item['arabic'] or {'arabic','source','grade'}<=set(item['reviewFields'])
         if item['arabic'] and not item['ownerText']:

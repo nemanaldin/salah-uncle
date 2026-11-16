@@ -21,6 +21,7 @@ data class DuaItem(
     val sources: List<DuaSource> = emptyList(), val repeats: List<DuaRepeat> = emptyList(),
     val audio: String = "", val reviewFields: Set<String> = emptySet(), val ownerText: Boolean = false,
     val reminder: Boolean = false,
+    val guidance: Boolean = false,
 ) {
     fun title(tag: String) = titles[tag] ?: titles["en"].orEmpty()
     fun translation(tag: String) = translations[tag].orEmpty()

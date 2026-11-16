@@ -23,7 +23,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.semantics.contentDescription
@@ -199,11 +198,7 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
             if (relatedDuas.isNotEmpty()) {
                 SupportingText(stringResource(R.string.ui_dua_see_related))
                 relatedDuas.forEach { dua ->
-                    if (dua.id == "after-wudu") {
-                        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                            Text(dua.arabic, style = com.androidhive.myapplication.ui.theme.readingTextStyle(settings, AppLanguage.ARABIC))
-                        }
-                    }
+                    // The existing after-wudu step already displays this Arabic. Link its source/detail without duplicating it.
                     TextButton({ onDua(dua.section, dua.id) }, Modifier.testTag("guide_dua_${dua.id}")) { Text(dua.title(settings.language.tag)) }
                 }
             }

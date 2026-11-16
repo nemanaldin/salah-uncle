@@ -26,7 +26,7 @@ internal fun parseDuaCatalog(text: String): DuaCatalog {
             item.getJSONArray("sources").objects().map { DuaSource(it.getString("book"), it.getString("reference"),
                 it.getString("url"), DuaGrade.valueOf(it.getString("grade")), it.getString("grader"), it.getBoolean("checked")) },
             item.getJSONArray("repeats").objects().map { DuaRepeat(it.getString("arabic"), it.getInt("count")) },
-            item.getString("audio"), item.getJSONArray("reviewFields").strings().toSet(), item.getBoolean("ownerText"), item.getBoolean("reminder")) }
+            item.getString("audio"), item.getJSONArray("reviewFields").strings().toSet(), item.getBoolean("ownerText"), item.getBoolean("reminder"), item.optBoolean("guidance", false)) }
     )
 }
 private fun JSONObject.stringMap() = keys().asSequence().associateWith { getString(it) }.filterValues { it.isNotBlank() }

@@ -13,13 +13,11 @@ import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.intl.LocaleList
 import com.androidhive.myapplication.core.model.AppLanguage
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.sp
-import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.AppSettings
 import com.androidhive.myapplication.core.model.ThemeMode
 

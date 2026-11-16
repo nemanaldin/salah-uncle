@@ -38,6 +38,20 @@ class DuaFeatureTest {
         compose.setContent { SalahTheme { DuaReaderScreen(catalog,"owner",owner.id,AppSettings(),{},{},{},{},{}) } }
         compose.onNodeWithTag("dua_arabic_${owner.id}").assertTextEquals(owner.arabic)
     }
+    @Test fun aNewReaderTargetInTheSameSectionResetsThePager() {
+        val catalog=catalog();var target by mutableStateOf("iftar");var viewed=""
+        compose.setContent { SalahTheme { DuaReaderScreen(catalog,"ramadan",target,AppSettings(),{viewed=it},{},{},{},{}) } }
+        compose.waitUntil(5000) { viewed=="iftar" }
+        compose.runOnIdle { target="qadr" }
+        compose.waitUntil(5000) { viewed=="qadr" }
+    }
+    @Test fun globalTextScaleDoesNotMultiplyTheArabicStyleTwice() {
+        val catalog=catalog();val settings=AppSettings(textScale=1.5f,arabicTextScale=2f)
+        compose.setContent { SalahTheme(settings) { DuaReaderScreen(catalog,"ramadan","qadr",settings,{},{},{},{},{}) } }
+        val layouts=mutableListOf<androidx.compose.ui.text.TextLayoutResult>()
+        compose.onNodeWithTag("dua_arabic_qadr").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        assertEquals(56f,layouts.single().layoutInput.style.fontSize.value,0.01f)
+    }
     @Test fun permissionIsNotRequestedUntilExplicitConsent() {
         val catalog=catalog();var updated:AppSettings?=null;var permissionCalls=0
         compose.setContent { SalahTheme { DuaReminderSettings(catalog,AppSettings(),false,

@@ -10,8 +10,9 @@ The new message has no image attachment. The owner supplied the missing categori
 | Remove the rejected source from app data, sources, comments and translations | done | 7e4084a21dfcc3775a5512638e67f784d6d7370c | 63 data edits; source regression initially failed then passed; 190 tests; lint 65/0; 73 original legacy bodies preserved |
 | Bundle 3–5 OFL fonts and persistent reading-font controls | done | 3f147d1 | 5 OFL families, 1,254,020 added font bytes; 197 tests; lint 65/0; preview/persistence instrumentation compiled only |
 | Hanafi-only dua data with explicit source/grading/review status | done with content gaps | 6ab373c | 66 topics, 46 source-compared Arabic payloads + 3 exact owner texts, 17 empty review entries; all pronunciation/new translations pending review; 204 tests and lint 65/0 |
-| Dua cards, subcategories, search, bookmarks/recent and scoped pager | done; device unverified | next local commit | 218 tests; build, lint 65/0 and Android-test compilation passed; source/copy/audio/guide paths integrated |
-| Default-off prayer-reminder scheduling, permission, reboot and weighted no-repeat deck | done; phone delivery unverified | next local commit | independent inexact alarm/channel/receivers; consent/permission/deck/DST tests passed; OS delivery and reboot unverified |
-| Post-implementation printed-source comparison of pending fields | not started | — | owner suggested al-Adhkar and Yahya al-Mulla appendix to Wasilat al-Falah; verify actual editions/pages without fabricated citations |
+| Dua cards, subcategories, search, bookmarks/recent and scoped pager | done; device unverified | 233f795 | 218 tests; build, lint 65/0 and Android-test compilation passed; source/copy/audio/guide paths integrated |
+| Default-off prayer-reminder scheduling, permission, reboot and weighted no-repeat deck | done; phone delivery unverified | 233f795 | independent inexact alarm/channel/receivers; consent/permission/deck/DST tests passed; OS delivery and reboot unverified |
+| Post-implementation printed-source comparison of pending fields | blocked; online comparison partly done | next local commit | 70 actual field inventories and Hanafi review report; PDF too large/403/timeout; precise Wasilat appendix not read; no print approval claimed |
 | General UI matching reference image | blocked | — | no reference image was received |
-| Final review/build/unit/lint and portable local outputs | not started | — | no push |
+| Source refinements and final diff review | in progress | next local commit | 70 topics; 52 source-compared dua texts, 4 guidance evidences, 3 owner texts; 11 empty Arabic fields; final build/test/lint next |
+| Final review/build/unit/lint and portable local outputs | in progress | — | no push; device unavailable |
