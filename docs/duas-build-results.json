@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-16",
+  "sourceCommit": "d8a69c2",
+  "branch": "work",
+  "pushed": false,
+  "apk": "Salah-Duas-d8a69c2-debug.apk",
+  "apkBytes": 31654214,
+  "apkSHA256": "8fb082bb372aa063d2e1e07eb6c3e29403893c7a6842464e6a3283e076d29720",
+  "baseline": {
+    "unitTests": 190,
+    "unitPassed": 190,
+    "unitFailedOrSkipped": 0,
+    "lint": {
+      "Warning": 65
+    }
+  },
+  "final": {
+    "unitTests": 218,
+    "unitPassed": 218,
+    "unitFailedOrSkipped": 0,
+    "lint": {
+      "Warning": 65
+    }
+  },
+  "instrumentation": "Compiled only; adb has no targets; KVM unavailable",
+  "newFontsInApk": [
+    {
+      "file": "res/font/amiri_regular.ttf",
+      "bytes": 431116,
+      "compressedBytes": 209805
+    },
+    {
+      "file": "res/font/noto_naskh_arabic_regular.ttf",
+      "bytes": 178388,
+      "compressedBytes": 85217
+    },
+    {
+      "file": "res/font/noto_sans_regular.ttf",
+      "bytes": 569208,
+      "compressedBytes": 283972
+    },
+    {
+      "file": "res/font/sahel_regular.ttf",
+      "bytes": 75308,
+      "compressedBytes": 45315
+    }
+  ],
+  "package": "package: name='com.androidhive.myapplication' versionCode='14' versionName='2.7.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+  "signing": {
+    "certificateSHA256": "2c1a5309beb5c63359ce0ed702a89d676242e62e2ae2ec1ca8daf7eb407aca04",
+    "v1Verified": true,
+    "v2Verified": true,
+    "matchesPreviousPublishedLocalApk": false
+  }
+}
