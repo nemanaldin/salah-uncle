@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-16",
+  "branch": "work",
+  "base": "8dc4ad65648dd37548b58b64723dcc47abd0e2a2",
+  "codeCommit": "1a4b4db5e29fb78e2dfbd3f9676b2daeff45c665",
+  "build": "passed",
+  "unitAndLintBaseline": {
+    "unitTests": 218,
+    "unitPassed": 218,
+    "unitFailedOrSkipped": 0,
+    "lint": {
+      "Warning": 65
+    }
+  },
+  "unitAndLintFinal": {
+    "unitTests": 226,
+    "unitPassed": 226,
+    "unitFailedOrSkipped": 0,
+    "lint": {
+      "Warning": 65
+    }
+  },
+  "androidTestCompilation": "passed",
+  "nativeQa": {
+    "target": "isolated API 34 software emulator on port 5556",
+    "apkInstall": "pre-review build only: success",
+    "testApkInstall": "success",
+    "newUiTestsCompiled": 4,
+    "newUiTestsSelected": 4,
+    "completedUiTests": 0,
+    "uiVerification": "blocked",
+    "reason": "No KVM. Guest Android system ANR occurred before app validation; first instrumented attempt did not complete. The app test process was stopped to inspect and dismiss the system dialog. A second manual launch/capture also timed out. Task-owned emulator was stopped with SIGTERM; no existing AVD or user data was wiped.",
+    "appScreenshotsVerified": false,
+    "evidence": [
+      "first-app-screen.png",
+      "warm-app-screen.png",
+      "window-without-runner.xml",
+      "reference-home-instrumentation.log",
+      "emulator-crash-after-install.log",
+      "manual-launch.log"
+    ],
+    "physicalDevice": "not tested",
+    "deliveredApkInstalled": false
+  },
+  "apk": {
+    "file": "Salah-Reference-UI-1a4b4db-debug.apk",
+    "bytes": 31948450,
+    "sha256": "24330c7bac1ea1ffa8873400abd58f579f459148cea03af2b7ad2cbd8f7b43c7",
+    "certificateSha256": "2c1a5309beb5c63359ce0ed702a89d676242e62e2ae2ec1ca8daf7eb407aca04",
+    "matchesPreviousLocalD8aSigner": true,
+    "releaseSigned": false,
+    "versionName": "2.7.0",
+    "versionCode": 14
+  },
+  "content": {
+    "topics": 70,
+    "sourceComparedDuaTexts": 52,
+    "guidanceHadithTexts": 4,
+    "ownerTexts": 3,
+    "emptyArabic": 11,
+    "printedComparison": "blocked, inherited",
+    "scholarApproved": false
+  },
+  "pushed": false
+}
