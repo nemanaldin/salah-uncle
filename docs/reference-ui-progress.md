@@ -26,3 +26,7 @@ The owner subsequently requested updating GitHub and a downloadable PDF. Reposit
 The exact 13-page PDF from the preceding local delivery is now included under `docs/reports/2026-11-16/`, with its checksum and a direct-download index. The prior no-push statements are historical; this follow-up records the later explicit authorization. Publication verification is separate from application tests; no app code or content changes are part of this step.
 
 Publication verified: commit `285c94590a3c5bb644164ee321d08c58f06203e0` was pushed as a fast-forward to the existing `work` branch. The public PDF download was fetched back and matched the local 424,421-byte, 13-page report exactly (SHA-256 `2670a171f264a1c6820c6162cf9d4b71178854dc21fdee8f751216de58a6c93d`). Remote `main`, `uncle-work` and `kotlin-compose` hashes were checked unchanged; PR #1 was not mutated. The accompanying publication-verification JSON records this check.
+
+## Public APK download follow-up — 2026-11-16
+
+The owner reported that the workspace-only APK link could not be downloaded or shared. The exact existing APK from code commit `1a4b4db` is now included under `downloads/Salah-2.7.0-reference-ui-debug.apk`, with a Persian download guide and checksum. This preserves its existing debug signing certificate and avoids delivering a newly signed CI build in its place. No app code, fiqh wording, branch policy, PR or existing releases are changed. Direct download is verified independently after pushing.
