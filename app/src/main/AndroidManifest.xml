@@ -37,6 +37,15 @@
         <receiver android:name=".platform.audio.StopAdhanReceiver" android:exported="false" />
         <receiver android:name=".platform.alarm.PrayerDueReceiver" android:exported="false" />
         <receiver android:name=".platform.alarm.NotificationDismissReceiver" android:exported="false" />
+        <receiver android:name=".platform.duas.DuaDueReceiver" android:exported="false" />
+        <receiver android:name=".platform.duas.RestoreDuaRemindersReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
         <receiver android:name=".platform.alarm.RestoreAlarmsReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

@@ -19,7 +19,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import java.time.Instant
 
-data class DeviceCapabilities(val exactAlarms: Boolean = true, val notifications: Boolean = true, val fullScreen: Boolean = true, val ramadanNotifications: Boolean = true, val iftarNotifications: Boolean = true)
+data class DeviceCapabilities(val exactAlarms: Boolean = true, val notifications: Boolean = true, val fullScreen: Boolean = true, val ramadanNotifications: Boolean = true, val iftarNotifications: Boolean = true, val duaNotifications: Boolean = true)
 data class RamadanContent(
     val calendar: com.androidhive.myapplication.domain.ramadan.RamadanCalendar? = null,
     val nextSuhur: com.androidhive.myapplication.domain.ramadan.RamadanReminder? = null,
@@ -30,6 +30,8 @@ data class ContentState(
     val lessons: List<Lesson> = emptyList(), val cities: List<City> = emptyList(), val videos: List<TrainingVideo> = emptyList(),
     val lessonsLoading: Boolean = true, val citiesLoading: Boolean = true, val videosLoading: Boolean = true,
     val lessonsError: Int? = null, val citiesError: Int? = null, val videosError: Int? = null,
+    val duas: com.androidhive.myapplication.data.duas.DuaCatalog? = null,
+    val duasLoading: Boolean = true, val duasError: Int? = null,
 )
 data class SalahUiState(
     val settings: AppSettings? = null,
@@ -55,10 +57,11 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
     private val lessonLoad = LoadSlot(emptyList<Lesson>(), viewModelScope) { container.lessons.load() }
     private val cityLoad = LoadSlot(emptyList<City>(), viewModelScope) { container.cities.load() }
     private val videoLoad = LoadSlot(emptyList<TrainingVideo>(), viewModelScope) { container.lessons.videos() }
-    private val content = combine(lessonLoad.state, cityLoad.state, videoLoad.state) { lessons, cities, videos ->
+    private val duaLoad = LoadSlot<com.androidhive.myapplication.data.duas.DuaCatalog?>(null, viewModelScope) { container.duas.load() }
+    private val content = combine(lessonLoad.state, cityLoad.state, videoLoad.state, duaLoad.state) { lessons, cities, videos, duas ->
         ContentState(lessons.data, cities.data, videos.data, lessons.loading, cities.loading, videos.loading,
             R.string.ui_error_content.takeIf { lessons.failed }, R.string.ui_error_content.takeIf { cities.failed },
-            R.string.ui_error_content.takeIf { videos.failed })
+            R.string.ui_error_content.takeIf { videos.failed }, duas.data, duas.loading, R.string.ui_error_content.takeIf { duas.failed })
     }.stateIn(viewModelScope, SharingStarted.Eagerly, ContentState())
     private val visibleContent = combine(settingsState.map { it?.let { saved -> saved.school to saved.language } }.distinctUntilChanged(), content) { chosen, loaded ->
         val scope = chosen?.let { AppSettings(school = it.first, language = it.second) }
@@ -113,6 +116,9 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
         try { container.ramadanAlarms.refresh() }
         catch (error: CancellationException) { throw error }
         catch (_: Exception) { message(R.string.ui_error_generic) }
+        try { container.duaReminders.refresh() }
+        catch (error: CancellationException) { throw error }
+        catch (_: Exception) { message(R.string.ui_error_generic) }
     }
     fun stopSuhurPreview() { if (container.suhurSession.state.value.preview) container.ramadanAlarms.stop() }
     fun previewSuhur() {
@@ -153,12 +159,28 @@ class SalahViewModel(private val container: AppContainer) : ViewModel() {
                     refreshAlarms()
                 }
         }
+        viewModelScope.launch {
+            settingsState.filterNotNull().map { it.duaReminders to it.language }.distinctUntilChanged().collectLatest {
+                try { container.duaReminders.refresh() }
+                catch (error: CancellationException) { throw error }
+                catch (_: Exception) { message(R.string.ui_error_generic) }
+            }
+        }
     }
 
-    fun loadContent() { retryLessons(); retryCities(); retryVideos() }
+    fun loadContent() { retryLessons(); retryCities(); retryVideos(); retryDuas() }
     fun retryLessons() = lessonLoad.retry()
     fun retryCities() = cityLoad.retry()
     fun retryVideos() = videoLoad.retry()
+    fun retryDuas() = duaLoad.retry()
+    fun bookmarkDua(id: String) {
+        if (content.value.duas?.item(id) == null) return
+        update { it.copy(duaBookmarks = if (id in it.duaBookmarks) it.duaBookmarks - id else it.duaBookmarks + id) }
+    }
+    fun viewedDua(id: String) {
+        if (content.value.duas?.item(id) == null || settingsState.value?.duaRecent?.firstOrNull() == id) return
+        update { it.copy(duaRecent = com.androidhive.myapplication.data.duas.rememberDua(it.duaRecent, id)) }
+    }
 
     fun retrySavedSettings() { settingsReader.retry() }
     fun update(transform: (AppSettings) -> AppSettings) {

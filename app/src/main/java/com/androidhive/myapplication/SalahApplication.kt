@@ -21,6 +21,8 @@ class SalahApplication : Application() {
 class AppContainer(private val application: Application) {
     val settings = SettingsRepository(application)
     val lessons = LessonRepository(application)
+    val duas = com.androidhive.myapplication.data.duas.DuaRepository(application)
+    val duaReminders = com.androidhive.myapplication.platform.duas.DuaReminderCoordinator(application, settings, duas)
     val cities = CityRepository(application)
     val prayerEngine = PrayerEngine()
     val ramadanEngine = com.androidhive.myapplication.domain.ramadan.RamadanEngine(prayerEngine)
@@ -35,6 +37,6 @@ class AppContainer(private val application: Application) {
     val recordings = com.androidhive.myapplication.platform.audio.AdhanRecordings(application)
     fun capabilities(): DeviceCapabilities {
         val manager = application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        return DeviceCapabilities(alarms.exactAllowed(), notifications.allowed(), Build.VERSION.SDK_INT < 34 || manager.canUseFullScreenIntent(), ramadanNotifications.allowed(), ramadanNotifications.allowed(com.androidhive.myapplication.domain.ramadan.RamadanReminderKind.IFTAR))
+        return DeviceCapabilities(alarms.exactAllowed(), notifications.allowed(), Build.VERSION.SDK_INT < 34 || manager.canUseFullScreenIntent(), ramadanNotifications.allowed(), ramadanNotifications.allowed(com.androidhive.myapplication.domain.ramadan.RamadanReminderKind.IFTAR), duaReminders.notificationsAllowed())
     }
 }

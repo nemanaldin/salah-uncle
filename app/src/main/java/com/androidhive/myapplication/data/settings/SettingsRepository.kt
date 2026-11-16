@@ -113,6 +113,13 @@ class SettingsRepository(context: Context) {
         val overrides = stringSetPreferencesKey("prayer_alerts")
         val sectionBookmarks = SectionBookmarkPreferences.bookmarks
         val bookmarks = stringSetPreferencesKey("bookmarks")
+        val duaBookmarks = stringSetPreferencesKey("dua_bookmarks_v1")
+        val duaRecent = stringPreferencesKey("dua_recent_v1")
+        val duaReminders = stringPreferencesKey("dua_reminders_v1")
+        val duaSeen = stringSetPreferencesKey("dua_seen_v1")
+        val duaPrevious = stringPreferencesKey("dua_previous_v1")
+        val duaLastSlot = longPreferencesKey("dua_last_slot_v1")
+        val duaScheduledSlot = longPreferencesKey("dua_scheduled_slot_v1")
         val completed = stringSetPreferencesKey("completed_steps")
         val lastLesson = stringPreferencesKey("last_lesson")
         val lastStep = stringPreferencesKey("last_step")
@@ -169,6 +176,16 @@ class SettingsRepository(context: Context) {
                 alertMode = enumOrDefault(p[Keys.alerts], AlertMode.OFF),
                 adhanVoices = voices, selectedVoiceId = p[Keys.selectedVoice]?.takeIf { id -> voices.any { it.id == id } },
                 sectionBookmarks = sectionBookmarks,
+                duaBookmarks = p[Keys.duaBookmarks].orEmpty(),
+                duaReminders = runCatching { JSONObject(p[Keys.duaReminders] ?: "{}").let { options ->
+                    DuaReminderOptions(options.optBoolean("enabled", false), options.optBoolean("consent", false),
+                        options.optInt("count", 3), options.optInt("start", 480), options.optInt("end", 1260),
+                        options.optJSONArray("categories")?.let { a -> (0 until a.length()).map { a.getString(it) }.toSet() } ?: setOf("general", "dhikr"))
+                } }.getOrElse { throw java.io.IOException("Dua reminder options could not be read", it) },
+                duaReminderHistory = DuaReminderHistory(p[Keys.duaSeen].orEmpty(), p[Keys.duaPrevious], p[Keys.duaLastSlot] ?: 0L, p[Keys.duaScheduledSlot] ?: 0L),
+                duaRecent = runCatching { JSONArray(p[Keys.duaRecent] ?: "[]").let { array ->
+                    (0 until array.length()).map { array.getString(it) }.distinct().take(30)
+                } }.getOrElse { throw java.io.IOException("Dua history could not be read", it) },
                 prayerAlerts = overrides, bookmarks = p[Keys.bookmarks].orEmpty(), completedSteps = p[Keys.completed].orEmpty(),
                 ramadan = RamadanOptions(
                     p[Keys.suhur] ?: false, (p[Keys.suhurMinutes] ?: 90).coerceIn(5, 240),
@@ -208,6 +225,15 @@ class SettingsRepository(context: Context) {
             p[Keys.overrides] = s.prayerAlerts.map { "${it.key.name}=${it.value.name}" }.toSet()
             p[Keys.sectionBookmarks] = sectionBookmarksJson(s.sectionBookmarks)
             p[Keys.bookmarks] = s.bookmarks; p[Keys.completed] = s.completedSteps
+            p[Keys.duaBookmarks] = s.duaBookmarks
+            p[Keys.duaRecent] = JSONArray(s.duaRecent.distinct().take(30)).toString()
+            p[Keys.duaReminders] = JSONObject().apply {
+                put("enabled", s.duaReminders.enabled); put("consent", s.duaReminders.consent); put("count", s.duaReminders.count)
+                put("start", s.duaReminders.startMinute); put("end", s.duaReminders.endMinute); put("categories", JSONArray(s.duaReminders.categoryIds.toList()))
+            }.toString()
+            p[Keys.duaSeen] = s.duaReminderHistory.seen
+            s.duaReminderHistory.lastDuaId?.let { p[Keys.duaPrevious] = it } ?: p.remove(Keys.duaPrevious)
+            p[Keys.duaLastSlot] = s.duaReminderHistory.lastSlot; p[Keys.duaScheduledSlot] = s.duaReminderHistory.scheduledSlot
             s.lastLessonId?.let { p[Keys.lastLesson] = it } ?: p.remove(Keys.lastLesson)
             s.lastStepId?.let { p[Keys.lastStep] = it } ?: p.remove(Keys.lastStep)
             p[Keys.hidden] = s.hiddenNotificationUntil

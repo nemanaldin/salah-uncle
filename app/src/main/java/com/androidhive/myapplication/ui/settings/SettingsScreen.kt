@@ -21,7 +21,7 @@ import java.util.Locale
 @Composable
 fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings) -> Unit,
     onAlertMode: (AlertMode) -> Unit, onNotifications: () -> Unit, onExact: () -> Unit,
-    onFullScreen: () -> Unit, onAbout: () -> Unit, onError: (Int) -> Unit, onVoices: () -> Unit) {
+    onFullScreen: () -> Unit, onAbout: () -> Unit, onError: (Int) -> Unit, onVoices: () -> Unit, onDuaReminders: () -> Unit = {}) {
     val settings = state.settings ?: return
     var dialog by rememberSaveable { mutableStateOf<String?>(null) }
     var scale by remember(settings.textScale) { mutableFloatStateOf(settings.textScale) }
@@ -59,6 +59,7 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
         }
         AppCard {
             SectionTitle(stringResource(R.string.ui_notifications))
+            OutlinedButton(onDuaReminders, Modifier.fillMaxWidth().testTag("setting_dua_reminders")) { Text(stringResource(R.string.ui_dua_reminders)) }
             ChoiceRow(stringResource(R.string.ui_notification_mode), stringResource(settings.alertMode.labelRes()), { dialog = "alerts" }, Modifier.testTag("setting_alert_mode"))
             if (settings.alertMode != AlertMode.OFF) {
                 if (!state.capabilities.notifications) {

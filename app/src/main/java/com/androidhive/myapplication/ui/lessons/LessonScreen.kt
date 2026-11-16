@@ -54,9 +54,10 @@ import kotlinx.coroutines.launch
 @Composable
 fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
     onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
-    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0) {
+    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0, duaCatalog: com.androidhive.myapplication.data.duas.DuaCatalog? = null,
+    onDua: (String, String) -> Unit = { _, _ -> }) {
     GuideArtworkProvider {
-        LessonScreenContent(lesson, settings, onRead, onBack, onError, initialSection, onSaveSection, onRemoveSection, initialOffset)
+        LessonScreenContent(lesson, settings, onRead, onBack, onError, initialSection, onSaveSection, onRemoveSection, initialOffset, duaCatalog, onDua)
     }
 }
 
@@ -64,7 +65,8 @@ fun LessonScreen(lesson: Lesson, settings: AppSettings, onRead: (String, String)
 @Composable
 private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (String, String) -> Unit,
     onBack: () -> Unit, onError: (Int) -> Unit, initialSection: String? = null,
-    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0) {
+    onSaveSection: (SectionBookmark) -> Unit = {}, onRemoveSection: (SectionBookmark) -> Unit = {}, initialOffset: Int = 0, duaCatalog: com.androidhive.myapplication.data.duas.DuaCatalog? = null,
+    onDua: (String, String) -> Unit = { _, _ -> }) {
     var showOriginal by rememberSaveable(lesson.id, settings.school, settings.language) { mutableStateOf(false) }
     val translated = lesson.variant(settings.school, settings.language)
     val original = lesson.variant(settings.school)
@@ -144,7 +146,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
         contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
         item("heading") { Column(verticalArrangement = Arrangement.spacedBy(12.dp)) { header() } }
         items(variant.steps, key = { it.id }) { step ->
-            ReaderSection(lesson.id, step, step.body, direction, variant.language, settings, playback, { bookmark(step, 0) }, audio, step.id == variant.steps.first().id)
+            ReaderSection(lesson.id, step, step.body, direction, variant.language, settings, playback, { bookmark(step, 0) }, audio, step.id == variant.steps.first().id, duaCatalog, onDua)
         }
         item("sources") { ReaderSources(lesson, variant, externalError) }
     } else Column(Modifier.fillMaxSize().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -157,7 +159,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 ReaderNotices(lesson, variant, settings)
                 ReaderSection(lesson.id, slide.step, slide.text, direction, variant.language, settings, playback,
-                    { bookmark(slide.step, slide.offset) }, audio, index == 0)
+                    { bookmark(slide.step, slide.offset) }, audio, index == 0, duaCatalog, onDua)
                 if (index == slides.lastIndex) ReaderSources(lesson, variant, externalError)
             }
         }
@@ -171,7 +173,8 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
 
 @Composable
 private fun ReaderSection(lessonId: String, step: LessonStep, body: String, direction: LayoutDirection, language: String,
-    settings: AppSettings, playback: LessonAudioState, onBookmark: () -> Unit, audio: LessonAudioController?, isFirst: Boolean) {
+    settings: AppSettings, playback: LessonAudioState, onBookmark: () -> Unit, audio: LessonAudioController?, isFirst: Boolean, duaCatalog: com.androidhive.myapplication.data.duas.DuaCatalog?,
+    onDua: (String, String) -> Unit) {
     AppCard(Modifier.testTag("topic_section_${step.id}")) {
         val value = SectionBookmark(step.originLessonId ?: lessonId, step.id, settings.school, settings.language)
         val saved = settings.sectionBookmarks.any { it.sameSection(value) }
@@ -190,6 +193,21 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
         CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
             ReadingText(body, settings, AppLanguage.entries.firstOrNull { it.tag == language } ?: settings.language, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"))
         } }
+        if (settings.school == School.HANAFI && duaCatalog != null) {
+            val relatedDuas = com.androidhive.myapplication.data.duas.guideDuaIds(lessonId, step.id)
+                .mapNotNull(duaCatalog::item).filter { it.hasVerifiedText }
+            if (relatedDuas.isNotEmpty()) {
+                SupportingText(stringResource(R.string.ui_dua_see_related))
+                relatedDuas.forEach { dua ->
+                    if (dua.id == "after-wudu") {
+                        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                            Text(dua.arabic, style = com.androidhive.myapplication.ui.theme.readingTextStyle(settings, AppLanguage.ARABIC))
+                        }
+                    }
+                    TextButton({ onDua(dua.section, dua.id) }, Modifier.testTag("guide_dua_${dua.id}")) { Text(dua.title(settings.language.tag)) }
+                }
+            }
+        }
         step.related.forEach { source ->
             Box(Modifier.testTag("topic_source_${source.id}")) { InfoCard(source.body) }
         }

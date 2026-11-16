@@ -41,7 +41,7 @@ fun countdown(now: Instant, next: Instant): String {
 
 @Composable
 fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> Unit, onLessons: () -> Unit,
-    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit, onRetrySettings: () -> Unit = {}) {
+    onTraining: () -> Unit, onQibla: () -> Unit, onPrayerTypes: () -> Unit, onRamadan: () -> Unit, onRetrySettings: () -> Unit = {}, onDuas: () -> Unit = {}) {
     val settings = state.settings ?: return
     val available = state.content.lessons.filter { it.visibleFor(settings) }
     val last = available.firstOrNull { it.id == settings.lastLessonId?.let { id -> readingTarget(id, settings.lastStepId, settings.school).lessonId } }
@@ -115,6 +115,12 @@ fun HomeScreen(state: SalahUiState, onTimes: () -> Unit, onLesson: (String) -> U
             add(QuickAccessItem("qibla", stringResource(R.string.ui_qibla), onQibla))
         }
         QuickAccessGrid(shortcuts) { id, modifier -> HomeShortcutArtwork(id, modifier) }
+        AppCard(Modifier.testTag("home_duas"), onDuas) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Icon(Icons.Default.Favorite, null)
+                Text(stringResource(R.string.ui_duas), style = MaterialTheme.typography.titleMedium)
+            }
+        }
         OutlinedButton(onLessons, Modifier.fillMaxWidth().heightIn(min = 48.dp)) { Text(stringResource(R.string.ui_all_lessons)) }
         if (last != null) AppCard(modifier = Modifier.testTag("home_continue"), onClick = { onLesson(settings.lastLessonId ?: last.id) }) {
             Text(stringResource(R.string.ui_resume_lesson), style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
