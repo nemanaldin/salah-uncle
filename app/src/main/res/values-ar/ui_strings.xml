@@ -240,4 +240,15 @@
     <string name="ui_art_draft">Draft artwork; pending project owner review</string>
     <string name="ui_art_placeholder">Image placeholder; this stage needs posture review</string>
     <string name="ui_source_review_required">مصدر هذا الدرس بحاجة إلى مراجعة.</string>
+    <string name="ui_reading_font">خط نص التعليم</string>
+    <string name="ui_font_preview">معاينة الخط</string>
+    <string name="ui_fonts_offline">خمسة خطوط مضمّنة وتعمل دون اتصال.</string>
+    <string name="ui_font_persian_sample">این یک متن نمونه برای خواندن آسان است.</string>
+    <string name="ui_font_arabic_sample">هذا نص تجريبي للقراءة الواضحة.</string>
+    <string name="ui_font_latin_sample">Clear, readable text. Türkçe: ğ, ş, ı, İ.</string>
+    <string name="ui_font_preview_sample">تُعرض هذه العينة فورًا بخط القراءة المختار.</string>
+    <string name="ui_reset_reading">إعادة ضبط النص</string>
+    <string name="ui_arabic_text_size">حجم النص العربي للأدعية</string>
+    <string name="ui_system_font">خط النظام</string>
+    <string name="ui_font_script_fallback">لهذه اللغة يُستخدم الخط البديل %1$s.</string>
 </resources>

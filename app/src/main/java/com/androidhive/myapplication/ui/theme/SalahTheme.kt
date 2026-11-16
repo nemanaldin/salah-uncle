@@ -25,7 +25,7 @@ import com.androidhive.myapplication.core.model.ThemeMode
 
 private val SalahShapes = Shapes(medium = RoundedCornerShape(16.dp), large = RoundedCornerShape(23.dp), extraLarge = RoundedCornerShape(26.dp))
 
-private val Vazir = FontFamily(Font(R.font.vazirmatn_regular), Font(R.font.vazirmatn_medium, FontWeight.Medium), Font(R.font.vazirmatn_bold, FontWeight.Bold))
+private val Vazir = VazirmatnReadingFamily
 private val Typography = Typography(
     headlineLarge = TextStyle(fontFamily = Vazir, fontSize = 31.sp, lineHeight = 45.sp, fontWeight = FontWeight.Bold),
     headlineMedium = TextStyle(fontFamily = Vazir, fontSize = 26.sp, lineHeight = 39.sp, fontWeight = FontWeight.Bold),

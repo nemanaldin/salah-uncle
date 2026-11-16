@@ -240,4 +240,15 @@
     <string name="ui_art_draft">پیش‌نویس هنری؛ در انتظار بازبینی صاحب پروژه</string>
     <string name="ui_art_placeholder">جای‌نگهدار تصویر؛ حالت این مرحله نیازمند بازبینی است</string>
     <string name="ui_source_review_required">منبع این آموزش نیاز به بازبینی دارد.</string>
+    <string name="ui_reading_font">فونت متن آموزش</string>
+    <string name="ui_font_preview">پیش‌نمایش فونت</string>
+    <string name="ui_fonts_offline">پنج فونت همراه برنامه‌اند و به دانلود نیاز ندارند.</string>
+    <string name="ui_font_persian_sample">این یک متن نمونه برای خواندن آسان است.</string>
+    <string name="ui_font_arabic_sample">هذا نص تجريبي للقراءة الواضحة.</string>
+    <string name="ui_font_latin_sample">Clear, readable text. Türkçe: ğ, ş, ı, İ.</string>
+    <string name="ui_font_preview_sample">این نمونه فوراً با فونت انتخاب‌شده نمایش داده می‌شود.</string>
+    <string name="ui_reset_reading">بازنشانی متن</string>
+    <string name="ui_arabic_text_size">اندازهٔ متن عربی دعاها</string>
+    <string name="ui_system_font">فونت سیستم</string>
+    <string name="ui_font_script_fallback">برای حروف این زبان، از فونت پشتیبان %1$s استفاده می‌شود.</string>
 </resources>

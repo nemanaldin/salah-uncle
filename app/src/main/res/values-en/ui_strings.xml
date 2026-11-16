@@ -240,4 +240,15 @@
     <string name="ui_art_draft">Draft artwork; pending project owner review</string>
     <string name="ui_art_placeholder">Image placeholder; this stage needs posture review</string>
     <string name="ui_source_review_required">This lesson’s source needs review.</string>
+    <string name="ui_reading_font">Reading font</string>
+    <string name="ui_font_preview">Font preview</string>
+    <string name="ui_fonts_offline">Five fonts are included and work offline.</string>
+    <string name="ui_font_persian_sample">این یک متن نمونه برای خواندن آسان است.</string>
+    <string name="ui_font_arabic_sample">هذا نص تجريبي للقراءة الواضحة.</string>
+    <string name="ui_font_latin_sample">Clear, readable text. Türkçe: ğ, ş, ı, İ.</string>
+    <string name="ui_font_preview_sample">This sample immediately uses your selected reading font.</string>
+    <string name="ui_reset_reading">Reset text</string>
+    <string name="ui_arabic_text_size">Arabic dua text size</string>
+    <string name="ui_system_font">System font</string>
+    <string name="ui_font_script_fallback">For this language, the fallback font is %1$s.</string>
 </resources>

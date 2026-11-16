@@ -240,4 +240,15 @@
     <string name="ui_art_draft">Draft artwork; pending project owner review</string>
     <string name="ui_art_placeholder">Image placeholder; this stage needs posture review</string>
     <string name="ui_source_review_required">د دې لوست سرچینه بیاکتنې ته اړتیا لري.</string>
+    <string name="ui_reading_font">د لوست لیکبڼه</string>
+    <string name="ui_font_preview">د لیکبڼې مخکتنه</string>
+    <string name="ui_fonts_offline">پنځه لیکبڼې له پروګرام سره شته او بې انټرنېټه کار کوي.</string>
+    <string name="ui_font_persian_sample">این یک متن نمونه برای خواندن آسان است.</string>
+    <string name="ui_font_arabic_sample">هذا نص تجريبي للقراءة الواضحة.</string>
+    <string name="ui_font_latin_sample">Clear, readable text. Türkçe: ğ, ş, ı, İ.</string>
+    <string name="ui_font_preview_sample">دا بېلګه سمدستي په ټاکل شوې لیکبڼه ښودل کېږي.</string>
+    <string name="ui_reset_reading">د متن تنظیم بیا برابر کړئ</string>
+    <string name="ui_arabic_text_size">د عربي دعا د متن اندازه</string>
+    <string name="ui_system_font">د سیسټم لیکبڼه</string>
+    <string name="ui_font_script_fallback">د دې ژبې لپاره بدیله لیکبڼه %1$s ده.</string>
 </resources>

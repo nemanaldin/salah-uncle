@@ -46,6 +46,7 @@ import com.androidhive.myapplication.platform.audio.LessonAudioState
 import com.androidhive.myapplication.platform.openUrl
 import com.androidhive.myapplication.platform.shareText
 import com.androidhive.myapplication.ui.components.*
+import com.androidhive.myapplication.ui.theme.ReadingText
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
@@ -187,7 +188,7 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
         if (step.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW) SupportingText(stringResource(R.string.ui_arrangement_draft))
         if (step.needsDhikrSource) SupportingText(stringResource(R.string.ui_needs_source))
         CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
-            Text(body, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"), style = MaterialTheme.typography.bodyLarge.copy(localeList = LocaleList(language)))
+            ReadingText(body, settings, AppLanguage.entries.firstOrNull { it.tag == language } ?: settings.language, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"))
         } }
         step.related.forEach { source ->
             Box(Modifier.testTag("topic_source_${source.id}")) { InfoCard(source.body) }

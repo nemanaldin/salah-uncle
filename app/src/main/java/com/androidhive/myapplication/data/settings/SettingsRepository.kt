@@ -94,6 +94,8 @@ class SettingsRepository(context: Context) {
         val onboarded = booleanPreferencesKey("onboarded")
         val theme = stringPreferencesKey("theme")
         val scale = floatPreferencesKey("text_scale")
+        val readingFont = stringPreferencesKey("reading_font_v1")
+        val arabicScale = floatPreferencesKey("arabic_text_scale_v1")
         val reduceMotion = booleanPreferencesKey("reduce_motion")
         val lat = doublePreferencesKey("latitude")
         val lon = doublePreferencesKey("longitude")
@@ -157,6 +159,8 @@ class SettingsRepository(context: Context) {
                 onboardingComplete = p[Keys.onboarded] ?: false,
                 theme = enumOrDefault(p[Keys.theme], ThemeMode.SYSTEM),
                 textScale = (p[Keys.scale] ?: 1f).coerceIn(.85f, 1.5f),
+                readingFont = ReadingFont.fromStored(p[Keys.readingFont]),
+                arabicTextScale = readingArabicScale(p[Keys.arabicScale] ?: 1f),
                 reduceMotion = p[Keys.reduceMotion] ?: false,
                 location = location,
                 confirmedCalculation = p[Keys.confirmedCalculation],
@@ -184,6 +188,8 @@ class SettingsRepository(context: Context) {
             p[Keys.onboarded] = s.onboardingComplete
             p[Keys.theme] = s.theme.name
             p[Keys.scale] = s.textScale
+            p[Keys.readingFont] = s.readingFont.name
+            p[Keys.arabicScale] = readingArabicScale(s.arabicTextScale)
             p[Keys.reduceMotion] = s.reduceMotion
             if (s.location != null) {
                 p[Keys.lat] = s.location.latitude; p[Keys.lon] = s.location.longitude

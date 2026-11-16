@@ -80,6 +80,8 @@ data class AppSettings(
     val onboardingComplete: Boolean = false,
     val theme: ThemeMode = ThemeMode.SYSTEM,
     val textScale: Float = 1f,
+    val readingFont: ReadingFont = ReadingFont.VAZIRMATN,
+    val arabicTextScale: Float = 1f,
     val reduceMotion: Boolean = false,
     val location: SavedLocation? = null,
     val calculationPreset: CalculationPreset = CalculationPreset.KARACHI,

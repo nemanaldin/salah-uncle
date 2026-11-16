@@ -240,4 +240,15 @@
     <string name="ui_art_draft">Draft artwork; pending project owner review</string>
     <string name="ui_art_placeholder">Image placeholder; this stage needs posture review</string>
     <string name="ui_source_review_required">এই পাঠের উৎস পর্যালোচনা প্রয়োজন।</string>
+    <string name="ui_reading_font">পাঠের ফন্ট</string>
+    <string name="ui_font_preview">ফন্টের পূর্বরূপ</string>
+    <string name="ui_fonts_offline">পাঁচটি ফন্ট অ্যাপের সঙ্গে আছে এবং অফলাইনে চলে।</string>
+    <string name="ui_font_persian_sample">این یک متن نمونه برای خواندن آسان است.</string>
+    <string name="ui_font_arabic_sample">هذا نص تجريبي للقراءة الواضحة.</string>
+    <string name="ui_font_latin_sample">Clear, readable text. Türkçe: ğ, ş, ı, İ.</string>
+    <string name="ui_font_preview_sample">এই নমুনা সঙ্গে সঙ্গে নির্বাচিত পাঠের ফন্টে দেখানো হয়।</string>
+    <string name="ui_reset_reading">পাঠ্য রিসেট করুন</string>
+    <string name="ui_arabic_text_size">দোয়ার আরবি পাঠের আকার</string>
+    <string name="ui_system_font">সিস্টেম ফন্ট</string>
+    <string name="ui_font_script_fallback">এই ভাষার জন্য বিকল্প ফন্ট %1$s ব্যবহার করা হয়।</string>
 </resources>

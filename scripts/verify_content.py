@@ -17,6 +17,8 @@ SCHOOLS = {'HANAFI', 'SHAFII', 'MALIKI', 'HANBALI'}
 def verify():
     from verify_sources import verify as verify_sources
     verify_sources()
+    from verify_fonts import verify as verify_fonts
+    verify_fonts()
     config = ET.parse(RES / 'xml/locales_config.xml').getroot()
     assert {x.get('{http://schemas.android.com/apk/res/android}name') for x in config} == LANGUAGES
     strings = {}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "retrieved": "2026-11-16",
+  "families": [
+    {
+      "name": "Vazirmatn",
+      "file": "vazirmatn_regular.ttf",
+      "license": "SIL OFL 1.1",
+      "licenseFile": "Vazirmatn-OFL.txt",
+      "source": "Existing app font; unchanged",
+      "licenseSource": "https://github.com/google/fonts/blob/cc39c4c2c304bc368c9b7c311ea2bcc6013299fe/ofl/vazirmatn/OFL.txt",
+      "bytes": 122752,
+      "sha256": "b69fd4c680b8f3f225feabcc655a2c585d97627b8f5f5c0f9985e894069f3a56",
+      "modified": false
+    },
+    {
+      "name": "Sahel",
+      "file": "sahel_regular.ttf",
+      "license": "SIL OFL 1.1",
+      "licenseFile": "Sahel-OFL.txt",
+      "source": "https://github.com/rastikerdar/sahel-font/blob/81ea305068b028ce311807c574fef50f3d4e2c54/dist/Sahel.ttf",
+      "licenseSource": "https://github.com/rastikerdar/sahel-font/blob/81ea305068b028ce311807c574fef50f3d4e2c54/LICENSE",
+      "bytes": 75308,
+      "sha256": "5de2fe8cd1995f10fb5a570b66e3ff40183f16bc8c692519b61e8c0281679675",
+      "modified": false
+    },
+    {
+      "name": "Amiri",
+      "file": "amiri_regular.ttf",
+      "license": "SIL OFL 1.1",
+      "licenseFile": "Amiri-OFL.txt",
+      "source": "https://github.com/google/fonts/blob/cc39c4c2c304bc368c9b7c311ea2bcc6013299fe/ofl/amiri/Amiri-Regular.ttf",
+      "licenseSource": "https://github.com/google/fonts/blob/cc39c4c2c304bc368c9b7c311ea2bcc6013299fe/ofl/amiri/OFL.txt",
+      "bytes": 431116,
+      "sha256": "ab391c4147d054c48976e98322ad0eefe1427aa0e0502a12a4c75d80a70cfcd7",
+      "modified": false
+    },
+    {
+      "name": "Noto Naskh Arabic",
+      "file": "noto_naskh_arabic_regular.ttf",
+      "license": "SIL OFL 1.1",
+      "licenseFile": "Noto-OFL.txt",
+      "source": "https://github.com/notofonts/noto-fonts/blob/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoNaskhArabic/NotoNaskhArabic-Regular.ttf",
+      "licenseSource": "https://github.com/notofonts/noto-fonts/blob/ffebf8c1ee449e544955a7e813c54f9b73848eac/LICENSE",
+      "bytes": 178388,
+      "sha256": "2f4b88e6ee50fa82c617e2d1d4ba18281cb1c6cd71c3af3ec64970c23995db4b",
+      "modified": false
+    },
+    {
+      "name": "Noto Sans",
+      "file": "noto_sans_regular.ttf",
+      "license": "SIL OFL 1.1",
+      "licenseFile": "Noto-OFL.txt",
+      "source": "https://github.com/notofonts/noto-fonts/blob/ffebf8c1ee449e544955a7e813c54f9b73848eac/hinted/ttf/NotoSans/NotoSans-Regular.ttf",
+      "licenseSource": "https://github.com/notofonts/noto-fonts/blob/ffebf8c1ee449e544955a7e813c54f9b73848eac/LICENSE",
+      "bytes": 569208,
+      "sha256": "b85c38ecea8a7cfb39c24e395a4007474fa5a4fc864f6ee33309eb4948d232d5",
+      "modified": false
+    }
+  ]
+}

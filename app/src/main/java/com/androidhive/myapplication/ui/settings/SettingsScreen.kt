@@ -25,6 +25,7 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
     val settings = state.settings ?: return
     var dialog by rememberSaveable { mutableStateOf<String?>(null) }
     var scale by remember(settings.textScale) { mutableFloatStateOf(settings.textScale) }
+    var arabicScale by remember(settings.arabicTextScale) { mutableFloatStateOf(settings.arabicTextScale) }
     PageColumn(Modifier.testTag("settings_screen")) {
         AppCard {
             SectionTitle(stringResource(R.string.ui_choose_language))
@@ -42,6 +43,15 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
             Text("$textSizeLabel · ${NumberFormat.getPercentInstance(Locale.forLanguageTag(settings.language.tag)).format(scale)}")
             Slider(scale, { scale = it }, valueRange = .85f..1.5f, steps = 12,
                 onValueChangeFinished = { onUpdate { it.copy(textScale = scale) } }, modifier = Modifier.semantics { contentDescription = textSizeLabel })
+            ChoiceRow(stringResource(R.string.ui_reading_font), settings.readingFont.displayName, { dialog = "reading_font" }, Modifier.testTag("setting_reading_font"))
+            val arabicLabel = stringResource(R.string.ui_arabic_text_size)
+            Text("$arabicLabel · ${NumberFormat.getPercentInstance(Locale.forLanguageTag(settings.language.tag)).format(arabicScale)}")
+            Slider(arabicScale, { arabicScale = it }, valueRange = .85f..2f,
+                onValueChangeFinished = { onUpdate { it.copy(arabicTextScale = readingArabicScale(arabicScale)) } },
+                modifier = Modifier.testTag("setting_arabic_size").semantics { contentDescription = arabicLabel })
+            TextButton({ scale = 1f; arabicScale = 1f; onUpdate { it.resetReadingAppearance() } }, Modifier.testTag("reset_reading_appearance")) {
+                Text(stringResource(R.string.ui_reset_reading))
+            }
             val reduceLabel = stringResource(R.string.ui_reduce_motion)
             ListItem(headlineContent = { Text(reduceLabel) }, trailingContent = {
                 Switch(settings.reduceMotion, { checked -> onUpdate { it.copy(reduceMotion = checked) } }, Modifier.semantics { contentDescription = reduceLabel })
@@ -80,6 +90,7 @@ fun SettingsScreen(state: SalahUiState, onUpdate: ((AppSettings) -> AppSettings)
     }
     val dismiss = { dialog = null }
     when (val active = dialog) {
+        "reading_font" -> ReadingFontDialog(settings, { font -> onUpdate { it.copy(readingFont = font) } }, dismiss)
         "language" -> ChoiceDialog(stringResource(R.string.ui_choose_language), ActiveContent.policy.languages, settings.language,
             { languageChoiceLabel(it) }, { language -> onUpdate { it.copy(language = language) } }, dismiss)
         "school" -> ChoiceDialog(stringResource(R.string.ui_choose_school), ActiveContent.policy.schools, settings.school,

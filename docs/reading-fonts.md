@@ -1,0 +1,9 @@
+# Offline reading fonts — 2026-11-16
+
+Five families are available beside the existing reading-size control: the unchanged default Vazirmatn, Sahel, Amiri, Noto Naskh Arabic and Noto Sans. The four added, unmodified TTF files total **1,254,020 bytes**. Every font is covered by SIL OFL 1.1; original notices and a hash/source manifest are bundled in `app/src/main/assets/licenses/fonts/`. No runtime font download or new dependency is used.
+
+The picker previews each named font immediately, saves only on confirmation, and restores the current choice on cancellation. DataStore stores additive keys; reset changes only reading font and the two text-size preferences, retaining location, bookmarks and reminder settings. The default UI typography remains unchanged. Lesson body typography now respects the reading-font choice. The Arabic-size setting is separate for the new dua reader.
+
+Font character maps were inspected. Bengali retains the platform Bengali font; Arabic-only Noto Naskh uses Noto Sans for Latin prose. Noto Sans uses Vazirmatn for Arabic-script languages. Sahel falls back for Urdu, Pashto and Turkish missing glyphs. Arabic passages in mixed Latin lesson text use a matching Arabic family without changing the underlying text. These are explicit script fallbacks, not a claim that one family covers every script.
+
+Verification: `duas-fonts` build, **197/197 unit tests**, lint **65 warnings / 0 errors**, Android-test compilation and content/source/font validation all passed. Seven new unit tests cover defaults, script fallback, reset preservation, Arabic scaling and mixed-text ranges. Two new instrumentation tests cover preview and persistence, but were **compiled only**: no adb device or KVM is available. Actual shaping, clipping, TalkBack and visual appearance still require a real phone/emulator.
