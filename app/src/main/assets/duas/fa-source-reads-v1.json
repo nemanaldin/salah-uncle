@@ -348,6 +348,54 @@
       "kind": "hanafi_fiqh",
       "readAt": "2026-11-18",
       "webToolRead": true
+    },
+    {
+      "id": "tirmidhi3502",
+      "url": "https://sunnah.com/tirmidhi:3502",
+      "book": "جامع ترمذی",
+      "locator": "کتاب الدعوات، حدیث ۳۵۰۲",
+      "excerpt": "قَالَ أَبُو عِيسَى هَذَا حَدِيثٌ حَسَنٌ غَرِيبٌ",
+      "grade": "HASAN",
+      "grader": "ترمذی: حسن غریب؛ درجهٔ خود روایت",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "targhib1575",
+      "url": "https://dorar.net/hadith/sharh/92065",
+      "book": "صحیح الترغیب والترهیب؛ نقل الدرر السنیة",
+      "locator": "حدیث ۱۵۷۵، تخریج آلبانی",
+      "excerpt": "سبحان الله مِلْءَ ما أحصى كتابُه؛ خلاصة حكم المحدث صحيح",
+      "grade": "SAHIH",
+      "grader": "آلبانی: صحیح، طبق مأخذ بازشده",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "owner2-roots",
+      "url": "https://dorar.net/h/mZ8BlzDY?osoul=1",
+      "book": "السنن الکبری، نسائی؛ صحیح ابن خزیمه؛ صحیح ابن حبان",
+      "locator": "نسائی ۹۹۹۴؛ ابن خزیمه ۷۵۴؛ ابن حبان ۸۳۰، مطابق تخریج صفحه",
+      "excerpt": "أخرجه النسائي في السنن الكبرى 9994 وابن خزيمة 754 وابن حبان 830",
+      "grade": "SAHIH",
+      "grader": "اصل روایت در صحیح ابن حبان؛ تفاوت ضبط در یادداشت داخلی ثبت شده است",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "muslim483",
+      "url": "https://sunnah.com/muslim:483",
+      "book": "صحیح مسلم",
+      "locator": "کتاب الصلاة، حدیث ۴۸۳",
+      "excerpt": "اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ دِقَّهُ وَجِلَّهُ",
+      "grade": "SAHIH",
+      "grader": "مجموعهٔ صحیح",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
     }
   ]
 }
