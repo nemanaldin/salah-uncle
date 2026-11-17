@@ -1,0 +1,23 @@
+{
+  "mapPathsVerified": 101,
+  "missingPaths": [],
+  "studyPagesVisuallyInspected": [
+    2,
+    10,
+    46,
+    47,
+    54
+  ],
+  "mapPagesVisuallyInspected": [
+    4
+  ],
+  "observations": [
+    "Persian text is right-to-left and connected.",
+    "Amiri Arabic shows connected letters and vowel marks, including long qunut and exact owner texts.",
+    "No horizontal overflow was detected; inspected pages show no clipped text."
+  ],
+  "limits": [
+    "Only the listed pages were visually inspected, not every page.",
+    "No Android device or hardware flow was run in this task."
+  ]
+}

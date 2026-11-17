@@ -1,0 +1,59 @@
+{
+  "codeCommit": "5c9b186369d5bc4478d43766a0ccfadfb0773fc8",
+  "contentSha256": "8d7ed595ace1a774be1d958071408a6884defbaccdd5178d4562d1af9840409d",
+  "topics": 70,
+  "fieldComplete": 68,
+  "unresolved": [
+    "kahf",
+    "friday-seven"
+  ],
+  "internalStatus": "pending_owner_review",
+  "sourceReadRecords": 73,
+  "pdfs": [
+    {
+      "file": "Salah-Persian-Duas-Study.pdf",
+      "pages": 58,
+      "bytes": 861362,
+      "sha256": "eecf4696d277e51d549570d6e1a19f4c6975f98f84d6b217a9d5c5619f2fde10",
+      "fonts": [
+        "AAAAAA+Vazirmatn-Regular",
+        "BAAAAA+Vazirmatn-Bold",
+        "CAAAAA+LiberationSans",
+        "DAAAAA+Amiri-Regular"
+      ],
+      "textCharacters": 62983,
+      "horizontalOverflow": [],
+      "arabicDomMatchesData": true,
+      "previewPages": [
+        1,
+        2,
+        10,
+        30,
+        46,
+        47,
+        54,
+        58
+      ]
+    },
+    {
+      "file": "Salah-Project-Map-fa.pdf",
+      "pages": 7,
+      "bytes": 187537,
+      "sha256": "9a0e61b3222bec74323991bdeef95b9c83043d26d647b94c1d615fda50682c4e",
+      "fonts": [
+        "AAAAAA+Vazirmatn-Bold",
+        "BAAAAA+Vazirmatn-Regular",
+        "CAAAAA+LiberationSans"
+      ],
+      "textCharacters": 15475,
+      "horizontalOverflow": [],
+      "arabicDomMatchesData": false,
+      "previewPages": [
+        1,
+        2,
+        4,
+        7
+      ]
+    }
+  ]
+}
