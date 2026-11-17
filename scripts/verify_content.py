@@ -21,6 +21,8 @@ def verify():
     verify_fonts()
     from verify_duas import validate as verify_duas
     verify_duas()
+    from verify_fa_duas import validate as verify_fa_duas
+    verify_fa_duas()
     config = ET.parse(RES / 'xml/locales_config.xml').getroot()
     assert {x.get('{http://schemas.android.com/apk/res/android}name') for x in config} == LANGUAGES
     strings = {}

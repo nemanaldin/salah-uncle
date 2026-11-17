@@ -64,7 +64,7 @@ fun GuideStageIllustration(art: StageArt, language: AppLanguage, fallback: @Comp
         Box(Modifier.testTag("stage_art_placeholder_${art.stepId}").semantics {
             contentDescription = description; role = Role.Image
         }) { fallback() }
-        SupportingText(stringResource(R.string.ui_art_placeholder))
+        if (language != AppLanguage.PERSIAN) SupportingText(stringResource(R.string.ui_art_placeholder))
     }
-    SupportingText(stringResource(R.string.ui_art_draft))
+    if (language != AppLanguage.PERSIAN) SupportingText(stringResource(R.string.ui_art_draft))
 }

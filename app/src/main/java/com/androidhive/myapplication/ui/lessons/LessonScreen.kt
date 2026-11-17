@@ -37,6 +37,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.androidhive.myapplication.data.duas.showEditorialStatus
 import com.androidhive.myapplication.R
 import com.androidhive.myapplication.core.model.*
 import com.androidhive.myapplication.data.content.*
@@ -139,7 +140,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
         ReaderNotices(lesson, variant, settings)
         ArticleContents(variant.steps, jump)
         if (eligible) TextButton({ textMode = !textMode }, Modifier.testTag("reader_mode")) { Text(stringResource(if (textMode) R.string.ui_show_slides else R.string.ui_show_text)) }
-        IconButton({ shareText(context, (if (variant.steps.any { it.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW }) context.getString(R.string.ui_arrangement_draft) + "\n\n" else "") + lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
+        IconButton({ shareText(context, (if (showEditorialStatus(settings.language.tag) && variant.steps.any { it.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW }) context.getString(R.string.ui_arrangement_draft) + "\n\n" else "") + lesson.title(settings.language) + "\n\n" + variant.steps.joinToString("\n\n") { step -> (listOf(step) + step.related).joinToString("\n\n") { it.body } }, shareLabel, externalError) }) { Icon(Icons.Default.Share, shareLabel) }
     }
     if (textMode) LazyColumn(Modifier.fillMaxSize().testTag("lesson_reader"), state = scroll,
         contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(18.dp)) {
@@ -147,7 +148,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
         items(variant.steps, key = { it.id }) { step ->
             ReaderSection(lesson.id, step, step.body, direction, variant.language, settings, playback, { bookmark(step, 0) }, audio, step.id == variant.steps.first().id, duaCatalog, onDua)
         }
-        item("sources") { ReaderSources(lesson, variant, externalError) }
+        item("sources") { ReaderSources(lesson, variant, settings.language.tag, externalError) }
     } else Column(Modifier.fillMaxSize().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         TextButton({ textMode = true }, Modifier.testTag("reader_mode")) { Text(stringResource(R.string.ui_show_text)) }
         ArticleContents(variant.steps, jump)
@@ -159,7 +160,7 @@ private fun LessonScreenContent(lesson: Lesson, settings: AppSettings, onRead: (
                 ReaderNotices(lesson, variant, settings)
                 ReaderSection(lesson.id, slide.step, slide.text, direction, variant.language, settings, playback,
                     { bookmark(slide.step, slide.offset) }, audio, index == 0, duaCatalog, onDua)
-                if (index == slides.lastIndex) ReaderSources(lesson, variant, externalError)
+                if (index == slides.lastIndex) ReaderSources(lesson, variant, settings.language.tag, externalError)
             }
         }
         Row(Modifier.fillMaxWidth().padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -187,8 +188,8 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
         val art = stageArtwork(lessonId, step, settings.school)
         if (art != null) GuideStageIllustration(art, settings.language) { OriginalSectionArtwork(lessonId, step, settings.school) }
         else OriginalSectionArtwork(lessonId, step, settings.school)
-        if (step.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW) SupportingText(stringResource(R.string.ui_arrangement_draft))
-        if (step.needsDhikrSource) SupportingText(stringResource(R.string.ui_needs_source))
+        if (showEditorialStatus(settings.language.tag) && step.arrangement == ArrangementStatus.DRAFT_PENDING_REVIEW) SupportingText(stringResource(R.string.ui_arrangement_draft))
+        if (showEditorialStatus(settings.language.tag) && step.needsDhikrSource) SupportingText(stringResource(R.string.ui_needs_source))
         CompositionLocalProvider(LocalLayoutDirection provides direction) { SelectionContainer {
             ReadingText(body, settings, AppLanguage.entries.firstOrNull { it.tag == language } ?: settings.language, Modifier.testTag(if (isFirst) "lesson_body" else "topic_body_${step.id}"))
         } }
@@ -222,9 +223,9 @@ private fun ReaderSection(lessonId: String, step: LessonStep, body: String, dire
 }
 
 @Composable
-private fun ReaderSources(lesson: Lesson, variant: LessonVariant, onError: () -> Unit) {
+private fun ReaderSources(lesson: Lesson, variant: LessonVariant, tag: String, onError: () -> Unit) {
     val context = LocalContext.current
-    if (lesson.sourceReviewRequired) SupportingText(stringResource(R.string.ui_source_review_required))
+    if (showEditorialStatus(tag) && lesson.sourceReviewRequired) SupportingText(stringResource(R.string.ui_source_review_required))
     if (variant.sources.isEmpty() && lesson.source.isNotBlank()) TextButton({ openUrl(context, lesson.source, onError) }) { Text(stringResource(R.string.ui_lesson_source)) }
     else variant.sources.forEach { source -> TextButton({ openUrl(context, source.url, onError) }) { Text(source.title) } }
 }
@@ -241,8 +242,8 @@ private fun OriginalSectionArtwork(lessonId: String, step: LessonStep, school: S
 /** Notices stay readable inside the page scroll, leaving navigation reachable at 200% font. */
 @Composable
 private fun ReaderNotices(lesson: Lesson, variant: LessonVariant, settings: AppSettings) {
-    if (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL)
+    if (showEditorialStatus(settings.language.tag) && (variant.reviewStatus == ReviewStatus.EXPERIMENTAL || settings.language.reviewStatus == ReviewStatus.EXPERIMENTAL))
         Box(Modifier.testTag("lesson_review_notice")) { InfoCard(stringResource(R.string.ui_experimental_language_notice, settings.language.nativeName)) }
     if (variant.language != settings.language.tag) InfoCard(stringResource(R.string.ui_content_language, variant.language))
-    if (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" }) InfoCard(stringResource(R.string.ui_wudu_review))
+    if (showEditorialStatus(settings.language.tag) && (lesson.id == "wudu" || variant.steps.any { it.originLessonId == "wudu-remembrance" })) InfoCard(stringResource(R.string.ui_wudu_review))
 }

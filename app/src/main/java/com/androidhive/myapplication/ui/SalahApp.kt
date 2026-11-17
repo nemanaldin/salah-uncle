@@ -54,6 +54,8 @@ import com.androidhive.myapplication.ui.prayer.PrayerTimesScreen
 import com.androidhive.myapplication.ui.qibla.QiblaScreen
 import com.androidhive.myapplication.ui.settings.SettingsScreen
 import com.androidhive.myapplication.ui.duas.*
+import com.androidhive.myapplication.data.duas.forLanguage
+import com.androidhive.myapplication.data.duas.showEditorialStatus
 
 data class DeviceActions(val location: () -> Unit, val notifications: () -> Unit, val exactAlarms: () -> Unit, val fullScreen: () -> Unit, val ramadanNotifications: () -> Unit = notifications, val duaNotifications: () -> Unit = notifications)
 private data class Destination(val route: String, val title: Int, val icon: ImageVector)
@@ -90,6 +92,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         }
         return
     }
+    val localizedDuas = remember(state.content.duas, settings.language) { state.content.duas?.forLanguage(settings.language.tag) }
     val navigation = rememberNavController()
     val backStack by navigation.currentBackStackEntryAsState()
     val route = backStack?.destination?.route ?: "home"
@@ -124,10 +127,10 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
         "duas/reminders" -> stringResource(R.string.ui_dua_reminders)
         else -> stringResource(destinations.firstOrNull { it.route == route }?.title ?: R.string.ui_app_name)
     }
-    LaunchedEffect(pendingRoute, state.content.duas, state.content.duasLoading) {
+    LaunchedEffect(pendingRoute, localizedDuas, state.content.duasLoading) {
         if (pendingRoute in listOf("times", "home", "ramadan")) { navigate(pendingRoute!!); onRouteHandled() }
         else if (pendingRoute?.startsWith("duas/read/") == true) {
-            val catalog = state.content.duas
+            val catalog = localizedDuas
             if (catalog != null) {
                 navigate(com.androidhive.myapplication.domain.duas.validatedDuaRoute(pendingRoute, catalog) ?: "duas")
                 onRouteHandled()
@@ -169,27 +172,27 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                 NavHost(navigation, startDestination = "home", modifier = Modifier.widthIn(max = 1000.dp).fillMaxWidth().weight(1f),
                     enterTransition = { androidx.compose.animation.EnterTransition.None }, exitTransition = { androidx.compose.animation.ExitTransition.None }) {
                     composable("home") { HomeScreen(state, navigate, model::retrySavedSettings) }
-                    composable("duas") { DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
+                    composable("duas") { DuaContent(localizedDuas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                         DuaLibraryScreen(catalog, settings, { navigate("duas/category/$it") }, { section, dua -> navigate("duas/read/$section/$dua") },
                             { navigate("duas/saved") }, { navigate("duas/recent") }, { navigate("duas/reminders") })
                     } }
-                    composable("duas/category/{category}") { entry -> DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
+                    composable("duas/category/{category}") { entry -> DuaContent(localizedDuas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                         DuaCategoryScreen(catalog, entry.arguments?.getString("category").orEmpty(), settings,
                             { section, dua -> navigate("duas/read/$section/$dua") }, { navigate("duas") })
                     } }
                     listOf("duas/saved", "duas/recent").forEach { savedRoute -> composable(savedRoute) {
-                        DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
+                        DuaContent(localizedDuas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                             DuaSavedScreen(catalog, settings, savedRoute.endsWith("recent"), { section, dua -> navigate("duas/read/$section/$dua") })
                         }
                     } }
-                    composable("duas/read/{section}/{dua}") { entry -> DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
+                    composable("duas/read/{section}/{dua}") { entry -> DuaContent(localizedDuas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                         val section = entry.arguments?.getString("section").orEmpty(); val dua = entry.arguments?.getString("dua").orEmpty()
                         if (catalog.validReaderRoute(dua, section)) DuaReaderScreen(catalog, section, dua, settings,
                             model::viewedDua, model::bookmarkDua, { size -> model.update { it.copy(arabicTextScale = size) } },
                             { navigate("duas/category/$it") }, model::message)
                         else PageColumn { InfoCard(stringResource(R.string.ui_dua_empty)); TextButton({ navigate("duas") }) { Text(stringResource(R.string.ui_duas)) } }
                     } }
-                    composable("duas/reminders") { DuaContent(state.content.duas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
+                    composable("duas/reminders") { DuaContent(localizedDuas, state.content.duasLoading, state.content.duasError, model::retryDuas) { catalog ->
                         DuaReminderSettings(catalog, settings, state.capabilities.duaNotifications, model::update, actions.duaNotifications, model::message)
                     } }
                     composable("lessons") { LessonsScreen(state, { navigate("lesson/$it") }, model::bookmark, { navigate("training") }, model::retryLessons, onSection = { id, section -> navigate("lesson/$id?section=${android.net.Uri.encode(section)}") },
@@ -226,7 +229,7 @@ fun SalahApp(state: SalahUiState, model: SalahViewModel, container: AppContainer
                         if (lesson != null) LessonScreen(lesson, settings, model::recordReading,
                             { navigation.popBackStack() }, model::message, targetStep?.id ?: target.sectionId,
                             { bookmark -> model.update { it.withSectionBookmark(bookmark) } },
-                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } }, initialOffset = if (targetStep?.id == target.sectionId) target.offset else 0, duaCatalog = state.content.duas,
+                            { bookmark -> model.update { it.withoutSectionBookmark(bookmark) } }, initialOffset = if (targetStep?.id == target.sectionId) target.offset else 0, duaCatalog = localizedDuas,
                             onDua = { section, dua -> navigate("duas/read/$section/$dua") })
                         else PageColumn {
                             if (state.content.lessonsLoading) CircularProgressIndicator()
@@ -289,7 +292,7 @@ private fun AboutScreen(lessons: List<Lesson>, school: School, onError: (Int) ->
             SupportingText(stringResource(R.string.ui_version, BuildConfig.VERSION_NAME))
         }
         val sources = lessons.mapNotNull { it.variant(school) }.flatMap { it.sources }.distinctBy { it.url }
-        if (lessons.any { it.sourceReviewRequired && it.variant(school) != null }) SupportingText(stringResource(R.string.ui_source_review_required))
+        if (androidx.core.os.ConfigurationCompat.getLocales(context.resources.configuration)[0]?.language != "fa" && lessons.any { it.sourceReviewRequired && it.variant(school) != null }) SupportingText(stringResource(R.string.ui_source_review_required))
         sources.forEach { source ->
             OutlinedButton({ openUrl(context, source.url, error) }, Modifier.fillMaxWidth()) { Text(source.title) }
         }

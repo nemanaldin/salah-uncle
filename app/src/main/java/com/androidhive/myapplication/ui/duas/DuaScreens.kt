@@ -87,7 +87,7 @@ fun DuaLibraryScreen(catalog: DuaCatalog, settings: AppSettings, onCategory: (St
                         }
                     }
                 }
-                item { SupportingText(stringResource(R.string.ui_dua_pending_count)) }
+                if (showEditorialStatus(tag)) item { SupportingText(stringResource(R.string.ui_dua_pending_count)) }
                 item { OutlinedButton(onReminders, Modifier.fillMaxWidth().testTag("dua_reminders_link")) { Text(stringResource(R.string.ui_dua_reminders)) } }
             } else {
                 if (results.isEmpty()) item { InfoCard(stringResource(R.string.ui_dua_empty)) }
@@ -200,7 +200,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
     val review = stringResource(R.string.ui_dua_review)
     val shareLabel = stringResource(if (item.guidance) R.string.ui_dua_share_evidence else R.string.ui_dua_share)
     val export = remember(item, tag, review) { listOf(item.title(tag), item.arabic, meaning,
-        item.sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" }, review.takeIf { item.reviewFields.isNotEmpty() }.orEmpty()).filter { it.isNotBlank() }.joinToString("\n\n") }
+        item.sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" }, review.takeIf { showEditorialStatus(tag) && item.reviewFields.isNotEmpty() }.orEmpty()).filter { it.isNotBlank() }.joinToString("\n\n") }
     var scale by remember(settings.arabicTextScale) { mutableFloatStateOf(settings.arabicTextScale) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 10.dp).testTag("dua_detail_${item.id}"), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -211,11 +211,11 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
         }
         LanguageReadinessNotice(settings.language)
         if (tag !in item.titles) SupportingText(stringResource(R.string.ui_dua_title_fallback))
-        if (item.reviewFields.isNotEmpty()) InfoCard(review)
+        if (showEditorialStatus(tag) && item.reviewFields.isNotEmpty()) InfoCard(review)
         if (item.guidance) InfoCard(stringResource(R.string.ui_dua_guidance_note))
         AppCard {
             SectionTitle(stringResource(if (item.guidance) R.string.ui_dua_hadith_evidence else R.string.ui_dua_arabic))
-            if (item.arabic.isBlank()) SupportingText(stringResource(R.string.ui_dua_missing))
+            if (item.arabic.isBlank()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
             else {
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) { SelectionContainer {
                     Text(item.arabic, Modifier.fillMaxWidth().testTag("dua_arabic_${item.id}"),
@@ -236,25 +236,27 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
         AppCard {
             SectionTitle(stringResource(R.string.ui_dua_pronunciation))
             val lines = item.pronunciations[tag].orEmpty()
-            if (lines.isEmpty()) SupportingText(stringResource(R.string.ui_dua_missing))
+            if (lines.isEmpty()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
             else lines.forEach { ReadingText(it, settings, settings.language) }
             SectionTitle(stringResource(R.string.ui_dua_meaning))
-            if (meaning.isBlank()) SupportingText(stringResource(R.string.ui_dua_translation_missing))
-            else { ReadingText(meaning, settings, settings.language); SupportingText(stringResource(R.string.ui_dua_translation_draft)) }
+            if (meaning.isBlank()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_translation_missing)) }
+            else { ReadingText(meaning, settings, settings.language)
+                if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_translation_draft)) }
         }
         if (item.note(tag).isNotBlank()) InfoCard(item.note(tag))
         AppCard {
             SectionTitle(sourceLabel)
-            if (item.sources.isEmpty()) SupportingText(stringResource(R.string.ui_dua_missing))
+            if (item.sources.isEmpty() && showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing))
             item.sources.forEach { source ->
                 Text("${source.book} ${source.reference}")
                 SupportingText(stringResource(when (source.grade) { DuaGrade.SAHIH -> R.string.ui_dua_sahih; DuaGrade.HASAN -> R.string.ui_dua_hasan
-                    DuaGrade.QURAN -> R.string.ui_dua_quran; DuaGrade.UNVERIFIED -> R.string.ui_dua_review }))
-                if (source.grader.isNotBlank()) SupportingText(source.grader)
-                if (!source.checked) SupportingText(review)
+                    DuaGrade.QURAN -> R.string.ui_dua_quran; DuaGrade.FIQH, DuaGrade.ATHAR -> R.string.ui_dua_source
+                    DuaGrade.UNVERIFIED -> if (showEditorialStatus(tag)) R.string.ui_dua_review else R.string.ui_dua_source }))
+                if (source.grader.isNotBlank() && (showEditorialStatus(tag) || source.grade != DuaGrade.UNVERIFIED)) SupportingText(source.grader)
+                if (!source.checked && showEditorialStatus(tag)) SupportingText(review)
                 if (source.url.startsWith("https://")) TextButton({ openUrl(context, source.url) { onError(R.string.ui_error_external_app) } }) { Text(sourceLabel) }
             }
-            if (item.reviewFields.isNotEmpty()) {
+            if (showEditorialStatus(tag) && item.reviewFields.isNotEmpty()) {
                 SupportingText(stringResource(R.string.ui_dua_fields_pending))
                 item.reviewFields.map { when (it) {
                     "arabic" -> R.string.ui_dua_arabic; "source" -> R.string.ui_dua_source; "grade" -> R.string.ui_dua_source

@@ -9,7 +9,25 @@ import org.json.JSONObject
 class DuaRepository(context: Context) {
     private val assets = context.applicationContext.assets
     suspend fun load(): DuaCatalog = withContext(Dispatchers.IO) {
-        parseDuaCatalog(assets.open("duas/duas-v1.json").bufferedReader().use { it.readText() })
+        val catalog = parseDuaCatalog(assets.open("duas/duas-v1.json").bufferedReader().use { it.readText() })
+        val persian = parsePersianDuas(assets.open("duas/duas-fa-v1.json").bufferedReader().use { it.readText() })
+        require(persian.keys == catalog.items.map { it.id }.toSet())
+        catalog.copy(items = catalog.items.map { it.copy(persian = persian.getValue(it.id)) })
+    }
+}
+internal fun parsePersianDuas(text: String): Map<String, PersianDuaContent> {
+    val root = JSONObject(text)
+    require(root.getInt("version") == 1 && root.getString("language") == "fa" && root.getString("school") == "hanafi")
+    val items = root.getJSONArray("items").objects()
+    require(items.map { it.getString("id") }.distinct().size == items.size)
+    return items.associate { item ->
+        require(item.getString("reviewStatus") == PENDING_OWNER_REVIEW)
+        item.getString("id") to PersianDuaContent(item.getString("arabic"), item.getJSONArray("pronunciation").strings(),
+            item.getString("meaning"), item.getString("practice"), item.getJSONArray("sources").objects().map {
+                DuaSource(it.getString("book"), it.getString("reference"), it.getString("url"),
+                    DuaGrade.valueOf(it.getString("grade")), it.getString("grader"), it.getBoolean("checked")) },
+            item.getJSONArray("missingFields").strings().toSet(), item.getString("reviewStatus"),
+            item.getString("kind"), item.getBoolean("reminder"), item.getString("title"))
     }
 }
 internal fun parseDuaCatalog(text: String): DuaCatalog {

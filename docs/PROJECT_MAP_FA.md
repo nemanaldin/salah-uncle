@@ -139,3 +139,11 @@
 ## دستورهای کنترل
 
 پس از هر مرحله: `./gradlew :app:lintDebug :app:testDebugUnitTest :app:assembleDebug :app:compileDebugAndroidTestKotlin` و سپس `python3 scripts/verify_content.py`. نام واقعی کنترل پروژه verify_content.py است؛ در پرامپت از آن با عنوان content_verify یاد شده است. این دستورها تست واحد و کامپایل رابط را پوشش می‌دهند؛ ادعای تست گوشی یا سنسور نیستند.
+
+## لایهٔ جداگانهٔ فارسی این دوره
+
+- `app/src/main/assets/duas/duas-fa-v1.json`: دادهٔ مخصوص فارسی با وضعیت داخلی pending_owner_review، فیلدهای باقی‌مانده و یادداشت منابع؛ متن مشترک زبان‌های دیگر تغییر نمی‌کند.
+- `app/src/main/assets/duas/fa-source-reads-v1.json`: مأخذهای واقعاً بازشده در ابزار وب همین اجرا، محل شاهد و تاریخ خواندن.
+- `app/src/main/java/com/androidhive/myapplication/data/duas/PersianDuas.kt`: اعمال لایهٔ فارسی روی مدل بدون دست‌زدن به مدل زبان‌های دیگر و محاسبهٔ کامل بودن فیلدها.
+- `scripts/verify_fa_duas.py`: کنترل سختگیرانهٔ مدخل کامل، منبع/درجه، متن مالک و ثابت‌ماندن فایل‌های زبان‌های دیگر.
+- `content/fa-completion-protected.json`: هش فایل‌های پایهٔ حفاظت‌شده در این دوره.

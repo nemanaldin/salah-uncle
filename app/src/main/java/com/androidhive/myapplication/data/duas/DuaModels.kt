@@ -4,7 +4,7 @@ import java.text.Normalizer
 import java.time.DayOfWeek
 import java.util.Locale
 
-enum class DuaGrade { SAHIH, HASAN, QURAN, UNVERIFIED }
+enum class DuaGrade { SAHIH, HASAN, QURAN, UNVERIFIED, FIQH, ATHAR }
 data class DuaSource(val book: String, val reference: String, val url: String, val grade: DuaGrade,
     val grader: String, val checked: Boolean)
 data class DuaCategory(val id: String, val titles: Map<String, String>) {
@@ -22,6 +22,7 @@ data class DuaItem(
     val audio: String = "", val reviewFields: Set<String> = emptySet(), val ownerText: Boolean = false,
     val reminder: Boolean = false,
     val guidance: Boolean = false,
+    val persian: PersianDuaContent? = null,
 ) {
     fun title(tag: String) = titles[tag] ?: titles["en"].orEmpty()
     fun translation(tag: String) = translations[tag].orEmpty()

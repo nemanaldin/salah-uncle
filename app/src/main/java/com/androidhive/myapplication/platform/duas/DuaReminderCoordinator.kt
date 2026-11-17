@@ -107,7 +107,7 @@ class DuaReminderCoordinator(context: Context, private val settings: SettingsRep
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 putExtra(MainActivity.EXTRA_ROUTE, route)
             }, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
-        val text = "${dua.arabic}\n${dua.translation(saved.language.tag).take(180)}\n${localized.getString(R.string.ui_dua_translation_draft)}"
+        val text = duaNotificationText(dua, saved.language.tag, localized.getString(R.string.ui_dua_translation_draft))
         return try {
             manager.notify("dua:$slot", NOTIFICATION_ID, NotificationCompat.Builder(app, CHANNEL)
                 .setSmallIcon(R.drawable.ic_stat_prayer).setContentTitle(dua.title(saved.language.tag))

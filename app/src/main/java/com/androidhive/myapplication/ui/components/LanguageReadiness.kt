@@ -8,7 +8,7 @@ import com.androidhive.myapplication.core.model.ReviewStatus
 
 @Composable
 fun languageChoiceLabel(language: AppLanguage): String = language.nativeName +
-    if (language.reviewStatus == ReviewStatus.EXPERIMENTAL) " · " + stringResource(R.string.ui_experimental_status) else ""
+    if (androidx.core.os.ConfigurationCompat.getLocales(androidx.compose.ui.platform.LocalContext.current.resources.configuration)[0]?.language != "fa" && language.reviewStatus == ReviewStatus.EXPERIMENTAL) " · " + stringResource(R.string.ui_experimental_status) else ""
 
 @Composable
 fun LanguageReadinessNotice(language: AppLanguage) {
