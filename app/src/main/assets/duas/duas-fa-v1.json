@@ -28,8 +28,9 @@
           "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -89,8 +90,9 @@
           "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -142,8 +144,9 @@
           "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         },
         {
           "book": "قرآن کریم",
@@ -210,8 +213,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۴",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/154",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -255,7 +259,7 @@
         "رَبَّنا لَکَ الحَمد"
       ],
       "meaning": "خداوند حمد کسی را که او را ستایش می‌کند می‌پذیرد؛ پروردگار ما، ستایش از آن توست.",
-      "practice": "",
+      "practice": "هنگام برخاستن از رکوع، امام «سمع الله لمن حمده» می‌گوید؛ مقتدی «ربنا لك الحمد» می‌گوید. کسی که تنها نماز می‌خواند هر دو را می‌گوید.",
       "sources": [
         {
           "book": "صحیح مسلم",
@@ -264,28 +268,43 @@
           "grade": "SAHIH",
           "grader": "مجموعهٔ صحیح",
           "checked": true
+        },
+        {
+          "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+          "reference": "فتوای ۱۴۴۵۰۶۱۰۲۶۸۴، تسمیع و تحمید امام",
+          "url": "https://www.banuri.edu.pk/readquestion/144506102684/11-01-2024",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
+          "checked": true
         }
       ],
-      "missingFields": [
-        "hanafi_practice"
-      ],
-      "reminder": false,
+      "missingFields": [],
+      "reminder": true,
       "evidenceIds": [
-        "muslim772"
+        "muslim772",
+        "banuri-tahmid"
       ],
       "internalNotes": [
+        "قولِ مشهورِ امام ابوحنیفه و متون، مطابق فتوای بنوری‌ٹاؤن انتخاب شد. مراقی الفلاح در صفحهٔ ۱۵۴، جمع هر دو ذکر برای امام را به قول صاحبین و گروهی از متأخران اختیار می‌کند؛ اختلاف در یادداشت داخلی حفظ است. انتخابِ یک قول، بطلانِ نمازِ عمل‌کننده به قول دیگر را نتیجه نمی‌دهد.",
         "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
         "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
       ],
       "fieldSources": {
         "arabic": [
-          "muslim772"
+          "muslim772",
+          "banuri-tahmid"
         ],
         "meaning": [
-          "muslim772"
+          "muslim772",
+          "banuri-tahmid"
         ],
         "pronunciation": [
-          "muslim772"
+          "muslim772",
+          "banuri-tahmid"
+        ],
+        "practice": [
+          "muslim772",
+          "banuri-tahmid"
         ]
       },
       "arabicSha256": "3bf72d11c95e16f536128215cc089e946accb241383f28e3b964818e48476a06"
@@ -315,8 +334,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۴",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/154",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -362,7 +382,7 @@
         "اَشهَدُ اَن لا اِلاهَ اِلَّا اللّاهُ وَ اَشهَدُ اَنَّ مُحَمَّداً عَبدُهُ وَ رَسولُه"
       ],
       "meaning": "همهٔ تحیت‌ها، نمازها و پاکیزگی‌ها از آن خداست. ای پیامبر، سلام و رحمت و برکات خدا بر تو باد. سلام بر ما و بر بندگان شایستهٔ خدا باد. گواهی می‌دهم که معبود برحقی جز خدا نیست و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
-      "practice": "",
+      "practice": "در تشهد، هنگام شهادتِ «لا إله إلا الله»، انگشت اشارهٔ دست راست در بخش نفی بالا می‌رود و در بخش اثبات پایین گذاشته می‌شود.",
       "sources": [
         {
           "book": "صحیح بخاری",
@@ -374,36 +394,53 @@
         },
         {
           "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۵",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/155",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
-      "missingFields": [
-        "hanafi_practice"
-      ],
-      "reminder": false,
+      "missingFields": [],
+      "reminder": true,
       "evidenceIds": [
         "bukhari6265",
+        "nur155",
         "nur156"
       ],
       "internalNotes": [
+        "اصلِ اشاره و بالا بردن هنگام نفی و پایین گذاشتن هنگام اثبات از صفحهٔ ۱۵۵ خوانده شد. جزئیات شکل سایر انگشتان یا تکرار حرکت از حافظه افزوده نشده است.",
         "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
         "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
       ],
       "fieldSources": {
         "arabic": [
           "bukhari6265",
+          "nur155",
           "nur156"
         ],
         "meaning": [
           "bukhari6265",
+          "nur155",
           "nur156"
         ],
         "pronunciation": [
           "bukhari6265",
+          "nur155",
+          "nur156"
+        ],
+        "practice": [
+          "bukhari6265",
+          "nur155",
           "nur156"
         ]
       },
@@ -437,8 +474,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -496,8 +534,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -557,8 +596,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -608,8 +648,9 @@
           "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است"
         }
       ],
       "missingFields": [],
@@ -657,15 +698,25 @@
           "reference": "عنوان Which is the correct Dua-e-Qunoot؛ نقل البحر الرائق ۲/۴۵ در خود صفحه",
           "url": "https://islamqa.org/hanafi/askimam/102830/which-is-the-correct-dua-e-qunoot/",
           "grade": "FIQH",
-          "grader": "ضبط فقهی مشهور؛ درجهٔ حدیث مرفوع برای این مجموعه جعل نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "ضبط فقهی مشهور؛ درجهٔ حدیث مرفوع برای این مجموعه جعل نشده است"
         },
         {
           "book": "نور الإیضاح مع مراقی الفلاح",
           "reference": "باب الوتر؛ نشانی صفحهٔ وب ۱۹۵",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/195",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی"
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "باب الوتر؛ نشانی صفحهٔ وب ۱۹۸",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/198",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
           "checked": true
         }
       ],
@@ -673,7 +724,8 @@
       "reminder": true,
       "evidenceIds": [
         "qunut-hanafi",
-        "nur195"
+        "nur195",
+        "nur198"
       ],
       "internalNotes": [
         "ضبط مشهورِ نقل‌شده از البحر الرائق در فتوای بازشده انتخاب شد؛ نه تلفیق دو ضبط. در نور الإیضاح عبارات ونستهديك ونتوب إليك و نیز الجد آمده است؛ این‌ها اختلاف ضبط‌اند و برای مالک در PDF ثبت می‌شوند.",
@@ -820,8 +872,9 @@
           "reference": "فصل سنن وضو؛ نشانی صفحهٔ وب ۵۱",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/51",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی"
         }
       ],
       "missingFields": [],
@@ -1102,7 +1155,7 @@
         "وَ لا یَؤودُهُ حِفظُهُما وَ هُوَ العَلِیُّ العَظیم"
       ],
       "meaning": "خداست که جز او معبودی نیست؛ زنده و برپادارنده است. نه چرت او را می‌گیرد و نه خواب. آنچه در آسمان‌ها و زمین است از آن اوست. چه کسی جز با اجازهٔ او نزدش شفاعت می‌کند؟ آنچه پیش روی آنان و پشت سرشان است می‌داند؛ و جز به آنچه بخواهد، به چیزی از دانش او احاطه نمی‌یابند. کرسی او آسمان‌ها و زمین را فراگرفته و نگهداری آن دو او را خسته نمی‌کند؛ او بلندمرتبه و بزرگ است.",
-      "practice": "",
+      "practice": "آیة‌الکرسی از قرائت‌های پس از نماز فرض است. در ظهر، مغرب و عشاء که سنت پس از فرض دارند، طبق ترتیب انتخاب‌شده در این مجموعه، اوراد طولانی‌تر پس از سنت خوانده می‌شوند.",
       "sources": [
         {
           "book": "قرآن کریم",
@@ -1111,28 +1164,57 @@
           "grade": "QURAN",
           "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
           "checked": true
+        },
+        {
+          "book": "صحیح الجامع؛ نقل الدرر السنیة",
+          "reference": "حدیث ۶۴۶۴؛ تخریج نسائی الکبری ۹۹۲۸ در صفحه",
+          "url": "https://dorar.net/h/IMDFWji0",
+          "grade": "SAHIH",
+          "grader": "آلبانی: صحیح، طبق مأخذ بازشده",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی"
         }
       ],
-      "missingFields": [
-        "hanafi_practice"
-      ],
-      "reminder": false,
+      "missingFields": [],
+      "reminder": true,
       "evidenceIds": [
-        "quran2255"
+        "quran2255",
+        "kursi-after",
+        "nur170"
       ],
       "internalNotes": [
+        "متن آیه از قرآن و مستندِ قرائت پس از فرض از حدیثِ صحیح الجامع ۶۴۶۴ است؛ حکم ترتیب نسبت به سنت از فصل صفة الأذکارِ مرجع حنفی است. از حدیث فضیلت، حکم اختصاصی حنفی استخراج نشده است.",
         "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
         "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
       ],
       "fieldSources": {
         "arabic": [
-          "quran2255"
+          "quran2255",
+          "kursi-after",
+          "nur170"
         ],
         "meaning": [
-          "quran2255"
+          "quran2255",
+          "kursi-after",
+          "nur170"
         ],
         "pronunciation": [
-          "quran2255"
+          "quran2255",
+          "kursi-after",
+          "nur170"
+        ],
+        "practice": [
+          "quran2255",
+          "kursi-after",
+          "nur170"
         ]
       },
       "arabicSha256": "cbf4c2fa9d4a8d2cdb3c56828949d1a36b5fceb218c06ab04f9401cb4e4636f6"
@@ -1285,8 +1367,9 @@
           "reference": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی"
         }
       ],
       "missingFields": [],
@@ -1337,8 +1420,9 @@
           "reference": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
           "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی"
         }
       ],
       "missingFields": [],
@@ -2035,8 +2119,9 @@
           "reference": "فتوای ۱۴۴۱۰۸۲۰۱۴۸۳، تلاوت کهف در جمعه",
           "url": "https://www.banuri.edu.pk/readquestion/144108201483/17-04-2020",
           "grade": "FIQH",
-          "grader": "فتوای حنفی؛ درجهٔ مستقل روایت از متن فتوا استخراج نشده است",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "فتوای حنفی؛ درجهٔ مستقل روایت از متن فتوا استخراج نشده است"
         }
       ],
       "missingFields": [
@@ -2160,8 +2245,9 @@
           "reference": "فتوای ۱۴۴۲۰۱۲۰۰۵۰۷، نیت روزه",
           "url": "https://www.banuri.edu.pk/readquestion/144201200507/30-08-2020",
           "grade": "FIQH",
-          "grader": "فتوای حنفی؛ عبارت نیت به پیامبر نسبت داده نمی‌شود",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "فتوای حنفی؛ عبارت نیت به پیامبر نسبت داده نمی‌شود"
         }
       ],
       "missingFields": [],
@@ -2451,8 +2537,9 @@
           "reference": "فتوای ۱۴۴۲۱۲۲۰۰۰۸۴، تکبیر تشریق",
           "url": "https://www.banuri.edu.pk/readquestion/144212200084/11-07-2021",
           "grade": "FIQH",
-          "grader": "مأخذ فقه حنفی و آثار صحابه؛ نه درجهٔ حدیث مرفوع",
-          "checked": true
+          "grader": "فقه حنفی",
+          "checked": true,
+          "internalGradeNote": "مأخذ فقه حنفی و آثار صحابه؛ نه درجهٔ حدیث مرفوع"
         }
       ],
       "missingFields": [],

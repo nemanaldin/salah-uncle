@@ -396,6 +396,54 @@
       "kind": "hadith",
       "readAt": "2026-11-18",
       "webToolRead": true
+    },
+    {
+      "id": "nur155",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/155",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۵",
+      "excerpt": "وأشار بالمسبحة في الشهادة يرفعها عند النفي ويضعها عند الإثبات",
+      "grade": "FIQH",
+      "grader": "فقه حنفی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "banuri-tahmid",
+      "url": "https://www.banuri.edu.pk/readquestion/144506102684/11-01-2024",
+      "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+      "locator": "فتوای ۱۴۴۵۰۶۱۰۲۶۸۴، تسمیع و تحمید امام",
+      "excerpt": "امام صرف سمع اللہ لمن حمدہ؛ مقتدی ربنا لك الحمد؛ منفرد دونوں کہے",
+      "grade": "FIQH",
+      "grader": "فقه حنفی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "kursi-after",
+      "url": "https://dorar.net/h/IMDFWji0",
+      "book": "صحیح الجامع؛ نقل الدرر السنیة",
+      "locator": "حدیث ۶۴۶۴؛ تخریج نسائی الکبری ۹۹۲۸ در صفحه",
+      "excerpt": "مَنْ قرأَ آيةَ الكُرسِيِّ دُبُرَ كلِّ صلاةٍ مكتوبةٍ؛ خلاصة حكم المحدث صحيح",
+      "grade": "SAHIH",
+      "grader": "آلبانی: صحیح، طبق مأخذ بازشده",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "nur198",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/198",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "باب الوتر؛ نشانی صفحهٔ وب ۱۹۸",
+      "excerpt": "بالكفّار ملحق أي لاحق بهم بكسر الحاء أفصح وقيل بفتحها",
+      "grade": "FIQH",
+      "grader": "فقه حنفی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
     }
   ]
 }

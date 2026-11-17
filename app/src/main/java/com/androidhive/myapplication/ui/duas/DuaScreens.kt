@@ -249,10 +249,14 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
             if (item.sources.isEmpty() && showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing))
             item.sources.forEach { source ->
                 Text("${source.book} ${source.reference}")
-                SupportingText(stringResource(when (source.grade) { DuaGrade.SAHIH -> R.string.ui_dua_sahih; DuaGrade.HASAN -> R.string.ui_dua_hasan
-                    DuaGrade.QURAN -> R.string.ui_dua_quran; DuaGrade.FIQH, DuaGrade.ATHAR -> R.string.ui_dua_source
-                    DuaGrade.UNVERIFIED -> if (showEditorialStatus(tag)) R.string.ui_dua_review else R.string.ui_dua_source }))
-                if (source.grader.isNotBlank() && (showEditorialStatus(tag) || source.grade != DuaGrade.UNVERIFIED)) SupportingText(source.grader)
+                if (source.grade == DuaGrade.FIQH || source.grade == DuaGrade.ATHAR) {
+                    if (source.grader.isNotBlank()) SupportingText(source.grader)
+                } else {
+                    if (source.grade != DuaGrade.UNVERIFIED || showEditorialStatus(tag)) SupportingText(stringResource(when (source.grade) {
+                        DuaGrade.SAHIH -> R.string.ui_dua_sahih; DuaGrade.HASAN -> R.string.ui_dua_hasan
+                        DuaGrade.QURAN -> R.string.ui_dua_quran; else -> R.string.ui_dua_review }))
+                    if (source.grader.isNotBlank() && (showEditorialStatus(tag) || source.grade != DuaGrade.UNVERIFIED)) SupportingText(source.grader)
+                }
                 if (!source.checked && showEditorialStatus(tag)) SupportingText(review)
                 if (source.url.startsWith("https://")) TextButton({ openUrl(context, source.url) { onError(R.string.ui_error_external_app) } }) { Text(sourceLabel) }
             }

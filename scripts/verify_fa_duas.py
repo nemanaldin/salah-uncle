@@ -31,6 +31,13 @@ def validate():
             assert source['checked'] and source['grade'] in {'SAHIH', 'HASAN', 'QURAN', 'FIQH', 'ATHAR'}, item['id']
             assert source['book'].strip() and source['reference'].strip() and source['url'].startswith('https://'), item['id']
             assert source['url'] in {reads[k]['url'] for k in item['evidenceIds']}, item['id']
+            matching = [reads[k] for k in item['evidenceIds'] if reads[k]['url'] == source['url']]
+            if source['grade'] == 'FIQH':
+                assert any(x['kind'] == 'hanafi_fiqh' for x in matching), item['id']
+            if source['grade'] == 'ATHAR':
+                assert any(x['kind'] == 'athar' for x in matching), item['id']
+            if source['grade'] == 'QURAN':
+                assert any(x['kind'] == 'quran' for x in matching), item['id']
         for key in item['evidenceIds']:
             read = reads[key]
             assert read['readAt'] == '2026-11-18' and read['webToolRead'] and read['locator'] and read['excerpt'], key
