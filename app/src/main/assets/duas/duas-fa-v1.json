@@ -2395,26 +2395,59 @@
       "reviewStatus": "pending_owner_review",
       "kind": "evidence",
       "arabic": "إِذَا جَاءَ أَحَدُكُمُ الْجُمُعَةَ فَلْيَغْتَسِلْ",
-      "pronunciation": [],
-      "meaning": "هرگاه یکی از شما به نماز جمعه می‌آید، غسل کند.",
-      "practice": "",
+      "pronunciation": [
+        "اِذا جاءَ اَحَدُکُمُ الجُمُعَةَ فَلیَغتَسِل"
+      ],
+      "meaning": "هرگاه یکی از شما برای نماز جمعه می‌آید، غسل کند.",
+      "practice": "غسل پیش از رفتن به نماز جمعه از سنت‌های این نماز است. با نظافت بدن، بوی آزاردهنده را پیش از حضور در جمع برطرف کنید.",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "877",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الجمعة، حدیث ۸۷۷",
           "url": "https://sunnah.com/bukhari:877",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "دارالافتاء جامعة العلوم الإسلامیة بنوری‌تاون",
+          "reference": "فتوا ۱۴۴۲۱۲۲۰۲۳۹۳، ۹ اوت ۲۰۲۱؛ نقل حاشیهٔ طحطاوی بر مراقی الفلاح و رد المحتار",
+          "url": "https://www.banuri.edu.pk/readquestion/144212202393/09-08-2021",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
-      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "bukhari877",
+        "banuri-friday-ghusl"
+      ],
+      "internalNotes": [
+        "عربیِ این مدخل متنِ دستور حدیث است، نه دعایی برای تکرار و نه فرمول نیت غسل؛ برای یادآورِ دعای تصادفی انتخاب نمی‌شود. طبقه‌بندی سنتِ عمل از مأخذ حنفی است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari877",
+          "banuri-friday-ghusl"
+        ],
+        "meaning": [
+          "bukhari877",
+          "banuri-friday-ghusl"
+        ],
+        "pronunciation": [
+          "bukhari877",
+          "banuri-friday-ghusl"
+        ],
+        "practice": [
+          "bukhari877",
+          "banuri-friday-ghusl"
+        ]
+      },
+      "arabicSha256": "9758c4e180f7a0415b78e03927e00c6b9c049ac79f773adba001d92404b239a8"
     },
     {
       "id": "friday-salawat",
@@ -2422,26 +2455,44 @@
       "reviewStatus": "pending_owner_review",
       "kind": "evidence",
       "arabic": "فَأَكْثِرُوا عَلَىَّ مِنَ الصَّلاَةِ فِيهِ فَإِنَّ صَلاَتَكُمْ مَعْرُوضَةٌ عَلَىَّ",
-      "pronunciation": [],
-      "meaning": "در آن روز بر من بسیار صلوات بفرستید؛ صلوات شما بر من عرضه می‌شود.",
+      "pronunciation": [
+        "فَاَکثِروا عَلَیَّ مِنَ الصَّلاةِ فیهِ",
+        "فَاِنَّ صَلاتَکُم مَعروضَةٌ عَلَیَّ"
+      ],
+      "meaning": "در این روز بر من بسیار صلوات بفرستید؛ زیرا صلوات شما بر من عرضه می‌شود.",
       "practice": "",
       "sources": [
         {
-          "book": "Sunan Abi Dawud",
-          "reference": "1047",
+          "book": "سنن ابی‌داود",
+          "reference": "کتاب الصلاة، حدیث ۱۰۴۷",
           "url": "https://sunnah.com/abudawud:1047",
           "grade": "SAHIH",
-          "grader": "Al-Albani",
+          "grader": "تصحیح آلبانی در صفحهٔ حدیث",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
-      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "abudawud1047"
+      ],
+      "internalNotes": [
+        "این عبارت، بخشی از متن حدیث در فضیلت جمعه است؛ خودِ آن صیغهٔ صلوات نیست. مدخل صلوات ابراهیمی، متن صلوات مأثور را جداگانه دارد. عدد یا پاداش مخصوصِ اضافه از این متن ساخته نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "abudawud1047"
+        ],
+        "meaning": [
+          "abudawud1047"
+        ],
+        "pronunciation": [
+          "abudawud1047"
+        ]
+      },
+      "arabicSha256": "a296e03f2ccb0bbff361e5abb1857dc881688cfe016d73f0b5e0528a36f12236"
     },
     {
       "id": "kahf",
@@ -2498,26 +2549,44 @@
       "reviewStatus": "pending_owner_review",
       "kind": "evidence",
       "arabic": "فِيهِ سَاعَةٌ لاَ يُوَافِقُهَا عَبْدٌ مُسْلِمٌ، وَهْوَ قَائِمٌ يُصَلِّي، يَسْأَلُ اللَّهَ تَعَالَى شَيْئًا إِلاَّ أَعْطَاهُ إِيَّاهُ",
-      "pronunciation": [],
-      "meaning": "در جمعه زمانی است که اگر بندهٔ مسلمان در حال نماز از خدا چیزی بخواهد، خدا آن را به او عطا می‌کند.",
+      "pronunciation": [
+        "فیهِ ساعَةٌ لا یُوافِقُها عَبدٌ مُسلِمٌ وَ هُوَ قائِمٌ یُصَلّی",
+        "یَسأَلُ اللّاهَ تَعالی شَیئَن اِلّا اَعطاهُ اِیّاه"
+      ],
+      "meaning": "در جمعه زمانی است که اگر بندهٔ مسلمان در حال نماز با آن هم‌زمان شود و چیزی از خدای متعال بخواهد، خدا آن را به او می‌دهد.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "935",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الجمعة، حدیث ۹۳۵",
           "url": "https://sunnah.com/bukhari:935",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
-      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "bukhari935"
+      ],
+      "internalNotes": [
+        "این مدخل متن خبر حدیث است، نه دعای معیّن. تعیین یک ساعتِ ساعتیِ قطعی از این حدیث استنباط و وارد برنامه نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari935"
+        ],
+        "meaning": [
+          "bukhari935"
+        ],
+        "pronunciation": [
+          "bukhari935"
+        ]
+      },
+      "arabicSha256": "1ce858819a4918f17f72cf14ce5e84023656f0856ec11fc7c5727f598510a17a"
     },
     {
       "id": "friday-seven",
@@ -2548,26 +2617,60 @@
       "reviewStatus": "pending_owner_review",
       "kind": "evidence",
       "arabic": "تُعْرَضُ الأَعْمَالُ يَوْمَ الاِثْنَيْنِ وَالْخَمِيسِ فَأُحِبُّ أَنْ يُعْرَضَ عَمَلِي وَأَنَا صَائِمٌ",
-      "pronunciation": [],
-      "meaning": "اعمال در دوشنبه و پنجشنبه عرضه می‌شوند؛ دوست دارم عمل من در حالی عرضه شود که روزه‌دارم.",
-      "practice": "",
+      "pronunciation": [
+        "تُعرَضُ الاَعمالُ یَومَ الاِثنَینِ وَ الخَمیس",
+        "فَاُحِبُّ اَن یُعرَضَ عَمَلی وَ اَنَا صائِم"
+      ],
+      "meaning": "اعمال در دوشنبه و پنجشنبه عرضه می‌شود؛ دوست دارم عمل من در حالی عرضه شود که روزه‌ام.",
+      "practice": "روزهٔ دوشنبه و پنجشنبه مستحب است. راهنمای نیت روزه در همین بخش آمده است.",
       "sources": [
         {
-          "book": "Jami at-Tirmidhi",
-          "reference": "747",
+          "book": "جامع ترمذی",
+          "reference": "کتاب الصوم، حدیث ۷۴۷",
           "url": "https://sunnah.com/tirmidhi:747",
           "grade": "HASAN",
-          "grader": "Darussalam; Al-Tirmidhi: hasan gharib",
+          "grader": "ترمذی: حسن غریب؛ درجهٔ حسنِ دارالسلام نیز در صفحه آمده است",
+          "checked": true
+        },
+        {
+          "book": "دارالافتاء جامعة العلوم الإسلامیة بنوری‌تاون",
+          "reference": "فتوا ۱۴۴۲۰۳۲۰۱۱۱۲، ۷ نوامبر ۲۰۲۰؛ روزهٔ نفلی",
+          "url": "https://www.banuri.edu.pk/readquestion/144203201112/07-11-2020",
+          "grade": "FIQH",
+          "grader": "فقه حنفی",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
-      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "tirmidhi747",
+        "banuri-monday-thursday"
+      ],
+      "internalNotes": [
+        "مدخل، دلیلِ روزهٔ نفلی است و دعا یا نیت عربی محسوب نمی‌شود؛ عدد تکرار و یادآورِ دعای تصادفی ندارد.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "tirmidhi747",
+          "banuri-monday-thursday"
+        ],
+        "meaning": [
+          "tirmidhi747",
+          "banuri-monday-thursday"
+        ],
+        "pronunciation": [
+          "tirmidhi747",
+          "banuri-monday-thursday"
+        ],
+        "practice": [
+          "tirmidhi747",
+          "banuri-monday-thursday"
+        ]
+      },
+      "arabicSha256": "a01dace6419591ea5b850b76af2f745a1e5b444a612aaceb135944d837fd2a66"
     },
     {
       "id": "fasting-intention",
@@ -2620,26 +2723,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
-      "pronunciation": [],
-      "meaning": "خدا را پاک و منزه می‌دانم و او را می‌ستایم.",
+      "pronunciation": [
+        "سُبحانَ اللّاهِ وَ بِحَمدِه"
+      ],
+      "meaning": "خدا پاک و منزّه است و او را می‌ستایم.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "6405",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الدعوات، حدیث ۶۴۰۵",
           "url": "https://sunnah.com/bukhari:6405",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari6405"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "عدد صد بار در روز، صریح متن بخاری ۶۴۰۵ است؛ تکرار دلخواهِ رابط، الزام شرعی تازه ایجاد نمی‌کند.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari6405"
+        ],
+        "meaning": [
+          "bukhari6405"
+        ],
+        "pronunciation": [
+          "bukhari6405"
+        ]
+      },
+      "arabicSha256": "01807d3530700f42c32b3ff195ad57564229b251c00887fddd6f1b2cfe19f45f"
     },
     {
       "id": "subhan-azim",
@@ -2647,26 +2767,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَ اللَّهِ الْعَظِيمِ",
-      "pronunciation": [],
-      "meaning": "خدای بزرگ پاک و منزه است.",
+      "pronunciation": [
+        "سُبحانَ اللّاهِ العَظیم"
+      ],
+      "meaning": "خدای بزرگ پاک و منزّه است.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "2694",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الذکر والدعاء، حدیث ۲۶۹۴",
           "url": "https://sunnah.com/muslim:2694",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim2694"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "این عبارت، بخش دومِ دو ذکرِ آمده در حدیث است. برای فضیلتِ دو عبارتِ با هم، متن کامل حدیث باید در نظر گرفته شود؛ ثواب ترکیب به تنهایی به نیمهٔ دوم نسبت داده نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim2694"
+        ],
+        "meaning": [
+          "muslim2694"
+        ],
+        "pronunciation": [
+          "muslim2694"
+        ]
+      },
+      "arabicSha256": "fea841be18be305891b09635d0a45190df9e4b5199ef3a574fd7dc8911d5a73f"
     },
     {
       "id": "hawqala",
@@ -2674,26 +2811,42 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
-      "pronunciation": [],
-      "meaning": "هیچ توان و نیرویی جز به یاری خدا نیست.",
+      "pronunciation": [
+        "لا حَولَ وَ لا قُوَّةَ اِلّا بِاللّاه"
+      ],
+      "meaning": "هیچ توانِ دگرگونی و نیرویی جز به یاری خدا نیست.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "6384",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الدعوات، حدیث ۶۳۸۴",
           "url": "https://sunnah.com/bukhari:6384",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari6384"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari6384"
+        ],
+        "meaning": [
+          "bukhari6384"
+        ],
+        "pronunciation": [
+          "bukhari6384"
+        ]
+      },
+      "arabicSha256": "a8e6d5234a3ff1db28da4a622387cc84be1ad574b3d3c30cfc83d5deeee88982"
     },
     {
       "id": "kalima",
@@ -2701,26 +2854,42 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "لاَ إِلَهَ إِلاَّ اللَّهُ",
-      "pronunciation": [],
-      "meaning": "هیچ معبودی جز خدا نیست.",
+      "pronunciation": [
+        "لا اِلاهَ اِلَّا اللّاه"
+      ],
+      "meaning": "هیچ معبودِ به‌حقی جز خدا نیست.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "385",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الصلاة، حدیث ۳۸۵",
           "url": "https://sunnah.com/muslim:385",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim385"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim385"
+        ],
+        "meaning": [
+          "muslim385"
+        ],
+        "pronunciation": [
+          "muslim385"
+        ]
+      },
+      "arabicSha256": "aa59a15baeee44547daf5bb3a0c1052eaaa3beda6752fdc72e44bf20ecd1c498"
     },
     {
       "id": "sayyid-istighfar",
@@ -2728,27 +2897,46 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ أَنْتَ رَبِّي، لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَىَّ وَأَبُوءُ لَكَ بِذَنْبِي، فَاغْفِرْ لِي، فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ",
-      "pronunciation": [],
-      "meaning": "",
+      "pronunciation": [
+        "اَللاهُمَّ اَنتَ رَبّی، لا اِلاهَ اِلّا اَنت",
+        "خَلَقتَنی وَ اَنا عَبدُکَ، وَ اَنا عَلی عَهدِکَ وَ وَعدِکَ مَا استَطَعت",
+        "اَعوذُ بِکَ مِن شَرِّ ما صَنَعت",
+        "اَبوءُ لَکَ بِنِعمَتِکَ عَلَیَّ، وَ اَبوءُ لَکَ بِذَنبی",
+        "فَاغفِر لی فَاِنَّهُ لا یَغفِرُ الذُّنوبَ اِلّا اَنت"
+      ],
+      "meaning": "خدایا، تو پروردگار منی؛ هیچ معبودِ به‌حقی جز تو نیست. مرا آفریدی و من بندهٔ توام و تا جایی که توان دارم بر عهد و وعده‌ات هستم. از شر آنچه کرده‌ام به تو پناه می‌برم. نعمت تو را بر خود می‌پذیرم و به گناهم اعتراف می‌کنم؛ پس مرا بیامرز، که جز تو کسی گناهان را نمی‌آمرزد.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "6306",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الدعوات، حدیث ۶۳۰۶",
           "url": "https://sunnah.com/bukhari:6306",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari6306"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari6306"
+        ],
+        "meaning": [
+          "bukhari6306"
+        ],
+        "pronunciation": [
+          "bukhari6306"
+        ]
+      },
+      "arabicSha256": "6ce7fa31440bfc23c2fe69c534c664fc6c10f56a5b689c1e42f52f38f239260f"
     },
     {
       "id": "istighfar",
@@ -2756,26 +2944,42 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "أَسْتَغْفِرُ اللَّهَ",
-      "pronunciation": [],
+      "pronunciation": [
+        "اَستَغفِرُ اللّاه"
+      ],
       "meaning": "از خدا آمرزش می‌خواهم.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "591",
+          "book": "صحیح مسلم",
+          "reference": "المساجد ومواضع الصلاة، حدیث ۵۹۱",
           "url": "https://sunnah.com/muslim:591",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim591"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim591"
+        ],
+        "meaning": [
+          "muslim591"
+        ],
+        "pronunciation": [
+          "muslim591"
+        ]
+      },
+      "arabicSha256": "9ef913a347672f03b6c0b851c3a052ebd52c61a9ff40c76f1e76d932d031117f"
     },
     {
       "id": "iftar",
@@ -2783,26 +2987,44 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "ذَهَبَ الظَّمَأُ وَابْتَلَّتِ الْعُرُوقُ وَثَبَتَ الأَجْرُ إِنْ شَاءَ اللَّهُ",
-      "pronunciation": [],
-      "meaning": "تشنگی رفت، رگ‌ها تر شد و پاداش، اگر خدا بخواهد، ثابت شد.",
+      "pronunciation": [
+        "ذَهَبَ الظَّمَأُ وَ ابتَلَّتِ العُروقُ",
+        "وَ ثَبَتَ الاَجرُ اِن شاءَ اللّاه"
+      ],
+      "meaning": "تشنگی رفت، رگ‌ها سیراب شد و اگر خدا بخواهد پاداش ثابت شد.",
       "practice": "",
       "sources": [
         {
-          "book": "Sunan Abi Dawud",
-          "reference": "2357",
+          "book": "سنن ابی‌داود",
+          "reference": "کتاب الصوم، حدیث ۲۳۵۷",
           "url": "https://sunnah.com/abudawud:2357",
           "grade": "HASAN",
-          "grader": "Al-Albani",
+          "grader": "تحسین آلبانی در صفحهٔ حدیث",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "abudawud2357"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "این روایت به هنگام افطار است؛ عبارت‌های رایجِ دیگر بدون مأخذ صحیح/حسن به آن افزوده نشده‌اند.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "abudawud2357"
+        ],
+        "meaning": [
+          "abudawud2357"
+        ],
+        "pronunciation": [
+          "abudawud2357"
+        ]
+      },
+      "arabicSha256": "f9612b53e6e9896add24e019bcdd1be69141a4405b799c1d327c8b6a24b8200d"
     },
     {
       "id": "qadr",
@@ -2810,26 +3032,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ إِنَّكَ عَفُوٌّ تُحِبُّ الْعَفْوَ فَاعْفُ عَنِّي",
-      "pronunciation": [],
+      "pronunciation": [
+        "اَللاهُمَّ اِنَّکَ عَفُوٌّ تُحِبُّ العَفوَ فَاعفُ عَنّی"
+      ],
       "meaning": "خدایا، تو بسیار درگذرنده‌ای و گذشت را دوست داری؛ پس از من درگذر.",
       "practice": "",
       "sources": [
         {
-          "book": "Sunan Ibn Majah",
-          "reference": "3850",
+          "book": "سنن ابن‌ماجه",
+          "reference": "کتاب الدعاء، حدیث ۳۸۵۰",
           "url": "https://sunnah.com/ibnmajah:3850",
           "grade": "SAHIH",
-          "grader": "Darussalam",
+          "grader": "تصحیح دارالسلام در صفحهٔ حدیث",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "ibnmajah3850"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "لفظ کریم در ضبطِ ابن‌ماجه ۳۸۵۰ که این‌جا مبناست وجود ندارد و افزوده نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "ibnmajah3850"
+        ],
+        "meaning": [
+          "ibnmajah3850"
+        ],
+        "pronunciation": [
+          "ibnmajah3850"
+        ]
+      },
+      "arabicSha256": "f8b8f765386d060fe6a207ac05d5f94b9a721c41745ad65a5ba906a12c5ac573"
     },
     {
       "id": "crescent",
@@ -2837,27 +3076,44 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ أَهْلِلْهُ عَلَيْنَا بِالْيُمْنِ وَالإِيمَانِ وَالسَّلاَمَةِ وَالإِسْلاَمِ رَبِّي وَرَبُّكَ اللَّهُ",
-      "pronunciation": [],
-      "meaning": "",
+      "pronunciation": [
+        "اَللاهُمَّ اَهلِلهُ عَلَینا بِالیُمنِ وَ الاِیمانِ وَ السَّلامَةِ وَ الاِسلام",
+        "رَبّی وَ رَبُّکَ اللّاه"
+      ],
+      "meaning": "خدایا، این هلال را با برکت و ایمان، سلامت و اسلام بر ما پدیدار کن؛ پروردگار من و تو [ای ماه] خداست.",
       "practice": "",
       "sources": [
         {
-          "book": "Jami at-Tirmidhi",
-          "reference": "3451",
-          "url": "https://sunnah.com/tirmidhi:3451",
+          "book": "جامع ترمذی و مسند احمد",
+          "reference": "ترمذی ۳۴۵۱، احمد ۱۳۹۷؛ متن اصل و تخریج در الدرر السنية",
+          "url": "https://dorar.net/h/DfzWqCF4?osoul=1",
           "grade": "HASAN",
-          "grader": "Al-Tirmidhi: hasan gharib",
+          "grader": "ترمذی: حسن غریب؛ شعیب ارناؤوط: حسن لشواهده",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "crescent-tirmidhi"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "ضبط اهلله و باليمنِ ترمذی در بخش اصولِ مأخذ خوانده شد. نقل بالأمن و افزودهٔ هلال رشد وخير در شرحی دیگر وجود داشت؛ با ضبط ترمذی ادغام نشده است. درجهٔ حسن لشواهده به معنای تصحیح تک‌تک طریق‌های حدیث نیست.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "crescent-tirmidhi"
+        ],
+        "meaning": [
+          "crescent-tirmidhi"
+        ],
+        "pronunciation": [
+          "crescent-tirmidhi"
+        ]
+      },
+      "arabicSha256": "dfacda3002f82dd4636a26f12a9e2eb9f9eaa605edba7e3839b4ff4d45b2723f"
     },
     {
       "id": "eid",
@@ -3084,26 +3340,42 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى",
-      "pronunciation": [],
-      "meaning": "خدایا، از تو هدایت، تقوا، پاکدامنی و بی‌نیازی می‌خواهم.",
+      "pronunciation": [
+        "اَللاهُمَّ اِنّی اَسأَلُکَ الهُدی وَ التُّقی وَ العَفافَ وَ الغِنی"
+      ],
+      "meaning": "خدایا، هدایت، پرهیزگاری، پاکدامنی و بی‌نیازی را از تو می‌خواهم.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "2721a",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الذکر والدعاء، حدیث ۲۷۲۱ الف",
           "url": "https://sunnah.com/muslim:2721a",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim2721a"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim2721a"
+        ],
+        "meaning": [
+          "muslim2721a"
+        ],
+        "pronunciation": [
+          "muslim2721a"
+        ]
+      },
+      "arabicSha256": "64b13693f36e4cf50f626b68d7bc11b89ac2f11ddfb8b9d4eefc2fe47586d4cb"
     },
     {
       "id": "rabbana-hearts",
@@ -3111,26 +3383,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "رَبَّنَا لَا تُزِغۡ قُلُوبَنَا بَعۡدَ إِذۡ هَدَيۡتَنَا وَهَبۡ لَنَا مِن لَّدُنكَ رَحۡمَةًۚ إِنَّكَ أَنتَ ٱلۡوَهَّابُ",
-      "pronunciation": [],
-      "meaning": "پروردگارا، پس از آنکه هدایتمان کردی، دل‌هایمان را منحرف مکن و از سوی خود رحمتی به ما ببخش؛ تو بسیار بخشنده‌ای.",
+      "pronunciation": [
+        "رَبَّنا لا تُزِغ قُلوبَنا بَعدَ اِذ هَدَیتَنا",
+        "وَ هَب لَنا مِن لَدُنکَ رَحمَةً، اِنَّکَ اَنتَ الوَهّاب"
+      ],
+      "meaning": "پروردگارا، پس از آنکه ما را هدایت کردی، دل‌هایمان را منحرف مکن و از سوی خود رحمتی به ما ببخش؛ بی‌گمان تو بسیار بخشنده‌ای.",
       "practice": "",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "3/8",
+          "book": "قرآن کریم",
+          "reference": "سورهٔ آل‌عمران، آیهٔ ۸",
           "url": "https://quran.com/3/8",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "آیهٔ قرآن؛ درجهٔ سند حدیثی موضوعیت ندارد",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran38"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran38"
+        ],
+        "meaning": [
+          "quran38"
+        ],
+        "pronunciation": [
+          "quran38"
+        ]
+      },
+      "arabicSha256": "c5101b0b7610744630fe81ce5277ba5e08f04ee6599a8a2ab870d96f52d53566"
     },
     {
       "id": "rabbana-repentance",
@@ -3138,26 +3427,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "رَبَّنَا ظَلَمۡنَآ أَنفُسَنَا وَإِن لَّمۡ تَغۡفِرۡ لَنَا وَتَرۡحَمۡنَا لَنَكُونَنَّ مِنَ ٱلۡخَٰسِرِينَ",
-      "pronunciation": [],
-      "meaning": "پروردگارا، به خود ستم کردیم؛ اگر ما را نیامرزی و بر ما رحم نکنی، از زیانکاران خواهیم بود.",
+      "pronunciation": [
+        "رَبَّنا ظَلَمنا اَنفُسَنا وَ اِن لَم تَغفِر لَنا وَ تَرحَمنا",
+        "لَنَکونَنَّ مِنَ الخاسِرین"
+      ],
+      "meaning": "پروردگارا، ما بر خود ستم کردیم؛ اگر ما را نیامرزی و بر ما رحمت نیاوری، بی‌گمان از زیانکاران خواهیم بود.",
       "practice": "",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "7/23",
+          "book": "قرآن کریم",
+          "reference": "سورهٔ اعراف، آیهٔ ۲۳",
           "url": "https://quran.com/7/23",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "آیهٔ قرآن؛ درجهٔ سند حدیثی موضوعیت ندارد",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran723"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran723"
+        ],
+        "meaning": [
+          "quran723"
+        ],
+        "pronunciation": [
+          "quran723"
+        ]
+      },
+      "arabicSha256": "c383eb7451b7508ab8ff734a38e62ee096860a3ea116a7a010fe5933316c029d"
     },
     {
       "id": "rabbana-forgiveness",
@@ -3165,26 +3471,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "رَبَّنَا ٱغۡفِرۡ لِي وَلِوَٰلِدَيَّ وَلِلۡمُؤۡمِنِينَ يَوۡمَ يَقُومُ ٱلۡحِسَابُ",
-      "pronunciation": [],
-      "meaning": "پروردگارا، روزی که حساب برپا می‌شود، من و پدر و مادرم و مؤمنان را بیامرز.",
+      "pronunciation": [
+        "رَبَّنَا اغفِر لی وَ لِوالِدَیَّ وَ لِلمُؤمِنینَ",
+        "یَومَ یَقومُ الحِساب"
+      ],
+      "meaning": "پروردگارا، در روزی که حساب برپا می‌شود، من و پدر و مادرم و مؤمنان را بیامرز.",
       "practice": "",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "14/41",
+          "book": "قرآن کریم",
+          "reference": "سورهٔ ابراهیم، آیهٔ ۴۱",
           "url": "https://quran.com/14/41",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "آیهٔ قرآن؛ درجهٔ سند حدیثی موضوعیت ندارد",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran1441"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran1441"
+        ],
+        "meaning": [
+          "quran1441"
+        ],
+        "pronunciation": [
+          "quran1441"
+        ]
+      },
+      "arabicSha256": "3becb923e3d073e0b195fdd5ecc5f9e5d36b01c5ac312ffff72d05db0ed3be85"
     },
     {
       "id": "rabbana-family",
@@ -3192,26 +3515,43 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "رَبَّنَا هَبۡ لَنَا مِنۡ أَزۡوَٰجِنَا وَذُرِّيَّٰتِنَا قُرَّةَ أَعۡيُنٖ وَٱجۡعَلۡنَا لِلۡمُتَّقِينَ إِمَامًا",
-      "pronunciation": [],
-      "meaning": "پروردگارا، از همسران و فرزندانمان روشنی چشم به ما ببخش و ما را برای پرهیزگاران پیشوا قرار ده.",
+      "pronunciation": [
+        "رَبَّنا هَب لَنا مِن اَزواجِنا وَ ذُرِّیّاتِنا قُرَّةَ اَعیُن",
+        "وَ اجعَلنا لِلمُتَّقینَ اِماما"
+      ],
+      "meaning": "پروردگارا، از همسران و فرزندانمان مایهٔ روشنی چشم به ما ببخش و ما را برای پرهیزگاران پیشوا و الگو قرار بده.",
       "practice": "",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "25/74",
+          "book": "قرآن کریم",
+          "reference": "سورهٔ فرقان، آیهٔ ۷۴",
           "url": "https://quran.com/25/74",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "آیهٔ قرآن؛ درجهٔ سند حدیثی موضوعیت ندارد",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran2574"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran2574"
+        ],
+        "meaning": [
+          "quran2574"
+        ],
+        "pronunciation": [
+          "quran2574"
+        ]
+      },
+      "arabicSha256": "a8e75968467fffc8da8c37abb731487c7484515bfafc03c626552d735ec8381f"
     }
   ]
 }
