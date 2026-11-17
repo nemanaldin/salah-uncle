@@ -9,26 +9,58 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُ أَكْبَرُ",
-      "pronunciation": [],
-      "meaning": "خدا بزرگ‌تر است.",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُ اَکبَر"
+      ],
+      "meaning": "خدا از هر چیز بزرگ‌تر است.",
+      "practice": "نماز با تکبیر تحریمه آغاز می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "385",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الصلاة، حدیث ۳۸۵",
           "url": "https://sunnah.com/muslim:385",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim385",
+        "nur143"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim385",
+          "nur143"
+        ],
+        "meaning": [
+          "muslim385",
+          "nur143"
+        ],
+        "pronunciation": [
+          "muslim385",
+          "nur143"
+        ],
+        "practice": [
+          "muslim385",
+          "nur143"
+        ]
+      },
+      "arabicSha256": "0f55d2e0475912f34c3a5198ed454c3525e63b40cbc2dddd9ca3d6eda3f69b68"
     },
     {
       "id": "thana",
@@ -36,27 +68,61 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلاَ إِلَهَ غَيْرُكَ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "سُبحانَکَ اَللاهُمَّ وَ بِحَمدِکَ",
+        "وَ تَبارَکَ اسمُکَ وَ تَعالا جَدُّکَ",
+        "وَ لا اِلاهَ غَیرُک"
+      ],
+      "meaning": "خدایا، تو پاک و منزهی و ستایش از آن توست؛ نامت پربرکت و بزرگی‌ات والاست و معبود برحقی جز تو نیست.",
+      "practice": "ثنا پس از تکبیر آغاز نماز خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sunan Abi Dawud",
-          "reference": "775",
+          "book": "سنن ابوداوود",
+          "reference": "کتاب الصلاة، حدیث ۷۷۵",
           "url": "https://sunnah.com/abudawud:775",
           "grade": "SAHIH",
-          "grader": "Al-Albani",
+          "grader": "صحیح نزد آلبانی، مطابق درجهٔ نمایش‌داده‌شده در مأخذ",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "abudawud775",
+        "nur143"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "اصل متن با ابوداوود ۷۷۵ تطبیق شد. نقد ارسالِ سند نیز در همان صفحه آمده؛ درجهٔ نمایش‌داده‌شده، صحیح نزد آلبانی است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "abudawud775",
+          "nur143"
+        ],
+        "meaning": [
+          "abudawud775",
+          "nur143"
+        ],
+        "pronunciation": [
+          "abudawud775",
+          "nur143"
+        ],
+        "practice": [
+          "abudawud775",
+          "nur143"
+        ]
+      },
+      "arabicSha256": "837909547601660a409d90f84fbe71a9dfbdb7131b9742e0778d197e10baf1af"
     },
     {
       "id": "taawwudh-basmala",
@@ -86,26 +152,58 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
-      "pronunciation": [],
+      "pronunciation": [
+        "سُبحانَ رَبّیَ العَظیم"
+      ],
       "meaning": "پروردگار بزرگ من پاک و منزه است.",
-      "practice": "",
+      "practice": "این تسبیح در رکوع خوانده می‌شود؛ در شرح کیفیت نماز حداقلِ تسبیح سه بار آمده است.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "772",
+          "book": "صحیح مسلم",
+          "reference": "صلاة المسافرین، حدیث ۷۷۲",
           "url": "https://sunnah.com/muslim:772",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۴",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/154",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim772",
+        "nur154"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim772",
+          "nur154"
+        ],
+        "meaning": [
+          "muslim772",
+          "nur154"
+        ],
+        "pronunciation": [
+          "muslim772",
+          "nur154"
+        ],
+        "practice": [
+          "muslim772",
+          "nur154"
+        ]
+      },
+      "arabicSha256": "b26e15b6991d0a647fda3ec0e7aa86db7052369b0655014eaa159f989e8a09cc"
     },
     {
       "id": "tasmi-tahmid",
@@ -113,27 +211,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ رَبَّنَا لَكَ الْحَمْدُ",
-      "pronunciation": [],
-      "meaning": "",
+      "pronunciation": [
+        "سَمِعَ اللّاهُ لِمَن حَمِدَه",
+        "رَبَّنا لَکَ الحَمد"
+      ],
+      "meaning": "خداوند حمد کسی را که او را ستایش می‌کند می‌پذیرد؛ پروردگار ما، ستایش از آن توست.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "772",
+          "book": "صحیح مسلم",
+          "reference": "صلاة المسافرین، حدیث ۷۷۲",
           "url": "https://sunnah.com/muslim:772",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
       "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+        "hanafi_practice"
       ],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "muslim772"
+      ],
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim772"
+        ],
+        "meaning": [
+          "muslim772"
+        ],
+        "pronunciation": [
+          "muslim772"
+        ]
+      },
+      "arabicSha256": "3bf72d11c95e16f536128215cc089e946accb241383f28e3b964818e48476a06"
     },
     {
       "id": "sujud",
@@ -141,26 +257,58 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَ رَبِّيَ الأَعْلَى",
-      "pronunciation": [],
+      "pronunciation": [
+        "سُبحانَ رَبّیَ الاَعلا"
+      ],
       "meaning": "پروردگار برترین من پاک و منزه است.",
-      "practice": "",
+      "practice": "این تسبیح در سجده خوانده می‌شود؛ در شرح کیفیت نماز سه بار ذکر شده است.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "772",
+          "book": "صحیح مسلم",
+          "reference": "صلاة المسافرین، حدیث ۷۷۲",
           "url": "https://sunnah.com/muslim:772",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۴",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/154",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim772",
+        "nur154"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim772",
+          "nur154"
+        ],
+        "meaning": [
+          "muslim772",
+          "nur154"
+        ],
+        "pronunciation": [
+          "muslim772",
+          "nur154"
+        ],
+        "practice": [
+          "muslim772",
+          "nur154"
+        ]
+      },
+      "arabicSha256": "37d951dbf51ddade019d1d519db4c684f77bc80aac2e1db39fdb8cbb33e56977"
     },
     {
       "id": "tashahhud",
@@ -168,27 +316,59 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلاَمُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلاَمُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ، أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
-      "pronunciation": [],
-      "meaning": "",
+      "pronunciation": [
+        "اَتَّحیّاتُ لِلّاهِ وَصَّلَواتُ وَطَّیِّبات",
+        "اَسَّلامُ عَلَیکَ اَیُّهَنَّبِیُّ وَ رَحمَتُ اللّاهِ وَ بَرَکاتُه",
+        "اَسَّلامُ عَلَینا وَ عَلا عِبادِ اللّاهِ الصّالِحین",
+        "اَشهَدُ اَن لا اِلاهَ اِلَّا اللّاهُ وَ اَشهَدُ اَنَّ مُحَمَّداً عَبدُهُ وَ رَسولُه"
+      ],
+      "meaning": "همهٔ تحیت‌ها، نمازها و پاکیزگی‌ها از آن خداست. ای پیامبر، سلام و رحمت و برکات خدا بر تو باد. سلام بر ما و بر بندگان شایستهٔ خدا باد. گواهی می‌دهم که معبود برحقی جز خدا نیست و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
       "practice": "",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "6265",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الاستئذان، حدیث ۶۲۶۵",
           "url": "https://sunnah.com/bukhari:6265",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
       "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+        "hanafi_practice"
       ],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "bukhari6265",
+        "nur156"
+      ],
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari6265",
+          "nur156"
+        ],
+        "meaning": [
+          "bukhari6265",
+          "nur156"
+        ],
+        "pronunciation": [
+          "bukhari6265",
+          "nur156"
+        ]
+      },
+      "arabicSha256": "d8642d97c10ff3500204780f785a63558407779937dc48e7a35233170b344d44"
     },
     {
       "id": "salawat",
@@ -196,27 +376,61 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ، وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ، وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ، وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ صَلِّ عَلا مُحَمَّدِن وَ عَلا آلِ مُحَمَّد",
+        "کَما صَلَّیتَ عَلا اِبراهیمَ وَ عَلا آلِ اِبراهیمَ اِنَّکَ حَمیدُم مَجید",
+        "اَللاهُمَّ بارِک عَلا مُحَمَّدِن وَ عَلا آلِ مُحَمَّد",
+        "کَما بارَکتَ عَلا اِبراهیمَ وَ عَلا آلِ اِبراهیمَ اِنَّکَ حَمیدُم مَجید"
+      ],
+      "meaning": "خدایا، بر محمد و خاندان محمد درود فرست، چنان‌که بر ابراهیم و خاندان ابراهیم درود فرستادی؛ تو ستوده و بزرگواری. خدایا، به محمد و خاندان محمد برکت عطا کن، چنان‌که به ابراهیم و خاندان ابراهیم برکت دادی؛ تو ستوده و بزرگواری.",
+      "practice": "در نشست پایانی، پس از تشهد صلوات خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "3370",
+          "book": "صحیح بخاری",
+          "reference": "احادیث الأنبیاء، حدیث ۳۳۷۰",
           "url": "https://sunnah.com/bukhari:3370",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari3370",
+        "nur156"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari3370",
+          "nur156"
+        ],
+        "meaning": [
+          "bukhari3370",
+          "nur156"
+        ],
+        "pronunciation": [
+          "bukhari3370",
+          "nur156"
+        ],
+        "practice": [
+          "bukhari3370",
+          "nur156"
+        ]
+      },
+      "arabicSha256": "499709129ae8bb0306fc18d682451a4916a705afd56a8e456365a76b015ca5d5"
     },
     {
       "id": "rabbana-prayer",
@@ -224,26 +438,58 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "رَبَّنَآ ءَاتِنَا فِي ٱلدُّنۡيَا حَسَنَةٗ وَفِي ٱلۡأٓخِرَةِ حَسَنَةٗ وَقِنَا عَذَابَ ٱلنَّارِ",
-      "pronunciation": [],
-      "meaning": "پروردگارا، در دنیا به ما نیکی و در آخرت نیکی عطا کن و ما را از عذاب آتش حفظ کن.",
-      "practice": "",
+      "pronunciation": [
+        "رَبَّنا آتِنا فِدُّنیا حَسَنَتَن وَ فِلآخِرَةِ حَسَنَتَن وَ قِنا عَذابَنّار"
+      ],
+      "meaning": "پروردگار ما، در دنیا و آخرت به ما نیکی عطا کن و ما را از عذاب آتش نگاه دار.",
+      "practice": "از دعاهای قرآنی است؛ در پایان نماز، پس از تشهد و صلوات، دعا با الفاظ قرآن و سنت خوانده می‌شود.",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "2/201",
+          "book": "قرآن کریم",
+          "reference": "بقره، آیهٔ ۲۰۱",
           "url": "https://quran.com/2/201",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran2201",
+        "nur156"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran2201",
+          "nur156"
+        ],
+        "meaning": [
+          "quran2201",
+          "nur156"
+        ],
+        "pronunciation": [
+          "quran2201",
+          "nur156"
+        ],
+        "practice": [
+          "quran2201",
+          "nur156"
+        ]
+      },
+      "arabicSha256": "fb86d2f7524554ea442f09e313ac103aa5b2636a9f22f2d3b866d069573631fa"
     },
     {
       "id": "zalamtu",
@@ -251,27 +497,60 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ، فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ، وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيمُ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ اِنّی ظَلَمتُ نَفسی ظُلمَن کَثیرا",
+        "وَ لا یَغفِرُذُّنوبَ اِلّا اَنتَ فَغفِر لی مَغفِرَتَن مِن عِندِکَ",
+        "وَرحَمنی اِنَّکَ اَنتَ الغَفورُرَّحیم"
+      ],
+      "meaning": "خدایا، به خود ستم بسیار کرده‌ام و جز تو کسی گناهان را نمی‌آمرزد؛ از جانب خود مرا بیامرز و به من رحم کن؛ تویی آمرزندهٔ مهربان.",
+      "practice": "این دعای مأثور، پیش از سلام نماز خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "834",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الأذان، حدیث ۸۳۴",
           "url": "https://sunnah.com/bukhari:834",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari834",
+        "nur156"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari834",
+          "nur156"
+        ],
+        "meaning": [
+          "bukhari834",
+          "nur156"
+        ],
+        "pronunciation": [
+          "bukhari834",
+          "nur156"
+        ],
+        "practice": [
+          "bukhari834",
+          "nur156"
+        ]
+      },
+      "arabicSha256": "d3b026d401979d5920a7eae816f033da87a97db13270e2b3b94454111cd424af"
     },
     {
       "id": "salam",
@@ -279,26 +558,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ",
-      "pronunciation": [],
+      "pronunciation": [
+        "اَسَّلامُ عَلَیکُم وَ رَحمَتُ اللّاه"
+      ],
       "meaning": "سلام و رحمت خدا بر شما باد.",
-      "practice": "",
+      "practice": "نمازگزار ابتدا به راست و سپس به چپ سلام می‌دهد؛ متن سلام برای هر دو سمت همین است.",
       "sources": [
         {
-          "book": "Sunan Abi Dawud",
-          "reference": "996",
-          "url": "https://sunnah.com/abudawud:996",
-          "grade": "SAHIH",
-          "grader": "Al-Albani",
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۶",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/156",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "nur156"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "nur156"
+        ],
+        "meaning": [
+          "nur156"
+        ],
+        "pronunciation": [
+          "nur156"
+        ],
+        "practice": [
+          "nur156"
+        ]
+      },
+      "arabicSha256": "840a49e62d168fa39b19e3fa3271c053fd700a2b34b276bad8e01c3ae63b6871"
     },
     {
       "id": "witr-qunut",
@@ -328,26 +626,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "لاَ حَوْلَ وَلاَ قُوَّةَ إِلاَّ بِاللَّهِ",
-      "pronunciation": [],
+      "pronunciation": [
+        "لا حَولَ وَ لا قُوَّتَ اِلّا بِاللّاه"
+      ],
       "meaning": "هیچ توان و نیرویی جز به یاری خدا نیست.",
-      "practice": "",
+      "practice": "پاسخ اذان با تکرار گفته‌های مؤذن است؛ هنگام «حی علی الصلاة» و «حی علی الفلاح» این ذکر گفته می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "385",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الصلاة، حدیث ۳۸۵",
           "url": "https://sunnah.com/muslim:385",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim385"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim385"
+        ],
+        "meaning": [
+          "muslim385"
+        ],
+        "pronunciation": [
+          "muslim385"
+        ],
+        "practice": [
+          "muslim385"
+        ]
+      },
+      "arabicSha256": "a8e6d5234a3ff1db28da4a622387cc84be1ad574b3d3c30cfc83d5deeee88982"
     },
     {
       "id": "after-adhan",
@@ -355,27 +672,47 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ وَالصَّلاَةِ الْقَائِمَةِ آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ رَبَّ هاذِهِدَّعوَتِتّامَّةِ وَصَّلاتِ القائِمَة",
+        "آتِ مُحَمَّدَنِ الوَسیلَةَ وَالفَضیلَة",
+        "وَبعَثهُ مَقامَن مَحمودَنِ الَّذی وَعَدتَه"
+      ],
+      "meaning": "خدایا، ای پروردگار این دعوت کامل و نماز برپاشونده، به محمد وسیله و فضیلت عطا کن و او را به مقام ستوده‌ای که وعده‌اش داده‌ای برانگیز.",
+      "practice": "این دعا پس از شنیدن اذان خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sahih al-Bukhari",
-          "reference": "614",
+          "book": "صحیح بخاری",
+          "reference": "کتاب الأذان، حدیث ۶۱۴",
           "url": "https://sunnah.com/bukhari:614",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "bukhari614"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "bukhari614"
+        ],
+        "meaning": [
+          "bukhari614"
+        ],
+        "pronunciation": [
+          "bukhari614"
+        ],
+        "practice": [
+          "bukhari614"
+        ]
+      },
+      "arabicSha256": "4d25c400db93f8946fc9c97fe64ac400cdf3f888af9ecde9a9a04cd973f3fbc1"
     },
     {
       "id": "start-wudu",
@@ -405,27 +742,46 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "أَشْهَدُ أَنْ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "اَشهَدُ اَن لا اِلاهَ اِلَّا اللّاهُ وَحدَهُ لا شَریکَ لَه",
+        "وَ اَشهَدُ اَنَّ مُحَمَّدَن عَبدُهُ وَ رَسولُه"
+      ],
+      "meaning": "گواهی می‌دهم که جز خدا معبود برحقی نیست؛ او یگانه و بی‌شریک است؛ و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
+      "practice": "این شهادتین پس از پایان وضو خوانده می‌شود؛ متن آن به همان مدخلِ مرتبط با آموزش وضو متصل است.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "234b",
+          "book": "صحیح مسلم",
+          "reference": "کتاب الطهارة، حدیث ۲۳۴ب",
           "url": "https://sunnah.com/muslim:234b",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim234b"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim234b"
+        ],
+        "meaning": [
+          "muslim234b"
+        ],
+        "pronunciation": [
+          "muslim234b"
+        ],
+        "practice": [
+          "muslim234b"
+        ]
+      },
+      "arabicSha256": "e9c40909b3c1a7e92a7c29adcef67c672af4872297a9bacd4b1b06ca49d6c0cd"
     },
     {
       "id": "mosque-enter",
@@ -433,26 +789,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ",
-      "pronunciation": [],
-      "meaning": "خدایا، درهای رحمتت را به رویم بگشا.",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ افتَح لی اَبوابَ رَحمَتِک"
+      ],
+      "meaning": "خدایا، درهای رحمتت را به روی من بگشا.",
+      "practice": "هنگام ورود به مسجد خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "713a",
+          "book": "صحیح مسلم",
+          "reference": "صلاة المسافرین، حدیث ۷۱۳الف",
           "url": "https://sunnah.com/muslim:713a",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim713a"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim713a"
+        ],
+        "meaning": [
+          "muslim713a"
+        ],
+        "pronunciation": [
+          "muslim713a"
+        ],
+        "practice": [
+          "muslim713a"
+        ]
+      },
+      "arabicSha256": "ba5d9d688cc88dfd23eb9d17f413355f889801ddceb508c4adf94b44c51bc069"
     },
     {
       "id": "mosque-exit",
@@ -460,26 +835,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ",
-      "pronunciation": [],
-      "meaning": "خدایا، از فضل تو می‌خواهم.",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ اِنّی اَسئَلُکَ مِن فَضلِک"
+      ],
+      "meaning": "خدایا، از فضل تو درخواست می‌کنم.",
+      "practice": "هنگام خروج از مسجد خوانده می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "713a",
+          "book": "صحیح مسلم",
+          "reference": "صلاة المسافرین، حدیث ۷۱۳الف",
           "url": "https://sunnah.com/muslim:713a",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim713a"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim713a"
+        ],
+        "meaning": [
+          "muslim713a"
+        ],
+        "pronunciation": [
+          "muslim713a"
+        ],
+        "practice": [
+          "muslim713a"
+        ]
+      },
+      "arabicSha256": "08cc07bfe5d00b020184279df823c77bf15f2dd4d154e4cc0ae155ea940ca788"
     },
     {
       "id": "anta-salam",
@@ -487,26 +881,46 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ تَبَارَكْتَ ذَا الْجَلاَلِ وَالإِكْرَامِ",
-      "pronunciation": [],
-      "meaning": "خدایا، تو سلامی و سلامتی از توست؛ پربرکتی، ای صاحب شکوه و بزرگواری.",
-      "practice": "",
+      "pronunciation": [
+        "اَللاهُمَّ اَنتَسَّلامُ وَ مِنکَسَّلام",
+        "تَبارَکتَ ذَلجَلالِ وَالاِکرام"
+      ],
+      "meaning": "خدایا، تو از هر نقصی پیراسته‌ای و سلامتی از توست؛ پربرکتی، ای صاحب شکوه و بزرگواری.",
+      "practice": "از ذکرهای پس از پایان نماز است؛ ترتیب با سنتِ بعد از فرض در موضوع جداگانه آمده است.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "591",
+          "book": "صحیح مسلم",
+          "reference": "المساجد ومواضع الصلاة، حدیث ۵۹۱",
           "url": "https://sunnah.com/muslim:591",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim591"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim591"
+        ],
+        "meaning": [
+          "muslim591"
+        ],
+        "pronunciation": [
+          "muslim591"
+        ],
+        "practice": [
+          "muslim591"
+        ]
+      },
+      "arabicSha256": "3840c67e4e5a5e049559fab53d9d6c6f134a9da0104eefb5b918eb48ee2f030d"
     },
     {
       "id": "istighfar-three",
@@ -514,26 +928,45 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "أَسْتَغْفِرُ اللَّهَ",
-      "pronunciation": [],
+      "pronunciation": [
+        "اَستَغفِرُ اللّاه"
+      ],
       "meaning": "از خدا آمرزش می‌خواهم.",
-      "practice": "",
+      "practice": "پس از پایان نماز سه بار استغفار گفته می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "591",
+          "book": "صحیح مسلم",
+          "reference": "المساجد ومواضع الصلاة، حدیث ۵۹۱",
           "url": "https://sunnah.com/muslim:591",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim591"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim591"
+        ],
+        "meaning": [
+          "muslim591"
+        ],
+        "pronunciation": [
+          "muslim591"
+        ],
+        "practice": [
+          "muslim591"
+        ]
+      },
+      "arabicSha256": "9ef913a347672f03b6c0b851c3a052ebd52c61a9ff40c76f1e76d932d031117f"
     },
     {
       "id": "ayat-kursi",
@@ -541,27 +974,50 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلۡحَيُّ ٱلۡقَيُّومُۚ لَا تَأۡخُذُهُۥ سِنَةٞ وَلَا نَوۡمٞۚ لَّهُۥ مَا فِي ٱلسَّمَٰوَٰتِ وَمَا فِي ٱلۡأَرۡضِۗ مَن ذَا ٱلَّذِي يَشۡفَعُ عِندَهُۥٓ إِلَّا بِإِذۡنِهِۦۚ يَعۡلَمُ مَا بَيۡنَ أَيۡدِيهِمۡ وَمَا خَلۡفَهُمۡۖ وَلَا يُحِيطُونَ بِشَيۡءٖ مِّنۡ عِلۡمِهِۦٓ إِلَّا بِمَا شَآءَۚ وَسِعَ كُرۡسِيُّهُ ٱلسَّمَٰوَٰتِ وَٱلۡأَرۡضَۖ وَلَا يَـُٔودُهُۥ حِفۡظُهُمَاۚ وَهُوَ ٱلۡعَلِيُّ ٱلۡعَظِيمُ",
-      "pronunciation": [],
-      "meaning": "",
+      "pronunciation": [
+        "اَللاهُ لا اِلاهَ اِلّا هُوَ الحَیُّ القَیّوم",
+        "لا تَأخُذُهُ سِنَتُن وَ لا نَوم؛ لَهُ ما فِسَّماواتِ وَ ما فِلاَرض",
+        "مَن ذَلَّذی یَشفَعُ عِندَهُ اِلّا بِاِذنِه",
+        "یَعلَمُ ما بَینَ اَیدیهِم وَ ما خَلفَهُم",
+        "وَ لا یُحیطونَ بِشَیئِن مِن عِلمِهِ اِلّا بِما شاء",
+        "وَسِعَ کُرسِیُّهُسَّماواتِ وَالاَرض",
+        "وَ لا یَؤودُهُ حِفظُهُما وَ هُوَ العَلِیُّ العَظیم"
+      ],
+      "meaning": "خداست که جز او معبودی نیست؛ زنده و برپادارنده است. نه چرت او را می‌گیرد و نه خواب. آنچه در آسمان‌ها و زمین است از آن اوست. چه کسی جز با اجازهٔ او نزدش شفاعت می‌کند؟ آنچه پیش روی آنان و پشت سرشان است می‌داند؛ و جز به آنچه بخواهد، به چیزی از دانش او احاطه نمی‌یابند. کرسی او آسمان‌ها و زمین را فراگرفته و نگهداری آن دو او را خسته نمی‌کند؛ او بلندمرتبه و بزرگ است.",
       "practice": "",
       "sources": [
         {
-          "book": "Quran",
-          "reference": "2/255",
+          "book": "قرآن کریم",
+          "reference": "بقره، آیهٔ ۲۵۵",
           "url": "https://quran.com/2/255",
           "grade": "QURAN",
-          "grader": "Quranic verse; hadith grading does not apply",
+          "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
           "checked": true
         }
       ],
       "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+        "hanafi_practice"
       ],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "quran2255"
+      ],
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran2255"
+        ],
+        "meaning": [
+          "quran2255"
+        ],
+        "pronunciation": [
+          "quran2255"
+        ]
+      },
+      "arabicSha256": "cbf4c2fa9d4a8d2cdb3c56828949d1a36b5fceb218c06ab04f9401cb4e4636f6"
     },
     {
       "id": "tasbihat",
@@ -569,27 +1025,73 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "سُبْحَانَ اللَّهِ\nالْحَمْدُ لِلَّهِ\nاللَّهُ أَكْبَرُ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "سُبحانَ اللّاه",
+        "اَلحَمدُ لِلّاه",
+        "اَللاهُ اَکبَر"
+      ],
+      "meaning": "خدا پاک و منزه است؛ همهٔ ستایش‌ها از آن خداست؛ خدا بزرگ‌تر است.",
+      "practice": "۳۳ بار تسبیح، ۳۳ بار تحمید و ۳۴ بار تکبیر از ذکرهای پس از نماز فرض است؛ ترتیب نسبت به سنتِ بعد از فرض در موضوع جداگانه توضیح داده می‌شود.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "596a",
+          "book": "صحیح مسلم",
+          "reference": "المساجد ومواضع الصلاة، حدیث ۵۹۶الف",
           "url": "https://sunnah.com/muslim:596a",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "صحیح مسلم",
+          "reference": "کتاب الطهارة، حدیث ۲۲۳",
+          "url": "https://sunnah.com/muslim:223",
+          "grade": "SAHIH",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        },
+        {
+          "book": "صحیح مسلم",
+          "reference": "کتاب الصلاة، حدیث ۳۸۵",
+          "url": "https://sunnah.com/muslim:385",
+          "grade": "SAHIH",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim596a",
+        "muslim223",
+        "muslim385"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim596a",
+          "muslim223",
+          "muslim385"
+        ],
+        "meaning": [
+          "muslim596a",
+          "muslim223",
+          "muslim385"
+        ],
+        "pronunciation": [
+          "muslim596a",
+          "muslim223",
+          "muslim385"
+        ],
+        "practice": [
+          "muslim596a",
+          "muslim223",
+          "muslim385"
+        ]
+      },
+      "arabicSha256": "561d2b042edc12b83c9b8283206a28a1b31667428f95b155d276334ce3c4cfaf"
     },
     {
       "id": "tahlil-after",
@@ -597,27 +1099,48 @@
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
       "arabic": "لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَىْءٍ قَدِيرٌ اللَّهُمَّ لاَ مَانِعَ لِمَا أَعْطَيْتَ وَلاَ مُعْطِيَ لِمَا مَنَعْتَ وَلاَ يَنْفَعُ ذَا الْجَدِّ مِنْكَ الْجَدُّ",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
+      "pronunciation": [
+        "لا اِلاهَ اِلَّا اللّاهُ وَحدَهُ لا شَریکَ لَه",
+        "لَهُ المُلکُ وَ لَهُ الحَمدُ وَ هُوَ عَلا کُلِّ شَیئِن قَدیر",
+        "اَللاهُمَّ لا مانِعَ لِما اَعطَیتَ وَ لا مُعطِیَ لِما مَنَعت",
+        "وَ لا یَنفَعُ ذَلجَدِّ مِنکَ الجَد"
+      ],
+      "meaning": "جز خدا معبود برحقی نیست؛ یگانه و بی‌شریک است. فرمانروایی و ستایش از آن اوست و بر هر چیز تواناست. خدایا، آنچه عطا کنی کسی نمی‌تواند بازدارد و آنچه بازداری کسی نمی‌تواند عطا کند؛ توانگریِ هیچ توانگری در برابر تو سودی به او نمی‌رساند.",
+      "practice": "از ذکرهای مأثورِ پس از پایان نماز است.",
       "sources": [
         {
-          "book": "Sahih Muslim",
-          "reference": "593a",
+          "book": "صحیح مسلم",
+          "reference": "المساجد ومواضع الصلاة، حدیث ۵۹۳الف",
           "url": "https://sunnah.com/muslim:593a",
           "grade": "SAHIH",
-          "grader": "Sahih collection",
+          "grader": "مجموعهٔ صحیح",
           "checked": true
         }
       ],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "meaning"
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "muslim593a"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "muslim593a"
+        ],
+        "meaning": [
+          "muslim593a"
+        ],
+        "pronunciation": [
+          "muslim593a"
+        ],
+        "practice": [
+          "muslim593a"
+        ]
+      },
+      "arabicSha256": "015d66a71aededd88c9bd336dbfb891add93767b4937cbd8f7166a2ef84b1e4d"
     },
     {
       "id": "individual-dua",
