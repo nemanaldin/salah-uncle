@@ -10,7 +10,7 @@ data class StageArt(val sourceLessonId: String, val stepId: String, val cell: In
     val displayable: Boolean = true, val requiresPoseReview: Boolean = false,
     val status: IllustrationStatus = IllustrationStatus.DRAFT_PENDING_OWNER_REVIEW, val asset: StageArtAsset = StageArtAsset.ATLAS) {
     fun alt(language: AppLanguage) = when (language) {
-        AppLanguage.PERSIAN -> altFa
+        AppLanguage.PERSIAN -> altFa.substringBefore('؛')
         AppLanguage.TURKISH -> altTr
         else -> altEn
     }

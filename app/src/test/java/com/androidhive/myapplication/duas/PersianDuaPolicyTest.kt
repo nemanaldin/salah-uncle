@@ -55,4 +55,21 @@ class PersianDuaPolicyTest {
         assertEquals("عربي\nمعنی", duaNotificationText(item().forLanguage("fa"), "fa", "draft"))
         assertTrue(duaNotificationText(item(), "en", "draft").endsWith("draft"))
     }
+    @Test fun emptyPersianResearchEntriesRemainInDataButNotInReadingLists() {
+        val original = catalog(content.copy(arabic = "", practice = "", missingFields = setOf("arabic")))
+        assertEquals(1, original.items.size)
+        assertTrue(original.forLanguage("fa").items.isEmpty())
+        assertTrue(original.forLanguage("fa").section("section")!!.duaIds.isEmpty())
+        assertSame(original, original.forLanguage("en"))
+    }
+    @Test fun aSourcedMethodDoesNotNeedAnInventedArabicFormulaToStayVisible() {
+        val original = catalog(content.copy(arabic = "", pronunciation = emptyList(), kind = "practice", practice = "روش"))
+        assertEquals("روش", original.forLanguage("fa").items.single().note("fa"))
+    }
+    @Test fun persianImageDescriptionsDoNotExposeEditorialFlagsButKeepInternalFlags() {
+        val art = com.androidhive.myapplication.data.content.StageArtCatalog.entries.first { "بازبینی" in it.altFa }
+        assertFalse(art.alt(com.androidhive.myapplication.core.model.AppLanguage.PERSIAN).contains("بازبینی"))
+        assertTrue(art.alt(com.androidhive.myapplication.core.model.AppLanguage.ENGLISH).contains("review"))
+        assertTrue(art.requiresPoseReview)
+    }
 }

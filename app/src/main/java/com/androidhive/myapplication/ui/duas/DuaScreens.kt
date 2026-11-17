@@ -213,7 +213,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
         if (tag !in item.titles) SupportingText(stringResource(R.string.ui_dua_title_fallback))
         if (showEditorialStatus(tag) && item.reviewFields.isNotEmpty()) InfoCard(review)
         if (item.guidance) InfoCard(stringResource(R.string.ui_dua_guidance_note))
-        AppCard {
+        if (item.arabic.isNotBlank() || showEditorialStatus(tag)) AppCard {
             SectionTitle(stringResource(if (item.guidance) R.string.ui_dua_hadith_evidence else R.string.ui_dua_arabic))
             if (item.arabic.isBlank()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
             else {
@@ -233,7 +233,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
                 }
             }
         }
-        AppCard {
+        if (meaning.isNotBlank() || item.pronunciations[tag].orEmpty().isNotEmpty() || showEditorialStatus(tag)) AppCard {
             SectionTitle(stringResource(R.string.ui_dua_pronunciation))
             val lines = item.pronunciations[tag].orEmpty()
             if (lines.isEmpty()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
@@ -244,7 +244,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
                 if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_translation_draft)) }
         }
         if (item.note(tag).isNotBlank()) InfoCard(item.note(tag))
-        AppCard {
+        if (item.sources.isNotEmpty() || showEditorialStatus(tag)) AppCard {
             SectionTitle(sourceLabel)
             if (item.sources.isEmpty() && showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing))
             item.sources.forEach { source ->

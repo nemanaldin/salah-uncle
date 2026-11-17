@@ -129,22 +129,61 @@
       "title": "تعوذ و بسمله",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ\nبِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+      "pronunciation": [
+        "اَعوذُ بِاللّاهِ مِنَشَّیطانِرَّجیم",
+        "بِسمِ اللّاهِرَّحمانِرَّحیم"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "از شیطان رانده‌شده به خدا پناه می‌برم. به نام خدای بخشایندهٔ مهربان.",
+      "practice": "امام و نمازگزارِ تنها، پس از ثنا برای قرائت تعوذ می‌گویند؛ تسمیه در آغاز هر رکعت پیش از فاتحه خوانده می‌شود.",
+      "sources": [
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل سنن نماز؛ نشانی صفحهٔ وب ۱۴۳",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/143",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ درجهٔ حدیثی به کتاب نسبت داده نشده است",
+          "checked": true
+        },
+        {
+          "book": "قرآن کریم",
+          "reference": "فاتحه، آیهٔ ۱",
+          "url": "https://quran.com/1/1",
+          "grade": "QURAN",
+          "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "nur143",
+        "quran11"
+      ],
+      "internalNotes": [
+        "لفظ تعوذ از قولِ ظاهر مذهب در صفحهٔ ۱۴۳ است؛ اعراب و خوانش، ارائهٔ ویراستاریِ همان عبارت است. مقتدی قرائت مستقل ندارد؛ جایگاه تعوذ را با نقش امام/منفرد اشتباه نکنید.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "nur143",
+          "quran11"
+        ],
+        "meaning": [
+          "nur143",
+          "quran11"
+        ],
+        "pronunciation": [
+          "nur143",
+          "quran11"
+        ],
+        "practice": [
+          "nur143",
+          "quran11"
+        ]
+      },
+      "arabicSha256": "d53b34abcfd917c750e6e4e87d5e219114cfe02be8ff7f405d5535ded6779fc9"
     },
     {
       "id": "ruku",
@@ -603,22 +642,64 @@
       "title": "دعای قنوت وتر",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنُؤْمِنُ بِكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ\nاللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَإِلَيْكَ نَسْعَى وَنَحْفِدُ نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
+      "pronunciation": [
+        "اَللاهُمَّ اِنّا نَستَعینُکَ وَ نَستَغفِرُکَ وَ نُؤمِنُ بِکَ وَ نَتَوَکَّلُ عَلَیک",
+        "وَ نُثنی عَلَیکَ الخَیرَ کُلَّهُ نَشکُرُکَ وَ لا نَکفُرُکَ وَ نَخلَعُ وَ نَترُکُ مَن یَفجُرُک",
+        "اَللاهُمَّ اِیّاکَ نَعبُدُ وَ لَکَ نُصَلّی وَ نَسجُدُ وَ اِلَیکَ نَسعا وَ نَحفِد",
+        "نَرجو رَحمَتَکَ وَ نَخشا عَذابَکَ اِنَّ عَذابَکَ بِالکُفّارِ مُلحِق"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "خدایا، از تو یاری و آمرزش می‌خواهیم؛ به تو ایمان داریم، بر تو توکل می‌کنیم و تو را به همهٔ نیکی‌ها می‌ستاییم. سپاست می‌گوییم و ناسپاسی‌ات نمی‌کنیم و از کسی که نافرمانی‌ات کند کناره می‌گیریم. خدایا، تنها تو را می‌پرستیم؛ برای تو نماز می‌خوانیم و سجده می‌کنیم و به سوی تو می‌کوشیم و در بندگی‌ات شتاب می‌کنیم. به رحمتت امید داریم و از عذابت می‌ترسیم؛ عذابت به کافران می‌رسد.",
+      "practice": "در رکعت سوم وتر، پس از قرائت فاتحه و سوره و پیش از رکوع، تکبیر گفته می‌شود و قنوت در حال ایستاده خوانده می‌شود.",
+      "sources": [
+        {
+          "book": "فتوای حنفی AskImam؛ نقل از البحر الرائق",
+          "reference": "عنوان Which is the correct Dua-e-Qunoot؛ نقل البحر الرائق ۲/۴۵ در خود صفحه",
+          "url": "https://islamqa.org/hanafi/askimam/102830/which-is-the-correct-dua-e-qunoot/",
+          "grade": "FIQH",
+          "grader": "ضبط فقهی مشهور؛ درجهٔ حدیث مرفوع برای این مجموعه جعل نشده است",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "باب الوتر؛ نشانی صفحهٔ وب ۱۹۵",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/195",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "qunut-hanafi",
+        "nur195"
+      ],
+      "internalNotes": [
+        "ضبط مشهورِ نقل‌شده از البحر الرائق در فتوای بازشده انتخاب شد؛ نه تلفیق دو ضبط. در نور الإیضاح عبارات ونستهديك ونتوب إليك و نیز الجد آمده است؛ این‌ها اختلاف ضبط‌اند و برای مالک در PDF ثبت می‌شوند.",
+        "صفحهٔ ۱۹۸ مراقی الفلاح مُلحِق را با کسر حاء افصح می‌داند و فتح آن را نیز نقل می‌کند. درجهٔ صحیح یا حسن برای مجموعهٔ این لفظ ادعا نشده؛ مستند انتخاب، فقه حنفی است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "qunut-hanafi",
+          "nur195"
+        ],
+        "meaning": [
+          "qunut-hanafi",
+          "nur195"
+        ],
+        "pronunciation": [
+          "qunut-hanafi",
+          "nur195"
+        ],
+        "practice": [
+          "qunut-hanafi",
+          "nur195"
+        ]
+      },
+      "arabicSha256": "cdf8b113d0598abed90d62280f2d11a49858c7bf9fa1d0bb00a9e919accaa52d"
     },
     {
       "id": "adhan-response",
@@ -719,22 +800,59 @@
       "title": "شروع وضو",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ",
+      "pronunciation": [
+        "بِسمِ اللّاهِرَّحمانِرَّحیم"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "به نام خدای بخشایندهٔ مهربان.",
+      "practice": "در آغاز وضو نام خدا گفته می‌شود؛ در مرجع حنفی، بسم الله الرحمن الرحیم به‌عنوان لفظ برترِ تسمیه ذکر شده است.",
+      "sources": [
+        {
+          "book": "قرآن کریم",
+          "reference": "فاتحه، آیهٔ ۱",
+          "url": "https://quran.com/1/1",
+          "grade": "QURAN",
+          "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل سنن وضو؛ نشانی صفحهٔ وب ۵۱",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/51",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran11",
+        "nur51"
+      ],
+      "internalNotes": [
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran11",
+          "nur51"
+        ],
+        "meaning": [
+          "quran11",
+          "nur51"
+        ],
+        "pronunciation": [
+          "quran11",
+          "nur51"
+        ],
+        "practice": [
+          "quran11",
+          "nur51"
+        ]
+      },
+      "arabicSha256": "189b463d3e3a9730e6f81a654b86a8211e1c41361ce5a6a371293e0a19be96eb"
     },
     {
       "id": "after-wudu",
@@ -1147,44 +1265,105 @@
       "title": "دعای فردی",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "رَبَّنَآ ءَاتِنَا فِي ٱلدُّنۡيَا حَسَنَةٗ وَفِي ٱلۡأٓخِرَةِ حَسَنَةٗ وَقِنَا عَذَابَ ٱلنَّارِ",
+      "pronunciation": [
+        "رَبَّنا آتِنا فِدُّنیا حَسَنَتَن وَ فِلآخِرَةِ حَسَنَتَن وَ قِنا عَذابَنّار"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "پروردگار ما، در دنیا و آخرت به ما نیکی عطا کن و ما را از عذاب آتش نگاه دار.",
+      "practice": "این دعای قرآنی یک نمونه برای دعای فردی است؛ در نمازهای دارای سنت بعد از فرض، راهنمای ترتیبِ ذکر و سنت را نیز ببینید.",
+      "sources": [
+        {
+          "book": "قرآن کریم",
+          "reference": "بقره، آیهٔ ۲۰۱",
+          "url": "https://quran.com/2/201",
+          "grade": "QURAN",
+          "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
+          "checked": true
+        },
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "quran2201",
+        "nur170"
+      ],
+      "internalNotes": [
+        "این نمونه به‌عنوان صیغهٔ الزامی یا دعای ویژهٔ ثابتِ بعد از نماز به پیامبر نسبت داده نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "quran2201",
+          "nur170"
+        ],
+        "meaning": [
+          "quran2201",
+          "nur170"
+        ],
+        "pronunciation": [
+          "quran2201",
+          "nur170"
+        ],
+        "practice": [
+          "quran2201",
+          "nur170"
+        ]
+      },
+      "arabicSha256": "fb86d2f7524554ea442f09e313ac103aa5b2636a9f22f2d3b866d069573631fa"
     },
     {
       "id": "after-fard-order",
       "title": "ترتیب اذکار و سنت بعد از فرض",
       "reviewStatus": "pending_owner_review",
-      "kind": "dua",
+      "kind": "practice",
       "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "pronunciation": [
+        ""
       ],
+      "meaning": "در نمازهایی که پس از فرض، سنت دارند، فاصلهٔ کوتاه با ذکر و سپس پرداختن به سنت در مرجع حنفی آمده است.",
+      "practice": "پس از فرضِ ظهر، مغرب و عشاء، ذکر کوتاهِ «اللهم أنت السلام...» خوانده می‌شود و سپس سنت ادا می‌شود. اوراد طولانی‌تر، از جمله تسبیحات، پس از سنت خوانده شوند تا میان فرض و سنت فاصلهٔ طولانی نیفتد.",
+      "sources": [
+        {
+          "book": "نور الإیضاح مع مراقی الفلاح",
+          "reference": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
+          "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "nur170"
+      ],
+      "internalNotes": [
+        "مراقی الفلاح، قول حَلوانی در جواز خواندن اوراد بین فرض و سنت را نیز نقل می‌کند؛ عبارت آموزشی، ترتیبِ ترجیح‌داده‌شده در همین فصل را بیان می‌کند و قول دیگر حذف نشده و در یادداشت داخلی محفوظ است.",
+        "این مدخل روش است؛ متن عربی و تلفظِ دعای ساختگی برای آن تولید نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "meaning": [
+          "nur170"
+        ],
+        "pronunciation": [
+          "nur170"
+        ],
+        "practice": [
+          "nur170"
+        ]
+      },
+      "arabicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "id": "morning",
@@ -1411,23 +1590,45 @@
       "id": "home-enter",
       "title": "ورود به خانه",
       "reviewStatus": "pending_owner_review",
-      "kind": "dua",
+      "kind": "practice",
       "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "pronunciation": [
+        ""
       ],
+      "meaning": "در حدیث، یادکردن نام خدا هنگام ورود به خانه و هنگام غذا خوردن آمده است.",
+      "practice": "هنگام ورود به خانه نام خدا را یاد کنید و هنگام غذا نیز نام او را ببرید.",
+      "sources": [
+        {
+          "book": "صحیح مسلم",
+          "reference": "کتاب الأشربة، حدیث ۲۰۱۸الف",
+          "url": "https://sunnah.com/muslim:2018a",
+          "grade": "SAHIH",
+          "grader": "مجموعهٔ صحیح",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "muslim2018a"
+      ],
+      "internalNotes": [
+        "مسلم ۲۰۱۸الف لفظ دعای جداگانه‌ای تعیین نکرده است. روایت ضعیفِ دارای فرمول خاص جایگزین نشد؛ این مدخل راهنمای ذکر است، نه نقل یک دعای لفظی.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "meaning": [
+          "muslim2018a"
+        ],
+        "pronunciation": [
+          "muslim2018a"
+        ],
+        "practice": [
+          "muslim2018a"
+        ]
+      },
+      "arabicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "id": "home-exit",
@@ -1708,22 +1909,60 @@
       "title": "رعد",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلَائِكَةُ مِنْ خِيفَتِهِ",
+      "pronunciation": [
+        "سُبحانَلَّذی یُسَبِّحُرَّعدُ بِحَمدِهِ وَالمَلائِکَةُ مِن خیفَتِه"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "پاک و منزه است آن‌که رعد با ستایش او و فرشتگان از بیم او تسبیح می‌گویند.",
+      "practice": "هنگام شنیدن رعد؛ این ذکر از عبدالله بن زبیر نقل شده است.",
+      "sources": [
+        {
+          "book": "الأدب المفرد، بخاری",
+          "reference": "باب إذا سمع الرعد، شمارهٔ ۷۲۳",
+          "url": "https://sunnah.com/adab:723",
+          "grade": "ATHAR",
+          "grader": "اثر عبدالله بن زبیر؛ موقوف بر صحابی",
+          "checked": true
+        },
+        {
+          "book": "الکلم الطیب؛ تخریج آلبانی در الدرر السنیة",
+          "reference": "شمارهٔ ۱۵۷ مطابق مأخذ بازشده",
+          "url": "https://dorar.net/h/5G8jBrx0",
+          "grade": "ATHAR",
+          "grader": "آلبانی: سند صحیحِ موقوف؛ نه حدیث مرفوع",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "adab723",
+        "thunder-grade"
+      ],
+      "internalNotes": [
+        "اثر صحابی است و به پیامبر نسبت داده نشده؛ الدرر از آلبانی صحت سندِ موقوف را ثبت می‌کند.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "adab723",
+          "thunder-grade"
+        ],
+        "meaning": [
+          "adab723",
+          "thunder-grade"
+        ],
+        "pronunciation": [
+          "adab723",
+          "thunder-grade"
+        ],
+        "practice": [
+          "adab723",
+          "thunder-grade"
+        ]
+      },
+      "arabicSha256": "fca2272b10f5355dd9d797301818f36d9a00c8e438f83b5fb6cd6e3479169d4e"
     },
     {
       "id": "friday-adab",
@@ -1783,23 +2022,49 @@
       "id": "kahf",
       "title": "سورهٔ کهف",
       "reviewStatus": "pending_owner_review",
-      "kind": "dua",
+      "kind": "practice",
       "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
+      "pronunciation": [
+        ""
+      ],
+      "meaning": "تلاوت سورهٔ کهف در شب و روز جمعه در فتوای حنفیِ ذکرشده توصیه شده است.",
+      "practice": "سورهٔ کهف را در شب جمعه، از مغرب پنجشنبه، یا در روز جمعه بخوانید؛ منحصر به پیش از نماز جمعه نیست.",
+      "sources": [
+        {
+          "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+          "reference": "فتوای ۱۴۴۱۰۸۲۰۱۴۸۳، تلاوت کهف در جمعه",
+          "url": "https://www.banuri.edu.pk/readquestion/144108201483/17-04-2020",
+          "grade": "FIQH",
+          "grader": "فتوای حنفی؛ درجهٔ مستقل روایت از متن فتوا استخراج نشده است",
+          "checked": true
+        }
+      ],
       "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+        "full_surah_arabic",
+        "full_surah_meaning",
+        "full_surah_pronunciation"
       ],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "banuri-kahf"
+      ],
+      "internalNotes": [
+        "راهنمای تلاوت تکمیل شد، ولی متن کامل ۱۱۰ آیه و معنی/خوانش کامل آن در این مدخل افزوده نشد. تا تأمین و تطبیق کامل، در ناتمام‌ها می‌ماند؛ حدیثِ فضیلت به‌جای خود سوره جا زده نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "meaning": [
+          "banuri-kahf"
+        ],
+        "pronunciation": [
+          "banuri-kahf"
+        ],
+        "practice": [
+          "banuri-kahf"
+        ]
+      },
+      "arabicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "id": "friday-hour",
@@ -1839,16 +2104,17 @@
       "practice": "",
       "sources": [],
       "missingFields": [
-        "current_source_check",
-        "pronunciation",
         "arabic",
+        "pronunciation",
         "meaning",
         "source",
         "grade"
       ],
       "reminder": false,
       "evidenceIds": [],
-      "internalNotes": []
+      "internalNotes": [
+        "صفحهٔ ۱۷۰ مراقی الفلاح اشاره‌ای به خواندن فاتحه و معوذات هفت بار دارد، اما سند صحیح/حسنِ مشخص برای نسخهٔ درخواستیِ اخلاص/فلق/ناس هفت بار در این اجرا احراز نشد. چیزی به پیامبر نسبت داده نشد و دستور تکرارِ هفت‌بار ساخته نشد."
+      ]
     },
     {
       "id": "monday-thursday",
@@ -1881,23 +2147,45 @@
       "id": "fasting-intention",
       "title": "نیت روزه",
       "reviewStatus": "pending_owner_review",
-      "kind": "dua",
+      "kind": "practice",
       "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "pronunciation": [
+        ""
       ],
+      "meaning": "نیت یعنی قصد قلبی روزه؛ برای روزهٔ نفلی همان قصد روزه کافی است.",
+      "practice": "در دل قصد کنید که برای خدا روزهٔ نفلی می‌گیرید. اگر قصدتان را به زبان هم بیان می‌کنید، می‌توانید بگویید: «قصد روزهٔ نفلی دارم».",
+      "sources": [
+        {
+          "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+          "reference": "فتوای ۱۴۴۲۰۱۲۰۰۵۰۷، نیت روزه",
+          "url": "https://www.banuri.edu.pk/readquestion/144201200507/30-08-2020",
+          "grade": "FIQH",
+          "grader": "فتوای حنفی؛ عبارت نیت به پیامبر نسبت داده نمی‌شود",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
       "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "evidenceIds": [
+        "banuri-intention"
+      ],
+      "internalNotes": [
+        "طبق فتوای خوانده‌شده، لفظ مخصوص لازم تعیین نشده است. فرمول عربیِ منسوب به پیامبر تولید نشد؛ جزئیات وقت نیتِ انواع روزه خارج از این مدخل کوتاه است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "meaning": [
+          "banuri-intention"
+        ],
+        "pronunciation": [
+          "banuri-intention"
+        ],
+        "practice": [
+          "banuri-intention"
+        ]
+      },
+      "arabicSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "id": "subhan-bihamdihi",
@@ -2149,22 +2437,49 @@
       "title": "اذکار عید",
       "reviewStatus": "pending_owner_review",
       "kind": "dua",
-      "arabic": "",
-      "pronunciation": [],
-      "meaning": "",
-      "practice": "",
-      "sources": [],
-      "missingFields": [
-        "current_source_check",
-        "pronunciation",
-        "arabic",
-        "meaning",
-        "source",
-        "grade"
+      "arabic": "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ لَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ وَلِلَّهِ الْحَمْدُ",
+      "pronunciation": [
+        "اَللاهُ اَکبَر اَللاهُ اَکبَر",
+        "لا اِلاهَ اِلَّا اللّاهُ وَاللّاهُ اَکبَر",
+        "اَللاهُ اَکبَر وَ لِلّاهِ الحَمد"
       ],
-      "reminder": false,
-      "evidenceIds": [],
-      "internalNotes": []
+      "meaning": "خدا بزرگ‌تر است، خدا بزرگ‌تر است؛ معبودی جز خدا نیست و خدا بزرگ‌تر است؛ خدا بزرگ‌تر است و ستایش از آن خداست.",
+      "practice": "این متنِ تکبیر تشریق است. در فقه حنفی، از پسِ فرضِ صبحِ نهم ذی‌الحجه تا پسِ فرضِ عصر سیزدهم، یک بار بعد از هر فرض گفته می‌شود؛ مردان بلند و زنان آهسته می‌گویند.",
+      "sources": [
+        {
+          "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+          "reference": "فتوای ۱۴۴۲۱۲۲۰۰۰۸۴، تکبیر تشریق",
+          "url": "https://www.banuri.edu.pk/readquestion/144212200084/11-07-2021",
+          "grade": "FIQH",
+          "grader": "مأخذ فقه حنفی و آثار صحابه؛ نه درجهٔ حدیث مرفوع",
+          "checked": true
+        }
+      ],
+      "missingFields": [],
+      "reminder": true,
+      "evidenceIds": [
+        "banuri-eid"
+      ],
+      "internalNotes": [
+        "این مدخل با تکبیرهای اضافهٔ داخل نماز عید یکی نیست. مأخذ، فتوای حنفی با نقل آثار صحابه است؛ درجهٔ حدیث مرفوع برای این فرمول ادعا نشده است.",
+        "معنی فارسی، بازنویسی معنایی از متن مأخذِ بازشده در همین اجراست؛ نقلِ لفظی از مترجم چاپی نیست.",
+        "خوانش خط فارسی، آوانویسی ویراستاری از عربیِ همین مأخذ است؛ ضبط مستقلِ چاپی یا گواهی تجوید محسوب نمی‌شود."
+      ],
+      "fieldSources": {
+        "arabic": [
+          "banuri-eid"
+        ],
+        "meaning": [
+          "banuri-eid"
+        ],
+        "pronunciation": [
+          "banuri-eid"
+        ],
+        "practice": [
+          "banuri-eid"
+        ]
+      },
+      "arabicSha256": "15c95ed998c566b6c486f2ebdd4997f895727a2c8a4c24956214411c8ea383b8"
     },
     {
       "id": "owner-assembly",

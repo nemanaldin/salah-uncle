@@ -216,6 +216,138 @@
       "kind": "hanafi_fiqh",
       "readAt": "2026-11-18",
       "webToolRead": true
+    },
+    {
+      "id": "quran11",
+      "url": "https://quran.com/1/1",
+      "book": "قرآن کریم",
+      "locator": "فاتحه، آیهٔ ۱",
+      "excerpt": "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ",
+      "grade": "QURAN",
+      "grader": "متن قرآن؛ درجهٔ حدیثی موضوعیت ندارد",
+      "kind": "quran",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "nur51",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/51",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "فصل سنن وضو؛ نشانی صفحهٔ وب ۵۱",
+      "excerpt": "والتسمية ابتداء؛ وقيل الأفضل بسم الله الرحمن الرحيم",
+      "grade": "FIQH",
+      "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "nur195",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/195",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "باب الوتر؛ نشانی صفحهٔ وب ۱۹۵",
+      "excerpt": "وإذا فرغ من قراءة السورة فيها رفع يديه ثم كبر وقنت قائما",
+      "grade": "FIQH",
+      "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "qunut-hanafi",
+      "url": "https://islamqa.org/hanafi/askimam/102830/which-is-the-correct-dua-e-qunoot/",
+      "book": "فتوای حنفی AskImam؛ نقل از البحر الرائق",
+      "locator": "عنوان Which is the correct Dua-e-Qunoot؛ نقل البحر الرائق ۲/۴۵ در خود صفحه",
+      "excerpt": "ثم إن الدعاء المشهور عند أبي حنيفة اللهم إنا نستعينك ونستغفرك",
+      "grade": "FIQH",
+      "grader": "ضبط فقهی مشهور؛ درجهٔ حدیث مرفوع برای این مجموعه جعل نشده است",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "nur170",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/170",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "فصل صفة الأذکار؛ نشانی صفحهٔ وب ۱۷۰",
+      "excerpt": "القيام إلى السنة متصلا بالفرض مسنون؛ فالأولى تأخير الأوراد عن السنة",
+      "grade": "FIQH",
+      "grader": "مأخذ فقه حنفی؛ نه درجهٔ حدیثی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "muslim2018a",
+      "url": "https://sunnah.com/muslim:2018a",
+      "book": "صحیح مسلم",
+      "locator": "کتاب الأشربة، حدیث ۲۰۱۸الف",
+      "excerpt": "فَذَكَرَ اللَّهَ عِنْدَ دُخُولِهِ وَعِنْدَ طَعَامِهِ",
+      "grade": "SAHIH",
+      "grader": "مجموعهٔ صحیح",
+      "kind": "hadith",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "adab723",
+      "url": "https://sunnah.com/adab:723",
+      "book": "الأدب المفرد، بخاری",
+      "locator": "باب إذا سمع الرعد، شمارهٔ ۷۲۳",
+      "excerpt": "سُبْحَانَ الَّذِي يُسَبِّحُ الرَّعْدُ بِحَمْدِهِ وَالْمَلاَئِكَةُ مِنْ خِيفَتِهِ",
+      "grade": "ATHAR",
+      "grader": "اثر عبدالله بن زبیر؛ موقوف بر صحابی",
+      "kind": "athar",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "thunder-grade",
+      "url": "https://dorar.net/h/5G8jBrx0",
+      "book": "الکلم الطیب؛ تخریج آلبانی در الدرر السنیة",
+      "locator": "شمارهٔ ۱۵۷ مطابق مأخذ بازشده",
+      "excerpt": "إسناده صحيح موقوفا",
+      "grade": "ATHAR",
+      "grader": "آلبانی: سند صحیحِ موقوف؛ نه حدیث مرفوع",
+      "kind": "athar",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "banuri-kahf",
+      "url": "https://www.banuri.edu.pk/readquestion/144108201483/17-04-2020",
+      "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+      "locator": "فتوای ۱۴۴۱۰۸۲۰۱۴۸۳، تلاوت کهف در جمعه",
+      "excerpt": "جمعرات کی مغرب کے بعد جو رات ہے وہ شب جمعہ ہے",
+      "grade": "FIQH",
+      "grader": "فتوای حنفی؛ درجهٔ مستقل روایت از متن فتوا استخراج نشده است",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "banuri-intention",
+      "url": "https://www.banuri.edu.pk/readquestion/144201200507/30-08-2020",
+      "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+      "locator": "فتوای ۱۴۴۲۰۱۲۰۰۵۰۷، نیت روزه",
+      "excerpt": "نیت دل کے ارادے کا نام ہے",
+      "grade": "FIQH",
+      "grader": "فتوای حنفی؛ عبارت نیت به پیامبر نسبت داده نمی‌شود",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
+    },
+    {
+      "id": "banuri-eid",
+      "url": "https://www.banuri.edu.pk/readquestion/144212200084/11-07-2021",
+      "book": "فتاوای جامعہ علوم اسلامیہ بنوری‌ٹاؤن",
+      "locator": "فتوای ۱۴۴۲۱۲۲۰۰۰۸۴، تکبیر تشریق",
+      "excerpt": "الله أكبر الله أكبر لا إله إلا الله والله أكبر الله أكبر ولله الحمد",
+      "grade": "FIQH",
+      "grader": "مأخذ فقه حنفی و آثار صحابه؛ نه درجهٔ حدیث مرفوع",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
     }
   ]
 }

@@ -35,8 +35,13 @@ fun DuaItem.forLanguage(tag: String): DuaItem {
         guidance = guidance || content.kind == "practice")
 }
 
-fun DuaCatalog.forLanguage(tag: String): DuaCatalog =
-    if (tag != "fa") this else copy(items = items.map { it.forLanguage(tag) })
+fun DuaCatalog.forLanguage(tag: String): DuaCatalog {
+    if (tag != "fa") return this
+    // Empty research placeholders remain in the data/report, not as blank Persian reading pages.
+    val readable = items.map { it.forLanguage(tag) }.filter { it.arabic.isNotBlank() || it.note(tag).isNotBlank() }
+    val ids = readable.map { it.id }.toSet()
+    return copy(items = readable, sections = sections.map { it.copy(duaIds = it.duaIds.filter { id -> id in ids }) })
+}
 
 /** The owner requested a clean Persian UI, not deletion of the review metadata. */
 fun showEditorialStatus(tag: String) = tag != "fa"
