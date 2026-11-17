@@ -51,6 +51,21 @@ class PersianDuaPolicyTest {
     @Test fun incompletePracticeCannotBeMarkedComplete() {
         assertFalse(content.copy(kind = "practice", practice = "").complete)
     }
+    @Test fun anUnknownContentKindCannotBecomeComplete() {
+        assertFalse(content.copy(kind = "unknown").complete)
+    }
+    @Test fun persianMethodSharingIncludesTheInstructionsAndSourceWithoutAnInventedArabicFormula() {
+        val method = item(content.copy(arabic = "", pronunciation = emptyList(), kind = "practice", practice = "روشِ کامل")).forLanguage("fa")
+        val shared = method.shareText("fa", "draft")
+        assertTrue(shared.contains("روشِ کامل"))
+        assertTrue(shared.contains(source.url))
+        assertFalse(shared.contains("draft"))
+        assertFalse(shared.contains("Original"))
+    }
+    @Test fun sharingInAnotherLanguageKeepsThePreviousTextAndReviewNotice() {
+        val original = item().copy(notes = mapOf("en" to "Practice"))
+        assertEquals("Dua\n\nOriginal\n\nOriginal meaning\n\ndraft", original.shareText("en", "draft"))
+    }
     @Test fun persianNotificationDoesNotLeakEditorialLabels() {
         assertEquals("عربي\nمعنی", duaNotificationText(item().forLanguage("fa"), "fa", "draft"))
         assertTrue(duaNotificationText(item(), "en", "draft").endsWith("draft"))

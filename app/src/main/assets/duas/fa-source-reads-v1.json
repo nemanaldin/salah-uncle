@@ -864,6 +864,18 @@
       "kind": "quran",
       "readAt": "2026-11-18",
       "webToolRead": true
+    },
+    {
+      "id": "nur153",
+      "url": "https://www.arabicdawateislami.net/bookslibrary/1043/page/153",
+      "book": "نور الإیضاح مع مراقی الفلاح",
+      "locator": "کیفیت افعال نماز؛ نشانی صفحهٔ وب ۱۵۳",
+      "excerpt": "فيقول سبحان ربي العظيم مرات ثلاثا وذلك أدناه، أي أدنى كمال الجمع المسنون.",
+      "grade": "FIQH",
+      "grader": "فقه حنفی",
+      "kind": "hanafi_fiqh",
+      "readAt": "2026-11-18",
+      "webToolRead": true
     }
   ]
 }

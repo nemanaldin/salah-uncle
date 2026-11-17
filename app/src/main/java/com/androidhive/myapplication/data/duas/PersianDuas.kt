@@ -15,7 +15,8 @@ data class PersianDuaContent(
     val reminder: Boolean = false,
     val title: String = "",
 ) {
-    val complete: Boolean get() = reviewStatus == PENDING_OWNER_REVIEW && missingFields.isEmpty() &&
+    val complete: Boolean get() = kind in setOf("dua", "evidence", "practice") &&
+        reviewStatus == PENDING_OWNER_REVIEW && missingFields.isEmpty() &&
         meaning.isNotBlank() && sources.isNotEmpty() && sources.all {
             it.checked && it.grade != DuaGrade.UNVERIFIED && it.book.isNotBlank() &&
                 it.reference.isNotBlank() && it.url.startsWith("https://")
@@ -45,3 +46,10 @@ fun DuaCatalog.forLanguage(tag: String): DuaCatalog {
 
 /** The owner requested a clean Persian UI, not deletion of the review metadata. */
 fun showEditorialStatus(tag: String) = tag != "fa"
+
+/** Persian methods must keep their instructions when copied/shared, even without a recitation. */
+fun DuaItem.shareText(tag: String, editorialLabel: String): String = listOf(
+    title(tag), arabic, translation(tag), note(tag).takeIf { tag == "fa" }.orEmpty(),
+    sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" },
+    editorialLabel.takeIf { showEditorialStatus(tag) && reviewFields.isNotEmpty() }.orEmpty(),
+).filter { it.isNotBlank() }.joinToString("\n\n")

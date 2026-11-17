@@ -17,21 +17,31 @@ def validate():
     for item in items.values():
         assert item['reviewStatus'] == 'pending_owner_review'
         assert item['kind'] in {'dua', 'evidence', 'practice'}
-        assert not re.search(r'بازبینی|پیش.نویس|تأییدنشده|تأیید نشده', item['title'])
+        visible = [item['title'], item['arabic'], item['meaning'], item['practice'], *item['pronunciation']]
+        visible.extend(s[field] for s in item['sources'] for field in ('book', 'reference', 'grader'))
+        assert not any(re.search(r'بازبینی|پیش.نویس|تأییدنشده|تأیید نشده', text) for text in visible), item['id']
+        assert all(line.strip() for line in item['pronunciation']), item['id']
+        for field in ('arabic', 'meaning', 'pronunciation', 'practice'):
+            provenance = item.get('fieldSources', {}).get(field, [])
+            assert bool(item[field]) == bool(provenance), (item['id'], field)
+            assert set(provenance) <= set(item['evidenceIds']), (item['id'], field)
+        if item['arabic']:
+            assert hashlib.sha256(item['arabic'].encode()).hexdigest() == item['arabicSha256'], item['id']
         if item['missingFields']:
             assert not item['reminder'], item['id']
-            continue
-        complete += 1
-        assert item['meaning'].strip() and item['sources'] and item['evidenceIds'], item['id']
-        if item['kind'] == 'practice':
-            assert item['practice'].strip() and not item['reminder'], item['id']
         else:
-            assert item['arabic'].strip() and item['pronunciation'] and all(x.strip() for x in item['pronunciation']), item['id']
+            complete += 1
+            assert item['meaning'].strip() and item['sources'] and item['evidenceIds'], item['id']
+            if item['kind'] == 'practice':
+                assert item['practice'].strip() and not item['reminder'], item['id']
+            else:
+                assert item['arabic'].strip() and item['pronunciation'], item['id']
         for source in item['sources']:
             assert source['checked'] and source['grade'] in {'SAHIH', 'HASAN', 'QURAN', 'FIQH', 'ATHAR'}, item['id']
             assert source['book'].strip() and source['reference'].strip() and source['url'].startswith('https://'), item['id']
             assert source['url'] in {reads[k]['url'] for k in item['evidenceIds']}, item['id']
             matching = [reads[k] for k in item['evidenceIds'] if reads[k]['url'] == source['url']]
+            assert any(x['grade'] == source['grade'] for x in matching), item['id']
             if source['grade'] == 'FIQH':
                 assert any(x['kind'] == 'hanafi_fiqh' for x in matching), item['id']
             if source['grade'] == 'ATHAR':

@@ -199,8 +199,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
     val sourceLabel = stringResource(R.string.ui_dua_source)
     val review = stringResource(R.string.ui_dua_review)
     val shareLabel = stringResource(if (item.guidance) R.string.ui_dua_share_evidence else R.string.ui_dua_share)
-    val export = remember(item, tag, review) { listOf(item.title(tag), item.arabic, meaning,
-        item.sources.joinToString("\n") { "${it.book} ${it.reference} ${it.url}" }, review.takeIf { showEditorialStatus(tag) && item.reviewFields.isNotEmpty() }.orEmpty()).filter { it.isNotBlank() }.joinToString("\n\n") }
+    val export = remember(item, tag, review) { item.shareText(tag, review) }
     var scale by remember(settings.arabicTextScale) { mutableFloatStateOf(settings.arabicTextScale) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(vertical = 10.dp).testTag("dua_detail_${item.id}"), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -212,7 +211,7 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
         LanguageReadinessNotice(settings.language)
         if (tag !in item.titles) SupportingText(stringResource(R.string.ui_dua_title_fallback))
         if (showEditorialStatus(tag) && item.reviewFields.isNotEmpty()) InfoCard(review)
-        if (item.guidance) InfoCard(stringResource(R.string.ui_dua_guidance_note))
+        if (item.guidance && !(tag == "fa" && item.persian?.kind == "practice")) InfoCard(stringResource(R.string.ui_dua_guidance_note))
         if (item.arabic.isNotBlank() || showEditorialStatus(tag)) AppCard {
             SectionTitle(stringResource(if (item.guidance) R.string.ui_dua_hadith_evidence else R.string.ui_dua_arabic))
             if (item.arabic.isBlank()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
@@ -234,16 +233,22 @@ private fun DuaDetail(item: DuaItem, settings: AppSettings, saved: Boolean, onBo
             }
         }
         if (meaning.isNotBlank() || item.pronunciations[tag].orEmpty().isNotEmpty() || showEditorialStatus(tag)) AppCard {
-            SectionTitle(stringResource(R.string.ui_dua_pronunciation))
             val lines = item.pronunciations[tag].orEmpty()
-            if (lines.isEmpty()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing)) }
-            else lines.forEach { ReadingText(it, settings, settings.language) }
+            if (lines.isNotEmpty() || showEditorialStatus(tag)) {
+                SectionTitle(stringResource(R.string.ui_dua_pronunciation))
+                if (lines.isEmpty()) SupportingText(stringResource(R.string.ui_dua_missing))
+                else lines.forEach { ReadingText(it, settings, settings.language) }
+            }
             SectionTitle(stringResource(R.string.ui_dua_meaning))
             if (meaning.isBlank()) { if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_translation_missing)) }
             else { ReadingText(meaning, settings, settings.language)
                 if (showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_translation_draft)) }
         }
         if (item.note(tag).isNotBlank()) InfoCard(item.note(tag))
+        if (tag == "fa" && item.arabic.isBlank() && item.note(tag).isNotBlank()) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            OutlinedButton({ (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).setPrimaryClip(ClipData.newPlainText(item.title(tag), item.note(tag))) }, Modifier.weight(1f).testTag("dua_copy")) { Text(stringResource(R.string.ui_dua_copy_evidence)) }
+            OutlinedButton({ shareText(context, export, shareLabel) { onError(R.string.ui_error_external_app) } }, Modifier.weight(1f).testTag("dua_share")) { Text(shareLabel) }
+        }
         if (item.sources.isNotEmpty() || showEditorialStatus(tag)) AppCard {
             SectionTitle(sourceLabel)
             if (item.sources.isEmpty() && showEditorialStatus(tag)) SupportingText(stringResource(R.string.ui_dua_missing))
