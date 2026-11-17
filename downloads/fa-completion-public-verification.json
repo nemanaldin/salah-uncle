@@ -1,0 +1,43 @@
+{
+  "publicationCommit": "8a17277fde8d2a0d347095f2c94650c7f0d60968",
+  "verificationDateClient": "2026-11-18",
+  "branch": "work",
+  "protectedRemoteBranchesUnchanged": true,
+  "remoteRefsAfter": {
+    "refs/heads/main": "6dc5366532cefbb295b14237e10b7d3d2dc0f859",
+    "refs/heads/uncle-work": "a09fbbd23cf3f1026e09ba0be56d8079e9a86849",
+    "refs/heads/work": "8a17277fde8d2a0d347095f2c94650c7f0d60968"
+  },
+  "downloads": [
+    {
+      "path": "downloads/Salah-2.7.0-fa-completion-debug.apk",
+      "url": "https://raw.githubusercontent.com/nemanaldin/salah-uncle/work/downloads/Salah-2.7.0-fa-completion-debug.apk",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "bytes": 31972264,
+      "sha256": "131a9b959389e87b6a3f16f9b84eaa50b98cadc16e6e889382f8549e08b64f2f",
+      "sha256Matches": true,
+      "downloadedWithoutCredentials": true
+    },
+    {
+      "path": "docs/reports/2026-11-18/Salah-Persian-Duas-Study.pdf",
+      "url": "https://raw.githubusercontent.com/nemanaldin/salah-uncle/work/docs/reports/2026-11-18/Salah-Persian-Duas-Study.pdf",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "bytes": 861362,
+      "sha256": "eecf4696d277e51d549570d6e1a19f4c6975f98f84d6b217a9d5c5619f2fde10",
+      "sha256Matches": true,
+      "downloadedWithoutCredentials": true
+    },
+    {
+      "path": "docs/reports/2026-11-18/Salah-Project-Map-fa.pdf",
+      "url": "https://raw.githubusercontent.com/nemanaldin/salah-uncle/work/docs/reports/2026-11-18/Salah-Project-Map-fa.pdf",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "bytes": 187537,
+      "sha256": "9a0e61b3222bec74323991bdeef95b9c83043d26d647b94c1d615fda50682c4e",
+      "sha256Matches": true,
+      "downloadedWithoutCredentials": true
+    }
+  ]
+}
